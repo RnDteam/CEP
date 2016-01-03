@@ -1,0 +1,31 @@
+// Connectivity definitions for the solution
+define inbound binding  'JMSTransactionEventBinding' 
+	with description "JMS Incoming transaction",
+	using message format application/xml , 
+		protocol JMS , 
+   classifying messages : 
+    if matches "/event:Transaction" 
+	   where prefix "event" represents the namespace "http://www.ibm.com/ia/xmlns/default/ConnectivitySolutionBOM/model" 
+	        transform using "transformation.xsl"
+	     else discard message , 
+ 	accepting events : 
+		- transaction . 
+		
+define inbound JMS endpoint 'JMSTransactionEventEndPoint'
+	with description "JMS Incoming transaction endpoint",
+	using binding 'JMSTransactionEventBinding'. 
+
+define outbound  binding 'JMSAuthorizationResponseOutputBinding'
+	with description "JMS Output authorization response",
+	using message format application/xml ,
+		protocol JMS , 
+	delivering events : 
+		- authorization response . 
+
+define outbound JMS endpoint 'JMSAuthorizationResponseEndPoint'
+	with description "JMS Output authorization response end point",
+	using binding  'JMSAuthorizationResponseOutputBinding',
+	connection factory "jms/queue/JMSAuthorizationResponseEndpointConnectionFactory",
+	destination "jms/queue/JMSAuthorizationResponseOutputQueue". 
+	
+ 

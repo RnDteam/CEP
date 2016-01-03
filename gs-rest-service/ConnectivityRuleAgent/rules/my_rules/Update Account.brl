@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>Update Account</name>
+  <uuid>59019012-f2b8-4c6d-9b20-127f52e1913d</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[when a transaction occurs , called 'the transaction'
+then
+    set the balance of 'the account' to the balance of 'the account' - the amount of 'the transaction' ;]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>

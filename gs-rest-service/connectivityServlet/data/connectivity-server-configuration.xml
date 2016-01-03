@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><server>
+ 
+   <!--  The cisDev server is used as the defaultMessagingEngine in this sample  -->
+   <!--  In a real production environment there would be a separate messaging engine  -->
+   <messagingEngine id="defaultMessagingEngine" >   
+		<topicSpace />
+		<queue id="JMSTransactionEventQueue" />
+		<queue id="JMSAuthorizationResponseQueue" />
+	</messagingEngine> 
+    <wasJmsEndpoint host="*" wasJmsPort="7276" wasJmsSSLPort="7286" /> 
+       
+    <!--WebSphere Application Server default messaging provider activation specification-->
+    <jmsActivationSpec id="ConnectivitySolution-inbound/JMSTransactionEventEndPoint/JMSTransactionEventEndPoint">
+        <properties.wasJms busName="defaultBus" destinationRef="ConnectivitySolution-inbound/JMSTransactionEventEndPoint/JMSTransactionEventEndPoint/destination" destinationType="javax.jms.Queue" remoteServerAddress="localhost:7276:BootstrapBasicMessaging" targetTransportChain="InboundBasicMessaging"/>
+    </jmsActivationSpec>
+
+    <!--WebSphere Application Server default messaging provider queue-->
+    <jmsQueue jndiName="jms/queue/JMSTransactionEventQueue" 
+    id="ConnectivitySolution-inbound/JMSTransactionEventEndPoint/JMSTransactionEventEndPoint/destination">
+        <properties.wasJms queueName="JMSTransactionEventQueue" />
+    </jmsQueue>
+	
+    <!--Application definition for inbound connectivity application for solution: ConnectivitySolution-->
+    <application location="ConnectivitySolution-inbound.ear">
+        <application-bnd>
+            <security-role name="iaEventSubmitter"/>
+        </application-bnd>
+    </application>
+
+    <!--WebSphere Application Server default messaging provider connection factory-->
+    <jmsConnectionFactory jndiName="jms/queue/JMSAuthorizationResponseEndpointConnectionFactory">
+        <properties.wasJms busName="defaultBus" remoteServerAddress="localhost:7276:BootstrapBasicMessaging" targetTransportChain="InboundBasicMessaging"/>
+    </jmsConnectionFactory>
+
+    <!--WebSphere Application Server default messaging provider queue-->
+    <jmsQueue jndiName="jms/queue/JMSAuthorizationResponseOutputQueue">
+        <properties.wasJms queueName="JMSAuthorizationResponseQueue"/>
+    </jmsQueue>
+
+    <ia_inboundJmsEndpoint endpoint="ConnectivitySolution/JMSTransactionEventEndPoint"/>
+
+    <ia_outboundJmsEndpoint endpoint="ConnectivitySolution/JMSAuthorizationResponseEndPoint" jms.persistent.delivery="true"/>
+ 
+    <ia_inboundHttpEndpoint endpoint="ConnectivitySolution/HTTPTransactionEventEndPoint"/>
+   
+    <ia_outboundHttpEndpoint endpoint="ConnectivitySolution/HTTPTransactionOutputEndPoint"/>
+    
+</server>

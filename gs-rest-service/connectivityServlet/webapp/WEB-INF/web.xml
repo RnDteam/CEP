@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Licensed Materials - Property of IBM                           -->
+<!-- 5725-B69 5655-Y17                                              -->
+<!-- Copyright IBM Corp. 2013, 2014. All Rights Reserved            -->
+<!-- US Government Users Restricted Rights - Use, duplication or    -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with        -->
+<!-- IBM Corp.                                                      -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         id="WebApp_ID" version="2.5">
+    <display-name>eventSender</display-name>
+
+    <welcome-file-list>
+        <welcome-file>sample.jsp</welcome-file>
+    </welcome-file-list>
+
+	<!-- 
+				event sender configuration
+	-->
+    <servlet>
+        <servlet-name>SendEventServlet</servlet-name>
+        <servlet-class>sample.connectivity.SendEventServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SendEventServlet</servlet-name>
+        <url-pattern>/response/*</url-pattern>
+    </servlet-mapping>   
+
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<page-encoding>UTF-8</page-encoding>
+		</jsp-property-group>
+	</jsp-config>
+
+</web-app>

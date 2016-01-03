@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><agent xmlns="http://www.ibm.com/ia/AgentDescriptor">
+  <name>Average Transaction Per Day</name>
+  <kind>GlobalAggregate</kind>
+  <priority>2147483647</priority>
+  <events>
+    <event>
+      <type>creditcard.Transaction</type>
+    </event>
+  </events>
+</agent>

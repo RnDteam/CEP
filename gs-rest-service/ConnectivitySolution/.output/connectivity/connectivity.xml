@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><connectivity xmlns="http://www.ibm.com/ia/ConnectivityDefinitions" build-date="Sun Jan 03 09:39:19 IST 2016" built-by="com.ibm.ia.designer.core 8.8.0.0" solution="ConnectivitySolution">
+    <inbound-binding source="'HTTPTransactionEventBinding' &#13;&#10;   with description &quot;HTTP Incoming Transaction&quot; ,&#13;&#10;   using&#13;&#10;      message format application/xml ,&#13;&#10;   protocol HTTP , &#13;&#10;   classifying messages : &#13;&#10;    if matches &quot;/event:Transaction&quot; &#13;&#10;&#9;   where prefix &quot;event&quot; represents the namespace &quot;http://www.ibm.com/ia/xmlns/default/ConnectivitySolutionBOM/model&quot; &#13;&#10;&#9;        transform using &quot;transformation.xsl&quot;&#13;&#10;&#9;     else discard message , &#13;&#10;   accepting events : &#13;&#10;      - transaction" source-file="/ConnectivitySolution/Connectivity Definitions/httpConnectivity.cdef" source-line="2">
+        <id>HTTPTransactionEventBinding</id>
+        <description>HTTP Incoming Transaction</description>
+        <message-format>application/xml</message-format>
+        <protocol>HTTP</protocol>
+        <event-types>
+            <event-type>creditcard.Transaction</event-type>
+        </event-types>
+        <classifiers>
+            <classifier>
+                <expression>/event:Transaction</expression>
+                <prefix-definitions>
+                    <prefix-definition>
+                        <prefix>event</prefix>
+                        <namespace>http://www.ibm.com/ia/xmlns/default/ConnectivitySolutionBOM/model</namespace>
+                    </prefix-definition>
+                </prefix-definitions>
+                <transformation>transformation.xsl</transformation>
+            </classifier>
+        </classifiers>
+        <when-unclassified>discard-message</when-unclassified>
+    </inbound-binding>
+    <inbound-http-endpoint source="'HTTPTransactionEventEndPoint'&#13;&#10;&#9;with description &quot;HTTP Incoming transaction endpoint&quot;,&#13;&#10;&#9;using binding 'HTTPTransactionEventBinding', &#13;&#10;   url path &quot;/connectivity/Transaction&quot;" source-file="/ConnectivitySolution/Connectivity Definitions/httpConnectivity.cdef" source-line="15">
+        <id>HTTPTransactionEventEndPoint</id>
+        <description>HTTP Incoming transaction endpoint</description>
+        <binding>HTTPTransactionEventBinding</binding>
+        <url-path>/connectivity/Transaction</url-path>
+    </inbound-http-endpoint>
+    <outbound-binding source="'HTTPTransactionOutput' &#13;&#10;   with &#13;&#10;      description &quot;HTTP Transaction Output&quot; ,&#13;&#10;   using &#13;&#10;      message format application/xml , &#13;&#10;   protocol HTTP , &#13;&#10;   delivering events : &#13;&#10;      - authorization response" source-file="/ConnectivitySolution/Connectivity Definitions/httpConnectivity.cdef" source-line="20">
+        <id>HTTPTransactionOutput</id>
+        <description>HTTP Transaction Output</description>
+        <message-format>application/xml</message-format>
+        <protocol>HTTP</protocol>
+        <event-types>
+            <event-type>creditcard.AuthorizationResponse</event-type>
+        </event-types>
+    </outbound-binding>
+    <outbound-http-endpoint source="'HTTPTransactionOutputEndPoint' &#13;&#10;   with &#13;&#10;      description &quot;HTTP Transaction Output endpoint&quot; ,&#13;&#10;   using &#13;&#10;      binding 'HTTPTransactionOutput' , &#13;&#10;   url &quot;http://localhost:9080/eventSender/response&quot;" source-file="/ConnectivitySolution/Connectivity Definitions/httpConnectivity.cdef" source-line="29">
+        <id>HTTPTransactionOutputEndPoint</id>
+        <description>HTTP Transaction Output endpoint</description>
+        <binding>HTTPTransactionOutput</binding>
+        <url>http://localhost:9080/eventSender/response</url>
+    </outbound-http-endpoint>
+    <inbound-binding source="'JMSTransactionEventBinding' &#13;&#10;&#9;with description &quot;JMS Incoming transaction&quot;,&#13;&#10;&#9;using message format application/xml , &#13;&#10;&#9;&#9;protocol JMS , &#13;&#10;   classifying messages : &#13;&#10;    if matches &quot;/event:Transaction&quot; &#13;&#10;&#9;   where prefix &quot;event&quot; represents the namespace &quot;http://www.ibm.com/ia/xmlns/default/ConnectivitySolutionBOM/model&quot; &#13;&#10;&#9;        transform using &quot;transformation.xsl&quot;&#13;&#10;&#9;     else discard message , &#13;&#10; &#9;accepting events : &#13;&#10;&#9;&#9;- transaction" source-file="/ConnectivitySolution/Connectivity Definitions/jmsConnectivity.cdef" source-line="2">
+        <id>JMSTransactionEventBinding</id>
+        <description>JMS Incoming transaction</description>
+        <message-format>application/xml</message-format>
+        <protocol>JMS</protocol>
+        <event-types>
+            <event-type>creditcard.Transaction</event-type>
+        </event-types>
+        <classifiers>
+            <classifier>
+                <expression>/event:Transaction</expression>
+                <prefix-definitions>
+                    <prefix-definition>
+                        <prefix>event</prefix>
+                        <namespace>http://www.ibm.com/ia/xmlns/default/ConnectivitySolutionBOM/model</namespace>
+                    </prefix-definition>
+                </prefix-definitions>
+                <transformation>transformation.xsl</transformation>
+            </classifier>
+        </classifiers>
+        <when-unclassified>discard-message</when-unclassified>
+    </inbound-binding>
+    <inbound-jms-endpoint source="'JMSTransactionEventEndPoint'&#13;&#10;&#9;with description &quot;JMS Incoming transaction endpoint&quot;,&#13;&#10;&#9;using binding 'JMSTransactionEventBinding'" source-file="/ConnectivitySolution/Connectivity Definitions/jmsConnectivity.cdef" source-line="14">
+        <id>JMSTransactionEventEndPoint</id>
+        <description>JMS Incoming transaction endpoint</description>
+        <binding>JMSTransactionEventBinding</binding>
+    </inbound-jms-endpoint>
+    <outbound-binding source="'JMSAuthorizationResponseOutputBinding'&#13;&#10;&#9;with description &quot;JMS Output authorization response&quot;,&#13;&#10;&#9;using message format application/xml ,&#13;&#10;&#9;&#9;protocol JMS , &#13;&#10;&#9;delivering events : &#13;&#10;&#9;&#9;- authorization response" source-file="/ConnectivitySolution/Connectivity Definitions/jmsConnectivity.cdef" source-line="18">
+        <id>JMSAuthorizationResponseOutputBinding</id>
+        <description>JMS Output authorization response</description>
+        <message-format>application/xml</message-format>
+        <protocol>JMS</protocol>
+        <event-types>
+            <event-type>creditcard.AuthorizationResponse</event-type>
+        </event-types>
+    </outbound-binding>
+    <outbound-jms-endpoint source="'JMSAuthorizationResponseEndPoint'&#13;&#10;&#9;with description &quot;JMS Output authorization response end point&quot;,&#13;&#10;&#9;using binding  'JMSAuthorizationResponseOutputBinding',&#13;&#10;&#9;connection factory &quot;jms/queue/JMSAuthorizationResponseEndpointConnectionFactory&quot;,&#13;&#10;&#9;destination &quot;jms/queue/JMSAuthorizationResponseOutputQueue&quot;" source-file="/ConnectivitySolution/Connectivity Definitions/jmsConnectivity.cdef" source-line="25">
+        <id>JMSAuthorizationResponseEndPoint</id>
+        <description>JMS Output authorization response end point</description>
+        <binding>JMSAuthorizationResponseOutputBinding</binding>
+        <connection-factory-jndi-name>jms/queue/JMSAuthorizationResponseEndpointConnectionFactory</connection-factory-jndi-name>
+        <destination-jndi-name>jms/queue/JMSAuthorizationResponseOutputQueue</destination-jndi-name>
+    </outbound-jms-endpoint>
+</connectivity>

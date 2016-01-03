@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?><impactTables>
+    <ruleTable>
+        <vocElt id="creditcard.Transaction/date/GETTER#0">
+            <rule id="600b00dc-ebac-4fab-9850-03f527b344c1"/>
+        </vocElt>
+        <vocElt id="creditcard.Account/balance/SETTER#0">
+            <rule id="59019012-f2b8-4c6d-9b20-127f52e1913d"/>
+        </vocElt>
+        <vocElt id="creditcard.Account/lastCheckTime/GETTER#0">
+            <rule id="8464dc99-f589-4fa7-bcb4-f9202a301906"/>
+        </vocElt>
+        <vocElt id="creditcard.AuthorizationResponse/AuthorizationResponse(creditcard.Account,java.time.ZonedDateTime,creditcard.Exception,java.lang.String,creditcard.Transaction)/NAVIGATION#0">
+            <rule id="600b00dc-ebac-4fab-9850-03f527b344c1"/>
+            <rule id="88a6da7e-9527-4c7b-a463-8cd07c75a4eb"/>
+            <rule id="8464dc99-f589-4fa7-bcb4-f9202a301906"/>
+            <rule id="1a406c52-c49e-4210-821d-fa26f6aa4aa6"/>
+        </vocElt>
+        <vocElt id="creditcard.Transaction/account/GETTER#0">
+            <rule id="1a406c52-c49e-4210-821d-fa26f6aa4aa6"/>
+        </vocElt>
+        <vocElt id="creditcard.Transaction">
+            <rule id="600b00dc-ebac-4fab-9850-03f527b344c1"/>
+            <rule id="88a6da7e-9527-4c7b-a463-8cd07c75a4eb"/>
+            <rule id="1a406c52-c49e-4210-821d-fa26f6aa4aa6"/>
+            <rule id="59019012-f2b8-4c6d-9b20-127f52e1913d"/>
+        </vocElt>
+        <vocElt id="creditcard.Transaction/amount/GETTER#0">
+            <rule id="600b00dc-ebac-4fab-9850-03f527b344c1"/>
+            <rule id="88a6da7e-9527-4c7b-a463-8cd07c75a4eb"/>
+            <rule id="1a406c52-c49e-4210-821d-fa26f6aa4aa6"/>
+            <rule id="59019012-f2b8-4c6d-9b20-127f52e1913d"/>
+        </vocElt>
+        <vocElt id="creditcard.Account/balance/GETTER#0">
+            <rule id="8464dc99-f589-4fa7-bcb4-f9202a301906"/>
+            <rule id="59019012-f2b8-4c6d-9b20-127f52e1913d"/>
+        </vocElt>
+        <vocElt id="creditcard.Transaction/countryCode/GETTER#0">
+            <rule id="88a6da7e-9527-4c7b-a463-8cd07c75a4eb"/>
+        </vocElt>
+        <vocElt id="creditcard.Account/customer/GETTER#0">
+            <rule id="8464dc99-f589-4fa7-bcb4-f9202a301906"/>
+        </vocElt>
+        <vocElt id="creditcard.Exception/Exception(java.lang.String,java.lang.String)/NAVIGATION#0">
+            <rule id="1a406c52-c49e-4210-821d-fa26f6aa4aa6"/>
+        </vocElt>
+        <vocElt id="creditcard.Customer/email/GETTER#0">
+            <rule id="8464dc99-f589-4fa7-bcb4-f9202a301906"/>
+        </vocElt>
+        <vocElt id="creditcard.Account">
+            <rule id="600b00dc-ebac-4fab-9850-03f527b344c1"/>
+            <rule id="88a6da7e-9527-4c7b-a463-8cd07c75a4eb"/>
+            <rule id="8464dc99-f589-4fa7-bcb4-f9202a301906"/>
+            <rule id="59019012-f2b8-4c6d-9b20-127f52e1913d"/>
+        </vocElt>
+    </ruleTable>
+    <vocTable>
+        <rule id="600b00dc-ebac-4fab-9850-03f527b344c1">
+            <vocElt id="creditcard.Transaction/date/GETTER#0"/>
+            <vocElt id="creditcard.AuthorizationResponse/AuthorizationResponse(creditcard.Account,java.time.ZonedDateTime,creditcard.Exception,java.lang.String,creditcard.Transaction)/NAVIGATION#0"/>
+            <vocElt id="creditcard.Transaction"/>
+            <vocElt id="creditcard.Transaction/amount/GETTER#0"/>
+            <vocElt id="creditcard.Account"/>
+        </rule>
+        <rule id="88a6da7e-9527-4c7b-a463-8cd07c75a4eb">
+            <vocElt id="creditcard.Transaction/countryCode/GETTER#0"/>
+            <vocElt id="creditcard.AuthorizationResponse/AuthorizationResponse(creditcard.Account,java.time.ZonedDateTime,creditcard.Exception,java.lang.String,creditcard.Transaction)/NAVIGATION#0"/>
+            <vocElt id="creditcard.Transaction"/>
+            <vocElt id="creditcard.Transaction/amount/GETTER#0"/>
+            <vocElt id="creditcard.Account"/>
+        </rule>
+        <rule id="8464dc99-f589-4fa7-bcb4-f9202a301906">
+            <vocElt id="creditcard.Account/lastCheckTime/GETTER#0"/>
+            <vocElt id="creditcard.AuthorizationResponse/AuthorizationResponse(creditcard.Account,java.time.ZonedDateTime,creditcard.Exception,java.lang.String,creditcard.Transaction)/NAVIGATION#0"/>
+            <vocElt id="creditcard.Account/customer/GETTER#0"/>
+            <vocElt id="creditcard.Customer/email/GETTER#0"/>
+            <vocElt id="creditcard.Account/balance/GETTER#0"/>
+            <vocElt id="creditcard.Account"/>
+        </rule>
+        <rule id="1a406c52-c49e-4210-821d-fa26f6aa4aa6">
+            <vocElt id="creditcard.AuthorizationResponse/AuthorizationResponse(creditcard.Account,java.time.ZonedDateTime,creditcard.Exception,java.lang.String,creditcard.Transaction)/NAVIGATION#0"/>
+            <vocElt id="creditcard.Transaction/account/GETTER#0"/>
+            <vocElt id="creditcard.Exception/Exception(java.lang.String,java.lang.String)/NAVIGATION#0"/>
+            <vocElt id="creditcard.Transaction"/>
+            <vocElt id="creditcard.Transaction/amount/GETTER#0"/>
+        </rule>
+        <rule id="59019012-f2b8-4c6d-9b20-127f52e1913d">
+            <vocElt id="creditcard.Account/balance/SETTER#0"/>
+            <vocElt id="creditcard.Transaction"/>
+            <vocElt id="creditcard.Transaction/amount/GETTER#0"/>
+            <vocElt id="creditcard.Account/balance/GETTER#0"/>
+            <vocElt id="creditcard.Account"/>
+        </rule>
+    </vocTable>
+    <ruleParamTable>
+        <param id="defvarAveragex95Transactionx95Perx95Day">
+            <rule id="600b00dc-ebac-4fab-9850-03f527b344c1"/>
+        </param>
+        <param id="defvarAveragex95Riskyx95Balance">
+            <rule id="8464dc99-f589-4fa7-bcb4-f9202a301906"/>
+        </param>
+        <param id="entity">
+            <rule id="600b00dc-ebac-4fab-9850-03f527b344c1"/>
+            <rule id="88a6da7e-9527-4c7b-a463-8cd07c75a4eb"/>
+            <rule id="8464dc99-f589-4fa7-bcb4-f9202a301906"/>
+            <rule id="59019012-f2b8-4c6d-9b20-127f52e1913d"/>
+        </param>
+    </ruleParamTable>
+    <paramTable>
+        <rule id="600b00dc-ebac-4fab-9850-03f527b344c1">
+            <param id="defvarAveragex95Transactionx95Perx95Day"/>
+            <param id="entity"/>
+        </rule>
+        <rule id="88a6da7e-9527-4c7b-a463-8cd07c75a4eb">
+            <param id="entity"/>
+        </rule>
+        <rule id="8464dc99-f589-4fa7-bcb4-f9202a301906">
+            <param id="defvarAveragex95Riskyx95Balance"/>
+            <param id="entity"/>
+        </rule>
+        <rule id="59019012-f2b8-4c6d-9b20-127f52e1913d">
+            <param id="entity"/>
+        </rule>
+    </paramTable>
+    <projectTable>
+        <rule id="600b00dc-ebac-4fab-9850-03f527b344c1"/>
+        <rule id="88a6da7e-9527-4c7b-a463-8cd07c75a4eb"/>
+        <rule id="8464dc99-f589-4fa7-bcb4-f9202a301906"/>
+        <rule id="59019012-f2b8-4c6d-9b20-127f52e1913d"/>
+    </projectTable>
+    <variableTable>
+        <param id="37951981-b162-483d-9a4c-ef94ab73ff9f">
+            <rule id="600b00dc-ebac-4fab-9850-03f527b344c1"/>
+            <rule id="8464dc99-f589-4fa7-bcb4-f9202a301906"/>
+        </param>
+    </variableTable>
+    <ruleVocFileTable>
+        <vocFile file="/ConnectivitySolutionBOM/bom/model_en_US.voc" id="3e2a3875-bc5c-4382-84e7-6553142e4ecb">
+            <rule id="600b00dc-ebac-4fab-9850-03f527b344c1"/>
+            <rule id="88a6da7e-9527-4c7b-a463-8cd07c75a4eb"/>
+            <rule id="8464dc99-f589-4fa7-bcb4-f9202a301906"/>
+            <rule id="1a406c52-c49e-4210-821d-fa26f6aa4aa6"/>
+            <rule id="59019012-f2b8-4c6d-9b20-127f52e1913d"/>
+        </vocFile>
+    </ruleVocFileTable>
+    <resourceTable>
+        <resource file="/ConnectivityRuleAgent/rules/my_rules/Check Risky And Above Average.brl" id="8464dc99-f589-4fa7-bcb4-f9202a301906"/>
+        <resource file="/ConnectivityRuleAgent" id="dd9082d6-9bdd-4d70-800f-5a4c966af190"/>
+        <resource file="/ConnectivityRuleAgent/rules/my_rules/Update Account.brl" id="59019012-f2b8-4c6d-9b20-127f52e1913d"/>
+        <resource file="/ConnectivityRuleAgent/rules/my_rules/Transaction Out Of Country.brl" id="88a6da7e-9527-4c7b-a463-8cd07c75a4eb"/>
+        <resource file="/ConnectivitySolutionBOM/aggregates/globalQueries.var" id="37951981-b162-483d-9a4c-ef94ab73ff9f"/>
+        <resource file="/ConnectivityRuleAgent/rules/my_rules/Transaction Too Large.brl" id="1a406c52-c49e-4210-821d-fa26f6aa4aa6"/>
+        <resource file="/ConnectivityRuleAgent/rules/my_rules/Too Many In One Day.brl" id="600b00dc-ebac-4fab-9850-03f527b344c1"/>
+    </resourceTable>
+</impactTables>

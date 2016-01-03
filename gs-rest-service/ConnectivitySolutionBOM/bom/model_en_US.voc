@@ -1,0 +1,95 @@
+uuid = 3e2a3875-bc5c-4382-84e7-6553142e4ecb
+# creditcard.Account
+creditcard.Account#concept.label = account
+creditcard.Account.Account(double,creditcard.Customer,java.lang.String,java.time.ZonedDateTime,creditcard.AccountStatus)#phrase.navigation = a new {account} where {0, balance} {1, customer} {2, id} {3, last check time} {4, status} 
+creditcard.Account.balance#phrase.action = set the balance of {this} to {balance}
+creditcard.Account.balance#phrase.navigation = {balance} of {this}
+creditcard.Account.customer#phrase.action = set the customer of {this} to {customer}
+creditcard.Account.customer#phrase.clearer = clear the customer of {this}
+creditcard.Account.customer#phrase.navigation = {customer} of {this}
+creditcard.Account.id#phrase.navigation = {id} of {this}
+creditcard.Account.lastCheckTime#phrase.action = set the last check time of {this} to {last check time}
+creditcard.Account.lastCheckTime#phrase.navigation = {last check time} of {this}
+creditcard.Account.status#phrase.action = set the status of {this} to {status}
+creditcard.Account.status#phrase.clearer = clear the status of {this}
+creditcard.Account.status#phrase.navigation = {status} of {this}
+
+# creditcard.AccountStatus
+creditcard.AccountStatus#concept.label = account status
+creditcard.AccountStatus.Excellent#instance.label = Excellent
+creditcard.AccountStatus.Fair#instance.label = Fair
+creditcard.AccountStatus.Good#instance.label = Good
+creditcard.AccountStatus.Poor#instance.label = Poor
+creditcard.AccountStatus.Risky#instance.label = Risky
+
+# creditcard.AuthorizationResponse
+creditcard.AuthorizationResponse#concept.label = authorization response
+creditcard.AuthorizationResponse.AuthorizationResponse(creditcard.Account,java.time.ZonedDateTime,creditcard.Exception,java.lang.String,creditcard.Transaction)#phrase.navigation = a new {authorization response} where {0, account} {1, date} {2, exception} {3, message} {4, transaction} 
+creditcard.AuthorizationResponse.account#phrase.action = set the account of {this} to {account}
+creditcard.AuthorizationResponse.account#phrase.clearer = clear the account of {this}
+creditcard.AuthorizationResponse.account#phrase.navigation = {account} of {this}
+creditcard.AuthorizationResponse.date#phrase.action = set the date of {this} to {date}
+creditcard.AuthorizationResponse.date#phrase.navigation = {date} of {this}
+creditcard.AuthorizationResponse.exception#phrase.action = set the exception of {this} to {exception}
+creditcard.AuthorizationResponse.exception#phrase.clearer = clear the exception of {this}
+creditcard.AuthorizationResponse.exception#phrase.navigation = {exception} of {this}
+creditcard.AuthorizationResponse.message#phrase.action = set the message of {this} to {message}
+creditcard.AuthorizationResponse.message#phrase.navigation = {message} of {this}
+creditcard.AuthorizationResponse.transaction#phrase.action = set the transaction of {this} to {transaction}
+creditcard.AuthorizationResponse.transaction#phrase.clearer = clear the transaction of {this}
+creditcard.AuthorizationResponse.transaction#phrase.navigation = {transaction} of {this}
+
+# creditcard.Customer
+creditcard.Customer#concept.label = customer
+creditcard.Customer.Customer(java.lang.String,java.lang.String,java.lang.String,java.lang.String)#phrase.navigation = a new {customer} where {0, email} {1, first name} {2, last name} {3, phone number} 
+creditcard.Customer.accounts#phrase.action = set the accounts of {this} to {account}
+creditcard.Customer.accounts#phrase.navigation = {account} of {this}
+creditcard.Customer.addTo_accounts(creditcard.Account)#phrase.action = add {0} to the accounts of {this}
+creditcard.Customer.clear_accounts()#phrase.action = clear the accounts of {this}
+creditcard.Customer.email#phrase.navigation = {email} of {this}
+creditcard.Customer.firstName#phrase.action = set the first name of {this} to {first name}
+creditcard.Customer.firstName#phrase.navigation = {first name} of {this}
+creditcard.Customer.lastName#phrase.action = set the last name of {this} to {last name}
+creditcard.Customer.lastName#phrase.navigation = {last name} of {this}
+creditcard.Customer.phoneNumber#phrase.action = set the phone number of {this} to {phone number}
+creditcard.Customer.phoneNumber#phrase.navigation = {phone number} of {this}
+creditcard.Customer.removeFrom_accounts(creditcard.Account)#phrase.action = remove {0} from the accounts of {this}
+
+# creditcard.Exception
+creditcard.Exception#concept.label = exception
+creditcard.Exception.Exception(java.lang.String,java.lang.String)#phrase.navigation = a new {exception} where {0, code} {1, reason} 
+creditcard.Exception.code#phrase.action = set the code of {this} to {code}
+creditcard.Exception.code#phrase.navigation = {code} of {this}
+creditcard.Exception.reason#phrase.action = set the reason of {this} to {reason}
+creditcard.Exception.reason#phrase.navigation = {reason} of {this}
+
+# creditcard.Merchant
+creditcard.Merchant#concept.label = merchant
+creditcard.Merchant.Merchant(java.lang.String,java.lang.String,creditcard.MerchantType)#phrase.navigation = a new {merchant} where {0, id} {1, location} {2, type} 
+creditcard.Merchant.id#phrase.navigation = {id} of {this}
+creditcard.Merchant.location#phrase.action = set the location of {this} to {location}
+creditcard.Merchant.location#phrase.navigation = {location} of {this}
+creditcard.Merchant.type#phrase.action = set the type of {this} to {type}
+creditcard.Merchant.type#phrase.clearer = clear the type of {this}
+creditcard.Merchant.type#phrase.navigation = {type} of {this}
+
+# creditcard.MerchantType
+creditcard.MerchantType#concept.label = merchant type
+creditcard.MerchantType.Online#instance.label = Online
+creditcard.MerchantType.Store#instance.label = Store
+
+# creditcard.Transaction
+creditcard.Transaction#concept.label = transaction
+creditcard.Transaction.Transaction(creditcard.Account,double,java.lang.String,java.time.ZonedDateTime,creditcard.Merchant)#phrase.navigation = a new {transaction} where {0, account} {1, amount} {2, country code} {3, date} {4, merchant} 
+creditcard.Transaction.account#phrase.action = set the account of {this} to {account}
+creditcard.Transaction.account#phrase.clearer = clear the account of {this}
+creditcard.Transaction.account#phrase.navigation = {account} of {this}
+creditcard.Transaction.amount#phrase.action = set the amount of {this} to {amount}
+creditcard.Transaction.amount#phrase.navigation = {amount} of {this}
+creditcard.Transaction.countryCode#phrase.action = set the country code of {this} to {country code}
+creditcard.Transaction.countryCode#phrase.navigation = {country code} of {this}
+creditcard.Transaction.date#phrase.action = set the date of {this} to {date}
+creditcard.Transaction.date#phrase.navigation = {date} of {this}
+creditcard.Transaction.merchant#phrase.action = set the merchant of {this} to {merchant}
+creditcard.Transaction.merchant#phrase.clearer = clear the merchant of {this}
+creditcard.Transaction.merchant#phrase.navigation = {merchant} of {this}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><job xmlns="http://www.ibm.com/ia/JobDescriptor">
+  <name>defvarAveragex95Riskyx95Balance</name>
+  <verbalization>Average Risky Balance</verbalization>
+  <type>double</type>
+  <kind>average</kind>
+  <parameter name="entityType">creditcard.Account</parameter>
+  <schedule type="restriction">
+    <hourOfDay>1</hourOfDay>
+    <minuteOfHour>0</minuteOfHour>
+  </schedule>
+</job>

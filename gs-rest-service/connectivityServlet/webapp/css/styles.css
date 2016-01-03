@@ -1,0 +1,497 @@
+/* --------------------------------------------------------------- -- CSS --
+ Licensed Materials - Property of IBM        
+ 5725-B69 5655-Y17 5655-Y31 5724-X98 5724-Y15 5655-V82 
+ Copyright IBM Corp. 1987, 2015 - All Rights Reserved
+ US Government Users Restricted Rights - Use, duplication or
+ disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+--------------------------------------------------------------------------*/
+BODY { background-color: #FDF5E6 }
+A:hover { color: red }
+H2 {
+	color: #440000;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif
+}
+
+.validation { color: #006699;
+             font-size: 16px;
+			 font-weight: bold;
+             font-family: Arial, Helvetica, sans-serif;
+}
+
+.message { 
+}
+
+.messageTitle { 
+}
+
+.errorMessage { color: red;
+             font-size: 16px;
+             font-family: Arial, Helvetica, sans-serif;
+}
+
+.status { color: white;
+             font-size: 16px;
+			 font-weight: bold;
+             font-family: Arial, Helvetica, sans-serif;
+}
+
+TH.status {
+   background-color: green;
+}
+
+TH.badstatus {
+   background-color: red;
+}
+
+body  { 
+	font-family: Arial, sans-serif;
+    margin: 0px;
+}
+
+td,th,button,input,select { 
+	font-family: Arial, sans-serif;
+}
+
+td.mainPanel {
+	padding: 20px;
+}
+
+.breadcrumbselected {
+	font-size: 14px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: CC9900;
+	text-decoration: underline;
+}
+
+/*tables*/
+table.border {
+	border-style: solid solid solid solid;
+	border-width: 1px;
+	border-color: #808080;
+	font-size: 13px;
+}
+
+th {
+	font-weight: bold;
+	color: #ffffff;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: left;
+	background-color: #006699;
+	/*
+	border: 1px solid;
+	border-color: #006699;
+	border-spacing: 20; */
+}
+
+tr.border {
+	
+}
+
+td.border {
+	border: 1px solid #808080;
+}
+
+table.noborder {
+	border-style: none;
+	font-size: 13px;
+}
+
+td.noborder {
+	border-style: none;
+}
+
+.breadcrumb {
+	font-size: 14px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: 006699;
+	text-decoration: none;
+}
+
+HR {
+	color: #CCCCCC;
+	height: 1px;
+}
+
+a.bannerLink {
+	color: black;
+	text-decoration: none;
+}
+
+a.bannerLink:hover {
+	text-decoration: underline;
+}
+
+.bodytextdialog {
+	font-size: 12px;
+}
+
+.notetext {
+	font-size: 11px;
+}
+
+.bodytexterror {
+	font-size: 12px;
+	color: red;
+}
+
+.bodytexterror a {
+	font-size: 12px;
+	color: red;
+}
+
+.bodytexterror a:hover,.bodytexterror a:active {
+	color: #CC9900;
+}
+
+.bodytextwarning {
+	color: red;
+}
+
+.bodytextbold {
+	font-weight: bold;
+}
+
+.leftNavboldbig {
+	font-size: 14px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: 006699;
+	text-decoration: none;
+}
+
+a.bluelink {
+	color: #006699;
+	text-decoration: none;
+	font-weight: normal;
+	text-decoration: underline;
+}
+
+a.bluelink:hover {
+	color: #CC9900;
+	text-decoration: underline;
+}
+
+a.bluelink:active {
+	color: #CC9900;
+	text-decoration: underline;
+}
+
+a.blacklink {
+	color: black;
+	text-decoration: underline;
+}
+
+a.blacklink:hover {
+	color: #CC9900;
+	text-decoration: underline;
+}
+
+a.blacklink:active {
+	color: #CC9900;
+	text-decoration: underline;
+}
+
+.undercolor {
+		color: #CC9900;
+	text-decoration: underline;
+	}
+	
+input.readonly {
+	color: gray;
+}
+
+.site-title {
+	color: white;
+	font-size: 14px;
+	font-weight: bold;
+	font-family: Arial;
+	padding-left: 5px;
+}
+.site-desc {
+	color: white;
+	font-size: 12px;
+	font-weight: normal;
+	font-family: Arial;
+	padding-left: 5px;
+}
+
+h2 {
+	color: black;
+	font-size: 14px;
+	font-weight: bold;
+	font-family: Arial;
+	margin: 0em;
+	padding: 0em;
+	text-decoration: underline;
+}
+
+ul {
+	margin-left: 2.5em;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding-left: 0;
+}
+
+.site-title-desc {
+	color: white;
+	font-size: 12px;
+}
+
+.copyright {
+	background-color: #336799;
+}
+
+.log-style {
+	color: white;
+	font-size: 11px;
+}
+
+a.log-style:hover {
+	text-decoration: underline;
+}
+
+.tab_group {
+	valign: middle;
+	align: center;
+}
+
+.tab_unselected {
+	font-size: 11px;
+	font-weight: bold;
+	color: white;
+	align: center;
+	letter-spacing: 2px;
+}
+
+.tab_selected {
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: none;
+	color: black;
+	align: center;
+	letter-spacing: 2px;
+}
+
+a.tab {
+	text-decoration: none;
+}
+
+a.tab:hover,a.tab:active,a.tab_selected:hover,a.tab_selected:active {
+	color: #CC9900;
+	text-decoration: none;
+}
+
+.left_pane {
+	background-color: #FFFFE7;
+}
+
+.virtualfolder-unselected {
+	text-decoration: none;
+	color: black;
+}
+
+.virtualfolder-selected {
+	font-weight: bold;
+	text-decoration: none;
+	color: black;
+}
+
+
+.page-title {
+	font-family: arial;
+	font-size: 16px;
+	font-weight: bold;
+	color: black;
+}
+
+table.comparator-global-style {
+	border-collapse: collapse;
+	border-spacing: 20;
+	padding: 0;
+	border: 1px solid black;
+}
+
+table.comparator-global-style td {
+	border: 1px solid black;
+}
+
+td.comparator-added-style {
+	background-color: #CCFFCC;
+	/*border:1px solid black;*/
+}
+
+td.comparator-removed-style {
+	background-color: #CCCCFF;
+	/*border:1px solid black;*/
+}
+
+td.comparator-changed-style {
+	background-color: #FFCCCC;
+	/*border:1px solid black;*/
+}
+
+td.comparator-unchanged-style { /*border:1px solid black;*/
+	
+}
+
+td.comparator-empty-style {
+	background-color: #CCCCCC;
+	/*border:1px solid black;*/
+}
+
+th.comparator-header {
+	border: 1px solid black;
+	background-color: #8BA8C6;
+	color: white;
+}
+
+td.label {
+	background-color: #F0F4F3;
+	width: 100;
+}
+
+td.preview {
+	background-color: #F0F4F3;
+}
+
+.gray-pane {
+	background-color: #F0F4F3;
+}
+
+table.titlebar {
+	background-color: #005DA0;
+	width: 100%;
+	text-align: left;
+	color: white;
+	border-bottom: 1px solid black;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}
+
+.white-text {
+	color: white;
+}
+
+.lightblue-text {
+	color: lightblue;
+}
+
+.navigationBar {
+	color: #006699;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.test {
+	color: #006699;
+	text-decoration: none;
+}
+
+a.navigationBar {
+	color: #006699;
+	font-weight: bold;
+	font-size: 10;
+	text-decoration: none;
+}
+
+a.navigationBar:hover {
+	color: #CC9900;
+	text-decoration: underline;
+}
+
+a.navigationBar:active {
+	color: #CC9900;
+	text-decoration: underline;
+}
+
+a.navigationBarLatest {
+	color: #006699;
+	font-size: 10;
+	text-decoration: none;
+}
+
+a.navigationBarLatest:hover {
+	color: #CC9900;
+	text-decoration: underline;
+}
+
+a.navigationBarLatest:active {
+	color: #CC9900;
+	text-decoration: underline;
+}
+
+.flatPath {
+	font-size: 14px;
+	font-style: normal;
+}
+
+.ruleexplorer-unselected {
+	
+}
+
+.ruleexplorer-selected {
+	font-weight: bold;
+}
+
+.boxGrey{ 
+	padding: 10px; 
+	margin-top: 10px;
+	background-color:#EFEFEF; 
+	border-width: 1px; 
+	border-style: solid;
+	border-color:#cccccc;
+	vertical-align:middle
+}
+
+
+
+.center
+{ 
+	padding:20px;
+text-align: center;
+}
+
+.centeredColumn {
+	text-align: center;
+}
+
+.dialogHeader {
+	text-align: left;
+	padding: 10px;
+}
+
+.dialogFooter {
+	text-align: right;
+	padding: 10px;
+}
+.dialogContent {
+	padding-left: 30px;
+	text-align: left;
+}
+.dialogTitle {
+	font-size: 18px;
+	font-weight: bold;
+	color: #666666;
+}
+.dialogMessage {
+	font-size: 12px;
+	font-weight: bold;
+	color: #666666;
+}
+
+
+
+}

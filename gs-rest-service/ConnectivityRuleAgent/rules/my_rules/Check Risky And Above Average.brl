@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>Check Risky And Above Average</name>
+  <uuid>8464dc99-f589-4fa7-bcb4-f9202a301906</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[if
+    ( the last check time of 'the account' is null
+    or the last check time of 'the account' is before 1 days before now )
+    and the balance of 'the account' is more than 'Average Risky Balance' 
+then
+    emit a new authorization response where
+        the account is 'the account' ,
+        the message is "R04: the account for " + the email of the customer of 'the account' + " is risky and above the average balance for risky accounts." ;]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>

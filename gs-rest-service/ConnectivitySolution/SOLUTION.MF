@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+IBM-IA-SolutionName: ConnectivitySolution
+IBM-IA-SolutionVersion: 0.0
+

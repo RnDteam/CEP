@@ -1,0 +1,34 @@
+// Connectivity definitions for the solution
+define inbound binding 'HTTPTransactionEventBinding' 
+   with description "HTTP Incoming Transaction" ,
+   using
+      message format application/xml ,
+   protocol HTTP , 
+   classifying messages : 
+    if matches "/event:Transaction" 
+	   where prefix "event" represents the namespace "http://www.ibm.com/ia/xmlns/default/ConnectivitySolutionBOM/model" 
+	        transform using "transformation.xsl"
+	     else discard message , 
+   accepting events : 
+      - transaction . 
+
+define inbound HTTP endpoint 'HTTPTransactionEventEndPoint'
+	with description "HTTP Incoming transaction endpoint",
+	using binding 'HTTPTransactionEventBinding', 
+   url path "/connectivity/Transaction" .		 
+		 
+define outbound binding 'HTTPTransactionOutput' 
+   with 
+      description "HTTP Transaction Output" ,
+   using 
+      message format application/xml , 
+   protocol HTTP , 
+   delivering events : 
+      - authorization response . 
+
+define outbound HTTP endpoint 'HTTPTransactionOutputEndPoint' 
+   with 
+      description "HTTP Transaction Output endpoint" ,
+   using 
+      binding 'HTTPTransactionOutput' , 
+   url "http://localhost:9080/eventSender/response" .

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>Too Many In One Day</name>
+  <uuid>600b00dc-ebac-4fab-9850-03f527b344c1</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[when a transaction occurs , called 'the transaction'
+definitions
+    set 'todays transactions' to all transactions
+        where the date of each transaction is after 1 day before now ;
+if
+    the number of elements in 'todays transactions' is more than 3
+    and the total amount of 'todays transactions' is more than 2000
+    and 'Average Transaction Per Day' is more than 1500
+then
+    emit a new authorization response where
+        the account is 'the account' ,
+        the message is "R03: Too many transactions in one day." ,
+        the transaction is 'the transaction' ;]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>
