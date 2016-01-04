@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:VariableSet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>globalQueries</name>
+  <uuid>5b74c366-6259-4c17-b049-6ceb702f9de3</uuid>
+  <variables name="defvarAveragex95Transactionx95Amountx95Perx95Day" type="double" verbalization="Average Transaction Amount Per Day"/>
+</ilog.rules.studio.model.base:VariableSet>

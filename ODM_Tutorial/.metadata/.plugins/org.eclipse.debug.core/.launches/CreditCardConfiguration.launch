@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><launchConfiguration type="com.ibm.ia.designer.launch.testScenario">
+<booleanAttribute key="config-complete" value="true"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/CreditCardScenario/Test Scenarios/CreditCardTestScenario.tscn"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="CreditCardScenario"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Djava.util.logging.config.file=logging.properties -DtraceSettingsFile=wxs-logging.properties"/>
+<stringAttribute key="ts-delete-entities" value="true"/>
+<stringAttribute key="ts-enable-recording" value="true"/>
+<stringAttribute key="ts-reset-server" value="true"/>
+<stringAttribute key="ts-test-file" value="/CreditCardScenario/Test Scenarios/CreditCardTestScenario.tscn"/>
+</launchConfiguration>

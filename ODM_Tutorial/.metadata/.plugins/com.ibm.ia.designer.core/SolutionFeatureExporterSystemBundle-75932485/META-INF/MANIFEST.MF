@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+IA-BOMEventTimestamps: bom/event_timestamps.properties
+Bundle-SymbolicName: MyCreditCardSolution.solutionbundle
+Require-Bundle: MyCreditCardSolution.modelExecutable;bundle-version="[
+ 0.0,0.1)",MyCreditCardSolution.CreditCardJavaAgent;bundle-version="[0
+ .0,0.1)",MyCreditCardSolution.CreditCardRules;bundle-version="[0.0,0.
+ 1)",MyCreditCardSolution.init.creditcard.Customer;bundle-version="[0.
+ 0,0.1)",MyCreditCardSolution.init.creditcard.Account;bundle-version="
+ [0.0,0.1)",MyCreditCardSolution.globalagg.Average_Transaction_Amount_
+ Per_Day;bundle-version="[0.0,0.1)",MyCreditCardSolution.globalagg.Ave
+ rage_Risky_Account_Balance;bundle-version="[0.0,0.1)"
+Bundle-ManifestVersion: 2
+IA-ConnectivityConfig: connectivity
+Import-Package: com.ibm.ia.solution
+IBM-IA-SolutionVersion: MyCreditCardSolution-0.0
+IA-BOMResource: bom/model.bom
+Bundle-Name: MyCreditCardSolution.solutionbundle
+Bundle-Version: 0.0.0.20151229164054
+Bundle-ClassPath: .
+IA-BOMEvents: bom/events.properties
+IA-BOMEntityIds: bom/entity_ids.properties
+IBM-IA-SolutionName: MyCreditCardSolution
+IA-BOMEntities: bom/entities.properties
+

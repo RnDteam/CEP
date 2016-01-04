@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+    <bean id="MyAgentBean"
+        class="mycreditcardsolution.creditcardjavaagent.MyAgent">
+
+        <!-- The file referenced by the agentDescResource property will be automatically
+        generated when the solution is exported as a Liberty feature. -->
+        <property name="agentDescResource" value="agent.xml" />
+
+    </bean>
+    <service id="MyAgentBeanService"
+        ref="MyAgentBean"
+        interface="com.ibm.ia.agent.EntityAgentService">
+
+        <service-properties>
+            <!--The agent_name service property must correspond to the name of the agent
+            declared in the agent.adsc file. -->
+            <entry key="agent_name">
+                <value type="java.lang.String">mycreditcardsolution.creditcardjavaagent.MyAgent</value>
+            </entry>
+        </service-properties>
+
+    </service>
+</blueprint>

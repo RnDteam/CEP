@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><agent xmlns="http://www.ibm.com/ia/AgentDescriptor">
+  <name>mycreditcardsolution.creditcardjavaagent.MyAgent</name>
+  <kind>Java</kind>
+  <priority>-1000000000</priority>
+  <entity>creditcard.Account</entity>
+  <events>
+    <event>
+      <type>creditcard.Transaction</type>
+      <mapping>{0}.account.get$Id()</mapping>
+    </event>
+  </events>
+</agent>

@@ -1,0 +1,21 @@
+define 'the customer' as the customer identified by "customer1";
+define 'the account' as the account identified by "accountId1";
+
+emit a new account initialization where
+	the account is 'the account',
+	the status is Risky , 
+	the balance is 100,
+	the customer is 'the customer',
+	time-stamped 6/18/2015 11:43:49 AM;
+	
+emit a new transaction where 
+	the account is 'the account' , 
+	the amount is 50,
+	the country code is "US",
+	time-stamped 6/18/2015 2:43:49 PM;
+	
+emit a new transaction where 
+	the account is 'the account', 
+	the amount is 6000,
+	the country code is "US",
+	time-stamped 6/19/2015 8:43:49 AM;

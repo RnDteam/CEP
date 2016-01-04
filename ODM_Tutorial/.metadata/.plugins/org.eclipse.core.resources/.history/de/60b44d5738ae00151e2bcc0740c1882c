@@ -1,0 +1,3 @@
+'CreditCardRules' is an agent related to <entity> , 
+processing events :
+- <event> , where <source> comes from <target>

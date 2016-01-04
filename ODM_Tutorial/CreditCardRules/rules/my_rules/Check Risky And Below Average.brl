@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>Check Risky And Below Average</name>
+  <uuid>094c38f3-73d7-42da-b1a8-c88e777d50bb</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[when a transaction occurs, called 'the transaction' 
+if
+    the balance of 'the account' is less than 'Average Risky Account Balance'
+then
+	print "aggregate " + 'Average Risky Account Balance' ;
+	print "balance" + the balance of 'the account';
+	define 'the exception' as a new exception where
+        the reason is "The account for " + the email of the customer of 'the account' + " is risky and below the average balance for risky accounts." ,
+        the code is "R04" ;
+    emit a new authorization response where
+        the account is 'the account' ,
+        the message is "R04: the account for " + the email of the customer of 'the account' + " is risky and below the average balance for risky accounts.",
+        the exception is 'the exception' ,
+        the transaction is 'the transaction' ;]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>

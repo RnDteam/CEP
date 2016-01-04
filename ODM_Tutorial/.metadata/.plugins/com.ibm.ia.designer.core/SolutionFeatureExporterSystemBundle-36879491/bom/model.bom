@@ -1,0 +1,2242 @@
+
+package com.ibm.ia;
+
+
+public class AbsoluteDuration
+        implements com.ibm.ia.StringProvider
+        property "dataio.ignore" "true"
+        property vocabularyClass "true"
+{
+    public AbsoluteDuration(long durationInSeconds);
+    public static com.ibm.ia.AbsoluteDuration getDuration(ilog.rules.brl.Date start, ilog.rules.brl.Date end);
+    public long inDays();
+    public long inHours();
+    public long inMinutes();
+    public long inMonths();
+    public long inSeconds();
+    public long inWeeks();
+    public long inYears();
+    public boolean longer(com.ibm.ia.AbsoluteDuration duration);
+    public boolean longerOrEquals(com.ibm.ia.AbsoluteDuration duration);
+    public com.ibm.ia.TimePeriod periodAfter(ilog.rules.brl.Date timePoint);
+    public com.ibm.ia.TimePeriod periodBefore(ilog.rules.brl.Date timePoint);
+    public com.ibm.ia.TimePeriod periodEndingAt(ilog.rules.brl.Date timePoint);
+    public com.ibm.ia.TimePeriod periodStartingAt(ilog.rules.brl.Date timePoint);
+    public com.ibm.ia.AbsoluteDuration plus(com.ibm.ia.AbsoluteDuration arg)
+                property excludeFromPrediction "true";
+    public boolean shorter(com.ibm.ia.AbsoluteDuration duration);
+    public boolean shorterOrEquals(com.ibm.ia.AbsoluteDuration duration);
+    public ilog.rules.brl.Date timeAfter(ilog.rules.brl.Date timePoint);
+    public ilog.rules.brl.Date timeBefore(ilog.rules.brl.Date timePoint);
+}
+
+public class CalendarDuration
+        implements com.ibm.ia.StringProvider
+        property "dataio.ignore" "true"
+        property vocabularyClass "true"
+{
+    public CalendarDuration(int numberOfYears, int numberOfMonths, int numberOfWeeks, int numberOfDays, int numberOfHours, int numberOfMinutes, int numberOfSeconds);
+    public int getDays();
+    public int getHours();
+    public int getMinutes();
+    public int getMonths();
+    public int getSeconds();
+    public int getWeeks();
+    public int getYears();
+    public com.ibm.ia.TimePeriod periodAfter(ilog.rules.brl.Date timePoint);
+    public com.ibm.ia.TimePeriod periodBefore(ilog.rules.brl.Date timePoint);
+    public com.ibm.ia.TimePeriod periodEndingAt(ilog.rules.brl.Date timePoint);
+    public com.ibm.ia.TimePeriod periodStartingAt(ilog.rules.brl.Date timePoint);
+    public ilog.rules.brl.Date timeAfter(ilog.rules.brl.Date timePoint);
+    public ilog.rules.brl.Date timeBefore(ilog.rules.brl.Date timePoint);
+}
+
+public class DayOfMonth
+        property alias "integer"
+        property "dataio.ignore" "true"
+        property valueDescriptor "ilog.rules.brl.value.descriptor.IlrNumberifiedValueDescriptor"
+        property valueFormatter "{0,number,#0}"
+        property valueType "true"
+        property vocabularyClass "true"
+{
+    public DayOfMonth(com.ibm.ia.DayOfMonth day);
+    public DayOfMonth(string value);
+    public DayOfMonth(long value);
+    public static boolean after(com.ibm.ia.DayOfMonth day, com.ibm.ia.DayOfMonth after);
+    public static boolean afterOrEquals(com.ibm.ia.DayOfMonth day, com.ibm.ia.DayOfMonth after);
+    public static boolean before(com.ibm.ia.DayOfMonth day, com.ibm.ia.DayOfMonth before);
+    public static boolean beforeOrEquals(com.ibm.ia.DayOfMonth day, com.ibm.ia.DayOfMonth before);
+    public int compareTo(com.ibm.ia.DayOfMonth arg)
+                property propagateArgumentType "true";
+    public static boolean isBetweenEE(com.ibm.ia.DayOfMonth day, com.ibm.ia.DayOfMonth after, com.ibm.ia.DayOfMonth before);
+    public static boolean isBetweenEI(com.ibm.ia.DayOfMonth day, com.ibm.ia.DayOfMonth after, com.ibm.ia.DayOfMonth before);
+    public static boolean isBetweenIE(com.ibm.ia.DayOfMonth day, com.ibm.ia.DayOfMonth after, com.ibm.ia.DayOfMonth before);
+    public static boolean isBetweenII(com.ibm.ia.DayOfMonth day, com.ibm.ia.DayOfMonth after, com.ibm.ia.DayOfMonth before);
+    public static com.ibm.ia.DayOfMonth valueOf(string text);
+}
+
+public class HourOfDay
+        property alias "integer"
+        property "dataio.ignore" "true"
+        property valueDescriptor "ilog.rules.brl.value.descriptor.IlrNumberifiedValueDescriptor"
+        property valueFormatter "{0,number,#0}"
+        property valueType "true"
+        property vocabularyClass "true"
+{
+    public HourOfDay(com.ibm.ia.HourOfDay day);
+    public HourOfDay(string value);
+    public HourOfDay(long value);
+    public static boolean after(com.ibm.ia.HourOfDay day, com.ibm.ia.HourOfDay after);
+    public static boolean afterOrEquals(com.ibm.ia.HourOfDay day, com.ibm.ia.HourOfDay after);
+    public static boolean before(com.ibm.ia.HourOfDay day, com.ibm.ia.HourOfDay before);
+    public static boolean beforeOrEquals(com.ibm.ia.HourOfDay day, com.ibm.ia.HourOfDay before);
+    public int compareTo(com.ibm.ia.HourOfDay arg)
+                property propagateArgumentType "true";
+    public static boolean isBetweenEE(com.ibm.ia.HourOfDay day, com.ibm.ia.HourOfDay after, com.ibm.ia.HourOfDay before);
+    public static boolean isBetweenEI(com.ibm.ia.HourOfDay day, com.ibm.ia.HourOfDay after, com.ibm.ia.HourOfDay before);
+    public static boolean isBetweenIE(com.ibm.ia.HourOfDay day, com.ibm.ia.HourOfDay after, com.ibm.ia.HourOfDay before);
+    public static boolean isBetweenII(com.ibm.ia.HourOfDay day, com.ibm.ia.HourOfDay after, com.ibm.ia.HourOfDay before);
+    public static com.ibm.ia.HourOfDay valueOf(string text);
+}
+
+public class MinuteOfHour
+        property alias "integer"
+        property "dataio.ignore" "true"
+        property valueDescriptor "ilog.rules.brl.value.descriptor.IlrNumberifiedValueDescriptor"
+        property valueFormatter "{0,number,#0}"
+        property valueType "true"
+        property vocabularyClass "true"
+{
+    public MinuteOfHour(com.ibm.ia.MinuteOfHour day);
+    public MinuteOfHour(string value);
+    public MinuteOfHour(long value);
+    public static boolean after(com.ibm.ia.MinuteOfHour day, com.ibm.ia.MinuteOfHour after);
+    public static boolean afterOrEquals(com.ibm.ia.MinuteOfHour day, com.ibm.ia.MinuteOfHour after);
+    public static boolean before(com.ibm.ia.MinuteOfHour day, com.ibm.ia.MinuteOfHour before);
+    public static boolean beforeOrEquals(com.ibm.ia.MinuteOfHour day, com.ibm.ia.MinuteOfHour before);
+    public int compareTo(com.ibm.ia.MinuteOfHour arg)
+                property propagateArgumentType "true";
+    public static boolean isBetweenEE(com.ibm.ia.MinuteOfHour day, com.ibm.ia.MinuteOfHour after, com.ibm.ia.MinuteOfHour before);
+    public static boolean isBetweenEI(com.ibm.ia.MinuteOfHour day, com.ibm.ia.MinuteOfHour after, com.ibm.ia.MinuteOfHour before);
+    public static boolean isBetweenIE(com.ibm.ia.MinuteOfHour day, com.ibm.ia.MinuteOfHour after, com.ibm.ia.MinuteOfHour before);
+    public static boolean isBetweenII(com.ibm.ia.MinuteOfHour day, com.ibm.ia.MinuteOfHour after, com.ibm.ia.MinuteOfHour before);
+    public static com.ibm.ia.MinuteOfHour valueOf(string text);
+}
+
+public class SecondOfMinute
+        property alias "integer"
+        property "dataio.ignore" "true"
+        property valueDescriptor "ilog.rules.brl.value.descriptor.IlrNumberifiedValueDescriptor"
+        property valueFormatter "{0,number,#0}"
+        property valueType "true"
+        property vocabularyClass "true"
+{
+    public SecondOfMinute(com.ibm.ia.SecondOfMinute day);
+    public SecondOfMinute(string value);
+    public SecondOfMinute(long value);
+    public static boolean after(com.ibm.ia.SecondOfMinute day, com.ibm.ia.SecondOfMinute after);
+    public static boolean afterOrEquals(com.ibm.ia.SecondOfMinute day, com.ibm.ia.SecondOfMinute after);
+    public static boolean before(com.ibm.ia.SecondOfMinute day, com.ibm.ia.SecondOfMinute before);
+    public static boolean beforeOrEquals(com.ibm.ia.SecondOfMinute day, com.ibm.ia.SecondOfMinute before);
+    public int compareTo(com.ibm.ia.SecondOfMinute arg)
+                property propagateArgumentType "true";
+    public static boolean isBetweenEE(com.ibm.ia.SecondOfMinute day, com.ibm.ia.SecondOfMinute after, com.ibm.ia.SecondOfMinute before);
+    public static boolean isBetweenEI(com.ibm.ia.SecondOfMinute day, com.ibm.ia.SecondOfMinute after, com.ibm.ia.SecondOfMinute before);
+    public static boolean isBetweenIE(com.ibm.ia.SecondOfMinute day, com.ibm.ia.SecondOfMinute after, com.ibm.ia.SecondOfMinute before);
+    public static boolean isBetweenII(com.ibm.ia.SecondOfMinute day, com.ibm.ia.SecondOfMinute after, com.ibm.ia.SecondOfMinute before);
+    public static com.ibm.ia.SecondOfMinute valueOf(string text);
+}
+
+public interface StringProvider
+        property excludeFromPrediction "true"
+        property hiddenType "true"
+        property vocabularyClass "true"
+{
+    public static string concat(string arg0, com.ibm.ia.StringProvider arg1)
+                property excludeFromPrediction "true";
+    public static string concat(com.ibm.ia.StringProvider arg0, string arg1)
+                property excludeFromPrediction "true";
+}
+
+public class TimePeriod
+        implements com.ibm.ia.StringProvider
+{
+    public final readonly java.time.ZonedDateTime endTime;
+    public final readonly java.time.ZonedDateTime startTime;
+    public TimePeriod(java.time.ZonedDateTime startTime, java.time.ZonedDateTime endTime)
+                property "dataio.default" "true";
+    public boolean after(ilog.rules.brl.Date timePoint);
+    public boolean after(com.ibm.ia.TimePeriod timePeriod);
+    public static com.ibm.ia.TimePeriod asDay(ilog.rules.brl.Date timePoint);
+    public static com.ibm.ia.TimePeriod asHour(ilog.rules.brl.Date timePoint);
+    public static com.ibm.ia.TimePeriod asMinute(ilog.rules.brl.Date timePoint);
+    public static com.ibm.ia.TimePeriod asMonth(ilog.rules.brl.Date timePoint);
+    public static com.ibm.ia.TimePeriod asSecond(ilog.rules.brl.Date timePoint);
+    public static com.ibm.ia.TimePeriod asWeek(ilog.rules.brl.Date timePoint);
+    public static com.ibm.ia.TimePeriod asYear(ilog.rules.brl.Date timePoint);
+    public boolean before(ilog.rules.brl.Date timePoint);
+    public boolean before(com.ibm.ia.TimePeriod timePeriod);
+    public boolean contains(ilog.rules.brl.Date timePoint);
+    public static com.ibm.ia.TimePeriod create(int yearNumber)
+                property "semanticAction[0]" "ilog.rules.brl.IlrBRL$CheckValue"
+                property "semanticFilter[0]" "ilog.rules.brl.IlrBRL$ValueFilter";
+    public static com.ibm.ia.TimePeriod create(ilog.rules.brl.Date start, ilog.rules.brl.Date end);
+    public static com.ibm.ia.TimePeriod create(ilog.rules.brl.Month monthOfYear, int yearNumber)
+                property "semanticAction[0]" "ilog.rules.brl.IlrBRL$CheckValue"
+                property "semanticFilter[0]" "ilog.rules.brl.IlrBRL$ValueFilter";
+    public static com.ibm.ia.TimePeriod create(int dayOfMonth, ilog.rules.brl.Month monthOfYear, int yearNumber)
+                property "semanticAction[0]" "ilog.rules.brl.IlrBRL$CheckValue"
+                property "semanticFilter[0]" "ilog.rules.brl.IlrBRL$ValueFilter";
+    public boolean endsAt(ilog.rules.brl.Date timePoint);
+    public boolean equalSeconds(com.ibm.ia.TimePeriod timePeriod);
+    public com.ibm.ia.AbsoluteDuration getDuration();
+    public ilog.rules.brl.Date getEndTime();
+    public ilog.rules.brl.Date getStartTime();
+    public boolean longer(com.ibm.ia.CalendarDuration duration);
+    public boolean longer(com.ibm.ia.TimePeriod timePeriod);
+    public boolean longerOrEquals(com.ibm.ia.CalendarDuration duration);
+    public boolean longerOrEquals(com.ibm.ia.TimePeriod timePeriod);
+    public boolean overlaps(com.ibm.ia.TimePeriod timePeriod);
+    public com.ibm.ia.TimePeriod periodAfter(com.ibm.ia.AbsoluteDuration duration);
+    public com.ibm.ia.TimePeriod periodAfter(com.ibm.ia.CalendarDuration duration);
+    public com.ibm.ia.TimePeriod periodBefore(com.ibm.ia.AbsoluteDuration duration);
+    public com.ibm.ia.TimePeriod periodBefore(com.ibm.ia.CalendarDuration duration);
+    public boolean shorter(com.ibm.ia.CalendarDuration duration);
+    public boolean shorter(com.ibm.ia.TimePeriod timePeriod);
+    public boolean shorterOrEquals(com.ibm.ia.CalendarDuration duration);
+    public boolean shorterOrEquals(com.ibm.ia.TimePeriod timePeriod);
+    public boolean startsAt(ilog.rules.brl.Date timePoint);
+    public ilog.rules.brl.Date timeAfter(com.ibm.ia.AbsoluteDuration duration);
+    public ilog.rules.brl.Date timeAfter(com.ibm.ia.CalendarDuration duration);
+    public ilog.rules.brl.Date timeBefore(com.ibm.ia.AbsoluteDuration duration);
+    public ilog.rules.brl.Date timeBefore(com.ibm.ia.CalendarDuration duration);
+}
+
+package com.ibm.ia.model;
+
+
+public interface Entity
+{
+    public abstract java.time.ZonedDateTime $CreationTime;
+    public readonly abstract string $Id;
+    public java.time.ZonedDateTime get$CreationTime();
+    public string get$Id();
+    public void set$CreationTime(java.time.ZonedDateTime creationTime);
+}
+
+public interface Event
+{
+    public java.time.ZonedDateTime get$Timestamp();
+}
+
+package com.ibm.ia.time;
+
+
+public class CalendarDuration
+        implements java.time.temporal.TemporalAmount
+        property "dataio.provided" "true"
+{
+    public readonly int days;
+    public readonly java.time.Duration duration;
+    public readonly int hours;
+    public readonly int minutes;
+    public readonly int months;
+    public readonly java.time.Period period;
+    public readonly int seconds;
+    public readonly java.util.List units domain 0,* class java.time.temporal.TemporalUnit;
+    public readonly int years;
+    public long get(java.time.temporal.TemporalUnit arg);
+    public com.ibm.ia.time.CalendarDuration negated();
+    public static com.ibm.ia.time.CalendarDuration of(java.time.Duration arg);
+    public static com.ibm.ia.time.CalendarDuration of(java.time.Period arg);
+    public static com.ibm.ia.time.CalendarDuration of(java.time.Period arg1, java.time.Duration arg2);
+    public static com.ibm.ia.time.CalendarDuration of(long arg1, java.time.temporal.ChronoUnit arg2);
+    public static com.ibm.ia.time.CalendarDuration parse(string arg);
+}
+
+public class DayOfMonth
+        property alias "integer"
+        property "dataio.ignore" "true"
+        property valueDescriptor "ilog.rules.brl.value.descriptor.IlrNumberifiedValueDescriptor"
+        property valueFormatter "{0,number,#0}"
+        property valueType "true"
+        property vocabularyClass "true"
+{
+    public DayOfMonth(com.ibm.ia.time.DayOfMonth day);
+    public DayOfMonth(string value);
+    public DayOfMonth(long value);
+    public static boolean after(com.ibm.ia.time.DayOfMonth day, com.ibm.ia.time.DayOfMonth after);
+    public static boolean afterOrEquals(com.ibm.ia.time.DayOfMonth day, com.ibm.ia.time.DayOfMonth after);
+    public static boolean before(com.ibm.ia.time.DayOfMonth day, com.ibm.ia.time.DayOfMonth before);
+    public static boolean beforeOrEquals(com.ibm.ia.time.DayOfMonth day, com.ibm.ia.time.DayOfMonth before);
+    public int compareTo(com.ibm.ia.time.DayOfMonth arg)
+                property propagateArgumentType "true";
+    public static boolean isBetweenEE(com.ibm.ia.time.DayOfMonth day, com.ibm.ia.time.DayOfMonth after, com.ibm.ia.time.DayOfMonth before);
+    public static boolean isBetweenEI(com.ibm.ia.time.DayOfMonth day, com.ibm.ia.time.DayOfMonth after, com.ibm.ia.time.DayOfMonth before);
+    public static boolean isBetweenIE(com.ibm.ia.time.DayOfMonth day, com.ibm.ia.time.DayOfMonth after, com.ibm.ia.time.DayOfMonth before);
+    public static boolean isBetweenII(com.ibm.ia.time.DayOfMonth day, com.ibm.ia.time.DayOfMonth after, com.ibm.ia.time.DayOfMonth before);
+    public static com.ibm.ia.time.DayOfMonth valueOf(string text);
+}
+
+public class HourOfDay
+        property alias "integer"
+        property "dataio.ignore" "true"
+        property valueDescriptor "ilog.rules.brl.value.descriptor.IlrNumberifiedValueDescriptor"
+        property valueFormatter "{0,number,#0}"
+        property valueType "true"
+        property vocabularyClass "true"
+{
+    public HourOfDay(com.ibm.ia.time.HourOfDay day);
+    public HourOfDay(string value);
+    public HourOfDay(long value);
+    public static boolean after(com.ibm.ia.time.HourOfDay day, com.ibm.ia.time.HourOfDay after);
+    public static boolean afterOrEquals(com.ibm.ia.time.HourOfDay day, com.ibm.ia.time.HourOfDay after);
+    public static boolean before(com.ibm.ia.time.HourOfDay day, com.ibm.ia.time.HourOfDay before);
+    public static boolean beforeOrEquals(com.ibm.ia.time.HourOfDay day, com.ibm.ia.time.HourOfDay before);
+    public int compareTo(com.ibm.ia.time.HourOfDay arg)
+                property propagateArgumentType "true";
+    public static boolean isBetweenEE(com.ibm.ia.time.HourOfDay day, com.ibm.ia.time.HourOfDay after, com.ibm.ia.time.HourOfDay before);
+    public static boolean isBetweenEI(com.ibm.ia.time.HourOfDay day, com.ibm.ia.time.HourOfDay after, com.ibm.ia.time.HourOfDay before);
+    public static boolean isBetweenIE(com.ibm.ia.time.HourOfDay day, com.ibm.ia.time.HourOfDay after, com.ibm.ia.time.HourOfDay before);
+    public static boolean isBetweenII(com.ibm.ia.time.HourOfDay day, com.ibm.ia.time.HourOfDay after, com.ibm.ia.time.HourOfDay before);
+    public static com.ibm.ia.time.HourOfDay valueOf(string text);
+}
+
+public class MinuteOfHour
+        property alias "integer"
+        property "dataio.ignore" "true"
+        property valueDescriptor "ilog.rules.brl.value.descriptor.IlrNumberifiedValueDescriptor"
+        property valueFormatter "{0,number,#0}"
+        property valueType "true"
+        property vocabularyClass "true"
+{
+    public MinuteOfHour(com.ibm.ia.time.MinuteOfHour day);
+    public MinuteOfHour(string value);
+    public MinuteOfHour(long value);
+    public static boolean after(com.ibm.ia.time.MinuteOfHour day, com.ibm.ia.time.MinuteOfHour after);
+    public static boolean afterOrEquals(com.ibm.ia.time.MinuteOfHour day, com.ibm.ia.time.MinuteOfHour after);
+    public static boolean before(com.ibm.ia.time.MinuteOfHour day, com.ibm.ia.time.MinuteOfHour before);
+    public static boolean beforeOrEquals(com.ibm.ia.time.MinuteOfHour day, com.ibm.ia.time.MinuteOfHour before);
+    public int compareTo(com.ibm.ia.time.MinuteOfHour arg)
+                property propagateArgumentType "true";
+    public static boolean isBetweenEE(com.ibm.ia.time.MinuteOfHour day, com.ibm.ia.time.MinuteOfHour after, com.ibm.ia.time.MinuteOfHour before);
+    public static boolean isBetweenEI(com.ibm.ia.time.MinuteOfHour day, com.ibm.ia.time.MinuteOfHour after, com.ibm.ia.time.MinuteOfHour before);
+    public static boolean isBetweenIE(com.ibm.ia.time.MinuteOfHour day, com.ibm.ia.time.MinuteOfHour after, com.ibm.ia.time.MinuteOfHour before);
+    public static boolean isBetweenII(com.ibm.ia.time.MinuteOfHour day, com.ibm.ia.time.MinuteOfHour after, com.ibm.ia.time.MinuteOfHour before);
+    public static com.ibm.ia.time.MinuteOfHour valueOf(string text);
+}
+
+public class SecondOfMinute
+        property alias "integer"
+        property "dataio.ignore" "true"
+        property valueDescriptor "ilog.rules.brl.value.descriptor.IlrNumberifiedValueDescriptor"
+        property valueFormatter "{0,number,#0}"
+        property valueType "true"
+        property vocabularyClass "true"
+{
+    public SecondOfMinute(com.ibm.ia.time.SecondOfMinute day);
+    public SecondOfMinute(string value);
+    public SecondOfMinute(long value);
+    public static boolean after(com.ibm.ia.time.SecondOfMinute day, com.ibm.ia.time.SecondOfMinute after);
+    public static boolean afterOrEquals(com.ibm.ia.time.SecondOfMinute day, com.ibm.ia.time.SecondOfMinute after);
+    public static boolean before(com.ibm.ia.time.SecondOfMinute day, com.ibm.ia.time.SecondOfMinute before);
+    public static boolean beforeOrEquals(com.ibm.ia.time.SecondOfMinute day, com.ibm.ia.time.SecondOfMinute before);
+    public int compareTo(com.ibm.ia.time.SecondOfMinute arg)
+                property propagateArgumentType "true";
+    public static boolean isBetweenEE(com.ibm.ia.time.SecondOfMinute day, com.ibm.ia.time.SecondOfMinute after, com.ibm.ia.time.SecondOfMinute before);
+    public static boolean isBetweenEI(com.ibm.ia.time.SecondOfMinute day, com.ibm.ia.time.SecondOfMinute after, com.ibm.ia.time.SecondOfMinute before);
+    public static boolean isBetweenIE(com.ibm.ia.time.SecondOfMinute day, com.ibm.ia.time.SecondOfMinute after, com.ibm.ia.time.SecondOfMinute before);
+    public static boolean isBetweenII(com.ibm.ia.time.SecondOfMinute day, com.ibm.ia.time.SecondOfMinute after, com.ibm.ia.time.SecondOfMinute before);
+    public static com.ibm.ia.time.SecondOfMinute valueOf(string text);
+}
+
+public class TimePeriod
+        property "dataio.default" "true"
+{
+}
+
+package com.ibm.ia.timeline;
+
+
+public class CenturyTimeLine
+{
+    public static final readonly java.time.Period UNIT;
+    public static java.time.ZonedDateTime start(java.time.ZonedDateTime dateTime);
+}
+
+public class DayTimeLine
+{
+    public static final readonly java.time.Period UNIT;
+    public static java.time.ZonedDateTime start(java.time.ZonedDateTime dateTime);
+}
+
+public class HourTimeLine
+{
+    public static final readonly java.time.Duration UNIT;
+    public static java.time.ZonedDateTime start(java.time.ZonedDateTime dateTime);
+}
+
+public class MillisecondTimeLine
+{
+    public static final readonly java.time.Duration UNIT;
+    public static java.time.ZonedDateTime start(java.time.ZonedDateTime dateTime);
+}
+
+public class MinuteTimeLine
+{
+    public static final readonly java.time.Duration UNIT;
+    public static java.time.ZonedDateTime start(java.time.ZonedDateTime dateTime);
+}
+
+public class MonthTimeLine
+{
+    public static final readonly java.time.Period UNIT;
+    public static java.time.ZonedDateTime start(java.time.ZonedDateTime dateTime);
+}
+
+public class SecondTimeLine
+{
+    public static final readonly java.time.Duration UNIT;
+    public static java.time.ZonedDateTime start(java.time.ZonedDateTime dateTime);
+}
+
+public class YearTimeLine
+{
+    public static final readonly java.time.Period UNIT;
+    public static java.time.ZonedDateTime start(java.time.ZonedDateTime dateTime);
+}
+
+package com.ibm.rules.event;
+
+
+public interface Event
+        property hiddenType "true"
+{
+    public string toXML();
+}
+
+package creditcard;
+
+
+public class Account
+        implements com.ibm.ia.model.Entity
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.entityElementName" "Account"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/MyCreditCardSolutionBOM/model"
+{
+    public double balance
+                property update "true"
+                property "xsd.name" "balance"
+                property "xsd.order" "0";
+    public creditcard.Customer customer
+                property update "true"
+                property "xsd.name" "customer"
+                property "xsd.order" "1"
+                property "xsd.useMapping" "true";
+    public string id
+                property "ia.entity.id" "true"
+                property update "true"
+                property "xsd.name" "id"
+                property "xsd.order" "2";
+    public java.time.ZonedDateTime lastCheckTime
+                property update "true"
+                property "xsd.name" "lastCheckTime"
+                property "xsd.order" "3";
+    public creditcard.AccountStatus status
+                property update "true"
+                property "xsd.name" "status"
+                property "xsd.order" "4";
+    public Account(string id)
+                property "dataio.default" "true";
+    public Account(double balance, creditcard.Customer customer, string id, java.time.ZonedDateTime lastCheckTime, creditcard.AccountStatus status)
+                property groups "BALA"
+                property prototype "true";
+}
+
+public class AccountInitialization
+        implements com.ibm.ia.model.Event
+        property "brl.facets" "ilog.rules.brl.Date:date"
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.eventElementName" "AccountInitialization"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/MyCreditCardSolutionBOM/model"
+{
+    public creditcard.Account account
+                property "xsd.name" "account"
+                property "xsd.order" "0"
+                property "xsd.useMapping" "true";
+    public double balance
+                property "xsd.name" "balance"
+                property "xsd.order" "1";
+    public creditcard.Customer customer
+                property "xsd.name" "customer"
+                property "xsd.order" "2"
+                property "xsd.useMapping" "true";
+    public java.time.ZonedDateTime date
+                property "ia.timestamp" "true"
+                property "xsd.name" "date"
+                property "xsd.order" "3";
+    public creditcard.AccountStatus status
+                property "xsd.name" "status"
+                property "xsd.order" "4";
+    public AccountInitialization(java.time.ZonedDateTime date)
+                property "dataio.default" "true";
+    public AccountInitialization(creditcard.Account account, double balance, creditcard.Customer customer, java.time.ZonedDateTime date, creditcard.AccountStatus status)
+                property groups "BALA"
+                property prototype "true";
+}
+
+public class AccountStatus
+        property "de.generated" "true"
+        property "ia.enum" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/MyCreditCardSolutionBOM/model"
+{
+    domain {static Excellent, static Good, static Fair, static Poor, static Risky}
+    public static final readonly creditcard.AccountStatus Excellent
+                property "xsd.name" "Excellent"
+                property "xsd.order" "0";
+    public static final readonly creditcard.AccountStatus Fair
+                property "xsd.name" "Fair"
+                property "xsd.order" "1";
+    public static final readonly creditcard.AccountStatus Good
+                property "xsd.name" "Good"
+                property "xsd.order" "2";
+    public static final readonly creditcard.AccountStatus Poor
+                property "xsd.name" "Poor"
+                property "xsd.order" "3";
+    public static final readonly creditcard.AccountStatus Risky
+                property "xsd.name" "Risky"
+                property "xsd.order" "4";
+}
+
+public class AuthorizationResponse
+        implements com.ibm.ia.model.Event
+        property "brl.facets" "ilog.rules.brl.Date:date"
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.eventElementName" "AuthorizationResponse"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/MyCreditCardSolutionBOM/model"
+{
+    public creditcard.Account account
+                property "xsd.name" "account"
+                property "xsd.order" "0"
+                property "xsd.useMapping" "true";
+    public java.time.ZonedDateTime date
+                property "ia.timestamp" "true"
+                property "xsd.name" "date"
+                property "xsd.order" "1";
+    public creditcard.Exception exception
+                property "xsd.name" "exception"
+                property "xsd.order" "2";
+    public string message
+                property "xsd.name" "message"
+                property "xsd.order" "3";
+    public creditcard.Transaction transaction
+                property "xsd.name" "transaction"
+                property "xsd.order" "4";
+    public AuthorizationResponse(java.time.ZonedDateTime date)
+                property "dataio.default" "true";
+    public AuthorizationResponse(creditcard.Account account, java.time.ZonedDateTime date, creditcard.Exception exception, string message, creditcard.Transaction transaction)
+                property groups "BALA"
+                property prototype "true";
+}
+
+public class Customer
+        implements com.ibm.ia.model.Entity
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.entityElementName" "Customer"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/MyCreditCardSolutionBOM/model"
+{
+    public java.util.List accounts domain 0,* class creditcard.Account
+                property update "true"
+                property "xsd.collection" "java.lang.String"
+                property "xsd.name" "account"
+                property "xsd.order" "0"
+                property "xsd.useMapping" "creditcard.Account";
+    public string email
+                property "ia.entity.id" "true"
+                property update "true"
+                property "xsd.name" "email"
+                property "xsd.order" "1";
+    public string firstName
+                property update "true"
+                property "xsd.name" "firstName"
+                property "xsd.order" "2";
+    public string lastName
+                property update "true"
+                property "xsd.name" "lastName"
+                property "xsd.order" "3";
+    public string phoneNumber
+                property update "true"
+                property "xsd.name" "phoneNumber"
+                property "xsd.order" "4";
+    public Customer(string email)
+                property "dataio.default" "true";
+    public Customer(string email, string firstName, string lastName, string phoneNumber)
+                property groups "BALA"
+                property prototype "true";
+    public void addTo_accounts(creditcard.Account arg0)
+                property collectionAttribute "accounts"
+                property update "true";
+    public void clear_accounts()
+                property collectionAttribute "accounts"
+                property update "true";
+    public creditcard.Account getFrom_accounts(string arg0)
+                property collectionAttribute "accounts";
+    public void removeFrom_accounts(creditcard.Account arg0)
+                property collectionAttribute "accounts"
+                property update "true";
+    public void set_accounts(java.util.Collection arg0 domain 0,* class creditcard.Account)
+                property collectionAttribute "accounts"
+                property update "true";
+}
+
+public class Exception
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/MyCreditCardSolutionBOM/model"
+{
+    public string code
+                property update "true"
+                property "xsd.name" "code"
+                property "xsd.order" "0";
+    public string reason
+                property update "true"
+                property "xsd.name" "reason"
+                property "xsd.order" "1";
+    public Exception(string code, string reason)
+                property groups "BALA"
+                property prototype "true";
+    public Exception()
+                property "dataio.default" "true";
+}
+
+public class Transaction
+        implements com.ibm.ia.model.Event
+        property "brl.facets" "ilog.rules.brl.Date:date"
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.eventElementName" "Transaction"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/MyCreditCardSolutionBOM/model"
+{
+    public creditcard.Account account
+                property "xsd.name" "account"
+                property "xsd.order" "0"
+                property "xsd.useMapping" "true";
+    public double amount
+                property "xsd.name" "amount"
+                property "xsd.order" "1";
+    public string countryCode
+                property "xsd.name" "countryCode"
+                property "xsd.order" "2";
+    public java.time.ZonedDateTime date
+                property "ia.timestamp" "true"
+                property "xsd.name" "date"
+                property "xsd.order" "3";
+    public Transaction(java.time.ZonedDateTime date)
+                property "dataio.default" "true";
+    public Transaction(creditcard.Account account, double amount, string countryCode, java.time.ZonedDateTime date)
+                property groups "BALA"
+                property prototype "true";
+}
+
+package ilog.rules.bom;
+
+
+public interface IlrObjectModel
+{
+}
+
+package ilog.rules.bom.util.platform;
+
+
+public class IlrBooleanEnumeration
+        implements java.util.Enumeration
+{
+    public IlrBooleanEnumeration(boolean[] array);
+    public boolean hasMoreElements();
+    public object nextElement();
+}
+
+public class IlrByteEnumeration
+        implements java.util.Enumeration
+{
+    public IlrByteEnumeration(byte[] array);
+    public boolean hasMoreElements();
+    public object nextElement();
+}
+
+public class IlrCharEnumeration
+        implements java.util.Enumeration
+{
+    public IlrCharEnumeration(char[] array);
+    public boolean hasMoreElements();
+    public object nextElement();
+}
+
+public class IlrDoubleEnumeration
+        implements java.util.Enumeration
+{
+    public IlrDoubleEnumeration(double[] array);
+    public boolean hasMoreElements();
+    public object nextElement();
+}
+
+public class IlrFloatEnumeration
+        implements java.util.Enumeration
+{
+    public IlrFloatEnumeration(float[] array);
+    public boolean hasMoreElements();
+    public object nextElement();
+}
+
+public class IlrIntEnumeration
+        implements java.util.Enumeration
+{
+    public IlrIntEnumeration(int[] array);
+    public boolean hasMoreElements();
+    public object nextElement();
+}
+
+public class IlrLongEnumeration
+        implements java.util.Enumeration
+{
+    public IlrLongEnumeration(long[] array);
+    public boolean hasMoreElements();
+    public object nextElement();
+}
+
+public class IlrShortEnumeration
+        implements java.util.Enumeration
+{
+    public IlrShortEnumeration(short[] array);
+    public boolean hasMoreElements();
+    public object nextElement();
+}
+
+package ilog.rules.brl;
+
+
+public class Boolean
+        property hiddenType "true"
+        property irlPrimitiveType "true"
+        property nullable "false"
+        property valueType "true"
+        property vocabularyClass "true"
+{
+    public static final readonly ilog.rules.brl.Boolean FALSE
+                property Style "marker"
+                property "translation.irl" "false"
+                property "translation.sql" "1 = 2";
+    public static final readonly ilog.rules.brl.Boolean TRUE
+                property Style "marker"
+                property "translation.irl" "true"
+                property "translation.sql" "1 = 1";
+    public ilog.rules.brl.Boolean and(ilog.rules.brl.Boolean arg)
+                property Style "marker"
+                property conditionSeparator "true"
+                property default "true"
+                property "translation.irl" "({this}\n\t&& {0})"
+                property "translation.sql" "(({this}) AND ({0}))";
+    public boolean is(ilog.rules.brl.Object arg)
+                property "translation.irl" "({this}) == ({0})";
+    public boolean isNot(ilog.rules.brl.Object arg)
+                property "translation.irl" "({this}) != ({0})";
+    public ilog.rules.brl.Boolean not()
+                property Style "marker"
+                property conditionSeparator "true"
+                property "translation.irl" "!({this})"
+                property "translation.sql" " NOT({this})";
+    public ilog.rules.brl.Boolean or(ilog.rules.brl.Boolean arg)
+                property Style "marker"
+                property conditionSeparator "true"
+                property "translation.irl" "{this}\n\t|| {0}"
+                property "translation.sql" "(({this}) OR ({0}))";
+}
+
+public class Character
+        property Style "string"
+        property defaultValue "``"
+        property hiddenType "true"
+        property irlPrimitiveType "true"
+        property valueDescriptor "ilog.rules.brl.value.descriptor.IlrCharacterValueDescriptor"
+        property valueType "true"
+        property vocabularyClass "true"
+{
+    public boolean doesNotEqual(ilog.rules.brl.Character arg)
+                property computeBestType "true"
+                property propagateAssignableArgumentType "true"
+                property "translation.irl" "({this} != {0})"
+                property "translation.sql" "({this} NOT LIKE {0} ESCAPE '/' OR {this} IS NULL)";
+    public boolean equals(ilog.rules.brl.Character arg)
+                property computeBestType "true"
+                property default "true"
+                property propagateAssignableArgumentType "true"
+                property "translation.irl" "({this} == {0})"
+                property "translation.sql" "({this} LIKE {0} ESCAPE '/' AND {this} IS NOT NULL)";
+    public boolean is(ilog.rules.brl.Object arg)
+                property computeBestType "true"
+                property "translation.irl" "({this} == {0})"
+                property "translation.sql" "({this} LIKE {0} ESCAPE '/' AND {this} IS NOT NULL)";
+    public boolean isNot(ilog.rules.brl.Object arg)
+                property computeBestType "true"
+                property "translation.irl" "({this} != {0})"
+                property "translation.sql" "({this} NOT LIKE {0} ESCAPE '/' OR {this} IS NULL)";
+}
+
+public class Date
+        implements com.ibm.ia.StringProvider
+        property dtCheckerDescriptor "ilog.rules.dt.model.services.check.descriptor.IlrDTDateCheckerDescriptor"
+        property hiddenType "true"
+        property valueDescriptor "ilog.rules.brl.value.descriptor.IlrFullDateValueDescriptor"
+        property valueEditor "ilog.rules.brl.ui.value.editor.IlrFullDateValueEditor"
+        property valueFormatter "{0,date}"
+        property "valueTranslator.irl" "ilog.rules.brl.translation.codegen.IlrIRLDateTranslator"
+        property valueType "true"
+        property vocabularyClass "true"
+{
+    public Date(ilog.rules.brl.Date date);
+    public Date(java.util.Date date);
+    public Date(long date);
+    public Date(long instantInMillis, int offsetInSeconds);
+    public Date(int year, int month, int day, int hour, int minute, int second);
+    public static ilog.rules.brl.Date operator Date(java.time.ZonedDateTime timePoint);
+    public boolean after(ilog.rules.brl.Date after)
+                property computeBestType "true"
+                property noTruncation "true"
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) > 0"
+                property "translation.sql" "{this} > {0}"
+                property unknownSemantic "true";
+    public boolean after(com.ibm.ia.TimePeriod timePeriod);
+    public boolean afterOrEquals(ilog.rules.brl.Date after)
+                property computeBestType "true"
+                property noTruncation "true"
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) >=0"
+                property "translation.sql" "{this} >= {0}"
+                property unknownSemantic "true";
+    public boolean before(ilog.rules.brl.Date before)
+                property computeBestType "true"
+                property noTruncation "true"
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) < 0"
+                property "translation.sql" "{this} < {0}"
+                property unknownSemantic "true";
+    public boolean before(com.ibm.ia.TimePeriod timePeriod);
+    public boolean beforeOrEquals(ilog.rules.brl.Date before)
+                property computeBestType "true"
+                property noTruncation "true"
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) <= 0"
+                property "translation.sql" "{this} <= {0}"
+                property unknownSemantic "true";
+    public int compareTo(java.util.Date o);
+    public int compareTo(ilog.rules.brl.Date o);
+    public boolean during(com.ibm.ia.TimePeriod timePeriod);
+    public boolean equalSeconds(ilog.rules.brl.Date date);
+    public com.ibm.ia.DayOfMonth getDayOfMonth()
+                property noTypeConversion "true";
+    public ilog.rules.brl.DayOfWeek getDayOfWeek();
+    public ilog.rules.brl.Time getDayTime();
+    public ilog.rules.brl.Year getGregorianYear();
+    public com.ibm.ia.HourOfDay getHourOfDay()
+                property noTypeConversion "true";
+    public com.ibm.ia.MinuteOfHour getMinuteOfHour()
+                property noTypeConversion "true";
+    public ilog.rules.brl.Month getMonthOfYear();
+    public com.ibm.ia.SecondOfMinute getSecondOfMinute()
+                property noTypeConversion "true";
+    public boolean haveSameCalendarDay(ilog.rules.brl.Date date);
+    public boolean haveSameCalendarMonth(ilog.rules.brl.Date date);
+    public boolean haveSameCalendarWeek(ilog.rules.brl.Date date);
+    public boolean haveSameCalendarYear(ilog.rules.brl.Date date);
+    public boolean haveSameHourPeriod(ilog.rules.brl.Date date);
+    public boolean haveSameMinutePeriod(ilog.rules.brl.Date date);
+    public boolean haveSameSecondPeriod(ilog.rules.brl.Date date);
+    public ilog.rules.brl.Date inSameZoneAs(ilog.rules.brl.Date referenceTimePoint);
+    public ilog.rules.brl.Date inZone(string timeZoneId)
+                property "valueInfo[0]" "com.ibm.ia.language.core.value.TimeZoneValueInfo";
+    public boolean isAtDate(ilog.rules.brl.Date date)
+                property noTruncation "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getDate({this}).equals(ilog.rules.brl.IlrDateUtil.getDate({0}))"
+                property unknownSemantic "true";
+    public boolean isAtDayOfWeek(ilog.rules.brl.DayOfWeek dayOfWeek)
+                property noTruncation "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getDayOfWeek({this}).equals({0})"
+                property unknownSemantic "true";
+    public boolean isAtDayTime(ilog.rules.brl.DayOfWeek day, ilog.rules.brl.Time time)
+                property noTruncation "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "(ilog.rules.brl.IlrDateUtil.getDayOfWeek({this}).equals({0}) && ilog.rules.brl.IlrDateUtil.getTime({this}).equals({1}))"
+                property unknownSemantic "true";
+    public boolean isAtEnd(com.ibm.ia.TimePeriod timePeriod);
+    public boolean isAtMonth(ilog.rules.brl.Month month)
+                property noTruncation "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getMonth({this}).equals({0})"
+                property unknownSemantic "true";
+    public boolean isAtMonthYear(ilog.rules.brl.Month month, ilog.rules.brl.Year year)
+                property noTruncation "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "(ilog.rules.brl.IlrDateUtil.getMonth({this}).equals({0}) && ilog.rules.brl.IlrDateUtil.getYear({this}).equals({1}))"
+                property unknownSemantic "true";
+    public boolean isAtStart(com.ibm.ia.TimePeriod timePeriod);
+    public boolean isAtTime(ilog.rules.brl.Time time)
+                property noTruncation "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getTime({this}).equals({0})"
+                property unknownSemantic "true";
+    public boolean isAtYear(ilog.rules.brl.Year year)
+                property noTruncation "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getYear({this}).equals({0})"
+                property unknownSemantic "true";
+    public boolean isBetweenEE(ilog.rules.brl.Date after, ilog.rules.brl.Date before)
+                property computeBestType "true"
+                property noTruncation "true"
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "(({this}.compareTo({0})>0 && {this}.compareTo({1})<0) || ({this}.compareTo({1}) >0 && {this}.compareTo({0})<0))"
+                property "translation.sql" "({this} > {0} AND {this} < {1})"
+                property unknownSemantic "true";
+    public boolean isBetweenEI(ilog.rules.brl.Date after, ilog.rules.brl.Date before)
+                property computeBestType "true"
+                property noTruncation "true"
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "(({this}.compareTo({0})>0 && {this}.compareTo({1})<=0) || ({this}.compareTo({1})>0 && {this}.compareTo({0})<=0))"
+                property "translation.sql" "({this} > {0} AND {this} <= {1})"
+                property unknownSemantic "true";
+    public boolean isBetweenIE(ilog.rules.brl.Date after, ilog.rules.brl.Date before)
+                property computeBestType "true"
+                property noTruncation "true"
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "(({this}.compareTo({0})>=0 && {this}.compareTo({1})<0) || ({this}.compareTo({1})>=0 && {this}.compareTo({0})<0))"
+                property "translation.sql" "({this} >= {0} AND {this} < {1})"
+                property unknownSemantic "true";
+    public boolean isBetweenII(ilog.rules.brl.Date after, ilog.rules.brl.Date before)
+                property computeBestType "true"
+                property noTruncation "true"
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "(({this}.compareTo({0})>=0 && {this}.compareTo({1})<=0) || ({this}.compareTo({1})>=0 && {this}.compareTo({0})<=0))"
+                property "translation.sql" "({this} >= {0} AND {this} <= {1})"
+                property unknownSemantic "true";
+    public boolean isInHourOfDay(int hourOfDay);
+    public boolean isInMinuteOfHour(int minuteOfHour);
+    public boolean isInSecondOfMinute(int secondOfMinute);
+    public boolean isOnDayOfMonth(int dayOfMonth);
+    public boolean isWithinPeriodAfter(com.ibm.ia.AbsoluteDuration duration, ilog.rules.brl.Date timePoint);
+    public boolean isWithinPeriodAfter(com.ibm.ia.CalendarDuration duration, ilog.rules.brl.Date timePoint);
+    public boolean isWithinPeriodBefore(com.ibm.ia.AbsoluteDuration duration, ilog.rules.brl.Date timePoint);
+    public boolean isWithinPeriodBefore(com.ibm.ia.CalendarDuration duration, ilog.rules.brl.Date timePoint);
+    public static operator java.time.ZonedDateTime(ilog.rules.brl.Date timePoint);
+    public static com.ibm.ia.TimePeriod lastPeriod(com.ibm.ia.AbsoluteDuration duration)
+                property "ia.involvesNow" "true";
+    public static com.ibm.ia.TimePeriod lastPeriod(com.ibm.ia.CalendarDuration duration)
+                property "ia.involvesNow" "true";
+    public static com.ibm.ia.TimePeriod nextPeriod(com.ibm.ia.AbsoluteDuration duration)
+                property "ia.involvesNow" "true";
+    public static com.ibm.ia.TimePeriod nextPeriod(com.ibm.ia.CalendarDuration duration)
+                property "ia.involvesNow" "true";
+    public static ilog.rules.brl.Date now()
+                property "ia.involvesNow" "true";
+    public static com.ibm.ia.TimePeriod thisDay()
+                property "ia.involvesNow" "true";
+    public static com.ibm.ia.TimePeriod thisHour()
+                property "ia.involvesNow" "true";
+    public static com.ibm.ia.TimePeriod thisMinute()
+                property "ia.involvesNow" "true";
+    public static com.ibm.ia.TimePeriod thisMonth()
+                property "ia.involvesNow" "true";
+    public static com.ibm.ia.TimePeriod thisSecond()
+                property "ia.involvesNow" "true";
+    public static com.ibm.ia.TimePeriod thisWeek()
+                property "ia.involvesNow" "true";
+    public static com.ibm.ia.TimePeriod thisYear()
+                property "ia.involvesNow" "true";
+    public static ilog.rules.brl.Date toDate(object value);
+    public java.util.Date toJavaUtilDate();
+    public static com.ibm.ia.TimePeriod today()
+                property "ia.involvesNow" "true";
+    public static com.ibm.ia.TimePeriod tomorrow()
+                property "ia.involvesNow" "true";
+    public static com.ibm.ia.TimePeriod yesterday()
+                property "ia.involvesNow" "true";
+}
+
+public class DayOfWeek
+        property alias "comparable"
+        property valueType "true"
+        property vocabularyClass "true"
+{
+    public static final readonly ilog.rules.brl.DayOfWeek Friday
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getDateFromDayOfWeek(java.util.Calendar.FRIDAY)";
+    public static final readonly ilog.rules.brl.DayOfWeek Monday
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getDateFromDayOfWeek(java.util.Calendar.MONDAY)";
+    public static final readonly ilog.rules.brl.DayOfWeek Saturday
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getDateFromDayOfWeek(java.util.Calendar.SATURDAY)";
+    public static final readonly ilog.rules.brl.DayOfWeek Sunday
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getDateFromDayOfWeek(java.util.Calendar.SUNDAY)";
+    public static final readonly ilog.rules.brl.DayOfWeek Thursday
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getDateFromDayOfWeek(java.util.Calendar.THURSDAY)";
+    public static final readonly ilog.rules.brl.DayOfWeek Tuesday
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getDateFromDayOfWeek(java.util.Calendar.TUESDAY)";
+    public static final readonly ilog.rules.brl.DayOfWeek Wednesday
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getDateFromDayOfWeek(java.util.Calendar.WEDNESDAY)";
+    public DayOfWeek(java.util.Date date)
+                property "factory.default" "true";
+    public DayOfWeek(ilog.rules.brl.DayOfWeek dow);
+    public DayOfWeek(long date);
+    public boolean after(ilog.rules.brl.DayOfWeek after)
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) > 0"
+                property unknownSemantic "true";
+    public boolean afterOrEquals(ilog.rules.brl.DayOfWeek after)
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) >= 0"
+                property unknownSemantic "true";
+    public boolean before(ilog.rules.brl.DayOfWeek before)
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) < 0"
+                property unknownSemantic "true";
+    public boolean beforeOrEquals(ilog.rules.brl.DayOfWeek before)
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) <= 0"
+                property unknownSemantic "true";
+    public int compareTo(java.util.Date o);
+    public int compareTo(ilog.rules.brl.DayOfWeek o);
+    public boolean is(ilog.rules.brl.Object arg)
+                property "translation.irl" "{this}.compareTo({0}) == 0";
+    public boolean isBetweenEE(ilog.rules.brl.DayOfWeek after, ilog.rules.brl.DayOfWeek before)
+                property noTruncation "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "({this}.compareTo({0}) > 0 && {this}.compareTo({1}) < 0)"
+                property unknownSemantic "true";
+    public boolean isBetweenEI(ilog.rules.brl.DayOfWeek after, ilog.rules.brl.DayOfWeek before)
+                property noTruncation "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "({this}.compareTo({0}) > 0 && {this}.compareTo({1}) <= 0)"
+                property unknownSemantic "true";
+    public boolean isBetweenIE(ilog.rules.brl.DayOfWeek after, ilog.rules.brl.DayOfWeek before)
+                property noTruncation "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "({this}.compareTo({0}) >= 0 && {this}.compareTo({1}) < 0)"
+                property unknownSemantic "true";
+    public boolean isBetweenII(ilog.rules.brl.DayOfWeek after, ilog.rules.brl.DayOfWeek before)
+                property noTruncation "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "({this}.compareTo({0}) >= 0 && {this}.compareTo({1}) <= 0)"
+                property unknownSemantic "true";
+    public boolean isNot(ilog.rules.brl.Object arg)
+                property "translation.irl" "{this}.compareTo({0}) != 0";
+}
+
+public final class IlrCollectionUtil
+{
+    public static int getSize(java.util.Collection arg1);
+    public static int getSize(boolean[] arg1);
+    public static int getSize(char[] arg1);
+    public static int getSize(double[] arg1);
+    public static int getSize(java.lang.Object[] arg1);
+    public static boolean inComparable(java.lang.Comparable arg1, object arg2);
+    public static java.util.Collection populateCollection(java.lang.Object[] arg1, java.util.Collection arg2);
+}
+
+public class IlrDateUtil
+{
+    public static int extractDayOfWeek(java.util.Date arg);
+    public static int extractMonth(java.util.Date arg);
+    public static int extractYear(java.util.Date arg);
+    public static java.util.Date getDate(java.util.Date arg);
+    public static java.util.Date getDateFromDayOfWeek(int arg);
+    public static java.util.Date getDateFromMonth(int arg);
+    public static java.util.Date getDateFromYear(int arg);
+    public static java.util.Date getDayOfWeek(java.util.Date arg);
+    public static long getLocalTime(int year, int month, int date, int hour, int minute, int second, int millisecond);
+    public static long getLocalTime(int year, int month, int date, int hour, int minute, int second, int millisecond, int am_pm);
+    public static java.util.Date getMonth(java.util.Date arg);
+    public static java.util.Date getTime(java.util.Date arg);
+    public static java.util.Date getYear(java.util.Date arg);
+}
+
+public class IlrNameUtil
+{
+    public static string getBusinessIdentifier(string identifier);
+}
+
+public class IlrStringUtil
+{
+    public static boolean isNullOrEmpty(string str);
+}
+
+public class Month
+        property alias "comparable"
+        property valueType "true"
+        property vocabularyClass "true"
+{
+    public static final readonly ilog.rules.brl.Month April
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getDateFromMonth(java.util.Calendar.APRIL)";
+    public static final readonly ilog.rules.brl.Month August
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getDateFromMonth(java.util.Calendar.AUGUST)";
+    public static final readonly ilog.rules.brl.Month December
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getDateFromMonth(java.util.Calendar.DECEMBER)";
+    public static final readonly ilog.rules.brl.Month February
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getDateFromMonth(java.util.Calendar.FEBRUARY)";
+    public static final readonly ilog.rules.brl.Month January
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getDateFromMonth(java.util.Calendar.JANUARY)";
+    public static final readonly ilog.rules.brl.Month July
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getDateFromMonth(java.util.Calendar.JULY)";
+    public static final readonly ilog.rules.brl.Month June
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getDateFromMonth(java.util.Calendar.JUNE)";
+    public static final readonly ilog.rules.brl.Month March
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getDateFromMonth(java.util.Calendar.MARCH)";
+    public static final readonly ilog.rules.brl.Month May
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getDateFromMonth(java.util.Calendar.MAY)";
+    public static final readonly ilog.rules.brl.Month November
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getDateFromMonth(java.util.Calendar.NOVEMBER)";
+    public static final readonly ilog.rules.brl.Month October
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getDateFromMonth(java.util.Calendar.OCTOBER)";
+    public static final readonly ilog.rules.brl.Month September
+                property "rve.keepInModel" "true"
+                property "translation.irl" "ilog.rules.brl.IlrDateUtil.getDateFromMonth(java.util.Calendar.SEPTEMBER)";
+    public Month(java.util.Date date)
+                property "factory.default" "true";
+    public Month(ilog.rules.brl.Month month);
+    public Month(long date);
+    public boolean after(ilog.rules.brl.Month after)
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) > 0"
+                property unknownSemantic "true";
+    public boolean afterOrEquals(ilog.rules.brl.Month after)
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) >= 0"
+                property unknownSemantic "true";
+    public boolean before(ilog.rules.brl.Month before)
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) < 0"
+                property unknownSemantic "true";
+    public boolean beforeOrEquals(ilog.rules.brl.Month before)
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) <= 0"
+                property unknownSemantic "true";
+    public int compareTo(java.util.Date o);
+    public int compareTo(ilog.rules.brl.Month arg)
+                property propagateArgumentType "true";
+    public boolean is(ilog.rules.brl.Object arg)
+                property "translation.irl" "{this}.compareTo({0}) == 0";
+    public boolean isBetweenEE(ilog.rules.brl.Month after, ilog.rules.brl.Month before)
+                property noTruncation "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "({this}.compareTo({0}) > 0 && {this}.compareTo({1}) < 0)"
+                property unknownSemantic "true";
+    public boolean isBetweenEI(ilog.rules.brl.Month after, ilog.rules.brl.Month before)
+                property noTruncation "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "({this}.compareTo({0}) > 0 && {this}.compareTo({1}) <= 0)"
+                property unknownSemantic "true";
+    public boolean isBetweenIE(ilog.rules.brl.Month after, ilog.rules.brl.Month before)
+                property noTruncation "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "({this}.compareTo({0}) >= 0 && {this}.compareTo({1}) < 0)"
+                property unknownSemantic "true";
+    public boolean isBetweenII(ilog.rules.brl.Month after, ilog.rules.brl.Month before)
+                property noTruncation "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "({this}.compareTo({0}) >= 0 && {this}.compareTo({1}) <= 0)"
+                property unknownSemantic "true";
+    public boolean isNot(ilog.rules.brl.Object arg)
+                property "translation.irl" "{this}.compareTo({0}) != 0";
+}
+
+public class Number
+        property Style "number"
+        property "dtCheckerDescriptor:continuous" "ilog.rules.dt.model.services.check.descriptor.IlrDTDoubleCheckerDescriptor"
+        property "dtCheckerDescriptor:discrete" "ilog.rules.dt.model.services.check.descriptor.IlrDTLongCheckerDescriptor"
+        property hiddenType "true"
+        property irlPrimitiveType "true"
+        property nullable "false"
+        property valueDescriptor "ilog.rules.brl.value.descriptor.IlrNumberValueDescriptor"
+        property valueTranslator "ilog.rules.brl.translation.codegen.IlrIRLNumberValueTranslator"
+        property valueType "true"
+        property vocabularyClass "true"
+{
+    public ilog.rules.brl.Number div(ilog.rules.brl.Number arg)
+                property computeBestType "true"
+                property excludeFromPrediction "true"
+                property sortIndex "3"
+                property "translation.sql" "{this} / {0}";
+    public boolean doesNotEqual(ilog.rules.brl.Number arg)
+                property computeBestType "true"
+                property propagateAssignableArgumentType "true"
+                property "translation.sql" "{this} <> {0}";
+    public boolean equals(ilog.rules.brl.Number arg)
+                property computeBestType "true"
+                property propagateAssignableArgumentType "true"
+                property "translation.sql" "{this} = {0}";
+    public boolean isBetweenEE(ilog.rules.brl.Number min, ilog.rules.brl.Number max)
+                property computeBestType "true"
+                property noTruncation "true"
+                property propagateAssignableArgumentType "true"
+                property "translation.sql" "{this} > {0} AND {this} < {0}";
+    public boolean isBetweenEI(ilog.rules.brl.Number min, ilog.rules.brl.Number max)
+                property computeBestType "true"
+                property noTruncation "true"
+                property propagateAssignableArgumentType "true"
+                property "translation.sql" "{this} > {0} AND {this} <= {1}";
+    public boolean isBetweenIE(ilog.rules.brl.Number min, ilog.rules.brl.Number max)
+                property computeBestType "true"
+                property noTruncation "true"
+                property propagateAssignableArgumentType "true"
+                property "translation.sql" "{this} >= {0} AND {this} < {1}";
+    public boolean isBetweenII(ilog.rules.brl.Number min, ilog.rules.brl.Number max)
+                property computeBestType "true"
+                property noTruncation "true"
+                property propagateAssignableArgumentType "true"
+                property "translation.sql" "{this} >= {0} AND {this} <= {1}";
+    public boolean isGreaterThan(ilog.rules.brl.Number arg)
+                property computeBestType "true"
+                property propagateAssignableArgumentType "true"
+                property "translation.sql" "{this} > {0}";
+    public boolean isGreaterThanOrEquals(ilog.rules.brl.Number arg)
+                property computeBestType "true"
+                property propagateAssignableArgumentType "true"
+                property "translation.sql" "{this} >= {0}";
+    public boolean isLessThan(ilog.rules.brl.Number arg)
+                property computeBestType "true"
+                property propagateAssignableArgumentType "true"
+                property "translation.sql" "{this} < {0}";
+    public boolean isLessThanOrEquals(ilog.rules.brl.Number arg)
+                property computeBestType "true"
+                property propagateAssignableArgumentType "true"
+                property "translation.sql" "{this} <= {0}";
+    public ilog.rules.brl.Number minus(ilog.rules.brl.Number arg)
+                property computeBestType "true"
+                property excludeFromPrediction "true"
+                property sortIndex "1"
+                property "translation.sql" "{this} - {0}";
+    public ilog.rules.brl.Number minus()
+                property default "true"
+                property excludeFromPrediction "true"
+                property "translation.sql" "- {this}";
+    public ilog.rules.brl.Number mult(ilog.rules.brl.Number arg)
+                property computeBestType "true"
+                property excludeFromPrediction "true"
+                property sortIndex "2"
+                property "translation.sql" "{this} * {0}";
+    public ilog.rules.brl.Number plus(ilog.rules.brl.Number arg)
+                property computeBestType "true"
+                property excludeFromPrediction "true"
+                property sortIndex "0"
+                property "translation.sql" "{this} + {0}";
+    public ilog.rules.brl.Number plus()
+                property excludeFromPrediction "true"
+                property "translation.sql" "{this}";
+}
+
+public class Object
+        property automaticVariable "false"
+        property dtCheckerDescriptor "ilog.rules.dt.model.services.check.descriptor.IlrDTObjectCheckerDescriptor"
+        property hiddenType "true"
+        property valueType "true"
+        property vocabularyClass "true"
+{
+    public static int count(ilog.rules.brl.Object[] arg)
+                property noTypeConversion "true"
+                property "translation.irl" "ilog.rules.brl.IlrCollectionUtil.getSize({0})";
+    public boolean is(ilog.rules.brl.Object arg)
+                property computeBestType "true"
+                property default "true"
+                property propagateAssignableArgumentType "true"
+                property "translation.irl" "({this}.equals({0}))"
+                property "translation.sql" "{this} = {0}";
+    public boolean isIn(ilog.rules.brl.Object[] arg)
+                property computeBestType "true"
+                property noCollectionAllocation "true"
+                property propagateAssignableArgumentType "true"
+                property "translation.irl" "{this} in {0}"
+                property "translation.sql" "{this} IN {0}";
+    public boolean isNot(ilog.rules.brl.Object arg)
+                property computeBestType "true"
+                property propagateAssignableArgumentType "true"
+                property "translation.irl" "!({this}.equals({0}))"
+                property "translation.sql" "{this} <> {0}";
+    public boolean isNotIn(ilog.rules.brl.Object[] arg)
+                property computeBestType "true"
+                property noCollectionAllocation "true"
+                property propagateAssignableArgumentType "true"
+                property "translation.irl" "{this} !in {0}"
+                property "translation.sql" "{this} NOT IN {0}";
+    public boolean isNotNull()
+                property leadingSemanticFilter "ilog.rules.brl.IlrBRL$NotApplicableToValueType"
+                property semanticAction "ilog.rules.brl.IlrBRL$PredicateNotApplicableToValueType"
+                property "translation.irl" "{this} != null"
+                property "translation.sql" "({this} IS NOT NULL)";
+    public boolean isNull()
+                property leadingSemanticFilter "ilog.rules.brl.IlrBRL$NotApplicableToValueType"
+                property semanticAction "ilog.rules.brl.IlrBRL$PredicateNotApplicableToValueType"
+                property "translation.irl" "({this} == null)"
+                property "translation.sql" "({this} IS NULL)";
+}
+
+public class SimpleDate
+        extends ilog.rules.brl.Date
+        property dtCheckerDescriptor "ilog.rules.dt.model.services.check.descriptor.IlrDTSimpleDateCheckerDescriptor"
+        property valueDescriptor "ilog.rules.brl.value.descriptor.IlrShortDateValueDescriptor"
+        property valueEditor "ilog.rules.brl.ui.value.editor.IlrShortDateValueEditor"
+        property valueFormatter "{0,date,short}"
+        property "valueTranslator.irl" "ilog.rules.brl.translation.codegen.IlrIRLDateTranslator"
+        property valueType "true"
+        property vocabularyClass "true"
+{
+    public SimpleDate(java.util.Date date)
+                property "factory.default" "true";
+    public SimpleDate(ilog.rules.brl.SimpleDate date);
+    public SimpleDate(long date);
+    public int compareTo(java.util.Date o);
+    public int compareTo(ilog.rules.brl.SimpleDate o);
+}
+
+public class String
+        property Style "string"
+        property defaultValue "\"\""
+        property hiddenType "true"
+        property valueDescriptor "ilog.rules.brl.value.descriptor.IlrStringValueDescriptor"
+        property valueRenderer "ilog.rules.brl.value.renderer.IlrStringValueRenderer"
+        property valueType "true"
+        property vocabularyClass "true"
+{
+    public static ilog.rules.brl.String concat(ilog.rules.brl.Character arg0, ilog.rules.brl.String arg1)
+                property excludeFromPrediction "true"
+                property "translation.irl" "({0} + {1})"
+                property "translation.sql" "({0} || {1})";
+    public static ilog.rules.brl.String concat(ilog.rules.brl.Number arg0, ilog.rules.brl.String arg1)
+                property excludeFromPrediction "true"
+                property "translation.irl" "({0} + {1})"
+                property "translation.sql" "('{0}' || {1})";
+    public static ilog.rules.brl.String concat(ilog.rules.brl.String arg0, ilog.rules.brl.Character arg1)
+                property excludeFromPrediction "true"
+                property "translation.irl" "({0} + {1})"
+                property "translation.sql" "({0} || {1})";
+    public static ilog.rules.brl.String concat(ilog.rules.brl.String arg0, ilog.rules.brl.Number arg1)
+                property excludeFromPrediction "true"
+                property "translation.irl" "({0} + {1})"
+                property "translation.sql" "({0} || '{1}')";
+    public boolean contains(ilog.rules.brl.Character arg)
+                property noTruncation "true"
+                property "translation.irl" "{this}.indexOf({0}) != -1"
+                property "translation.sql" "({this} LIKE '%' || {0} || '%' ESCAPE '/' AND {this} IS NOT NULL)"
+                property unknownSemantic "true";
+    public boolean contains(ilog.rules.brl.String arg)
+                property noTruncation "true"
+                property "translation.irl" "{this}.indexOf({0}) != -1"
+                property "translation.sql" "({this} LIKE '%' || {0} || '%' ESCAPE '/' AND {this} IS NOT NULL)"
+                property unknownSemantic "true";
+    public boolean doesNotContain(ilog.rules.brl.Character arg)
+                property noTruncation "true"
+                property "translation.irl" "{this}.indexOf({0}) == -1"
+                property "translation.sql" "({this} NOT LIKE '%' || {0} || '%' ESCAPE '/' OR {this} IS NULL)"
+                property unknownSemantic "true";
+    public boolean doesNotContain(ilog.rules.brl.String arg)
+                property noTruncation "true"
+                property "translation.irl" "{this}.indexOf({0}) == -1"
+                property "translation.sql" "({this} NOT LIKE '%' || {0} || '%' ESCAPE '/' OR {this} IS NULL)"
+                property unknownSemantic "true";
+    public boolean doesNotEndWith(ilog.rules.brl.Character arg)
+                property noTruncation "true"
+                property "translation.irl" "({this}.length() == 0 || {this}.charAt({this}.length()-1) != {0})"
+                property "translation.sql" "({this} NOT LIKE '%' || {0} ESCAPE '/' OR {this} IS NULL)"
+                property unknownSemantic "true";
+    public boolean doesNotEndWith(ilog.rules.brl.String arg)
+                property noTruncation "true"
+                property "translation.irl" "!{this}.endsWith({0})"
+                property "translation.sql" "({this} NOT LIKE '%' || {0} ESCAPE '/' OR {this} IS NULL)"
+                property unknownSemantic "true";
+    public boolean doesNotStartWith(ilog.rules.brl.Character arg)
+                property noTruncation "true"
+                property "translation.irl" "({this}.length() == 0 || {this}.charAt(0) != {0})"
+                property "translation.sql" "({this} NOT LIKE {0} || '%' ESCAPE '/' OR {this} IS NULL)"
+                property unknownSemantic "true";
+    public boolean doesNotStartWith(ilog.rules.brl.String arg)
+                property noTruncation "true"
+                property "translation.irl" "!{this}.startsWith({0})"
+                property "translation.sql" "({this} NOT LIKE {0} || '%' ESCAPE '/' OR {this} IS NULL)"
+                property unknownSemantic "true";
+    public boolean endsWith(ilog.rules.brl.Character arg)
+                property noTruncation "true"
+                property "translation.irl" "({this}.length() > 0 && {this}.charAt({this}.length()-1) == {0})"
+                property "translation.sql" "({this} LIKE '%' || {0} ESCAPE '/' AND {this} IS NOT NULL)"
+                property unknownSemantic "true";
+    public boolean endsWith(ilog.rules.brl.String arg)
+                property noTruncation "true"
+                property "translation.irl" "{this}.endsWith({0})"
+                property "translation.sql" "({this} LIKE '%' || {0} ESCAPE '/' AND {this} IS NOT NULL)"
+                property unknownSemantic "true";
+    public boolean is(ilog.rules.brl.Object arg)
+                property "translation.irl" "({this}.equals({0}))"
+                property "translation.sql" "({this} LIKE {0} ESCAPE '/' AND {this} IS NOT NULL)";
+    public boolean isEmpty()
+                property "translation.irl" "({this} == null || {this}.length()==0)"
+                property "translation.sql" "{this} IS NULL"
+                property unknownSemantic "true";
+    public boolean isNot(ilog.rules.brl.Object arg)
+                property "translation.irl" "!({this}.equals({0}))"
+                property "translation.sql" "({this} NOT LIKE {0} ESCAPE '/' OR {this} IS NULL)";
+    public boolean isNotEmpty()
+                property "translation.irl" "({this} != null && {this}.length()>0)"
+                property "translation.sql" "{this} IS NOT NULL"
+                property unknownSemantic "true";
+    public int length()
+                property "translation.irl" "{this}.length()";
+    public ilog.rules.brl.String plus(ilog.rules.brl.String arg)
+                property default "true"
+                property excludeFromPrediction "true"
+                property "translation.irl" "({this} + {0})"
+                property "translation.sql" "({this} || {0})";
+    public boolean startsWith(ilog.rules.brl.Character arg)
+                property noTruncation "true"
+                property "translation.irl" "({this}.length() > 0 && {this}.charAt(0) == {0})"
+                property "translation.sql" "({this} LIKE {0} || '%' ESCAPE '/' AND {this} IS NOT NULL)"
+                property unknownSemantic "true";
+    public boolean startsWith(ilog.rules.brl.String arg)
+                property noTruncation "true"
+                property "translation.irl" "{this}.startsWith({0})"
+                property "translation.sql" "({this} LIKE {0} || '%' ESCAPE '/' AND {this} IS NOT NULL)"
+                property unknownSemantic "true";
+}
+
+public final class System
+        property excludeFromPrediction "true"
+        property hiddenType "true"
+        property valueType "true"
+        property vocabularyClass "true"
+{
+    public static void emitEvent(com.ibm.ia.model.Event evt)
+                property Style "marker";
+    public static void printMessage(string message)
+                property Style "marker";
+}
+
+public class Time
+        property dtCheckerDescriptor "ilog.rules.dt.model.services.check.descriptor.IlrDTTimeCheckerDescriptor"
+        property valueDescriptor "ilog.rules.brl.value.descriptor.IlrLocalTimeValueDescriptor"
+        property valueFormatter "{0,time}"
+        property "valueTranslator.irl" "ilog.rules.brl.translation.codegen.IlrIRLDateTranslator"
+        property valueType "true"
+        property vocabularyClass "true"
+{
+    public Time(java.util.Date date)
+                property "factory.default" "true";
+    public Time(ilog.rules.brl.Time time);
+    public Time(long date);
+    public boolean after(ilog.rules.brl.Time after)
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) > 0"
+                property unknownSemantic "true";
+    public boolean afterOrEquals(ilog.rules.brl.Time after)
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) >= 0"
+                property unknownSemantic "true";
+    public boolean before(ilog.rules.brl.Time before)
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) < 0"
+                property unknownSemantic "true";
+    public boolean beforeOrEquals(ilog.rules.brl.Time before)
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) <= 0"
+                property unknownSemantic "true";
+    public int compareTo(java.util.Date o);
+    public int compareTo(ilog.rules.brl.Time arg);
+    public boolean is(ilog.rules.brl.Object arg)
+                property "translation.irl" "{this}.compareTo({0}) == 0";
+    public boolean isBetweenEE(ilog.rules.brl.Time after, ilog.rules.brl.Time before)
+                property noTruncation "true"
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "({this}.compareTo({0}) > 0 && {this}.compareTo({1}) < 0)"
+                property unknownSemantic "true";
+    public boolean isBetweenEI(ilog.rules.brl.Time after, ilog.rules.brl.Time before)
+                property noTruncation "true"
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "({this}.compareTo({0}) > 0 && {this}.compareTo({1}) <= 0)"
+                property unknownSemantic "true";
+    public boolean isBetweenIE(ilog.rules.brl.Time after, ilog.rules.brl.Time before)
+                property noTruncation "true"
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "({this}.compareTo({0}) >= 0 && {this}.compareTo({1}) < 0)"
+                property unknownSemantic "true";
+    public boolean isBetweenII(ilog.rules.brl.Time after, ilog.rules.brl.Time before)
+                property noTruncation "true"
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "({this}.compareTo({0}) >= 0 && {this}.compareTo({1}) <= 0)"
+                property unknownSemantic "true";
+    public boolean isNot(ilog.rules.brl.Object arg)
+                property "translation.irl" "{this}.compareTo({0}) != 0";
+}
+
+public class UniversalDate
+        extends ilog.rules.brl.Date
+        property valueDescriptor "ilog.rules.brl.value.descriptor.IlrUniversalDateValueDescriptor"
+        property valueEditor "ilog.rules.brl.ui.value.editor.IlrUniversalDateValueEditor"
+        property "valueTranslator.irl" "ilog.rules.brl.translation.codegen.IlrIRLUniversalDateTranslator"
+        property valueType "true"
+        property vocabularyClass "true"
+{
+    public UniversalDate(ilog.rules.brl.Date date);
+    public UniversalDate(java.util.Date date)
+                property "factory.default" "true";
+    public UniversalDate(long date);
+    public int compareTo(ilog.rules.brl.Date o);
+    public int compareTo(java.util.Date o);
+}
+
+public class UniversalTime
+        property dtCheckerDescriptor "ilog.rules.dt.model.services.check.descriptor.IlrDTTimeCheckerDescriptor"
+        property valueDescriptor "ilog.rules.brl.value.descriptor.IlrUniversalTimeValueDescriptor"
+        property valueFormatter "{0,time,long}"
+        property "valueTranslator.irl" "ilog.rules.brl.translation.codegen.IlrIRLUniversalDateTranslator"
+        property valueType "true"
+        property vocabularyClass "true"
+{
+    public UniversalTime(java.util.Date date)
+                property "factory.default" "true";
+    public UniversalTime(ilog.rules.brl.UniversalTime time);
+    public UniversalTime(long date);
+    public boolean after(ilog.rules.brl.UniversalTime after)
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) > 0"
+                property unknownSemantic "true";
+    public boolean afterOrEquals(ilog.rules.brl.UniversalTime after)
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) >= 0"
+                property unknownSemantic "true";
+    public boolean before(ilog.rules.brl.UniversalTime before)
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) < 0"
+                property unknownSemantic "true";
+    public boolean beforeOrEquals(ilog.rules.brl.UniversalTime before)
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) <= 0"
+                property unknownSemantic "true";
+    public int compareTo(java.util.Date o);
+    public int compareTo(ilog.rules.brl.UniversalTime o);
+    public boolean is(ilog.rules.brl.Object arg)
+                property "translation.irl" "{this}.compareTo({0}) == 0";
+    public boolean isBetweenEE(ilog.rules.brl.UniversalTime after, ilog.rules.brl.UniversalTime before)
+                property noTruncation "true"
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "({this}.compareTo({0}) > 0 && {this}.compareTo({1}) < 0)"
+                property unknownSemantic "true";
+    public boolean isBetweenEI(ilog.rules.brl.UniversalTime after, ilog.rules.brl.UniversalTime before)
+                property noTruncation "true"
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "({this}.compareTo({0}) > 0 && {this}.compareTo({1}) <= 0)"
+                property unknownSemantic "true";
+    public boolean isBetweenIE(ilog.rules.brl.UniversalTime after, ilog.rules.brl.UniversalTime before)
+                property noTruncation "true"
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "({this}.compareTo({0}) >= 0 && {this}.compareTo({1}) < 0)"
+                property unknownSemantic "true";
+    public boolean isBetweenII(ilog.rules.brl.UniversalTime after, ilog.rules.brl.UniversalTime before)
+                property noTruncation "true"
+                property propagateAssignableArgumentType "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "({this}.compareTo({0}) >= 0 && {this}.compareTo({1}) <= 0)"
+                property unknownSemantic "true";
+    public boolean isNot(ilog.rules.brl.Object arg)
+                property "translation.irl" "{this}.compareTo({0}) != 0";
+}
+
+public class Year
+        property alias "integer"
+        property valueDescriptor "ilog.rules.brl.value.descriptor.IlrNumberifiedValueDescriptor"
+        property valueFormatter "{0,number,#0}"
+        property "valueTranslator.irl" "ilog.rules.brl.translation.codegen.IlrIRLYearTranslator"
+        property valueType "true"
+        property vocabularyClass "true"
+{
+    public Year(java.util.Date date)
+                property "factory.default" "true";
+    public Year(ilog.rules.brl.Year year);
+    public Year(long date);
+    public boolean after(ilog.rules.brl.Year after)
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) > 0"
+                property unknownSemantic "true";
+    public boolean afterOrEquals(ilog.rules.brl.Year after)
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) >= 0"
+                property unknownSemantic "true";
+    public boolean before(ilog.rules.brl.Year before)
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) < 0"
+                property unknownSemantic "true";
+    public boolean beforeOrEquals(ilog.rules.brl.Year before)
+                property "rve.keepInModel" "true"
+                property "translation.irl" "{this}.compareTo({0}) <= 0"
+                property unknownSemantic "true";
+    public int compareTo(java.util.Date o);
+    public int compareTo(ilog.rules.brl.Year arg)
+                property propagateArgumentType "true";
+    public boolean is(ilog.rules.brl.Object arg)
+                property "translation.irl" "{this}.compareTo({0}) == 0";
+    public boolean isBetweenEE(ilog.rules.brl.Year after, ilog.rules.brl.Year before)
+                property noTruncation "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "({this}.compareTo({0}) > 0 && {this}.compareTo({1}) < 0)"
+                property unknownSemantic "true";
+    public boolean isBetweenEI(ilog.rules.brl.Year after, ilog.rules.brl.Year before)
+                property noTruncation "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "({this}.compareTo({0}) > 0 && {this}.compareTo({1}) <= 0)"
+                property unknownSemantic "true";
+    public boolean isBetweenIE(ilog.rules.brl.Year after, ilog.rules.brl.Year before)
+                property noTruncation "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "({this}.compareTo({0}) >= 0 && {this}.compareTo({1}) < 0)"
+                property unknownSemantic "true";
+    public boolean isBetweenII(ilog.rules.brl.Year after, ilog.rules.brl.Year before)
+                property noTruncation "true"
+                property "rve.keepInModel" "true"
+                property "translation.irl" "({this}.compareTo({0}) >= 0 && {this}.compareTo({1}) <= 0)"
+                property unknownSemantic "true";
+    public boolean isNot(ilog.rules.brl.Object arg)
+                property "translation.irl" "{this}.compareTo({0}) != 0";
+}
+
+package ilog.rules.engine;
+
+
+public interface IlrAgendaFilter
+{
+    public boolean toFire(ilog.rules.engine.IlrRuleInstance arg);
+}
+
+public interface IlrCollection
+{
+    public void addElement(object arg);
+    public void removeElement(object arg);
+    public void updateElement(object arg);
+}
+
+public class IlrContext
+        implements java.io.Serializable
+{
+    public readonly boolean agendaNotEmpty;
+    public readonly int connectedToolNumber;
+    public readonly ilog.rules.engine.IlrTask currentTask;
+    public ilog.rules.engine.IlrExceptionHandler exceptionHandler;
+    public readonly int firedRulesCount
+                property deprecated "As of IBM Decision Server 8.5, event processing is deprecated";
+    public readonly ilog.rules.engine.IlrRuleInstance firstInstance;
+    public readonly ilog.rules.engine.IlrTask mainTask;
+    public java.io.PrintWriter out
+                property deprecated "As of IBM Decision Server 8.0.1, the method 'note(String)' should be used";
+    public writeonly ilog.rules.engine.IlrParameterMap parameters;
+    public readonly ilog.rules.engine.IlrParameterMap returnValues;
+    public readonly boolean ruleflowCompleted;
+    public writeonly ilog.rules.engine.IlrExceptionHandler ruleflowExceptionHandler;
+    public ilog.rules.engine.IlrRuleset ruleset;
+    public writeonly long time
+                property deprecated "As of IBM Decision Server 7.5, event processing is deprecated";
+    public readonly boolean usingFlow;
+    public IlrContext(ilog.rules.engine.IlrRuleset ruleset);
+    public IlrContext()
+                property deprecated "As of ILOG JRules 7.1, this way of constructing a context with an empty ruleset is deprecated";
+    public void addNoteHandler(ilog.rules.engine.IlrNoteHandler handler);
+    public void cleanRulesetVariables();
+    public int connectTool(ilog.rules.engine.IlrTool tool)
+                throws ilog.rules.engine.IlrToolConnectionException;
+    public int connectTool(ilog.rules.engine.IlrToolFactory toolFactory);
+    public int connectTool(ilog.rules.engine.IlrToolFactory toolFactory, string name);
+    public void disconnectTool(int toolID);
+    public void disconnectTools();
+    public void end();
+    public void endCurrentTask();
+    public java.util.Enumeration enumerateInstances();
+    public java.util.Enumeration enumerateObjects();
+    public ilog.rules.engine.IlrParameterMap execute(string name);
+    public ilog.rules.engine.IlrParameterMap execute();
+    public object executeMain(object arg)
+                throws ilog.rules.engine.IlrNoSuchFunctionException;
+    public object executeMain(string pkgName, object arg)
+                throws ilog.rules.engine.IlrNoSuchFunctionException;
+    public ilog.rules.engine.IlrParameterMap executeTask();
+    public int fireAllRules(ilog.rules.engine.IlrAgendaFilter filter);
+    public int fireAllRules();
+    public ilog.rules.engine.IlrRuleInstance fireRule(ilog.rules.engine.IlrAgendaFilter filter);
+    public ilog.rules.engine.IlrRuleInstance fireRule();
+    public int fireRules(ilog.rules.engine.IlrRule[] rules);
+    public static ilog.rules.engine.IlrNoteHandler getDefaultNoteHandler();
+    public ilog.rules.engine.IlrEvent getEvent(object object)
+                property deprecated "As of IBM Decision Server 7.5, event processing is deprecated";
+    public java.lang.Object[] getObjects(ilog.rules.bom.IlrClass clazz);
+    public object getParameterValue(string name);
+    public ilog.rules.engine.IlrRuleset getRuleset();
+    public ilog.rules.engine.IlrTask getTask(string name);
+    public boolean hasInstances(ilog.rules.engine.IlrRule rule);
+    public void insert(object object);
+    public ilog.rules.engine.IlrEvent insertEvent(object object)
+                property deprecated "As of IBM Decision Server 7.5, event processing is deprecated";
+    public ilog.rules.engine.IlrEvent insertEvent(long timestamp, object object)
+                property deprecated "As of IBM Decision Server 7.5, event processing is deprecated";
+    public object insertLogical(object object)
+                property deprecated "true";
+    public object invokeFunction(string name, java.lang.Object[] arguments)
+                throws ilog.rules.engine.IlrNoSuchFunctionException;
+    public boolean isRuleSelected(ilog.rules.engine.IlrRule rule);
+    public boolean isTaskCompleted(string name);
+    public long nextTime(long increment)
+                property deprecated "As of IBM Decision Server 7.5, event processing is deprecated";
+    public long nextTime()
+                property deprecated "As of IBM Decision Server 7.5, event processing is deprecated";
+    public void note(string note);
+    public void notifyChannel(object message, string channel);
+    public void refreshAgenda();
+    public void removeAllInstances();
+    public void removeAllNoteHandlers();
+    public void removeInstance(ilog.rules.engine.IlrRuleInstance instance);
+    public void removeInstances(ilog.rules.engine.IlrRule rule);
+    public void removeNoteHandler(ilog.rules.engine.IlrNoteHandler handler);
+    public void reset();
+    public void resetRuleflow();
+    public void retract(object object);
+    public void retractAll();
+    public void retractEvent(object object)
+                property deprecated "As of IBM Decision Server 7.5, event processing is deprecated";
+    public void send(object object)
+                throws ilog.rules.engine.IlrUserActionException;
+    public void send(string message, object object)
+                throws ilog.rules.engine.IlrUserActionException;
+    public void setMainTask(string name);
+    public void setParameterValue(string name, object value);
+    public void setParameters(ilog.rules.engine.IlrParameterMap params);
+    public long time()
+                property deprecated "As of IBM Decision Server 7.5, event processing is deprecated";
+    public void update(object object);
+    public void update(object object, boolean refresh);
+    public void updateContext(boolean refresh);
+    public void updateContext();
+}
+
+public class IlrDefaultCollector
+        implements ilog.rules.engine.IlrCollection, java.io.Serializable, java.util.Collection
+{
+    public readonly boolean empty;
+    public IlrDefaultCollector();
+    public boolean add(object arg);
+    public boolean addAll(java.util.Collection arg);
+    public void addElement(object arg);
+    public void clear();
+    public boolean contains(object arg);
+    public boolean containsAll(java.util.Collection arg);
+    public java.util.Enumeration copyElements();
+    public java.util.Enumeration elements();
+    public boolean equals(object arg);
+    public int hashCode();
+    public java.util.Iterator iterator();
+    public boolean remove(object arg);
+    public boolean removeAll(java.util.Collection arg);
+    public void removeElement(object arg);
+    public boolean retainAll(java.util.Collection arg);
+    public int size();
+    public java.lang.Object[] toArray(java.lang.Object[] arg);
+    public java.lang.Object[] toArray();
+    public void updateElement(object arg);
+}
+
+public class IlrDefaultEvent
+        implements ilog.rules.engine.IlrEvent, java.io.Serializable
+        property deprecated "As of IBM Decision Server 7.5, event processing is deprecated"
+{
+    public object object;
+    public long timestamp;
+    public IlrDefaultEvent(object arg1, long arg2);
+    public object object();
+    public long time();
+}
+
+public interface IlrEvent
+        property deprecated "As of IBM Decision Server 7.5, event processing is deprecated"
+{
+    public long time();
+}
+
+public interface IlrNoteHandler
+{
+    public void note(ilog.rules.engine.IlrContext context, string message);
+}
+
+public class IlrPackage
+{
+    public readonly ilog.rules.engine.IlrFunction[] allFunctions;
+    public readonly ilog.rules.engine.IlrRule[] allRules;
+    public readonly ilog.rules.engine.IlrTask[] allTasks;
+    public readonly boolean defaultPackage;
+    public readonly string name;
+    public readonly java.util.Iterator ruleIterator;
+    public readonly int ruleNumber;
+    public readonly ilog.rules.engine.IlrRuleset ruleset;
+    public readonly ilog.rules.engine.IlrRulesetParameter[] variables;
+    public boolean containsRule(ilog.rules.engine.IlrRule rule);
+    public ilog.rules.engine.IlrRule getRule(string ruleName);
+    public ilog.rules.engine.IlrTask getTask(string name);
+}
+
+public class IlrParameterMap
+        implements java.io.Serializable
+{
+    public IlrParameterMap();
+    public void clear();
+    public boolean getBooleanValue(string arg);
+    public byte getByteValue(string arg);
+    public char getCharValue(string arg);
+    public double getDoubleValue(string arg);
+    public float getFloatValue(string arg);
+    public int getIntValue(string arg);
+    public long getLongValue(string arg);
+    public object getObjectValue(string arg);
+    public short getShortValue(string arg);
+    public string getStringValue(string arg);
+    public java.util.Set keySet();
+    public void setParameter(string arg1, object arg2);
+    public void setParameter(string arg1, string arg2);
+    public void setParameter(string arg1, boolean arg2);
+    public void setParameter(string arg1, byte arg2);
+    public void setParameter(string arg1, char arg2);
+    public void setParameter(string arg1, double arg2);
+    public void setParameter(string arg1, float arg2);
+    public void setParameter(string arg1, int arg2);
+    public void setParameter(string arg1, long arg2);
+    public void setParameter(string arg1, short arg2);
+}
+
+public interface IlrPriorityValues
+{
+    public static final readonly int high;
+    public static final readonly int low;
+    public static final readonly int maximum;
+    public static final readonly int minimum;
+}
+
+public class IlrRule
+{
+    public readonly string formalComment;
+    public readonly string name;
+    public readonly ilog.rules.engine.IlrPackage @package;
+    public readonly ilog.rules.factory.IlrPropertyList properties;
+    public readonly string shortName;
+    public object getPropertyValue(string name);
+}
+
+public class IlrRuleInstance
+{
+    public readonly java.lang.Object[] objects;
+    public readonly int priority;
+    public readonly ilog.rules.engine.IlrRule rule;
+    public readonly string ruleName;
+    public void fire();
+}
+
+public class IlrRuleset
+        implements java.io.Serializable
+{
+    public readonly java.util.Vector allContexts domain 0,*;
+    public readonly ilog.rules.engine.IlrFunction[] allFunctions;
+    public readonly ilog.rules.engine.IlrRule[] allRules;
+    public readonly ilog.rules.engine.IlrTask[] allTasks;
+    public writeonly string application;
+    public readonly java.lang.Class contextClass;
+    public readonly ilog.rules.engine.IlrPackage defaultPackage;
+    public readonly java.util.Map hierarchicalProperties;
+    public readonly boolean locked;
+    public readonly int messageNumber;
+    public java.io.PrintWriter messageWriter;
+    public string name;
+    public readonly ilog.rules.engine.IlrPackage[] packages;
+    public readonly ilog.rules.factory.IlrPropertyList properties;
+    public readonly ilog.rules.factory.IlrReflect reflect;
+    public ilog.rules.factory.IlrReflectClass reflectContextClass;
+    public ilog.rules.util.resources.IlrResources resources;
+    public readonly java.util.Iterator ruleIterator;
+    public readonly int ruleNumber;
+    public readonly ilog.rules.engine.IlrRulesetParameter[] rulesetSignature;
+    public readonly ilog.rules.engine.IlrRulesetParameter[] signature
+                property deprecated "true";
+    public IlrRuleset(java.lang.Class arg)
+                property deprecated "Context subclassing is deprecated; use ruleset variables to hold execution data";
+    public IlrRuleset(ilog.rules.bom.IlrClass arg)
+                property deprecated "Context subclassing is deprecated; use ruleset variables to hold execution data";
+    public IlrRuleset(ilog.rules.factory.IlrReflect arg);
+    public IlrRuleset(ilog.rules.engine.IlrRuleset arg);
+    public IlrRuleset();
+    public synchronized void addRule(ilog.rules.engine.IlrRule arg)
+                property deprecated "As of ILOG JRules 6.5 this method has been deprecated, considering the severe restrictions on its usage";
+    public synchronized void addRules(ilog.rules.engine.IlrRule[] arg)
+                property deprecated "As of ILOG JRules 6.5 this method has been deprecated, considering the severe restrictions on its usage";
+    public boolean containsRule(ilog.rules.engine.IlrRule arg);
+    public synchronized ilog.rules.engine.IlrFunction[] getAllFunctions(boolean arg);
+    public boolean getBooleanProperty(string arg1, boolean arg2);
+    public double getDoubleProperty(string arg1, double arg2);
+    public synchronized ilog.rules.engine.IlrFunction getFunction(string arg1, java.lang.Class[] arg2);
+    public ilog.rules.factory.IlrHierarchicalProperty getHierarchicalProperty(string arg);
+    public int getIntProperty(string arg1, int arg2);
+    public ilog.rules.engine.IlrPackage getPackage(string arg);
+    public object getProperty(string arg1, object arg2);
+    public ilog.rules.engine.IlrRule getRule(string arg);
+    public ilog.rules.engine.IlrRulesetParameter[] getRulesetVariables(int arg);
+    public string getStringProperty(string arg1, string arg2);
+    public synchronized ilog.rules.engine.IlrTask getTask(string arg);
+    public synchronized ilog.rules.factory.IlrRulesetFactory makeFactory();
+    public synchronized void mergeRules(ilog.rules.engine.IlrRuleset arg)
+                property deprecated "As of ILOG JRules 6.5 this method has been deprecated, considering the severe restrictions on its usage";
+    public synchronized boolean optimize(ilog.rules.util.engine.IlrRulesetOptimConfig arg);
+    public synchronized boolean parseFactory(ilog.rules.factory.IlrRulesetFactory arg);
+    public synchronized boolean parseFile(java.io.File arg);
+    public synchronized boolean parseFileName(string arg);
+    public synchronized boolean parseReader(java.io.Reader arg);
+    public synchronized boolean parseStream(java.io.InputStream arg);
+    public synchronized boolean parseString(string arg);
+    public synchronized boolean parseURL(java.net.URL arg);
+    public void removeMetadata(boolean arg1, boolean arg2);
+    public void removeMetadata();
+    public synchronized void removeRule(ilog.rules.engine.IlrRule arg)
+                property deprecated "As of ILOG JRules 6.5 this method has been deprecated, considering the severe restrictions on its usage";
+    public synchronized void removeRules(ilog.rules.engine.IlrRule[] arg)
+                property deprecated "As of ILOG JRules 6.5 this method has been deprecated, considering the severe restrictions on its usage";
+    public synchronized void replaceRule(ilog.rules.engine.IlrRule arg)
+                property deprecated "As of ILOG JRules 6.5 this method has been deprecated, considering the severe restrictions on its usage";
+}
+
+public abstract class IlrTask
+{
+    public readonly string formalComment;
+    public readonly string name;
+    public readonly ilog.rules.engine.IlrPackage @package;
+    public readonly ilog.rules.factory.IlrPropertyList properties;
+    public readonly string shortName;
+    public object getProperty(string name);
+}
+
+public interface IlrTupleIterator
+{
+    public boolean hasNext();
+    public void next(java.lang.Object[] arg);
+}
+
+public final class IlrWatchEvent
+        implements java.io.Serializable
+        property deprecated "As of IBM Decision Server 7.5, event processing is deprecated"
+{
+    public long time();
+}
+
+package ilog.rules.factory;
+
+
+public interface IlrBindingObject
+{
+    public readonly abstract ilog.rules.bom.IlrClass XOMClass;
+    public readonly abstract string XOMClassName;
+    public ilog.rules.bom.IlrClass getXOMClass(ilog.rules.bom.IlrObjectModel arg);
+}
+
+public class IlrPropertyList
+        implements java.io.Serializable
+{
+
+    public final class Entry
+            implements java.io.Serializable
+    {
+        public readonly string key;
+        public object value;
+        public boolean equals(object arg);
+        public int hashCode();
+    }
+    public readonly boolean empty;
+    public readonly java.util.ArrayList hierarchicalProperties domain 0,*;
+    public IlrPropertyList();
+    public void clear();
+    public boolean containsKey(string arg);
+    public boolean containsValue(object arg);
+    public ilog.rules.factory.IlrPropertyList copy();
+    public java.util.Enumeration elements();
+    public ilog.rules.factory.IlrPropertyList.Entry get(string arg);
+    public object get(string arg1, object arg2);
+    public boolean getBoolean(string arg1, boolean arg2);
+    public char getChar(string arg1, char arg2);
+    public double getDouble(string arg1, double arg2);
+    public float getFloat(string arg1, float arg2);
+    public int getInt(string arg1, int arg2);
+    public long getLong(string arg1, long arg2);
+    public string getString(string arg1, string arg2);
+    public ilog.rules.factory.IlrPropertyList.Entry put(string arg1, object arg2);
+    public ilog.rules.factory.IlrPropertyList.Entry put(string arg1, object arg2, boolean arg3);
+    public ilog.rules.factory.IlrPropertyList.Entry put(string arg1, object arg2, ilog.rules.factory.IlrStaticFieldValue arg3, java.util.ArrayList arg4);
+    public ilog.rules.factory.IlrPropertyList.Entry put(string arg1, object arg2, boolean arg3, ilog.rules.factory.IlrStaticFieldValue arg4, java.util.ArrayList arg5);
+    public void putAll(ilog.rules.factory.IlrPropertyList arg);
+    public void putBoolean(string arg1, boolean arg2);
+    public void putChar(string arg1, char arg2);
+    public void putDouble(string arg1, double arg2);
+    public void putFloat(string arg1, float arg2);
+    public void putInt(string arg1, int arg2);
+    public void putLong(string arg1, long arg2);
+    public void putString(string arg1, string arg2);
+    public ilog.rules.factory.IlrPropertyList.Entry remove(string arg);
+    public int size();
+}
+
+public class IlrReflect
+        implements ilog.rules.bom.IlrObjectModel
+{
+}
+
+package ilog.rules.util;
+
+
+public class IlrInterval
+{
+    public readonly object leftBound;
+    public readonly boolean leftOpen;
+    public readonly object rightBound;
+    public readonly boolean rightOpen;
+    public IlrInterval(object arg1, object arg2, boolean arg3, boolean arg4);
+}
+
+package ilog.rules.util.engine;
+
+
+public class IlrHashUtil
+{
+    public static int castValueIntoPositiveInt(object obj);
+}
+
+package ilog.rules.xml;
+
+
+public class IlrXmlObject
+        implements ilog.rules.factory.IlrBindingObject, java.lang.Cloneable, java.io.Serializable
+{
+    public static final readonly object NIL_VALUE;
+    public static final readonly int UNKNOWN_POSITIVE_VALUE;
+    public readonly ilog.rules.bom.IlrClass XOMClass
+                property "dataio.ignore" "true";
+    public readonly string XOMClassName
+                property "dataio.ignore" "true";
+    public object clone();
+    public boolean equals(object arg);
+    public string getAbsoluteXPath(boolean arg);
+    public string getRelativeXPath(boolean arg);
+    public ilog.rules.bom.IlrClass getXOMClass(ilog.rules.bom.IlrObjectModel arg);
+    public string printToString();
+    public void setAsRootElement(string arg1, string arg2, string arg3);
+    public string toString();
+}
+
+package java.io;
+
+
+public class FilterOutputStream
+        extends java.io.OutputStream
+{
+    public FilterOutputStream(java.io.OutputStream out);
+    public void close()
+                throws java.io.IOException;
+    public void flush()
+                throws java.io.IOException;
+    public void write(byte[] b)
+                throws java.io.IOException;
+    public void write(int b)
+                throws java.io.IOException;
+    public void write(byte[] b, int off, int len)
+                throws java.io.IOException;
+}
+
+public class IOException
+        extends java.lang.Exception
+{
+    public IOException(string s);
+    public IOException();
+}
+
+public abstract class InputStream
+{
+    public int available()
+                throws java.io.IOException;
+    public void close()
+                throws java.io.IOException;
+    public void mark(int readlimit);
+    public boolean markSupported();
+    public int read(byte[] b)
+                throws java.io.IOException;
+    public int read(byte[] b, int off, int len)
+                throws java.io.IOException;
+    public abstract int read()
+                throws java.io.IOException;
+    public void reset()
+                throws java.io.IOException;
+    public long skip(long n)
+                throws java.io.IOException;
+}
+
+public abstract class OutputStream
+{
+    public void close()
+                throws java.io.IOException;
+    public void flush()
+                throws java.io.IOException;
+    public void write(byte[] b)
+                throws java.io.IOException;
+    public abstract void write(int b)
+                throws java.io.IOException;
+    public void write(byte[] b, int off, int len)
+                throws java.io.IOException;
+}
+
+public class PrintStream
+        extends java.io.FilterOutputStream
+{
+    public PrintStream(java.io.OutputStream out);
+    public PrintStream(java.io.OutputStream out, boolean autoFlush);
+    public boolean checkError();
+    public void close();
+    public void flush();
+    public void print(object obj);
+    public void print(string s);
+    public void print(boolean b);
+    public void print(char c);
+    public void print(char[] s);
+    public void print(double d);
+    public void print(float f);
+    public void print(int i);
+    public void print(long l);
+    public void println(object x);
+    public void println(string x);
+    public void println(boolean x);
+    public void println(char x);
+    public void println(char[] x);
+    public void println(double x);
+    public void println(float x);
+    public void println(int x);
+    public void println(long x);
+    public void println();
+    public void write(int b);
+    public void write(byte[] buf, int off, int len);
+}
+
+public class PrintWriter
+        extends java.io.Writer
+{
+    public PrintWriter(java.io.OutputStream arg);
+    public PrintWriter(java.io.Writer arg);
+    public PrintWriter(java.io.OutputStream arg1, boolean arg2);
+    public PrintWriter(java.io.Writer arg1, boolean arg2);
+    public boolean checkError();
+    public void close();
+    public void flush();
+    public void print(object arg);
+    public void print(string arg);
+    public void print(boolean arg);
+    public void print(char arg);
+    public void print(char[] arg);
+    public void print(double arg);
+    public void print(float arg);
+    public void print(int arg);
+    public void print(long arg);
+    public void println(object arg);
+    public void println(string arg);
+    public void println(boolean arg);
+    public void println(char arg);
+    public void println(char[] arg);
+    public void println(double arg);
+    public void println(float arg);
+    public void println(int arg);
+    public void println(long arg);
+    public void println();
+    public void write(string arg);
+    public void write(char[] arg);
+    public void write(int arg);
+    public void write(string arg1, int arg2, int arg3);
+    public void write(char[] arg1, int arg2, int arg3);
+}
+
+public interface Serializable
+        property "dataio.ignore" "true"
+{
+}
+
+public abstract class Writer
+{
+    public abstract void close()
+                throws java.io.IOException;
+    public abstract void flush()
+                throws java.io.IOException;
+    public void write(string arg)
+                throws java.io.IOException;
+    public void write(char[] arg)
+                throws java.io.IOException;
+    public void write(int arg)
+                throws java.io.IOException;
+    public void write(string arg1, int arg2, int arg3)
+                throws java.io.IOException;
+    public abstract void write(char[] arg1, int arg2, int arg3)
+                throws java.io.IOException;
+}
+

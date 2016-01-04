@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>Transaction Too Large</name>
+  <uuid>dc554aaf-2f7f-4f73-a694-a5c85464080e</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[when a transaction occurs , called 'the transaction'
+if
+    the amount of 'the transaction' is more than 5000
+then
+    define 'the exception' as a new exception where
+        the reason is "The transaction amount of " + the amount of 'the transaction' + " is too large." ,
+        the code is "R02" ;
+    emit a new authorization response where
+        the account is the account of 'the transaction' ,
+        the message is "R02: Transaction amount is too large" ,
+        the exception is 'the exception' ,
+        the transaction is 'the transaction' ;]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>

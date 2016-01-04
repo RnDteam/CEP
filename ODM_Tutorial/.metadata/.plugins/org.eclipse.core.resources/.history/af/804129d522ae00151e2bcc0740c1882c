@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessModelDefinition>
+    <Bmd><![CDATA[an account is a business entity identified by an id.]]></Bmd>
+</BusinessModelDefinition>

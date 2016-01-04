@@ -1,0 +1,2 @@
+define 'Average Transaction Amount Per Day' as the average amount of all transactions , 
+	where the date of each transaction is during the last period of 1 day

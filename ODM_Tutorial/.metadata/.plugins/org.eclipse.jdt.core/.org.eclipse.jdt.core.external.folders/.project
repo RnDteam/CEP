@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>.org.eclipse.jdt.core.external.folders</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>.link0</name>
+			<type>2</type>
+			<location>C:/Program Files/IBM/IBMIMShared/plugins/com.ibm.bdsl.core_8.8.0.0</location>
+		</link>
+		<link>
+			<name>.link1</name>
+			<type>2</type>
+			<location>C:/Program Files/IBM/IBMIMShared/plugins/com.ibm.bdsl.runtime_8.8.0.0</location>
+		</link>
+		<link>
+			<name>.link2</name>
+			<type>2</type>
+			<location>C:/Program Files/IBM/IBMIMShared/plugins/ilog.rules.brl.bom_8.8.0.0</location>
+		</link>
+		<link>
+			<name>.link3</name>
+			<type>2</type>
+			<location>C:/Program Files/IBM/IBMIMShared/plugins/ilog.rules.brl.brldf_8.8.0.0</location>
+		</link>
+		<link>
+			<name>.link4</name>
+			<type>2</type>
+			<location>C:/Program Files/IBM/IBMIMShared/plugins/ilog.rules.brl.parsing_8.8.0.0</location>
+		</link>
+		<link>
+			<name>.link5</name>
+			<type>2</type>
+			<location>C:/Program Files/IBM/IBMIMShared/plugins/ilog.rules.language.shared_8.8.0.0</location>
+		</link>
+		<link>
+			<name>.link6</name>
+			<type>2</type>
+			<location>C:/Program Files/IBM/IBMIMShared/plugins/ilog.rules.shared_8.8.0.0</location>
+		</link>
+		<link>
+			<name>.link7</name>
+			<type>2</type>
+			<location>C:/Program Files/IBM/IBMIMShared/plugins/ilog.rules.vocabulary.bom_8.8.0.0</location>
+		</link>
+		<link>
+			<name>.link8</name>
+			<type>2</type>
+			<location>C:/Program Files/IBM/IBMIMShared/plugins/ilog.rules.vocabulary.model_8.8.0.0</location>
+		</link>
+	</linkedResources>
+</projectDescription>
