@@ -8,7 +8,9 @@ import java.net.URLConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +25,9 @@ public class Main {
 		
 		httpHelper = new HTTPHelper();
 		System.out.println("Sending ...");
-		sendMessage();
+		//sendMessage();
+		
+		connectToDB();
 	}
 	
 	private static void connectToDB() {
@@ -41,22 +45,61 @@ public class Main {
 			System.err.println("mysql jdbc driver is missing");
 		}
 		
+		ArrayList<Parameters> paramList = new ArrayList<Parameters>();
+		
 		try {
 			connection = DriverManager.getConnection(databaseUrl, user, password);
 			
 			if	(connection != null) {
 				
 				Statement statement = connection.createStatement();
-				ResultSet rs = statement.executeQuery("select * from vehicles");
+				//ResultSet rs = statement.executeQuery("select eventName, accountId, country, amount, merchantId, merchantType, merchantLocation, eventMethod from transactions");
+				ResultSet rs = statement.executeQuery("select * from transactions");
 				
 				while (rs.next()) {
-					System.out.println(rs.toString());
+					System.out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4) + " " + rs.getString(5) + " " + rs.getString(6) + " " + rs.getString(7) + " " + rs.getString(8));
+					Parameters p1 = new Parameters();
+					
+					p1.setEventName(rs.getString(1));
+					p1.setMerchantId(rs.getString(2));
+					p1.setCountry(rs.getString(3));
+					p1.setMerchantType(rs.getString(4));
+					p1.setAccountId(rs.getString(5));
+					p1.setMerchantLocation(rs.getString(6));
+					p1.setAmount(rs.getString(7));
+					p1.setEventMethod(rs.getString(8));
+					
+					//System.out.println(p1.toString());
+					
+					paramList.add(p1);
 				}
 			}
 			
+			System.out.println("Succeeded");
 		} catch (Exception e) {
+			
 			e.printStackTrace();
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		
+		System.out.println("Finished getting data from DB");
+		
+		System.out.println("Starting POST and GET");
+		
+		for (int i = 0; i < paramList.size(); i++) {
+			httpHelper.postHTTPMessage(paramList.get(i));
+			httpHelper.sendHttpGet(paramList.get(i));
+		}
+		
+		System.out.println("Finished POST and GET");
+		
+		System.out.println("Finished");
 	}
 	
 	private static void sendMessage() {
@@ -83,6 +126,10 @@ public class Main {
 		p2.setMerchantLocation("Ashdod");
 		p2.setMerchantType("Store");
 		p2.setEventMethod("http");
+		
+		//use cep_try
+		//INSERT INTO transactions VALUES ('Transaction','accountId1','FR','2', 'Super', 'Valbonne', 'Store', 'http');
+		//INSERT INTO transactions VALUES ('Transaction','accountId2','IL','10000', 'Super', 'Ashdod', 'Store', 'http');
 		
 		Parameters[] params = new Parameters[] { p1, p2 };
 		

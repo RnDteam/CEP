@@ -1,0 +1,1 @@
+Add mysql-connector-java-5.1.38-bin.jar to project for connecting to DB
