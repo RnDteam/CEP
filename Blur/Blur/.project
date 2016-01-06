@@ -3,10 +3,9 @@
 	<name>Blur</name>
 	<comment></comment>
 	<projects>
-		<project>BlurBOM</project>
 		<project>Blur - Java Model</project>
-		<project>TestAgent</project>
-		<project>TestRuleAgent</project>
+		<project>BlurBOM</project>
+		<project>VehicleRuleAgent</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

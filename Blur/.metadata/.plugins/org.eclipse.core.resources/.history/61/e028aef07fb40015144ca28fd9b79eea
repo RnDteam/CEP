@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>Dispatcher</name>
+  <uuid>86fec546-5e0b-46b9-b1b5-faac6e2313bc</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[when a Traffic Camera Report occurs , called 'the report'
+definitions
+    set 'the vehicle' to the Vehicle of 'the report' ;
+    set 'the camera location' to the Location of 'the report' ;
+if
+    the Vehicle of 'the report' is not null
+then
+    set the Status of 'the vehicle' to ACTIVE ;
+    set the Location of 'the vehicle' to 'the camera location' ;
+    set the Last Seen of 'the vehicle' to the Timestamp of 'the report' ;
+    emit a new Known Vehicle Detected where 
+	the Id is 
+else
+    print "I am here";]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>

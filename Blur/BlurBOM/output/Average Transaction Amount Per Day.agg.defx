@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><aggregate xmlns="http://www.ibm.com/ia/AggregateDescriptor">
-  <name>defvarAveragex95Transactionx95Amountx95Perx95Day</name>
-  <verbalization>Average Transaction Amount Per Day</verbalization>
-  <type>double</type>
-  <kind>average</kind>
-</aggregate>

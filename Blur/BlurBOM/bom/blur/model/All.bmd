@@ -39,24 +39,33 @@ a Vehicle Type can be one of: MOTORCYCLE, JEEP, TRUCK.
 a Vehicle Details is a concept.
 a Vehicle Details has a Maker.
 a Vehicle Details has a Model.
-
 a Vehicle Details has a Type (a Vehicle Type).
 a Vehicle Details has a Year (date & time).
 a Vehicle Details has a Maximum Speed (numeric).
 
 a Vehicle Status can be one of: INACTIVE, ACTIVE.
-
+ 
 a Vehicle is a business entity identified by a License Plate Number.
 a Vehicle has a Location (a point).
 a Vehicle has a Status (a Vehicle Status).
+a Vehicle has a Details (a Vehicle Details).
+a Vehicle has a Last Seen (date & time).
 a Vehicle is related to a Person, named the Owner.
 a Vehicle is related to an Organization. 
 
 -- Traffic Camera Report
-a Trafiic Camera Report is a business event time-stamped by a Time (date & time).
-a Trafiic Camera Report has an Id (numeric).
-a Trafiic Camera Report has a Location (a point).
-a Trafiic Camera Report is related to a Vehicle.
+a Traffic Camera Report is a business event.
+a Traffic Camera Report has an Camera Id (numeric).
+a Traffic Camera Report has a Camera Location (a point).
+a Traffic Camera Report is related to a Vehicle.
+
+-- Vehicle Updated
+a Vehicle Updated is a business event.
+a Vehicle Updated is related to a Vehicle.
+
+-- Vehcile Created
+a Vehicle Created is a business event. 
+a Vehicle Created is related to a Vehicle.
 
 
 ]]></Bmd>
