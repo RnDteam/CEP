@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessModelDefinition>
+    <Bmd><![CDATA[a vehicle type can be one of: CAR, TRUCK, OTHER, MOTORBIKE.
+a activity status can be one of: INACTIVE, ACTIVE, RISK.
+
+a vehicle is a business entity identified by a plate number.
+a vehicle has a max speed on road (numeric).
+a vehicle has a type(a vehicle type).
+a vehicle has a status(an activity status).
+a vehicle is related to a person, named the owner.
+
+--a people is a business entity identified by id.
+
+a person is a business entity identified by a id.
+--a person is a people.
+a person has a status (an activity status).
+a person has a  manager(a boolean).
+a person has a activation time(date & time).
+
+a structure is a concept.
+a structure has a location(a point).
+ 
+a vehicle related event is a business event time-stamped by a time, related to a vehicle.
+
+a traffic camera report is a vehicle related event.
+a traffic camera report has a reporter camera.
+
+a person activation event is a business event related to a person.
+a person activation event has a activation time.
+]]></Bmd>
+</BusinessModelDefinition>

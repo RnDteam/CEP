@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><agent xmlns="http://www.ibm.com/ia/AgentDescriptor">
+  <name>vehicle_agent</name>
+  <kind>Rule</kind>
+  <entity>com.mod.Vehicle</entity>
+  <events>
+    <event>
+      <type>com.mod.VehicleRelatedEvent</type>
+      <mapping>{0}.vehicle.get$Id()</mapping>
+    </event>
+  </events>
+</agent>

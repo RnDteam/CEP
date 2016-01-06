@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>Process Traffic Camera Report</name>
+  <uuid>2790f7de-a43e-4586-a670-8d191835f4c8</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[when a traffic camera report occurs
+if 
+	the type of the vehicle is CAR 
+ and the owner of 'the vehicle' is manager
+	
+then set the status of 'the vehicle' to ACTIVE ;
+emit  a new person activation event where
+	the person is the owner of 'the vehicle';]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>

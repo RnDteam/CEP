@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: Mod-Solution.vehicle_agent
+Bundle-Version: 0.0.0
+

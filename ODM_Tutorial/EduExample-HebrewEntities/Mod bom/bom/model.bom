@@ -1,0 +1,204 @@
+property uuid "3f48a16e-f903-4727-ae1a-9c291f2a8fc5"
+property bdl_generated "true"
+package com.mod;
+
+
+public class ActivityStatus
+        property "de.generated" "true"
+        property "ia.enum" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/Mod%20bom/model"
+{
+    domain {static INACTIVE, static ACTIVE, static RISK}
+    public static final readonly com.mod.ActivityStatus ACTIVE
+                property "xsd.name" "ACTIVE"
+                property "xsd.order" "0";
+    public static final readonly com.mod.ActivityStatus INACTIVE
+                property "xsd.name" "INACTIVE"
+                property "xsd.order" "1";
+    public static final readonly com.mod.ActivityStatus RISK
+                property "xsd.name" "RISK"
+                property "xsd.order" "2";
+}
+
+public class Person
+        implements com.ibm.ia.model.Entity
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.entityElementName" "Person"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/Mod%20bom/model"
+{
+    public java.time.ZonedDateTime activationTime
+                property update "true"
+                property "xsd.name" "activationTime"
+                property "xsd.order" "0";
+    public string id
+                property "ia.entity.id" "true"
+                property update "true"
+                property "xsd.name" "id"
+                property "xsd.order" "1";
+    public boolean manager
+                property update "true"
+                property "xsd.name" "manager"
+                property "xsd.order" "2";
+    public com.mod.ActivityStatus status
+                property update "true"
+                property "xsd.name" "status"
+                property "xsd.order" "3";
+    public Person(string id)
+                property "dataio.default" "true";
+    public Person(java.time.ZonedDateTime activationTime, string id, boolean manager, com.mod.ActivityStatus status)
+                property groups "BALA"
+                property prototype "true";
+}
+
+public class PersonActivationEvent
+        implements com.ibm.ia.model.Event
+        property "brl.facets" "ilog.rules.brl.Date:timestamp"
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.eventElementName" "PersonActivationEvent"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/Mod%20bom/model"
+{
+    public string activationTime
+                property "xsd.name" "activationTime"
+                property "xsd.order" "0";
+    public com.mod.Person person
+                property "xsd.name" "person"
+                property "xsd.order" "1"
+                property "xsd.useMapping" "true";
+    public java.time.ZonedDateTime timestamp
+                property "ia.timestamp" "true"
+                property "xsd.name" "timestamp"
+                property "xsd.order" "2";
+    public PersonActivationEvent(java.time.ZonedDateTime timestamp)
+                property "dataio.default" "true";
+    public PersonActivationEvent(string activationTime, com.mod.Person person, java.time.ZonedDateTime timestamp)
+                property groups "BALA"
+                property prototype "true";
+}
+
+public class Structure
+        property "de.generated" "true"
+{
+    public com.ibm.geolib.geom.Point location
+                property update "true";
+    public Structure(com.ibm.geolib.geom.Point location)
+                property groups "BALA"
+                property prototype "true";
+    public Structure()
+                property "dataio.default" "true";
+}
+
+public class TrafficCameraReport
+        extends com.mod.VehicleRelatedEvent
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.eventElementName" "TrafficCameraReport"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/Mod%20bom/model"
+{
+    public string reporterCamera
+                property "xsd.name" "reporterCamera"
+                property "xsd.order" "0";
+    public TrafficCameraReport(java.time.ZonedDateTime time)
+                property "dataio.default" "true";
+    public TrafficCameraReport(string reporterCamera, java.time.ZonedDateTime time, com.mod.Vehicle vehicle)
+                property groups "BALA"
+                property prototype "true";
+}
+
+public class Vehicle
+        implements com.ibm.ia.model.Entity
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.entityElementName" "Vehicle"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/Mod%20bom/model"
+{
+    public double maxSpeedOnRoad
+                property update "true"
+                property "xsd.name" "maxSpeedOnRoad"
+                property "xsd.order" "0";
+    public com.mod.Person owner
+                property "ia.reference" "true"
+                property update "true"
+                property "xsd.name" "owner"
+                property "xsd.order" "1"
+                property "xsd.useMapping" "true";
+    public string plateNumber
+                property "ia.entity.id" "true"
+                property update "true"
+                property "xsd.name" "plateNumber"
+                property "xsd.order" "2";
+    public com.mod.ActivityStatus status
+                property update "true"
+                property "xsd.name" "status"
+                property "xsd.order" "3";
+    public com.mod.VehicleType type
+                property update "true"
+                property "xsd.name" "type"
+                property "xsd.order" "4";
+    public Vehicle(string plateNumber)
+                property "dataio.default" "true";
+    public Vehicle(double maxSpeedOnRoad, com.mod.Person owner, string plateNumber, com.mod.ActivityStatus status, com.mod.VehicleType type)
+                property groups "BALA"
+                property prototype "true";
+}
+
+public class VehicleRelatedEvent
+        implements com.ibm.ia.model.Event
+        property "brl.facets" "ilog.rules.brl.Date:time"
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.eventElementName" "VehicleRelatedEvent"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/Mod%20bom/model"
+{
+    public java.time.ZonedDateTime time
+                property "ia.timestamp" "true"
+                property "xsd.name" "time"
+                property "xsd.order" "0";
+    public com.mod.Vehicle vehicle
+                property "xsd.name" "vehicle"
+                property "xsd.order" "1"
+                property "xsd.useMapping" "true";
+    public VehicleRelatedEvent(java.time.ZonedDateTime time)
+                property "dataio.default" "true";
+    public VehicleRelatedEvent(java.time.ZonedDateTime time, com.mod.Vehicle vehicle)
+                property groups "BALA"
+                property prototype "true";
+}
+
+public class VehicleType
+        property "de.generated" "true"
+        property "ia.enum" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/Mod%20bom/model"
+{
+    domain {static CAR, static TRUCK, static OTHER, static MOTORBIKE}
+    public static final readonly com.mod.VehicleType CAR
+                property "xsd.name" "CAR"
+                property "xsd.order" "0";
+    public static final readonly com.mod.VehicleType MOTORBIKE
+                property "xsd.name" "MOTORBIKE"
+                property "xsd.order" "1";
+    public static final readonly com.mod.VehicleType OTHER
+                property "xsd.name" "OTHER"
+                property "xsd.order" "2";
+    public static final readonly com.mod.VehicleType TRUCK
+                property "xsd.name" "TRUCK"
+                property "xsd.order" "3";
+}
+

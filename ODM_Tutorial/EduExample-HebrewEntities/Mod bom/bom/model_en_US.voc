@@ -1,0 +1,74 @@
+uuid = 75f25458-2490-4c32-9d4a-bcb333492b78
+# com.mod.ActivityStatus
+com.mod.ActivityStatus#concept.label = activity status
+com.mod.ActivityStatus.ACTIVE#instance.label = ACTIVE
+com.mod.ActivityStatus.INACTIVE#instance.label = INACTIVE
+com.mod.ActivityStatus.RISK#instance.label = RISK
+
+# com.mod.Person
+com.mod.Person#concept.label = person
+com.mod.Person.Person(java.time.ZonedDateTime,java.lang.String,boolean,com.mod.ActivityStatus)#phrase.navigation = a new {person} where {0, activation time} {1, id} {2, manager} {3, status} 
+com.mod.Person.activationTime#phrase.action = set the activation time of {this} to {activation time}
+com.mod.Person.activationTime#phrase.navigation = {activation time} of {this}
+com.mod.Person.id#phrase.navigation = {id} of {this}
+com.mod.Person.manager#phrase.action = make it {manager} that {this} is manager
+com.mod.Person.manager#phrase.navigation = {this} is manager
+com.mod.Person.status#phrase.action = set the status of {this} to {status}
+com.mod.Person.status#phrase.clearer = clear the status of {this}
+com.mod.Person.status#phrase.navigation = {status} of {this}
+
+# com.mod.PersonActivationEvent
+com.mod.PersonActivationEvent#concept.label = person activation event
+com.mod.PersonActivationEvent.PersonActivationEvent(java.lang.String,com.mod.Person,java.time.ZonedDateTime)#phrase.navigation = a new {person activation event} where {0, activation time} {1, person} {2, timestamp} 
+com.mod.PersonActivationEvent.activationTime#phrase.action = set the activation time of {this} to {activation time}
+com.mod.PersonActivationEvent.activationTime#phrase.navigation = {activation time} of {this}
+com.mod.PersonActivationEvent.person#phrase.action = set the person of {this} to {person}
+com.mod.PersonActivationEvent.person#phrase.clearer = clear the person of {this}
+com.mod.PersonActivationEvent.person#phrase.navigation = {person} of {this}
+com.mod.PersonActivationEvent.timestamp#phrase.action = set the timestamp of {this} to {timestamp}
+com.mod.PersonActivationEvent.timestamp#phrase.navigation = {timestamp} of {this}
+
+# com.mod.Structure
+com.mod.Structure#concept.label = structure
+com.mod.Structure.Structure(com.ibm.geolib.geom.Point)#phrase.navigation = a new {structure} where {0, location} 
+com.mod.Structure.location#phrase.action = set the location of {this} to {location}
+com.mod.Structure.location#phrase.clearer = clear the location of {this}
+com.mod.Structure.location#phrase.navigation = {location} of {this}
+
+# com.mod.TrafficCameraReport
+com.mod.TrafficCameraReport#concept.label = traffic camera report
+com.mod.TrafficCameraReport.TrafficCameraReport(java.lang.String,java.time.ZonedDateTime,com.mod.Vehicle)#phrase.navigation = a new {traffic camera report} where {0, reporter camera} {1, time} {2, vehicle} 
+com.mod.TrafficCameraReport.reporterCamera#phrase.action = set the reporter camera of {this} to {reporter camera}
+com.mod.TrafficCameraReport.reporterCamera#phrase.navigation = {reporter camera} of {this}
+
+# com.mod.Vehicle
+com.mod.Vehicle#concept.label = vehicle
+com.mod.Vehicle.Vehicle(double,com.mod.Person,java.lang.String,com.mod.ActivityStatus,com.mod.VehicleType)#phrase.navigation = a new {vehicle} where {0, max speed on road} {1, owner} {2, plate number} {3, status} {4, type} 
+com.mod.Vehicle.maxSpeedOnRoad#phrase.action = set the max speed on road of {this} to {max speed on road}
+com.mod.Vehicle.maxSpeedOnRoad#phrase.navigation = {max speed on road} of {this}
+com.mod.Vehicle.owner#phrase.action = set the owner of {this} to {owner}
+com.mod.Vehicle.owner#phrase.clearer = clear the owner of {this}
+com.mod.Vehicle.owner#phrase.navigation = {owner} of {this}
+com.mod.Vehicle.plateNumber#phrase.navigation = {plate number} of {this}
+com.mod.Vehicle.status#phrase.action = set the status of {this} to {status}
+com.mod.Vehicle.status#phrase.clearer = clear the status of {this}
+com.mod.Vehicle.status#phrase.navigation = {status} of {this}
+com.mod.Vehicle.type#phrase.action = set the type of {this} to {type}
+com.mod.Vehicle.type#phrase.clearer = clear the type of {this}
+com.mod.Vehicle.type#phrase.navigation = {type} of {this}
+
+# com.mod.VehicleRelatedEvent
+com.mod.VehicleRelatedEvent#concept.label = vehicle related event
+com.mod.VehicleRelatedEvent.VehicleRelatedEvent(java.time.ZonedDateTime,com.mod.Vehicle)#phrase.navigation = a new {vehicle related event} where {0, time} {1, vehicle} 
+com.mod.VehicleRelatedEvent.time#phrase.action = set the time of {this} to {time}
+com.mod.VehicleRelatedEvent.time#phrase.navigation = {time} of {this}
+com.mod.VehicleRelatedEvent.vehicle#phrase.action = set the vehicle of {this} to {vehicle}
+com.mod.VehicleRelatedEvent.vehicle#phrase.clearer = clear the vehicle of {this}
+com.mod.VehicleRelatedEvent.vehicle#phrase.navigation = {vehicle} of {this}
+
+# com.mod.VehicleType
+com.mod.VehicleType#concept.label = vehicle type
+com.mod.VehicleType.CAR#instance.label = CAR
+com.mod.VehicleType.MOTORBIKE#instance.label = MOTORBIKE
+com.mod.VehicleType.OTHER#instance.label = OTHER
+com.mod.VehicleType.TRUCK#instance.label = TRUCK

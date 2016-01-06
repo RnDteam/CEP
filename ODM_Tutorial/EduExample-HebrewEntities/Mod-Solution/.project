@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Mod-Solution</name>
+	<comment></comment>
+	<projects>
+		<project>Mod bom</project>
+		<project>Mod-Solution - Java Model</project>
+		<project>vehicle agent</project>
+		<project>Person Agent</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>com.ibm.ia.designer.core.SolutionProjectBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>com.ibm.ia.designer.core.Solution</nature>
+	</natures>
+</projectDescription>
