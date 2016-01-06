@@ -136,3 +136,66 @@ org.xml.sax.SAXParseException: The entity name must immediately follow the '&' i
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1143)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:618)
 	at java.lang.Thread.run(Thread.java:785)
+!SESSION 2016-01-06 13:10:55.803 -----------------------------------------------
+eclipse.buildId=
+java.fullversion=JRE 1.8.0 IBM J9 2.8 Windows 7 amd64-64 Compressed References 20150630_255633 (JIT enabled, AOT enabled)
+J9VM - R28_jvm.28_20150630_1742_B255633
+JIT  - tr.r14.java_20150625_95081.01
+GC   - R28_jvm.28_20150630_1742_B255633_CMPRSS
+J9CL - 20150630_255633
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -init -perspective com.ibm.ia.designer.ui.I2APerspective
+Command-line arguments:  -data C:\devl\work\cep\Blur -os win32 -ws win32 -arch x86_64 -init -perspective com.ibm.ia.designer.ui.I2APerspective
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-06 13:11:00.749
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.ui 2 2 2016-01-06 13:11:24.659
+!MESSAGE Invalid preference category path: org.eclipse.birt.chart.reportitem.ui.ChartPreferencePage (bundle: org.eclipse.birt.chart.ui.extension, page: org.eclipse.birt.chart.ui.swt.fieldassist.preferences.FieldAssistPreferencePage)
+
+!ENTRY org.eclipse.core.resources 4 2 2016-01-06 13:19:16.692
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 0
+java.lang.NullPointerException
+	at ilog.rules.studio.model.impl.IlrRuleModelImpl.getManagedElements(IlrRuleModelImpl.java:359)
+	at ilog.rules.studio.model.impl.IlrRuleModelImpl.registerElement(IlrRuleModelImpl.java:1045)
+	at ilog.rules.studio.model.impl.IlrRuleModelImpl.registerElement(IlrRuleModelImpl.java:843)
+	at ilog.rules.studio.model.impl.IlrElementImpl.initStatic(IlrElementImpl.java:157)
+	at ilog.rules.studio.model.impl.IlrElementImpl.<init>(IlrElementImpl.java:118)
+	at ilog.rules.studio.model.base.impl.IlrTypedElementImpl.<init>(IlrTypedElementImpl.java:136)
+	at ilog.rules.studio.model.base.impl.IlrBaseFactoryImpl.createVariable(IlrBaseFactoryImpl.java:227)
+	at com.ibm.ia.designer.defl.service.DeflBuilder.createVariable(DeflBuilder.java:525)
+	at com.ibm.ia.designer.defl.service.DeflBuilder.fillVariableSet(DeflBuilder.java:509)
+	at com.ibm.ia.designer.defl.service.DeflBuilder.buildVarSet(DeflBuilder.java:481)
+	at com.ibm.ia.designer.defl.service.DeflBuilder.build(DeflBuilder.java:393)
+	at com.ibm.bdsl.runtime.eclipse.builder.DSLBuilder.compile(DSLBuilder.java:193)
+	at com.ibm.bdsl.runtime.eclipse.builder.DSLBuilder.build(DSLBuilder.java:145)
+	at com.ibm.ia.designer.defl.service.DeflBuilder.build(DeflBuilder.java:104)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:734)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SESSION 2016-01-06 13:22:12.333 -----------------------------------------------
+eclipse.buildId=
+java.fullversion=JRE 1.8.0 IBM J9 2.8 Windows 7 amd64-64 Compressed References 20150630_255633 (JIT enabled, AOT enabled)
+J9VM - R28_jvm.28_20150630_1742_B255633
+JIT  - tr.r14.java_20150625_95081.01
+GC   - R28_jvm.28_20150630_1742_B255633_CMPRSS
+J9CL - 20150630_255633
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -init -perspective com.ibm.ia.designer.ui.I2APerspective
+Command-line arguments:  -data C:\devl\work\cep\Blur -os win32 -ws win32 -arch x86_64 -init -perspective com.ibm.ia.designer.ui.I2APerspective
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-06 13:22:17.265
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.ui 2 2 2016-01-06 13:22:39.851
+!MESSAGE Invalid preference category path: org.eclipse.birt.chart.reportitem.ui.ChartPreferencePage (bundle: org.eclipse.birt.chart.ui.extension, page: org.eclipse.birt.chart.ui.swt.fieldassist.preferences.FieldAssistPreferencePage)
