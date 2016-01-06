@@ -1,0 +1,244 @@
+property uuid "3d765b9e-3b07-45fe-8b28-2cb8f241ccbd"
+property bdl_generated "true"
+package blur.model;
+
+
+public class Account
+        implements com.ibm.ia.model.Entity
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.entityElementName" "Account"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
+{
+    public double balance
+                property update "true"
+                property "xsd.name" "balance"
+                property "xsd.order" "0";
+    public blur.model.Customer customer
+                property update "true"
+                property "xsd.name" "customer"
+                property "xsd.order" "1"
+                property "xsd.useMapping" "true";
+    public string id
+                property "ia.entity.id" "true"
+                property update "true"
+                property "xsd.name" "id"
+                property "xsd.order" "2";
+    public java.time.ZonedDateTime lastCheckTime
+                property update "true"
+                property "xsd.name" "lastCheckTime"
+                property "xsd.order" "3";
+    public blur.model.AccountStatus status
+                property update "true"
+                property "xsd.name" "status"
+                property "xsd.order" "4";
+    public Account(string id)
+                property "dataio.default" "true";
+    public Account(double balance, blur.model.Customer customer, string id, java.time.ZonedDateTime lastCheckTime, blur.model.AccountStatus status)
+                property groups "BALA"
+                property prototype "true";
+}
+
+public class AccountInitialization
+        implements com.ibm.ia.model.Event
+        property "brl.facets" "ilog.rules.brl.Date:date"
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.eventElementName" "AccountInitialization"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
+{
+    public blur.model.Account account
+                property "xsd.name" "account"
+                property "xsd.order" "0"
+                property "xsd.useMapping" "true";
+    public double balance
+                property "xsd.name" "balance"
+                property "xsd.order" "1";
+    public blur.model.Customer customer
+                property "xsd.name" "customer"
+                property "xsd.order" "2"
+                property "xsd.useMapping" "true";
+    public java.time.ZonedDateTime date
+                property "ia.timestamp" "true"
+                property "xsd.name" "date"
+                property "xsd.order" "3";
+    public blur.model.AccountStatus status
+                property "xsd.name" "status"
+                property "xsd.order" "4";
+    public AccountInitialization(java.time.ZonedDateTime date)
+                property "dataio.default" "true";
+    public AccountInitialization(blur.model.Account account, double balance, blur.model.Customer customer, java.time.ZonedDateTime date, blur.model.AccountStatus status)
+                property groups "BALA"
+                property prototype "true";
+}
+
+public class AccountStatus
+        property "de.generated" "true"
+        property "ia.enum" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
+{
+    domain {static Excellent, static Good, static Fair, static Poor, static Risky}
+    public static final readonly blur.model.AccountStatus Excellent
+                property "xsd.name" "Excellent"
+                property "xsd.order" "0";
+    public static final readonly blur.model.AccountStatus Fair
+                property "xsd.name" "Fair"
+                property "xsd.order" "1";
+    public static final readonly blur.model.AccountStatus Good
+                property "xsd.name" "Good"
+                property "xsd.order" "2";
+    public static final readonly blur.model.AccountStatus Poor
+                property "xsd.name" "Poor"
+                property "xsd.order" "3";
+    public static final readonly blur.model.AccountStatus Risky
+                property "xsd.name" "Risky"
+                property "xsd.order" "4";
+}
+
+public class AuthorizationResponse
+        implements com.ibm.ia.model.Event
+        property "brl.facets" "ilog.rules.brl.Date:date"
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.eventElementName" "AuthorizationResponse"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
+{
+    public blur.model.Account account
+                property "xsd.name" "account"
+                property "xsd.order" "0"
+                property "xsd.useMapping" "true";
+    public java.time.ZonedDateTime date
+                property "ia.timestamp" "true"
+                property "xsd.name" "date"
+                property "xsd.order" "1";
+    public blur.model.Exception exception
+                property "xsd.name" "exception"
+                property "xsd.order" "2";
+    public string message
+                property "xsd.name" "message"
+                property "xsd.order" "3";
+    public blur.model.Transaction transaction
+                property "xsd.name" "transaction"
+                property "xsd.order" "4";
+    public AuthorizationResponse(java.time.ZonedDateTime date)
+                property "dataio.default" "true";
+    public AuthorizationResponse(blur.model.Account account, java.time.ZonedDateTime date, blur.model.Exception exception, string message, blur.model.Transaction transaction)
+                property groups "BALA"
+                property prototype "true";
+}
+
+public class Customer
+        implements com.ibm.ia.model.Entity
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.entityElementName" "Customer"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
+{
+    public java.util.List accounts domain 0,* class blur.model.Account
+                property update "true"
+                property "xsd.collection" "java.lang.String"
+                property "xsd.name" "account"
+                property "xsd.order" "0"
+                property "xsd.useMapping" "blur.model.Account";
+    public string email
+                property "ia.entity.id" "true"
+                property update "true"
+                property "xsd.name" "email"
+                property "xsd.order" "1";
+    public string firstName
+                property update "true"
+                property "xsd.name" "firstName"
+                property "xsd.order" "2";
+    public string lastName
+                property update "true"
+                property "xsd.name" "lastName"
+                property "xsd.order" "3";
+    public string phoneNumber
+                property update "true"
+                property "xsd.name" "phoneNumber"
+                property "xsd.order" "4";
+    public Customer(string email)
+                property "dataio.default" "true";
+    public Customer(string email, string firstName, string lastName, string phoneNumber)
+                property groups "BALA"
+                property prototype "true";
+    public void addTo_accounts(blur.model.Account arg0)
+                property collectionAttribute "accounts"
+                property update "true";
+    public void clear_accounts()
+                property collectionAttribute "accounts"
+                property update "true";
+    public blur.model.Account getFrom_accounts(string arg0)
+                property collectionAttribute "accounts";
+    public void removeFrom_accounts(blur.model.Account arg0)
+                property collectionAttribute "accounts"
+                property update "true";
+    public void set_accounts(java.util.Collection arg0 domain 0,* class blur.model.Account)
+                property collectionAttribute "accounts"
+                property update "true";
+}
+
+public class Exception
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
+{
+    public string code
+                property update "true"
+                property "xsd.name" "code"
+                property "xsd.order" "0";
+    public string reason
+                property update "true"
+                property "xsd.name" "reason"
+                property "xsd.order" "1";
+    public Exception(string code, string reason)
+                property groups "BALA"
+                property prototype "true";
+    public Exception()
+                property "dataio.default" "true";
+}
+
+public class Transaction
+        implements com.ibm.ia.model.Event
+        property "brl.facets" "ilog.rules.brl.Date:date"
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.eventElementName" "Transaction"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
+{
+    public blur.model.Account account
+                property "xsd.name" "account"
+                property "xsd.order" "0"
+                property "xsd.useMapping" "true";
+    public double amount
+                property "xsd.name" "amount"
+                property "xsd.order" "1";
+    public string countryCode
+                property "xsd.name" "countryCode"
+                property "xsd.order" "2";
+    public java.time.ZonedDateTime date
+                property "ia.timestamp" "true"
+                property "xsd.name" "date"
+                property "xsd.order" "3";
+    public Transaction(java.time.ZonedDateTime date)
+                property "dataio.default" "true";
+    public Transaction(blur.model.Account account, double amount, string countryCode, java.time.ZonedDateTime date)
+                property groups "BALA"
+                property prototype "true";
+}
+

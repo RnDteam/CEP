@@ -1,0 +1,3 @@
+'TestRuleAgent' is an agent related to an account, whose priority is High,
+processing events :
+- transaction  , where this account  comes from the account of this transaction

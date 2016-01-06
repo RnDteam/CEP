@@ -1,0 +1,16 @@
+# List of external plug-in models previously loaded. Timestamp: 1452066092043
+file:/C:/Program Files/IBM/ODMInsights88/CIS-runtime-target-platform/plugins/com.ibm.ia.agent_8.8.0.0.jar
+file:/C:/Program Files/IBM/ODMInsights88/CIS-runtime-target-platform/plugins/com.ibm.ia.analytics.tooling.gen_8.8.0.0.jar
+file:/C:/Program Files/IBM/ODMInsights88/CIS-runtime-target-platform/plugins/com.ibm.ia.analytics_8.8.0.0.jar
+file:/C:/Program Files/IBM/ODMInsights88/CIS-runtime-target-platform/plugins/com.ibm.ia.common_8.8.0.0.jar
+file:/C:/Program Files/IBM/ODMInsights88/CIS-runtime-target-platform/plugins/com.ibm.ia.connectivity.management_8.8.0.0.jar
+file:/C:/Program Files/IBM/ODMInsights88/CIS-runtime-target-platform/plugins/com.ibm.ia.engine.engine-api_1.4.1.CIS2015-11-03T181901Z.jar
+file:/C:/Program Files/IBM/ODMInsights88/CIS-runtime-target-platform/plugins/com.ibm.ia.engine.engine-runtime_1.30.0.CIS2015-11-03T181901Z.jar
+file:/C:/Program Files/IBM/ODMInsights88/CIS-runtime-target-platform/plugins/com.ibm.ia.extension_8.8.0.0.jar
+file:/C:/Program Files/IBM/ODMInsights88/CIS-runtime-target-platform/plugins/com.ibm.ia.gateway.client_8.8.0.0.jar
+file:/C:/Program Files/IBM/ODMInsights88/CIS-runtime-target-platform/plugins/com.ibm.ia.gateway_8.8.0.0.jar
+file:/C:/Program Files/IBM/ODMInsights88/CIS-runtime-target-platform/plugins/com.ibm.ia.scoring_8.8.0.0.jar
+file:/C:/Program Files/IBM/ODMInsights88/CIS-runtime-target-platform/plugins/com.ibm.ia.wxs.client_8.8.0.0.jar
+file:/C:/Program Files/IBM/ODMInsights88/CIS-runtime-target-platform/plugins/com.ibm.wsspi.org.osgi.cmpn.5.0.0_1.0.9.201504101217.jar
+file:/C:/Program Files/IBM/ODMInsights88/CIS-runtime-target-platform/plugins/com.ibm.wsspi.org.osgi.core.5.0.0_1.0.9.201504101217.jar
+file:/C:/Program Files/IBM/ODMInsights88/CIS-runtime-target-platform/plugins/org.eclipse.osgi_0.0.0.fake/

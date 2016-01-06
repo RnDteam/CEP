@@ -1,0 +1,3 @@
+'blur.testagent.TestAgent' is an agent related to an account, whose priority is Low,
+processing events :
+    - transaction , where this account comes from the account of this transaction
