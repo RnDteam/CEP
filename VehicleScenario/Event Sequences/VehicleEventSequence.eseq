@@ -1,0 +1,21 @@
+define 'the vehicle' as the Vehicle identified by "123456";
+define 'the person' as the Person identified by "myPesrson1";
+define 'the organization1' as the Organization identified by "myOrganization1";
+
+
+emit a new Vehicle initialization where 
+	the Vehicle is 'the vehicle' ,
+	the Organization is 'the organization1' ,
+	the Person is a new Person where 
+	the Id is "pers2", 
+	the Name is "Ido", 
+	the Status is ACTIVE ,
+	the Location is the point with 35 as longitude and 33 as latitude ,
+	the Last Seen is 1/8/2016,
+	the Details is a new Vehicle Details where  
+	the Maker is "BMW" , 
+	the Model is "X6",
+	the Maximum Speed is 50,
+	the Type is TRUCK,
+	the Year is 4/21/2016 , time-stamped 1/10/2016 12:05:46 PM ; 
+	
