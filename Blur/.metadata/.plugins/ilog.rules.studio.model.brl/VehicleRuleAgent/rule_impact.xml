@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><impactTables>
+    <ruleTable>
+        <vocElt id="blur.model.TrafficCameraReport/timestamp/GETTER#0">
+            <rule id="86fec546-5e0b-46b9-b1b5-faac6e2313bc"/>
+        </vocElt>
+        <vocElt id="blur.model.VehicleUpdated/VehicleUpdated(java.time.ZonedDateTime,blur.model.Vehicle)/NAVIGATION#0">
+            <rule id="86fec546-5e0b-46b9-b1b5-faac6e2313bc"/>
+        </vocElt>
+        <vocElt id="blur.model.TrafficCameraReport/vehicle/GETTER#0">
+            <rule id="86fec546-5e0b-46b9-b1b5-faac6e2313bc"/>
+        </vocElt>
+        <vocElt id="blur.model.VehicleStatus">
+            <rule id="8b02f049-c05e-4dc9-aa60-1983b0c0a455"/>
+            <rule id="86fec546-5e0b-46b9-b1b5-faac6e2313bc"/>
+        </vocElt>
+        <vocElt id="blur.model.Vehicle/status/SETTER#0">
+            <rule id="8b02f049-c05e-4dc9-aa60-1983b0c0a455"/>
+            <rule id="86fec546-5e0b-46b9-b1b5-faac6e2313bc"/>
+        </vocElt>
+        <vocElt id="blur.model.VehicleStatus/ACTIVE">
+            <rule id="8b02f049-c05e-4dc9-aa60-1983b0c0a455"/>
+            <rule id="86fec546-5e0b-46b9-b1b5-faac6e2313bc"/>
+        </vocElt>
+        <vocElt id="blur.model.Vehicle/details/GETTER#0">
+            <rule id="8b02f049-c05e-4dc9-aa60-1983b0c0a455"/>
+        </vocElt>
+        <vocElt id="blur.model.TrafficCameraReport">
+            <rule id="86fec546-5e0b-46b9-b1b5-faac6e2313bc"/>
+        </vocElt>
+        <vocElt id="blur.model.VehicleDetails/type/GETTER#0">
+            <rule id="8b02f049-c05e-4dc9-aa60-1983b0c0a455"/>
+        </vocElt>
+        <vocElt id="blur.model.VehicleType/MOTORCYCLE">
+            <rule id="8b02f049-c05e-4dc9-aa60-1983b0c0a455"/>
+        </vocElt>
+        <vocElt id="blur.model.Vehicle/owner/GETTER#0">
+            <rule id="8b02f049-c05e-4dc9-aa60-1983b0c0a455"/>
+        </vocElt>
+        <vocElt id="blur.model.VehicleCreated/VehicleCreated(java.time.ZonedDateTime,blur.model.Vehicle)/NAVIGATION#0">
+            <rule id="86fec546-5e0b-46b9-b1b5-faac6e2313bc"/>
+        </vocElt>
+        <vocElt id="blur.model.OrganizationType">
+            <rule id="8b02f049-c05e-4dc9-aa60-1983b0c0a455"/>
+        </vocElt>
+        <vocElt id="blur.model.VehicleUpdated/vehicle/GETTER#0">
+            <rule id="8b02f049-c05e-4dc9-aa60-1983b0c0a455"/>
+        </vocElt>
+        <vocElt id="blur.model.OrganizationalRole/organization/GETTER#0">
+            <rule id="8b02f049-c05e-4dc9-aa60-1983b0c0a455"/>
+        </vocElt>
+        <vocElt id="blur.model.Person/role/GETTER#0">
+            <rule id="8b02f049-c05e-4dc9-aa60-1983b0c0a455"/>
+        </vocElt>
+        <vocElt id="blur.model.VehicleType">
+            <rule id="8b02f049-c05e-4dc9-aa60-1983b0c0a455"/>
+        </vocElt>
+        <vocElt id="blur.model.VehicleUpdated">
+            <rule id="8b02f049-c05e-4dc9-aa60-1983b0c0a455"/>
+        </vocElt>
+        <vocElt id="blur.model.Vehicle/location/SETTER#0">
+            <rule id="86fec546-5e0b-46b9-b1b5-faac6e2313bc"/>
+        </vocElt>
+        <vocElt id="blur.model.OrganizationType/CRIMINAL">
+            <rule id="8b02f049-c05e-4dc9-aa60-1983b0c0a455"/>
+        </vocElt>
+        <vocElt id="blur.model.TrafficCameraReport/cameraLocation/GETTER#0">
+            <rule id="86fec546-5e0b-46b9-b1b5-faac6e2313bc"/>
+        </vocElt>
+        <vocElt id="blur.model.Vehicle/lastSeen/SETTER#0">
+            <rule id="86fec546-5e0b-46b9-b1b5-faac6e2313bc"/>
+        </vocElt>
+        <vocElt id="blur.model.Organization/type/GETTER#0">
+            <rule id="8b02f049-c05e-4dc9-aa60-1983b0c0a455"/>
+        </vocElt>
+    </ruleTable>
+    <vocTable>
+        <rule id="8b02f049-c05e-4dc9-aa60-1983b0c0a455">
+            <vocElt id="blur.model.Vehicle/status/SETTER#0"/>
+            <vocElt id="blur.model.VehicleStatus"/>
+            <vocElt id="blur.model.VehicleStatus/ACTIVE"/>
+            <vocElt id="blur.model.Vehicle/details/GETTER#0"/>
+            <vocElt id="blur.model.VehicleDetails/type/GETTER#0"/>
+            <vocElt id="blur.model.VehicleType/MOTORCYCLE"/>
+            <vocElt id="blur.model.Vehicle/owner/GETTER#0"/>
+            <vocElt id="blur.model.OrganizationType"/>
+            <vocElt id="blur.model.VehicleUpdated/vehicle/GETTER#0"/>
+            <vocElt id="blur.model.OrganizationalRole/organization/GETTER#0"/>
+            <vocElt id="blur.model.Person/role/GETTER#0"/>
+            <vocElt id="blur.model.VehicleType"/>
+            <vocElt id="blur.model.VehicleUpdated"/>
+            <vocElt id="blur.model.OrganizationType/CRIMINAL"/>
+            <vocElt id="blur.model.Organization/type/GETTER#0"/>
+        </rule>
+        <rule id="86fec546-5e0b-46b9-b1b5-faac6e2313bc">
+            <vocElt id="blur.model.TrafficCameraReport/timestamp/GETTER#0"/>
+            <vocElt id="blur.model.VehicleUpdated/VehicleUpdated(java.time.ZonedDateTime,blur.model.Vehicle)/NAVIGATION#0"/>
+            <vocElt id="blur.model.TrafficCameraReport/vehicle/GETTER#0"/>
+            <vocElt id="blur.model.Vehicle/status/SETTER#0"/>
+            <vocElt id="blur.model.VehicleStatus"/>
+            <vocElt id="blur.model.VehicleStatus/ACTIVE"/>
+            <vocElt id="blur.model.TrafficCameraReport"/>
+            <vocElt id="blur.model.Vehicle/location/SETTER#0"/>
+            <vocElt id="blur.model.TrafficCameraReport/cameraLocation/GETTER#0"/>
+            <vocElt id="blur.model.Vehicle/lastSeen/SETTER#0"/>
+            <vocElt id="blur.model.VehicleCreated/VehicleCreated(java.time.ZonedDateTime,blur.model.Vehicle)/NAVIGATION#0"/>
+        </rule>
+    </vocTable>
+    <ruleParamTable/>
+    <paramTable/>
+    <projectTable/>
+    <variableTable/>
+    <ruleVocFileTable>
+        <vocFile file="/BlurBOM/bom/model_en_US.voc" id="755cf83d-abd5-4275-abfd-b2b1a841a922">
+            <rule id="8b02f049-c05e-4dc9-aa60-1983b0c0a455"/>
+            <rule id="86fec546-5e0b-46b9-b1b5-faac6e2313bc"/>
+        </vocFile>
+    </ruleVocFileTable>
+    <resourceTable>
+        <resource file="/VehicleRuleAgent/rules/vehicle/Process Camera Report.brl" id="86fec546-5e0b-46b9-b1b5-faac6e2313bc"/>
+        <resource file="/VehicleRuleAgent/rules/vehicle/Process Vehicle Updated.brl" id="8b02f049-c05e-4dc9-aa60-1983b0c0a455"/>
+    </resourceTable>
+</impactTables>

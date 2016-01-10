@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessModelDefinition>
+    <Bmd><![CDATA[an Organization is a business entity identified by an id.
+an Organization has a type (a organization type).
+
+a Organization type can be one of : CRIMINAL, COMMERCIAL.
+]]></Bmd>
+    <Bmi><![CDATA[an account is initialized from an account initialization , where this account comes from the account of this account initialization : 
+	- set the customer of this account to the customer of this account initialization 
+	- set the balance of this account to the balance of this account initialization 
+       - set the status of this account to the status of this account initialization .
+	
+a customer is initialized from an account initialization , where this customer comes from the customer of this account initialization .]]></Bmi>
+</BusinessModelDefinition>

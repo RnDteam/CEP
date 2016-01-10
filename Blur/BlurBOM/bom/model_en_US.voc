@@ -1,94 +1,165 @@
-uuid = dbd1c87b-c17a-43b5-ac9d-b889f4a5eac1
-# blur.model.Account
-blur.model.Account#concept.label = account
-blur.model.Account.Account(double,blur.model.Customer,java.lang.String,java.time.ZonedDateTime,blur.model.AccountStatus)#phrase.navigation = a new {account} where {0, balance} {1, customer} {2, id} {3, last check time} {4, status} 
-blur.model.Account.balance#phrase.action = set the balance of {this} to {balance}
-blur.model.Account.balance#phrase.navigation = {balance} of {this}
-blur.model.Account.customer#phrase.action = set the customer of {this} to {customer}
-blur.model.Account.customer#phrase.clearer = clear the customer of {this}
-blur.model.Account.customer#phrase.navigation = {customer} of {this}
-blur.model.Account.id#phrase.navigation = {id} of {this}
-blur.model.Account.lastCheckTime#phrase.action = set the last check time of {this} to {last check time}
-blur.model.Account.lastCheckTime#phrase.navigation = {last check time} of {this}
-blur.model.Account.status#phrase.action = set the status of {this} to {status}
-blur.model.Account.status#phrase.clearer = clear the status of {this}
-blur.model.Account.status#phrase.navigation = {status} of {this}
+uuid = 755cf83d-abd5-4275-abfd-b2b1a841a922
+# blur.model.Building
+blur.model.Building#concept.label = Building
+blur.model.Building.Building(java.lang.String,com.ibm.geolib.geom.Geometry,blur.model.Person,blur.model.BuildingType,blur.model.BuilidngUsageType)#phrase.navigation = a new {Building} where {0, Id} {1, Location} {2, Owner} {3, Type} {4, Usage Type} 
+blur.model.Building.addTo_organizations(blur.model.Organization)#phrase.action = add {0} to the Organizations of {this}
+blur.model.Building.clear_organizations()#phrase.action = clear the Organizations of {this}
+blur.model.Building.id#phrase.navigation = {Id} of {this}
+blur.model.Building.location#phrase.action = set the Location of {this} to {Location}
+blur.model.Building.location#phrase.clearer = clear the Location of {this}
+blur.model.Building.location#phrase.navigation = {Location} of {this}
+blur.model.Building.organizations#phrase.action = set the Organizations of {this} to {Organization}
+blur.model.Building.organizations#phrase.navigation = {Organization} of {this}
+blur.model.Building.owner#phrase.action = set the Owner of {this} to {Owner}
+blur.model.Building.owner#phrase.clearer = clear the Owner of {this}
+blur.model.Building.owner#phrase.navigation = {Owner} of {this}
+blur.model.Building.removeFrom_organizations(blur.model.Organization)#phrase.action = remove {0} from the Organizations of {this}
+blur.model.Building.type#phrase.action = set the Type of {this} to {Type}
+blur.model.Building.type#phrase.clearer = clear the Type of {this}
+blur.model.Building.type#phrase.navigation = {Type} of {this}
+blur.model.Building.usageType#phrase.action = set the Usage Type of {this} to {Usage Type}
+blur.model.Building.usageType#phrase.clearer = clear the Usage Type of {this}
+blur.model.Building.usageType#phrase.navigation = {Usage Type} of {this}
 
-# blur.model.AccountInitialization
-blur.model.AccountInitialization#concept.label = account initialization
-blur.model.AccountInitialization.AccountInitialization(blur.model.Account,double,blur.model.Customer,java.time.ZonedDateTime,blur.model.AccountStatus)#phrase.navigation = a new {account initialization} where {0, account} {1, balance} {2, customer} {3, date} {4, status} 
-blur.model.AccountInitialization.account#phrase.action = set the account of {this} to {account}
-blur.model.AccountInitialization.account#phrase.clearer = clear the account of {this}
-blur.model.AccountInitialization.account#phrase.navigation = {account} of {this}
-blur.model.AccountInitialization.balance#phrase.action = set the balance of {this} to {balance}
-blur.model.AccountInitialization.balance#phrase.navigation = {balance} of {this}
-blur.model.AccountInitialization.customer#phrase.action = set the customer of {this} to {customer}
-blur.model.AccountInitialization.customer#phrase.clearer = clear the customer of {this}
-blur.model.AccountInitialization.customer#phrase.navigation = {customer} of {this}
-blur.model.AccountInitialization.date#phrase.action = set the date of {this} to {date}
-blur.model.AccountInitialization.date#phrase.navigation = {date} of {this}
-blur.model.AccountInitialization.status#phrase.action = set the status of {this} to {status}
-blur.model.AccountInitialization.status#phrase.clearer = clear the status of {this}
-blur.model.AccountInitialization.status#phrase.navigation = {status} of {this}
+# blur.model.BuildingType
+blur.model.BuildingType#concept.label = Building Type
+blur.model.BuildingType.APPARTMENT#instance.label = APPARTMENT
+blur.model.BuildingType.COMMERCIAL#instance.label = COMMERCIAL
+blur.model.BuildingType.WAREHOUSE#instance.label = WAREHOUSE
 
-# blur.model.AccountStatus
-blur.model.AccountStatus#concept.label = account status
-blur.model.AccountStatus.Excellent#instance.label = Excellent
-blur.model.AccountStatus.Fair#instance.label = Fair
-blur.model.AccountStatus.Good#instance.label = Good
-blur.model.AccountStatus.Poor#instance.label = Poor
-blur.model.AccountStatus.Risky#instance.label = Risky
+# blur.model.BuilidngUsageType
+blur.model.BuilidngUsageType#concept.label = Builidng Usage Type
+blur.model.BuilidngUsageType.BANK_BRANCH#instance.label = BANK BRANCH
+blur.model.BuilidngUsageType.FURNITURE_STORE#instance.label = FURNITURE STORE
 
-# blur.model.AuthorizationResponse
-blur.model.AuthorizationResponse#concept.label = authorization response
-blur.model.AuthorizationResponse.AuthorizationResponse(blur.model.Account,java.time.ZonedDateTime,blur.model.Exception,java.lang.String,blur.model.Transaction)#phrase.navigation = a new {authorization response} where {0, account} {1, date} {2, exception} {3, message} {4, transaction} 
-blur.model.AuthorizationResponse.account#phrase.action = set the account of {this} to {account}
-blur.model.AuthorizationResponse.account#phrase.clearer = clear the account of {this}
-blur.model.AuthorizationResponse.account#phrase.navigation = {account} of {this}
-blur.model.AuthorizationResponse.date#phrase.action = set the date of {this} to {date}
-blur.model.AuthorizationResponse.date#phrase.navigation = {date} of {this}
-blur.model.AuthorizationResponse.exception#phrase.action = set the exception of {this} to {exception}
-blur.model.AuthorizationResponse.exception#phrase.clearer = clear the exception of {this}
-blur.model.AuthorizationResponse.exception#phrase.navigation = {exception} of {this}
-blur.model.AuthorizationResponse.message#phrase.action = set the message of {this} to {message}
-blur.model.AuthorizationResponse.message#phrase.navigation = {message} of {this}
-blur.model.AuthorizationResponse.transaction#phrase.action = set the transaction of {this} to {transaction}
-blur.model.AuthorizationResponse.transaction#phrase.clearer = clear the transaction of {this}
-blur.model.AuthorizationResponse.transaction#phrase.navigation = {transaction} of {this}
+# blur.model.Organization
+blur.model.Organization#concept.label = Organization
+blur.model.Organization.Organization(java.lang.String,blur.model.OrganizationType)#phrase.navigation = a new {Organization} where {0, Id} {1, Type} 
+blur.model.Organization.id#phrase.navigation = {Id} of {this}
+blur.model.Organization.type#phrase.action = set the Type of {this} to {Type}
+blur.model.Organization.type#phrase.clearer = clear the Type of {this}
+blur.model.Organization.type#phrase.navigation = {Type} of {this}
 
-# blur.model.Customer
-blur.model.Customer#concept.label = customer
-blur.model.Customer.Customer(java.lang.String,java.lang.String,java.lang.String,java.lang.String)#phrase.navigation = a new {customer} where {0, email} {1, first name} {2, last name} {3, phone number} 
-blur.model.Customer.accounts#phrase.action = set the accounts of {this} to {account}
-blur.model.Customer.accounts#phrase.navigation = {account} of {this}
-blur.model.Customer.addTo_accounts(blur.model.Account)#phrase.action = add {0} to the accounts of {this}
-blur.model.Customer.clear_accounts()#phrase.action = clear the accounts of {this}
-blur.model.Customer.email#phrase.navigation = {email} of {this}
-blur.model.Customer.firstName#phrase.action = set the first name of {this} to {first name}
-blur.model.Customer.firstName#phrase.navigation = {first name} of {this}
-blur.model.Customer.lastName#phrase.action = set the last name of {this} to {last name}
-blur.model.Customer.lastName#phrase.navigation = {last name} of {this}
-blur.model.Customer.phoneNumber#phrase.action = set the phone number of {this} to {phone number}
-blur.model.Customer.phoneNumber#phrase.navigation = {phone number} of {this}
-blur.model.Customer.removeFrom_accounts(blur.model.Account)#phrase.action = remove {0} from the accounts of {this}
+# blur.model.OrganizationType
+blur.model.OrganizationType#concept.label = Organization Type
+blur.model.OrganizationType.COMMERCIAL#instance.label = COMMERCIAL
+blur.model.OrganizationType.CRIMINAL#instance.label = CRIMINAL
 
-# blur.model.Exception
-blur.model.Exception#concept.label = exception
-blur.model.Exception.Exception(java.lang.String,java.lang.String)#phrase.navigation = a new {exception} where {0, code} {1, reason} 
-blur.model.Exception.code#phrase.action = set the code of {this} to {code}
-blur.model.Exception.code#phrase.navigation = {code} of {this}
-blur.model.Exception.reason#phrase.action = set the reason of {this} to {reason}
-blur.model.Exception.reason#phrase.navigation = {reason} of {this}
+# blur.model.OrganizationalRole
+blur.model.OrganizationalRole#concept.label = Organizational Role
+blur.model.OrganizationalRole.OrganizationalRole(java.lang.String,blur.model.OrganizationalRole,java.lang.String,blur.model.Organization,blur.model.Person)#phrase.navigation = a new {Organizational Role} where {0, Id} {1, Manager} {2, Name} {3, Organization} {4, Person} 
+blur.model.OrganizationalRole.id#phrase.navigation = {Id} of {this}
+blur.model.OrganizationalRole.manager#phrase.action = set the Manager of {this} to {Manager}
+blur.model.OrganizationalRole.manager#phrase.clearer = clear the Manager of {this}
+blur.model.OrganizationalRole.manager#phrase.navigation = {Manager} of {this}
+blur.model.OrganizationalRole.name#phrase.action = set the Name of {this} to {Name}
+blur.model.OrganizationalRole.name#phrase.navigation = {Name} of {this}
+blur.model.OrganizationalRole.organization#phrase.action = set the Organization of {this} to {Organization}
+blur.model.OrganizationalRole.organization#phrase.clearer = clear the Organization of {this}
+blur.model.OrganizationalRole.organization#phrase.navigation = {Organization} of {this}
+blur.model.OrganizationalRole.person#phrase.action = set the Person of {this} to {Person}
+blur.model.OrganizationalRole.person#phrase.clearer = clear the Person of {this}
+blur.model.OrganizationalRole.person#phrase.navigation = {Person} of {this}
 
-# blur.model.Transaction
-blur.model.Transaction#concept.label = transaction
-blur.model.Transaction.Transaction(blur.model.Account,double,java.lang.String,java.time.ZonedDateTime)#phrase.navigation = a new {transaction} where {0, account} {1, amount} {2, country code} {3, date} 
-blur.model.Transaction.account#phrase.action = set the account of {this} to {account}
-blur.model.Transaction.account#phrase.clearer = clear the account of {this}
-blur.model.Transaction.account#phrase.navigation = {account} of {this}
-blur.model.Transaction.amount#phrase.action = set the amount of {this} to {amount}
-blur.model.Transaction.amount#phrase.navigation = {amount} of {this}
-blur.model.Transaction.countryCode#phrase.action = set the country code of {this} to {country code}
-blur.model.Transaction.countryCode#phrase.navigation = {country code} of {this}
-blur.model.Transaction.date#phrase.action = set the date of {this} to {date}
-blur.model.Transaction.date#phrase.navigation = {date} of {this}
+# blur.model.Person
+blur.model.Person#concept.label = Person
+blur.model.Person.Person(java.lang.String,com.ibm.geolib.geom.Geometry,java.lang.String,java.lang.String,blur.model.OrganizationalRole,blur.model.PersonState)#phrase.navigation = a new {Person} where {0, Id} {1, Location} {2, Name} {3, Profession} {4, Role} {5, State} 
+blur.model.Person.id#phrase.navigation = {Id} of {this}
+blur.model.Person.location#phrase.action = set the Location of {this} to {Location}
+blur.model.Person.location#phrase.clearer = clear the Location of {this}
+blur.model.Person.location#phrase.navigation = {Location} of {this}
+blur.model.Person.name#phrase.action = set the Name of {this} to {Name}
+blur.model.Person.name#phrase.navigation = {Name} of {this}
+blur.model.Person.profession#phrase.action = set the Profession of {this} to {Profession}
+blur.model.Person.profession#phrase.navigation = {Profession} of {this}
+blur.model.Person.role#phrase.action = set the Role of {this} to {Role}
+blur.model.Person.role#phrase.clearer = clear the Role of {this}
+blur.model.Person.role#phrase.navigation = {Role} of {this}
+blur.model.Person.state#phrase.action = set the State of {this} to {State}
+blur.model.Person.state#phrase.clearer = clear the State of {this}
+blur.model.Person.state#phrase.navigation = {State} of {this}
+
+# blur.model.PersonState
+blur.model.PersonState#concept.label = Person State
+blur.model.PersonState.ACTIVE#instance.label = ACTIVE
+blur.model.PersonState.INACTIVE#instance.label = INACTIVE
+
+# blur.model.TrafficCameraReport
+blur.model.TrafficCameraReport#concept.label = Traffic Camera Report
+blur.model.TrafficCameraReport.TrafficCameraReport(double,com.ibm.geolib.geom.Point,java.time.ZonedDateTime,blur.model.Vehicle)#phrase.navigation = a new {Traffic Camera Report} where {0, Camera Id} {1, Camera Location} {2, timestamp} {3, Vehicle} 
+blur.model.TrafficCameraReport.cameraId#phrase.action = set the Camera Id of {this} to {Camera Id}
+blur.model.TrafficCameraReport.cameraId#phrase.navigation = {Camera Id} of {this}
+blur.model.TrafficCameraReport.cameraLocation#phrase.action = set the Camera Location of {this} to {Camera Location}
+blur.model.TrafficCameraReport.cameraLocation#phrase.clearer = clear the Camera Location of {this}
+blur.model.TrafficCameraReport.cameraLocation#phrase.navigation = {Camera Location} of {this}
+blur.model.TrafficCameraReport.timestamp#phrase.action = set the timestamp of {this} to {timestamp}
+blur.model.TrafficCameraReport.timestamp#phrase.navigation = {timestamp} of {this}
+blur.model.TrafficCameraReport.vehicle#phrase.action = set the Vehicle of {this} to {Vehicle}
+blur.model.TrafficCameraReport.vehicle#phrase.clearer = clear the Vehicle of {this}
+blur.model.TrafficCameraReport.vehicle#phrase.navigation = {Vehicle} of {this}
+
+# blur.model.Vehicle
+blur.model.Vehicle#concept.label = Vehicle
+blur.model.Vehicle.Vehicle(blur.model.VehicleDetails,java.time.ZonedDateTime,java.lang.String,com.ibm.geolib.geom.Point,blur.model.Organization,blur.model.Person,blur.model.VehicleStatus)#phrase.navigation = a new {Vehicle} where {0, Details} {1, Last Seen} {2, License Plate Number} {3, Location} {4, Organization} {5, Owner} {6, Status} 
+blur.model.Vehicle.details#phrase.action = set the Details of {this} to {Details}
+blur.model.Vehicle.details#phrase.clearer = clear the Details of {this}
+blur.model.Vehicle.details#phrase.navigation = {Details} of {this}
+blur.model.Vehicle.lastSeen#phrase.action = set the Last Seen of {this} to {Last Seen}
+blur.model.Vehicle.lastSeen#phrase.navigation = {Last Seen} of {this}
+blur.model.Vehicle.licensePlateNumber#phrase.navigation = {License Plate Number} of {this}
+blur.model.Vehicle.location#phrase.action = set the Location of {this} to {Location}
+blur.model.Vehicle.location#phrase.clearer = clear the Location of {this}
+blur.model.Vehicle.location#phrase.navigation = {Location} of {this}
+blur.model.Vehicle.organization#phrase.action = set the Organization of {this} to {Organization}
+blur.model.Vehicle.organization#phrase.clearer = clear the Organization of {this}
+blur.model.Vehicle.organization#phrase.navigation = {Organization} of {this}
+blur.model.Vehicle.owner#phrase.action = set the Owner of {this} to {Owner}
+blur.model.Vehicle.owner#phrase.clearer = clear the Owner of {this}
+blur.model.Vehicle.owner#phrase.navigation = {Owner} of {this}
+blur.model.Vehicle.status#phrase.action = set the Status of {this} to {Status}
+blur.model.Vehicle.status#phrase.clearer = clear the Status of {this}
+blur.model.Vehicle.status#phrase.navigation = {Status} of {this}
+
+# blur.model.VehicleCreated
+blur.model.VehicleCreated#concept.label = Vehicle Created
+blur.model.VehicleCreated.VehicleCreated(java.time.ZonedDateTime,blur.model.Vehicle)#phrase.navigation = a new {Vehicle Created} where {0, timestamp} {1, Vehicle} 
+blur.model.VehicleCreated.timestamp#phrase.action = set the timestamp of {this} to {timestamp}
+blur.model.VehicleCreated.timestamp#phrase.navigation = {timestamp} of {this}
+blur.model.VehicleCreated.vehicle#phrase.action = set the Vehicle of {this} to {Vehicle}
+blur.model.VehicleCreated.vehicle#phrase.clearer = clear the Vehicle of {this}
+blur.model.VehicleCreated.vehicle#phrase.navigation = {Vehicle} of {this}
+
+# blur.model.VehicleDetails
+blur.model.VehicleDetails#concept.label = Vehicle Details
+blur.model.VehicleDetails.VehicleDetails(java.lang.String,double,java.lang.String,blur.model.VehicleType,java.time.ZonedDateTime)#phrase.navigation = a new {Vehicle Details} where {0, Maker} {1, Maximum Speed} {2, Model} {3, Type} {4, Year} 
+blur.model.VehicleDetails.maker#phrase.action = set the Maker of {this} to {Maker}
+blur.model.VehicleDetails.maker#phrase.navigation = {Maker} of {this}
+blur.model.VehicleDetails.maximumSpeed#phrase.action = set the Maximum Speed of {this} to {Maximum Speed}
+blur.model.VehicleDetails.maximumSpeed#phrase.navigation = {Maximum Speed} of {this}
+blur.model.VehicleDetails.model#phrase.action = set the Model of {this} to {Model}
+blur.model.VehicleDetails.model#phrase.navigation = {Model} of {this}
+blur.model.VehicleDetails.type#phrase.action = set the Type of {this} to {Type}
+blur.model.VehicleDetails.type#phrase.clearer = clear the Type of {this}
+blur.model.VehicleDetails.type#phrase.navigation = {Type} of {this}
+blur.model.VehicleDetails.year#phrase.action = set the Year of {this} to {Year}
+blur.model.VehicleDetails.year#phrase.navigation = {Year} of {this}
+
+# blur.model.VehicleStatus
+blur.model.VehicleStatus#concept.label = Vehicle Status
+blur.model.VehicleStatus.ACTIVE#instance.label = ACTIVE
+blur.model.VehicleStatus.INACTIVE#instance.label = INACTIVE
+
+# blur.model.VehicleType
+blur.model.VehicleType#concept.label = Vehicle Type
+blur.model.VehicleType.JEEP#instance.label = JEEP
+blur.model.VehicleType.MOTORCYCLE#instance.label = MOTORCYCLE
+blur.model.VehicleType.TRUCK#instance.label = TRUCK
+
+# blur.model.VehicleUpdated
+blur.model.VehicleUpdated#concept.label = Vehicle Updated
+blur.model.VehicleUpdated.VehicleUpdated(java.time.ZonedDateTime,blur.model.Vehicle)#phrase.navigation = a new {Vehicle Updated} where {0, timestamp} {1, Vehicle} 
+blur.model.VehicleUpdated.timestamp#phrase.action = set the timestamp of {this} to {timestamp}
+blur.model.VehicleUpdated.timestamp#phrase.navigation = {timestamp} of {this}
+blur.model.VehicleUpdated.vehicle#phrase.action = set the Vehicle of {this} to {Vehicle}
+blur.model.VehicleUpdated.vehicle#phrase.clearer = clear the Vehicle of {this}
+blur.model.VehicleUpdated.vehicle#phrase.navigation = {Vehicle} of {this}

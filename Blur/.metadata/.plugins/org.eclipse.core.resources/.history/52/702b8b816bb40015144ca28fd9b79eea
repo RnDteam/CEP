@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessModelDefinition>
+    <Bmd><![CDATA[a Person is a business entity identified by an id.
+a Person has a name.
+a Person is related to Organization.
+a Person has a profession.
+a Person has a location(a geometry) used as the default geometry.
+a Person has a state(a person state).
+
+a person state can be one of : Active, Not Active.
+	 ]]></Bmd>
+    <Bmi><![CDATA[an account is initialized from an account initialization , where this account comes from the account of this account initialization : 
+	- set the customer of this account to the customer of this account initialization 
+	- set the balance of this account to the balance of this account initialization 
+       - set the status of this account to the status of this account initialization .
+	
+a customer is initialized from an account initialization , where this customer comes from the customer of this account initialization .]]></Bmi>
+</BusinessModelDefinition>
