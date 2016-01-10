@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessModelDefinition>
+    <Bmd><![CDATA[a building initialization is a business event.
+a building initialization is related to a Building.
+a building initialization is related to a Person, named the Owner.
+a building initialization is related to several different Organizations.
+a building initialization has a Location (a geometry) used as the default geometry.
+a building initialization has a Type (a Building Type).
+a building initialization has a Usage Type ( a Builidng Usage Type ).]]></Bmd>
+    <Bmi><![CDATA[a Building is initialized from a building initialization, where this Building comes
+from the Building of this building initialization :
+ 	- set the Owner of this Building to the Owner of this building initialization
+ 	- set the Organizations of this Building to the Organizations of this building initialization
+ 	- set the Location of this Building to the Location of this building initialization
+ 	- set the Type of this Building to the Type of this building initialization
+ 	- set the Usage Type of this Building to the Usage Type of this building initialization.]]></Bmi>
+</BusinessModelDefinition>

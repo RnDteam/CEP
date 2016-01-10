@@ -1,4 +1,4 @@
-property uuid "c3ea56ed-0d03-4d4c-b6b5-a54ac7575ce8"
+property uuid "f11e8ffc-9dcf-4b21-aaa2-361fa96ad60c"
 property bdl_generated "true"
 package blur.model;
 
@@ -7,21 +7,41 @@ public class Building
         implements com.ibm.ia.model.Entity
         property "brl.facets" "com.ibm.geolib.geom.Geometry:location"
         property "de.generated" "true"
+        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
+        property "xsd.entityElementName" "Building"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
 {
     public string id
                 property "ia.entity.id" "true"
-                property update "true";
+                property update "true"
+                property "xsd.name" "id"
+                property "xsd.order" "0";
     public com.ibm.geolib.geom.Geometry location
-                property update "true";
+                property update "true"
+                property "xsd.name" "location"
+                property "xsd.order" "1";
     public java.util.Set organizations domain 0,* class blur.model.Organization
-                property update "true";
+                property update "true"
+                property "xsd.collection" "java.lang.String"
+                property "xsd.name" "organization"
+                property "xsd.order" "2"
+                property "xsd.useMapping" "blur.model.Organization";
     public blur.model.Person owner
                 property "ia.reference" "true"
-                property update "true";
+                property update "true"
+                property "xsd.name" "owner"
+                property "xsd.order" "3"
+                property "xsd.useMapping" "true";
     public blur.model.BuildingType type
-                property update "true";
+                property update "true"
+                property "xsd.name" "type"
+                property "xsd.order" "4";
     public blur.model.BuilidngUsageType usageType
-                property update "true";
+                property update "true"
+                property "xsd.name" "usageType"
+                property "xsd.order" "5";
     public Building(string id)
                 property "dataio.default" "true";
     public Building(string id, com.ibm.geolib.geom.Geometry location, blur.model.Person owner, blur.model.BuildingType type, blur.model.BuilidngUsageType usageType)
@@ -43,23 +63,94 @@ public class Building
                 property update "true";
 }
 
+public class BuildingInitialization
+        implements com.ibm.ia.model.Event
+        property "brl.facets" "ilog.rules.brl.Date:timestamp;com.ibm.geolib.geom.Geometry:location"
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
+        property "xsd.eventElementName" "BuildingInitialization"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
+{
+    public blur.model.Building building
+                property "xsd.name" "building"
+                property "xsd.order" "0"
+                property "xsd.useMapping" "true";
+    public com.ibm.geolib.geom.Geometry location
+                property "xsd.name" "location"
+                property "xsd.order" "1";
+    public java.util.Set organizations domain 0,* class blur.model.Organization
+                property "xsd.collection" "java.lang.String"
+                property "xsd.name" "organization"
+                property "xsd.order" "2"
+                property "xsd.useMapping" "blur.model.Organization";
+    public blur.model.Person owner
+                property "xsd.name" "owner"
+                property "xsd.order" "3"
+                property "xsd.useMapping" "true";
+    public java.time.ZonedDateTime timestamp
+                property "ia.timestamp" "true"
+                property "xsd.name" "timestamp"
+                property "xsd.order" "4";
+    public blur.model.BuildingType type
+                property "xsd.name" "type"
+                property "xsd.order" "5";
+    public blur.model.BuilidngUsageType usageType
+                property "xsd.name" "usageType"
+                property "xsd.order" "6";
+    public BuildingInitialization(java.time.ZonedDateTime timestamp)
+                property "dataio.default" "true";
+    public BuildingInitialization(blur.model.Building building, com.ibm.geolib.geom.Geometry location, blur.model.Person owner, java.time.ZonedDateTime timestamp, blur.model.BuildingType type, blur.model.BuilidngUsageType usageType)
+                property groups "BALA"
+                property prototype "true";
+    public void addTo_organizations(blur.model.Organization arg0)
+                property collectionAttribute "organizations";
+    public void clear_organizations()
+                property collectionAttribute "organizations";
+    public blur.model.Organization getFrom_organizations(string arg0)
+                property collectionAttribute "organizations";
+    public void removeFrom_organizations(blur.model.Organization arg0)
+                property collectionAttribute "organizations";
+    public void set_organizations(java.util.Collection arg0 domain 0,* class blur.model.Organization)
+                property collectionAttribute "organizations";
+}
+
 public class BuildingType
         property "de.generated" "true"
         property "ia.enum" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
 {
     domain {static APPARTMENT, static WAREHOUSE, static COMMERCIAL}
-    public static final readonly blur.model.BuildingType APPARTMENT;
-    public static final readonly blur.model.BuildingType COMMERCIAL;
-    public static final readonly blur.model.BuildingType WAREHOUSE;
+    public static final readonly blur.model.BuildingType APPARTMENT
+                property "xsd.name" "APPARTMENT"
+                property "xsd.order" "0";
+    public static final readonly blur.model.BuildingType COMMERCIAL
+                property "xsd.name" "COMMERCIAL"
+                property "xsd.order" "1";
+    public static final readonly blur.model.BuildingType WAREHOUSE
+                property "xsd.name" "WAREHOUSE"
+                property "xsd.order" "2";
 }
 
 public class BuilidngUsageType
         property "de.generated" "true"
         property "ia.enum" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
 {
     domain {static BANK_BRANCH, static FURNITURE_STORE}
-    public static final readonly blur.model.BuilidngUsageType BANK_BRANCH;
-    public static final readonly blur.model.BuilidngUsageType FURNITURE_STORE;
+    public static final readonly blur.model.BuilidngUsageType BANK_BRANCH
+                property "xsd.name" "BANK_BRANCH"
+                property "xsd.order" "0";
+    public static final readonly blur.model.BuilidngUsageType FURNITURE_STORE
+                property "xsd.name" "FURNITURE_STORE"
+                property "xsd.order" "1";
 }
 
 public class Organization
