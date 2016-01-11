@@ -22,7 +22,7 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 			// TODO -- read the other fields of the Vehicle from the database
 			VehicleDetails myDetails = getConceptFactory(ConceptFactory.class)
 					.createVehicleDetails();
-			myDetails.setType(VehicleType.motorcycle);
+			myDetails.setType(VehicleType.MOTORCYCLE);
 			entity.setDetails(myDetails);
 		}
 
@@ -38,7 +38,7 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 		// TODO -- read the other fields of the Vehicle from the database
 		VehicleDetails myDetails = getConceptFactory(ConceptFactory.class)
 				.createVehicleDetails();
-		myDetails.setType(VehicleType.motorcycle);
+		myDetails.setType(VehicleType.MOTORCYCLE);
 		entity.setDetails(myDetails);
 	}
 }
