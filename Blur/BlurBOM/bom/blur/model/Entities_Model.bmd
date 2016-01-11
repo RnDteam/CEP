@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BusinessModelDefinition>
     <Bmd><![CDATA[-- person
-a person state can be one of : active, inactive.
+a person state can be one of : ACTIVE, INACTIVE.
 
 a person is a business entity identified by an id with
    a name,
@@ -11,7 +11,7 @@ a person is a business entity identified by an id with
 a person is related to an organizational role, named the role.
 
 -- organization	 
-a organization type can be one of : criminal, commercial.
+a organization type can be one of : CRIMINAL, COMMERCIAL.
 
 an organization is a business entity identified by an id.
 an organization has a type (an organization type).
@@ -23,8 +23,8 @@ an organizational role is related to a person.
 an organizational role is related to an organizational role , named the manager.
 
 -- building 
-a building type can be one of: appartment, warehouse, commercial.
-a builidng usage type can be one of: bank branch, furniture store.
+a building type can be one of: APPARTMENT, WAREHOUSE, COMMERCIAL.
+a builidng usage type can be one of: BANK BRANCH, FURNITURE STORE.
 
 a building is a business entity identified by an id.
 a building has a location (a point) used as the default geometry.
@@ -38,7 +38,7 @@ a building has an expected cellular report frequency (numeric).
 
 
 -- vehicle
-a vehicle type can be one of: motorcycle, jeep, truck.
+a vehicle type can be one of: MOTORCYCLE, JEEP, TRUCK.
 
 a vehicle details is a concept with
    a maker,
@@ -47,7 +47,7 @@ a vehicle details is a concept with
    a year (date & time),
    a maximum speed (numeric).
 
-a vehicle status can be one of: inactive, active.
+a vehicle status can be one of: INACTIVE, ACTIVE.
  
 a vehicle is a business entity identified by a license plate number.
 a vehicle has a location (a point).

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>Camera Report Test</name>
+  <uuid>eeeb81b0-b846-4e36-9764-f78e64c14135</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[when a traffic camera report occurs
+definitions
+    set 'the owner id' to the id of the owner of 'the vehicle' ;
+    set 'the details' to the details of 'the vehicle' ;
+    set 'the type' to the type of 'the details'  ;
+    set 'the organization type of the owner' to the type of the organization of the role of the owner of 'the vehicle' ;
+if
+    'the type' is motorcycle 
+    and ( 'the organization type of the owner' is criminal 
+    or 'the owner id' has 2 depth association with a CRIMINAL organization)
+then
+    set the status of 'the vehicle' to active;]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>
