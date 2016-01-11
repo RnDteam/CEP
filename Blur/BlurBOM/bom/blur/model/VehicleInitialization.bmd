@@ -9,12 +9,12 @@ a Vehicle initialization has a Status (a Vehicle Status).
 a Vehicle initialization has a Details (a Vehicle Details).
 a Vehicle initialization has a Last Seen (date & time).
 
-a Vehicle Details initialization is a business event .
-a Vehicle Details initialization has a Maker.
-a Vehicle Details initialization has a Model.
-a Vehicle Details initialization has a Type (a Vehicle Type ).  --TODO: add enrichment
-a Vehicle Details initialization has a Year (date & time ). 
-a Vehicle Details initialization has a Maximum Speed (numeric).
+--a Vehicle Details initialization is a business event .
+--a Vehicle Details initialization has a Maker.
+--a Vehicle Details initialization has a Model.
+--a Vehicle Details initialization has a Type (a Vehicle Type ).  --TODO: add enrichment
+--a Vehicle Details initialization has a Year (date & time ). 
+--a Vehicle Details initialization has a Maximum Speed (numeric).
 
 ]]></Bmd>
     <Bmi><![CDATA[a Vehicle is initialized from a Vehicle initialization , where this Vehicle comes from the Vehicle of this Vehicle initialization : 
