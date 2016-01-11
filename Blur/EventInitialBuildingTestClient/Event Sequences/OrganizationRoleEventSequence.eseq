@@ -1,0 +1,27 @@
+define 'the organization role 1' as the organizational role identified by "organization_role_1";
+define 'the organization role 2' as the organizational role identified by "organization_role_2";
+define 'the organization role 3' as the organizational role identified by "organization_role_3";
+
+emit a new organization role initialization where 
+	the organizational role is 'the organization role 1' ,
+	the name is "role1" ,
+	the organization is a new organization where the id is "organization1" , 
+	the person is a new person where the id is "person1",
+	the manager is a new organizational role where the id is "manager1",
+	time-stamped 10/10/2016 8:43:49 AM;
+	
+emit a new organization role initialization where 
+	the organizational role is 'the organization role 2' ,
+	the  name is "role2" ,
+	the organization is a new organization where the id is "organization2" , 
+	the person is a new person where the id is "person2",
+	the manager is a new organizational role where the id is "manager2",
+	time-stamped 10 minutes later;
+	
+emit a new organization role initialization where 
+	the organizational role is 'the organization role 3' ,
+	the  name is "role3" ,
+	the organization is a new organization where the id is "organization3" , 
+	the person is a new person where the id is "person3",
+	the manager is a new organizational role where the id is "manager1",
+	time-stamped 10 minutes later;

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BusinessModelDefinition>
-    <Bmd><![CDATA[a Building initialization is a business event .
-a Building initialization is related to a Building .
-a Building initialization is related to a Person , named the Owner .
-a Building initialization is related to several different Organizations .
-a Building initialization has a Location ( a geometry ) used as the default geometry .
-a Building initialization has a Type ( a Building Type ) .
-a Building initialization has a Usage Type ( a Builidng Usage Type ) .]]></Bmd>
-    <Bmi><![CDATA[a Building is initialized from a Building initialization, where this Building comes
-from the Building of this Building initialization :
- 	- set the Owner of this Building to the Owner of this Building initialization
- 	- set the Organizations of this Building to the Organizations of this Building initialization
- 	- set the Location of this Building to the Location of this Building initialization
- 	- set the Type of this Building to the Type of this Building initialization
- 	- set the Usage Type of this Building to the Usage Type of this Building initialization.]]></Bmi>
+    <Bmd><![CDATA[a building initialization is a business event .
+a building initialization is related to a building .
+a building initialization is related to a person , named the owner .
+a building initialization is related to several different organizations .
+a building initialization has a location ( a point ) used as the default geometry .
+a building initialization has a type ( a building type ) .
+a building initialization has a usage type ( a builidng usage type ) .]]></Bmd>
+    <Bmi><![CDATA[a building is initialized from a building initialization, where this building comes
+from the building of this building initialization :
+ 	- set the owner of this building to the owner of this building initialization
+ 	- set the organizations of this building to the organizations of this building initialization
+ 	- set the location of this building to the location of this building initialization
+ 	- set the type of this building to the type of this building initialization
+ 	- set the usage type of this building to the usage type of this building initialization.]]></Bmi>
 </BusinessModelDefinition>

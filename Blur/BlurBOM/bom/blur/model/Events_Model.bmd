@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BusinessModelDefinition>
     <Bmd><![CDATA[
--- Traffic Camera Report
-a Traffic Camera Report is a business event.
-a Traffic Camera Report has an Camera Id (numeric).
-a Traffic Camera Report has a Camera Location (a point).
-a Traffic Camera Report is related to a Vehicle.
+-- traffic camera report
+a traffic camera report is a business event.
+a traffic camera report has an camera id (integer).
+a traffic camera report has a camera location (a point).
+a traffic camera report is related to a vehicle , named the license plate number.
 
--- Vehicle Updated
-a Vehicle Updated is a business event.
-a Vehicle Updated is related to a Vehicle.
+-- vehicle updated
+a vehicle updated is a business event.
+a vehicle updated is related to a vehicle.
 
--- Vehcile Created
-a Vehicle Created is a business event. 
-a Vehicle Created is related to a Vehicle.
+-- vehcile created
+a vehicle created is a business event. 
+a vehicle created is related to a vehicle.
 
--- Cellular Report
-a cellular report is a business event related to a Building. 
-a cellular report is related to a Person. 
+-- cellular report
+a cellular report is a business event related to a building. 
+a cellular report is related to a person. 
  
 ]]></Bmd>
-    <Bmi><![CDATA[the recent cellular report frequency of a Building is aggregated from cellular reports ,
-        where this Building comes from the Building of each cellular report
+    <Bmi><![CDATA[the recent cellular report frequency of a building is aggregated from cellular reports ,
+        where this building comes from the building of each cellular report
     as the number of cellular reports during the last period of 30 minute 
     available for 30 minutes .
 
-the expected cellular report frequency of a Building is aggregated from cellular reports ,
-        where this Building comes from the Building of each cellular report
+the expected cellular report frequency of a building is aggregated from cellular reports ,
+        where this building comes from the building of each cellular report
     as the number of cellular reports during the last period of 24 hours
     available for 24 hours .]]></Bmi>
 </BusinessModelDefinition>

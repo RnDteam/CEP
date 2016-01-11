@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BusinessModelDefinition>
-    <Bmd><![CDATA[a Person initialization is a business event.
-a Person initialization has a Name.
-a Person initialization has a Profession.
-a Person initialization has a Location (a geometry) used as the default geometry.
-a Person initialization has a State (a Person State).
-a Person initialization is related to a Person.
-a Person initialization is related to an Organizational Role, named the Role.
+    <Bmd><![CDATA[a person initialization is a business event.
+a person initialization has a name.
+a person initialization has a profession.
+a person initialization has a location (a point) used as the default geometry.
+a person initialization has a state (a person state).
+a person initialization is related to a person.
+a person initialization is related to an organizational role, named the role.
 ]]></Bmd>
-    <Bmi><![CDATA[a Person is initialized from a Person initialization , where this Person comes from the Person of this Person initialization :
-- set the Name of this Person to the Name of this Person initialization
-- set the Profession of this Person to the Profession of this Person initialization
-- set the Location of this Person to the Location of this Person initialization
-- set the State of this Person to the State of this Person initialization
-- set the Role of this Person to the Role of this Person initialization.]]></Bmi>
+    <Bmi><![CDATA[a person is initialized from a person initialization , where this person comes from the person of this person initialization :
+- set the name of this person to the name of this person initialization
+- set the profession of this person to the profession of this person initialization
+- set the location of this person to the location of this person initialization
+- set the state of this person to the state of this person initialization
+- set the role of this person to the role of this person initialization.]]></Bmi>
 </BusinessModelDefinition>

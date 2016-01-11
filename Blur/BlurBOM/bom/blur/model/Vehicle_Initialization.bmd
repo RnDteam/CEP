@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BusinessModelDefinition>
     <Bmd><![CDATA[
-a Vehicle initialization is a business event.
-a Vehicle initialization is related to an Vehicle.
-a Vehicle initialization is related to a Person, named the Owner.
-a Vehicle initialization is related to an Organization.
-a Vehicle initialization has a Location (a point) used as the default geometry.
-a Vehicle initialization has a Status (a Vehicle Status).
-a Vehicle initialization has a Details (a Vehicle Details).
-a Vehicle initialization has a Last Seen (date & time).
+
+a vehicle initialization is a business event.
+a vehicle initialization is related to an vehicle.
+a vehicle initialization is related to a person, named the owner.
+a vehicle initialization is related to an organization.
+a vehicle initialization has a location (a point) used as the default geometry.
+a vehicle initialization has a status (a vehicle status).
+a vehicle initialization has a details (a vehicle details).
+a vehicle initialization has a last seen (date & time).
 
 
 ]]></Bmd>
-    <Bmi><![CDATA[a Vehicle is initialized from a Vehicle initialization , where this Vehicle comes from the Vehicle of this Vehicle initialization : 
-	- set the Organization of this Vehicle to the Organization of this Vehicle initialization 
-	- set the Owner of this Vehicle to the Owner of this Vehicle initialization 
-    - set the Location of this Vehicle to the Location of this Vehicle initialization 
-	- set the Organization of this Vehicle to the Organization of this Vehicle initialization 
-	- set the Status of this Vehicle to the Status of this Vehicle initialization 
-	- set the Details of this Vehicle to the Details of this Vehicle initialization 
-	- set the Last Seen of this Vehicle to the Last Seen of this Vehicle initialization .
+    <Bmi><![CDATA[a vehicle is initialized from a vehicle initialization , where this vehicle comes from the vehicle of this vehicle initialization : 
+	- set the organization of this vehicle to the organization of this vehicle initialization 
+	- set the owner of this vehicle to the owner of this vehicle initialization 
+    - set the location of this vehicle to the location of this vehicle initialization 
+	- set the organization of this vehicle to the organization of this vehicle initialization 
+	- set the status of this vehicle to the status of this vehicle initialization 
+	- set the details of this vehicle to the details of this vehicle initialization 
+	- set the last seen of this vehicle to the last seen of this vehicle initialization .
 		
 		]]></Bmi>
 </BusinessModelDefinition>
