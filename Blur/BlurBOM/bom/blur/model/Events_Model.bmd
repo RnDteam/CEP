@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessModelDefinition>
+    <Bmd><![CDATA[
+-- Traffic Camera Report
+a Traffic Camera Report is a business event.
+a Traffic Camera Report has an Camera Id (numeric).
+a Traffic Camera Report has a Camera Location (a point).
+a Traffic Camera Report is related to a Vehicle.
+
+-- Vehicle Updated
+a Vehicle Updated is a business event.
+a Vehicle Updated is related to a Vehicle.
+
+-- Vehcile Created
+a Vehicle Created is a business event. 
+a Vehicle Created is related to a Vehicle.
+
+
+]]></Bmd>
+</BusinessModelDefinition>
