@@ -10,7 +10,7 @@ if
     the last seen of 'the vehicle' is null
     or this traffic camera report is after the last seen of 'the vehicle'
 then
-    set the status of 'the vehicle' to active ;
+    set the status of 'the vehicle' to ACTIVE  ;
     set the location of 'the vehicle' to 'the camera location' ;
     set the last seen of 'the vehicle' to the timestamp of this traffic camera report;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

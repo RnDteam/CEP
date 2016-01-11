@@ -1,4 +1,4 @@
-uuid = 4fc77591-6fbe-4b13-82b3-c412cdfbe311
+uuid = 39ba397b-c704-4c9c-b94b-05b196abff83
 # blur.model.Building
 blur.model.Building#concept.label = building
 blur.model.Building.Building(java.lang.String,com.ibm.geolib.geom.Point,blur.model.Person,blur.model.BuildingType,blur.model.BuilidngUsageType)#phrase.navigation = a new {building} where {0, id} {1, location} {2, owner} {3, type} {4, usage type} 
@@ -55,14 +55,14 @@ blur.model.BuildingInitialization.usageType#phrase.navigation = {usage type} of 
 
 # blur.model.BuildingType
 blur.model.BuildingType#concept.label = building type
-blur.model.BuildingType.appartment#instance.label = appartment
-blur.model.BuildingType.commercial#instance.label = commercial
-blur.model.BuildingType.warehouse#instance.label = warehouse
+blur.model.BuildingType.APPARTMENT#instance.label = APPARTMENT
+blur.model.BuildingType.COMMERCIAL#instance.label = COMMERCIAL
+blur.model.BuildingType.WAREHOUSE#instance.label = WAREHOUSE
 
 # blur.model.BuilidngUsageType
 blur.model.BuilidngUsageType#concept.label = builidng usage type
-blur.model.BuilidngUsageType.bank_branch#instance.label = bank branch
-blur.model.BuilidngUsageType.furniture_store#instance.label = furniture store
+blur.model.BuilidngUsageType.BANK_BRANCH#instance.label = BANK BRANCH
+blur.model.BuilidngUsageType.FURNITURE_STORE#instance.label = FURNITURE STORE
 
 # blur.model.CellularReport
 blur.model.CellularReport#concept.label = cellular report
@@ -118,8 +118,8 @@ blur.model.OrganizationRoleInitialization.timestamp#phrase.navigation = {timesta
 
 # blur.model.OrganizationType
 blur.model.OrganizationType#concept.label = organization type
-blur.model.OrganizationType.commercial#instance.label = commercial
-blur.model.OrganizationType.criminal#instance.label = criminal
+blur.model.OrganizationType.COMMERCIAL#instance.label = COMMERCIAL
+blur.model.OrganizationType.CRIMINAL#instance.label = CRIMINAL
 
 # blur.model.OrganizationalRole
 blur.model.OrganizationalRole#concept.label = organizational role
@@ -179,8 +179,8 @@ blur.model.PersonInitialization.timestamp#phrase.navigation = {timestamp} of {th
 
 # blur.model.PersonState
 blur.model.PersonState#concept.label = person state
-blur.model.PersonState.active#instance.label = active
-blur.model.PersonState.inactive#instance.label = inactive
+blur.model.PersonState.ACTIVE#instance.label = ACTIVE
+blur.model.PersonState.INACTIVE#instance.label = INACTIVE
 
 # blur.model.TrafficCameraReport
 blur.model.TrafficCameraReport#concept.label = traffic camera report
@@ -270,14 +270,14 @@ blur.model.VehicleInitialization.vehicle#phrase.navigation = {vehicle} of {this}
 
 # blur.model.VehicleStatus
 blur.model.VehicleStatus#concept.label = vehicle status
-blur.model.VehicleStatus.active#instance.label = active
-blur.model.VehicleStatus.inactive#instance.label = inactive
+blur.model.VehicleStatus.ACTIVE#instance.label = ACTIVE
+blur.model.VehicleStatus.INACTIVE#instance.label = INACTIVE
 
 # blur.model.VehicleType
 blur.model.VehicleType#concept.label = vehicle type
-blur.model.VehicleType.jeep#instance.label = jeep
-blur.model.VehicleType.motorcycle#instance.label = motorcycle
-blur.model.VehicleType.truck#instance.label = truck
+blur.model.VehicleType.JEEP#instance.label = JEEP
+blur.model.VehicleType.MOTORCYCLE#instance.label = MOTORCYCLE
+blur.model.VehicleType.TRUCK#instance.label = TRUCK
 
 # blur.model.VehicleUpdated
 blur.model.VehicleUpdated#concept.label = vehicle updated

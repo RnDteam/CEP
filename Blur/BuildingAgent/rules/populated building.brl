@@ -9,7 +9,7 @@ definitions
     set 'the building recent cellular reports' to all cellular reports during the last period of 5 minutes  where the organization of the role of the person is 'the oranization' ;
     set count to the number of elements in 'the building recent cellular reports' ;    
 if 
-    the type of 'the oranization' is criminal and  count is more than 5 
+    the type of 'the oranization' is CRIMINAL  and  count is more than 5 
 then
     print "too many cellular reports of the same organization in the same building" ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>
