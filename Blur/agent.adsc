@@ -1,3 +1,0 @@
-'BuildingAgent' is an agent related to a Building  , 
-processing events :
-- cellular report  , where this Building  comes from the Building of this cellular report , with a horizon of 24 hours 
