@@ -1,0 +1,18 @@
+define 'the organization 1' as the organization identified by "organization_1";
+define 'the organization 2' as the organization identified by "organization_2";
+define 'the organization 3' as the organization identified by "organization_3";
+
+emit a new organization initialization where 
+	the organization is 'the organization 1' ,
+	the type is commercial,
+	time-stamped 10/10/2016 8:43:49 AM;
+	
+emit a new organization initialization where 
+	the organization is 'the organization 2' ,
+	the type is criminal ,
+	time-stamped 10 minutes later;
+
+emit a new organization initialization where 
+	the organization is 'the organization 3' ,
+	the type is criminal ,
+	time-stamped 10 minutes later;

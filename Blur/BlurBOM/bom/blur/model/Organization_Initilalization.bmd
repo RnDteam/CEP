@@ -2,24 +2,24 @@
 <BusinessModelDefinition>
     <Bmd><![CDATA[
 an organization initialization is a business event.
-an organization initialization is related to an Organization.
-an organization initialization has a Type(an Organization Type).
+an organization initialization is related to an organization.
+an organization initialization has a type(an organization type).
 
 an organization role initialization is a business event.
-an organization role initialization is related to an Organizational Role.
-an organization role initialization has a Name.
-an organization role initialization is related to an Organization.
-an organization role initialization is related to an Person.
-an organization role initialization is related to an Organizational Role , named the Manager.
+an organization role initialization is related to an organizational role.
+an organization role initialization has a name.
+an organization role initialization is related to an organization.
+an organization role initialization is related to an person.
+an organization role initialization is related to an organizational role , named the manager.
 ]]></Bmd>
-    <Bmi><![CDATA[an Organization is initialized from an organization initialization , 
-where this Organization comes from the Organization of this organization initialization :
-	- set the Type of this Organization to the Type of this organization initialization.
+    <Bmi><![CDATA[an organization is initialized from an organization initialization , 
+where this organization comes from the organization of this organization initialization :
+	- set the type of this organization to the type of this organization initialization.
 
-an Organizational Role is initialized from an organization role initialization , where this Organizational Role 
-comes from the Organizational Role of this organization role initialization :
-	- set the Name of the Organizational Role to the Name of this organization role initialization 
-	- set the Organization of the Organizational Role to the Organization of this organization role initialization 
-	- set the Person of the Organizational Role to the Person of this organization role initialization 
-	- set the Manager of the Organizational Role to the Manager of this organization role initialization .]]></Bmi>
+an organizational role is initialized from an organization role initialization , where this organizational role 
+comes from the organizational role of this organization role initialization :
+	- set the name of the organizational role to the name of this organization role initialization 
+	- set the organization of the organizational role to the organization of this organization role initialization 
+	- set the person of the organizational role to the person of this organization role initialization 
+	- set the manager of the organizational role to the manager of this organization role initialization .]]></Bmi>
 </BusinessModelDefinition>

@@ -1,61 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BusinessModelDefinition>
-    <Bmd><![CDATA[-- Person
-a Person State can be one of : ACTIVE, INACTIVE.
+    <Bmd><![CDATA[-- person
+a person state can be one of : active, inactive.
 
-a Person is a business entity identified by an Id.
-a Person has a Name.
-a Person has a Profession.
-a Person has a Location (a geometry) used as the default geometry.
-a Person has a State (a Person State).
-a Person is related to an Organizational Role, named the Role.
+a person is a business entity identified by an id.
+a person has a name.
+a person has a profession.
+a person has a location (a geometry) used as the default geometry.
+a person has a state (a person state).
+a person is related to an organizational role, named the role.
 
--- Organization	 
-a Organization Type can be one of : CRIMINAL, COMMERCIAL.
+-- organization	 
+a organization type can be one of : criminal, commercial.
 
-an Organization is a business entity identified by an Id.
-an Organization has a Type (an Organization Type).
+an organization is a business entity identified by an id.
+an organization has a type (an organization type).
 
-an Organizational Role is a business entity identified by an Id.
-an Organizational Role has a Name.
-an Organizational Role is related to an Organization.
-an Organizational Role is related to a Person. 
-an Organizational Role is related to an Organizational Role , named the Manager.
+an organizational role is a business entity identified by an id.
+an organizational role has a name.
+an organizational role is related to an organization.
+an organizational role is related to a person. 
+an organizational role is related to an organizational role , named the manager.
 
--- Building 
-a Building Type can be one of: APPARTMENT, WAREHOUSE, COMMERCIAL.
-a Builidng Usage Type can be one of: BANK BRANCH, FURNITURE STORE.
+-- building 
+a building type can be one of: appartment, warehouse, commercial.
+a builidng usage type can be one of: bank branch, furniture store.
 
-a Building is a business entity identified by an Id.
-a Building has a Location (a geometry) used as the default geometry.
-a Building has a Type (a Building Type).
-a Building has a Usage Type ( a Builidng Usage Type ).
-a Building is related to a Person , named the Owner.
-a Building is related to several different Organizations.
+a building is a business entity identified by an id.
+a building has a location (a geometry) used as the default geometry.
+a building has a type (a building type).
+a building has a usage type ( a builidng usage type ).
+a building is related to a person , named the owner.
+a building is related to several different organizations.
 
-a Building has a recent cellular report frequency (numeric).
-a Building has an expected cellular report frequency (numeric).
+a building has a recent cellular report frequency (numeric).
+a building has an expected cellular report frequency (numeric).
 
 
--- Vehicle
-a Vehicle Type can be one of: MOTORCYCLE, JEEP, TRUCK.
+-- vehicle
+a vehicle type can be one of: motorcycle, jeep, truck.
 
-a Vehicle Details is a concept.
-a Vehicle Details has a Maker.
-a Vehicle Details has a Model.
-a Vehicle Details has a Type (a Vehicle Type).
-a Vehicle Details has a Year (date & time).
-a Vehicle Details has a Maximum Speed (numeric).
+a vehicle details is a concept.
+a vehicle details has a maker.
+a vehicle details has a model.
+a vehicle details has a type (a vehicle type).
+a vehicle details has a year (date & time).
+a vehicle details has a maximum speed (numeric).
 
-a Vehicle Status can be one of: INACTIVE, ACTIVE.
+a vehicle status can be one of: inactive, active.
  
-a Vehicle is a business entity identified by a License Plate Number.
-a Vehicle has a Location (a point).
-a Vehicle has a Status (a Vehicle Status).
-a Vehicle has a Details (a Vehicle Details).
-a Vehicle has a Last Seen (date & time).
-a Vehicle is related to a Person, named the Owner.
-a Vehicle is related to an Organization. 
+a vehicle is a business entity identified by a license plate number.
+a vehicle has a location (a point).
+a vehicle has a status (a vehicle status).
+a vehicle has a details (a vehicle details).
+a vehicle has a last seen (date & time).
+a vehicle is related to a person, named the owner.
+a vehicle is related to an organization. 
 
 
 

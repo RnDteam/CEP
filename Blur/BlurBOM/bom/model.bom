@@ -130,15 +130,15 @@ public class BuildingType
         property "xsd.support" "true"
         property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
 {
-    domain {static APPARTMENT, static WAREHOUSE, static COMMERCIAL}
-    public static final readonly blur.model.BuildingType APPARTMENT
-                property "xsd.name" "APPARTMENT"
+    domain {static appartment, static warehouse, static commercial}
+    public static final readonly blur.model.BuildingType appartment
+                property "xsd.name" "appartment"
                 property "xsd.order" "0";
-    public static final readonly blur.model.BuildingType COMMERCIAL
-                property "xsd.name" "COMMERCIAL"
+    public static final readonly blur.model.BuildingType commercial
+                property "xsd.name" "commercial"
                 property "xsd.order" "1";
-    public static final readonly blur.model.BuildingType WAREHOUSE
-                property "xsd.name" "WAREHOUSE"
+    public static final readonly blur.model.BuildingType warehouse
+                property "xsd.name" "warehouse"
                 property "xsd.order" "2";
 }
 
@@ -150,12 +150,12 @@ public class BuilidngUsageType
         property "xsd.support" "true"
         property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
 {
-    domain {static BANK_BRANCH, static FURNITURE_STORE}
-    public static final readonly blur.model.BuilidngUsageType BANK_BRANCH
-                property "xsd.name" "BANK_BRANCH"
+    domain {static bank_branch, static furniture_store}
+    public static final readonly blur.model.BuilidngUsageType bank_branch
+                property "xsd.name" "bank_branch"
                 property "xsd.order" "0";
-    public static final readonly blur.model.BuilidngUsageType FURNITURE_STORE
-                property "xsd.name" "FURNITURE_STORE"
+    public static final readonly blur.model.BuilidngUsageType furniture_store
+                property "xsd.name" "furniture_store"
                 property "xsd.order" "1";
 }
 
@@ -289,12 +289,12 @@ public class OrganizationType
         property "xsd.support" "true"
         property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
 {
-    domain {static CRIMINAL, static COMMERCIAL}
-    public static final readonly blur.model.OrganizationType COMMERCIAL
-                property "xsd.name" "COMMERCIAL"
+    domain {static criminal, static commercial}
+    public static final readonly blur.model.OrganizationType commercial
+                property "xsd.name" "commercial"
                 property "xsd.order" "0";
-    public static final readonly blur.model.OrganizationType CRIMINAL
-                property "xsd.name" "CRIMINAL"
+    public static final readonly blur.model.OrganizationType criminal
+                property "xsd.name" "criminal"
                 property "xsd.order" "1";
 }
 
@@ -432,12 +432,12 @@ public class PersonState
         property "xsd.support" "true"
         property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
 {
-    domain {static ACTIVE, static INACTIVE}
-    public static final readonly blur.model.PersonState ACTIVE
-                property "xsd.name" "ACTIVE"
+    domain {static active, static inactive}
+    public static final readonly blur.model.PersonState active
+                property "xsd.name" "active"
                 property "xsd.order" "0";
-    public static final readonly blur.model.PersonState INACTIVE
-                property "xsd.name" "INACTIVE"
+    public static final readonly blur.model.PersonState inactive
+                property "xsd.name" "inactive"
                 property "xsd.order" "1";
 }
 
@@ -632,12 +632,12 @@ public class VehicleStatus
         property "xsd.support" "true"
         property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
 {
-    domain {static INACTIVE, static ACTIVE}
-    public static final readonly blur.model.VehicleStatus ACTIVE
-                property "xsd.name" "ACTIVE"
+    domain {static inactive, static active}
+    public static final readonly blur.model.VehicleStatus active
+                property "xsd.name" "active"
                 property "xsd.order" "0";
-    public static final readonly blur.model.VehicleStatus INACTIVE
-                property "xsd.name" "INACTIVE"
+    public static final readonly blur.model.VehicleStatus inactive
+                property "xsd.name" "inactive"
                 property "xsd.order" "1";
 }
 
@@ -649,15 +649,15 @@ public class VehicleType
         property "xsd.support" "true"
         property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
 {
-    domain {static MOTORCYCLE, static JEEP, static TRUCK}
-    public static final readonly blur.model.VehicleType JEEP
-                property "xsd.name" "JEEP"
+    domain {static motorcycle, static jeep, static truck}
+    public static final readonly blur.model.VehicleType jeep
+                property "xsd.name" "jeep"
                 property "xsd.order" "0";
-    public static final readonly blur.model.VehicleType MOTORCYCLE
-                property "xsd.name" "MOTORCYCLE"
+    public static final readonly blur.model.VehicleType motorcycle
+                property "xsd.name" "motorcycle"
                 property "xsd.order" "1";
-    public static final readonly blur.model.VehicleType TRUCK
-                property "xsd.name" "TRUCK"
+    public static final readonly blur.model.VehicleType truck
+                property "xsd.name" "truck"
                 property "xsd.order" "2";
 }
 
