@@ -6,10 +6,11 @@
   <categories>any</categories>
   <paths xsi:type="ilog.rules.studio.model.xom:XOMPath" pathID="XOM">
     <entries xsi:type="ilog.rules.studio.model.xom:LibraryXOMPathEntry" name="org.eclipse.jdt.launching.JRE_CONTAINER" url="file:org.eclipse.jdt.launching.JRE_CONTAINER" kind="LIBRARY"/>
+    <entries xsi:type="ilog.rules.studio.model.xom:SystemXOMPathEntry" name="BlurBOM" url="platform:/BlurBOM" kind="RULE_PROJECT"/>
   </paths>
   <paths xsi:type="ilog.rules.studio.model.bom:BOMPath" pathID="BOM">
     <entries xsi:type="ilog.rules.studio.model.bom:ProjectBOMEntry" name="BlurBOM" url="platform:/BlurBOM" kind="RULE_PROJECT">
-      <ruleProject href="Blur/BlurBOM#627742e0-cafa-48cd-9ea1-9df72a74b159"/>
+      <ruleProject href="BlurBOM#627742e0-cafa-48cd-9ea1-9df72a74b159"/>
     </entries>
   </paths>
   <parameters name="entity" type="blur.model.Building" verbalization="the Building" direction="IN_OUT"/>

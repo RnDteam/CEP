@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><agent xmlns="http://www.ibm.com/ia/AgentDescriptor">
-  <name>BuildingAgent</name>
+  <name>buildingagent</name>
   <kind>Rule</kind>
   <entity>blur.model.Building</entity>
   <events>
