@@ -10,9 +10,9 @@ definitions
     set 'the type' to the type of 'the details'  ;
     set 'the organization type of the owner' to the type of the organization of the role of the owner of 'the vehicle' ;
 if
-    'the type' is motorcycle 
-    and ( 'the organization type of the owner' is criminal 
+    'the type' is MOTORCYCLE
+    and ( 'the organization type of the owner' is CRIMINAL 
     or 'the owner id' has 2 depth association with a CRIMINAL organization)
 then
-    set the status of 'the vehicle' to active;]]></definition>
+    set the status of 'the vehicle' to ACTIVE;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

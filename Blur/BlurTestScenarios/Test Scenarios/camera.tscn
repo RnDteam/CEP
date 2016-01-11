@@ -1,6 +1,6 @@
 submit events from "camera";
 check that the vehicle identified by "123" exists;
 check that for the vehicle identified by "123" : 
-	- the type of the details of this vehicle is motorcycle
+	- the type of the details of this vehicle is MOTORCYCLE
 	- the location of this vehicle is the point with 34 as longitude and 35 as latitude;
   
