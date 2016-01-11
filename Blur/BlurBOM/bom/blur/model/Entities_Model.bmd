@@ -27,7 +27,7 @@ a building type can be one of: appartment, warehouse, commercial.
 a builidng usage type can be one of: bank branch, furniture store.
 
 a building is a business entity identified by an id.
-a building has a location (a polygon) used as the default geometry.
+a building has a location (a point) used as the default geometry.
 a building has a type (a building type).
 a building has a usage type ( a builidng usage type ).
 a building is related to a person , named the owner.
@@ -58,4 +58,7 @@ a vehicle is related to a person, named the owner.
 a vehicle is related to an organization. 
 
 ]]></Bmd>
+    <Bmi><![CDATA[a vehicle is initialized from a traffic camera report , 
+	where this vehicle comes from the license plate number of this traffic camera report : 
+	- set the location of this vehicle to the camera location of this traffic camera report. ]]></Bmi>
 </BusinessModelDefinition>

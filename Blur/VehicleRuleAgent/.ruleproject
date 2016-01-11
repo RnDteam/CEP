@@ -13,7 +13,7 @@
       <ruleProject href="BlurBOM#627742e0-cafa-48cd-9ea1-9df72a74b159"/>
     </entries>
   </paths>
-  <parameters name="entity" type="blur.model.Vehicle" verbalization="the Vehicle" direction="IN_OUT"/>
+  <parameters name="entity" type="blur.model.Vehicle" verbalization="the vehicle" direction="IN_OUT"/>
   <modelFolders xsi:type="ilog.rules.studio.model.base:SourceFolder">
     <name>rules</name>
   </modelFolders>

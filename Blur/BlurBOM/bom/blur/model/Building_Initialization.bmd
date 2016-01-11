@@ -4,7 +4,7 @@
 a building initialization is related to a building .
 a building initialization is related to a person , named the owner .
 a building initialization is related to several different organizations .
-a building initialization has a location ( a geometry ) used as the default geometry .
+a building initialization has a location ( a point ) used as the default geometry .
 a building initialization has a type ( a building type ) .
 a building initialization has a usage type ( a builidng usage type ) .]]></Bmd>
     <Bmi><![CDATA[a building is initialized from a building initialization, where this building comes

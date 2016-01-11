@@ -3,7 +3,7 @@
     <Bmd><![CDATA[a person initialization is a business event.
 a person initialization has a name.
 a person initialization has a profession.
-a person initialization has a location (a geometry) used as the default geometry.
+a person initialization has a location (a point) used as the default geometry.
 a person initialization has a state (a person state).
 a person initialization is related to a person.
 a person initialization is related to an organizational role, named the role.

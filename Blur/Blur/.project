@@ -6,6 +6,7 @@
 		<project>Blur - Java Model</project>
 		<project>BlurBOM</project>
 		<project>VehicleRuleAgent</project>
+		<project>BlurExtensions</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

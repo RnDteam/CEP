@@ -18,7 +18,7 @@ public class Building
                 property update "true"
                 property "xsd.name" "id"
                 property "xsd.order" "0";
-    public com.ibm.geolib.geom.Polygon location
+    public com.ibm.geolib.geom.Point location
                 property update "true"
                 property "xsd.name" "location"
                 property "xsd.order" "1";
@@ -44,7 +44,7 @@ public class Building
                 property "xsd.order" "5";
     public Building(string id)
                 property "dataio.default" "true";
-    public Building(string id, com.ibm.geolib.geom.Polygon location, blur.model.Person owner, blur.model.BuildingType type, blur.model.BuilidngUsageType usageType)
+    public Building(string id, com.ibm.geolib.geom.Point location, blur.model.Person owner, blur.model.BuildingType type, blur.model.BuilidngUsageType usageType)
                 property groups "BALA"
                 property prototype "true";
     public void addTo_organizations(blur.model.Organization arg0)
@@ -83,7 +83,7 @@ public class BuildingInitialization
                 property "xsd.name" "building"
                 property "xsd.order" "0"
                 property "xsd.useMapping" "true";
-    public com.ibm.geolib.geom.Geometry location
+    public com.ibm.geolib.geom.Point location
                 property "xsd.name" "location"
                 property "xsd.order" "1";
     public java.util.Set organizations domain 0,* class blur.model.Organization
@@ -107,7 +107,7 @@ public class BuildingInitialization
                 property "xsd.order" "6";
     public BuildingInitialization(java.time.ZonedDateTime timestamp)
                 property "dataio.default" "true";
-    public BuildingInitialization(blur.model.Building building, com.ibm.geolib.geom.Geometry location, blur.model.Person owner, java.time.ZonedDateTime timestamp, blur.model.BuildingType type, blur.model.BuilidngUsageType usageType)
+    public BuildingInitialization(blur.model.Building building, com.ibm.geolib.geom.Point location, blur.model.Person owner, java.time.ZonedDateTime timestamp, blur.model.BuildingType type, blur.model.BuilidngUsageType usageType)
                 property groups "BALA"
                 property prototype "true";
     public void addTo_organizations(blur.model.Organization arg0)
@@ -393,7 +393,7 @@ public class PersonInitialization
         property "xsd.support" "true"
         property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
 {
-    public com.ibm.geolib.geom.Geometry location
+    public com.ibm.geolib.geom.Point location
                 property "xsd.name" "location"
                 property "xsd.order" "0";
     public string name
@@ -419,7 +419,7 @@ public class PersonInitialization
                 property "xsd.order" "6";
     public PersonInitialization(java.time.ZonedDateTime timestamp)
                 property "dataio.default" "true";
-    public PersonInitialization(com.ibm.geolib.geom.Geometry location, string name, blur.model.Person person, string profession, blur.model.OrganizationalRole role, blur.model.PersonState state, java.time.ZonedDateTime timestamp)
+    public PersonInitialization(com.ibm.geolib.geom.Point location, string name, blur.model.Person person, string profession, blur.model.OrganizationalRole role, blur.model.PersonState state, java.time.ZonedDateTime timestamp)
                 property groups "BALA"
                 property prototype "true";
 }
@@ -451,23 +451,23 @@ public class TrafficCameraReport
         property "xsd.support" "true"
         property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
 {
-    public double cameraId
+    public int cameraId
                 property "xsd.name" "cameraId"
                 property "xsd.order" "0";
     public com.ibm.geolib.geom.Point cameraLocation
                 property "xsd.name" "cameraLocation"
                 property "xsd.order" "1";
+    public blur.model.Vehicle licensePlateNumber
+                property "xsd.name" "licensePlateNumber"
+                property "xsd.order" "2"
+                property "xsd.useMapping" "true";
     public java.time.ZonedDateTime timestamp
                 property "ia.timestamp" "true"
                 property "xsd.name" "timestamp"
-                property "xsd.order" "2";
-    public blur.model.Vehicle vehicle
-                property "xsd.name" "vehicle"
-                property "xsd.order" "3"
-                property "xsd.useMapping" "true";
+                property "xsd.order" "3";
     public TrafficCameraReport(java.time.ZonedDateTime timestamp)
                 property "dataio.default" "true";
-    public TrafficCameraReport(double cameraId, com.ibm.geolib.geom.Point cameraLocation, java.time.ZonedDateTime timestamp, blur.model.Vehicle vehicle)
+    public TrafficCameraReport(int cameraId, com.ibm.geolib.geom.Point cameraLocation, blur.model.Vehicle licensePlateNumber, java.time.ZonedDateTime timestamp)
                 property groups "BALA"
                 property prototype "true";
 }

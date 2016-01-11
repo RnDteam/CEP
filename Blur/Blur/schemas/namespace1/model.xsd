@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema elementFormDefault="qualified" targetNamespace="http://www.ibm.com/ia/xmlns/default/BlurBOM/model" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:m="http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
+ xmlns:m1="http://www.ibm.com/geolib/geom">
+    <import namespace="http://www.ibm.com/geolib/geom" schemaLocation="file:/Users/dselman/dev/eclipse_draco/CIS-runtime-target-platform/schema/geometry.xsd"/>
+
+    <element name="BuildingInitialization" type="m:BuildingInitialization"/>
+    <complexType name="BuildingInitialization">
+        <annotation>
+            <appinfo source="http://www.ibm.com/ia/Annotation">
+                <event elementName="BuildingInitialization"/>
+            </appinfo>
+        </annotation>
+        <sequence>
+            <element name="building" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="building"/>
+                        <businessType type="blur.model.Building"/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="location" type="m1:Geometry">
+            </element>
+            <element name="organization" type="string" maxOccurs="unbounded" minOccurs="0">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="organizations"/>
+                        <businessType type="blur.model.Organization"/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="owner" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="owner"/>
+                        <businessType type="blur.model.Person"/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="timestamp" type="dateTime">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <timestamp/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="type" type="m:BuildingType">
+            </element>
+            <element name="usageType" type="m:BuilidngUsageType">
+            </element>
+        </sequence>
+    </complexType>
+    <element name="BuildingType" type="m:BuildingType"/>
+    <simpleType name="BuildingType">
+        <restriction base="string">
+            <enumeration value="appartment"/>
+            <enumeration value="warehouse"/>
+            <enumeration value="commercial"/>
+        </restriction>
+    </simpleType>
+    <element name="BuilidngUsageType" type="m:BuilidngUsageType"/>
+    <simpleType name="BuilidngUsageType">
+        <restriction base="string">
+            <enumeration value="bank_branch"/>
+            <enumeration value="furniture_store"/>
+        </restriction>
+    </simpleType>
+
+    <element name="CellularReport" type="m:CellularReport"/>
+    <complexType name="CellularReport">
+        <annotation>
+            <appinfo source="http://www.ibm.com/ia/Annotation">
+                <event elementName="CellularReport"/>
+            </appinfo>
+        </annotation>
+        <sequence>
+            <element name="building" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="building"/>
+                        <businessType type="blur.model.Building"/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="person" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="person"/>
+                        <businessType type="blur.model.Person"/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="timestamp" type="dateTime">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <timestamp/>
+                    </appinfo>
+                </annotation>
+            </element>
+        </sequence>
+    </complexType>
+
+    <element name="OrganizationInitialization" type="m:OrganizationInitialization"/>
+    <complexType name="OrganizationInitialization">
+        <annotation>
+            <appinfo source="http://www.ibm.com/ia/Annotation">
+                <event elementName="OrganizationInitialization"/>
+            </appinfo>
+        </annotation>
+        <sequence>
+            <element name="organization" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="organization"/>
+                        <businessType type="blur.model.Organization"/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="timestamp" type="dateTime">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <timestamp/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="type" type="m:OrganizationType">
+            </element>
+        </sequence>
+    </complexType>
+
+    <element name="OrganizationRoleInitialization" type="m:OrganizationRoleInitialization"/>
+    <complexType name="OrganizationRoleInitialization">
+        <annotation>
+            <appinfo source="http://www.ibm.com/ia/Annotation">
+                <event elementName="OrganizationRoleInitialization"/>
+            </appinfo>
+        </annotation>
+        <sequence>
+            <element name="manager" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="manager"/>
+                        <businessType type="blur.model.OrganizationalRole"/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="name" type="string">
+            </element>
+            <element name="organization" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="organization"/>
+                        <businessType type="blur.model.Organization"/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="organizationalRole" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="organizationalRole"/>
+                        <businessType type="blur.model.OrganizationalRole"/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="person" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="person"/>
+                        <businessType type="blur.model.Person"/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="timestamp" type="dateTime">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <timestamp/>
+                    </appinfo>
+                </annotation>
+            </element>
+        </sequence>
+    </complexType>
+    <element name="OrganizationType" type="m:OrganizationType"/>
+    <simpleType name="OrganizationType">
+        <restriction base="string">
+            <enumeration value="criminal"/>
+            <enumeration value="commercial"/>
+        </restriction>
+    </simpleType>
+
+    <element name="PersonInitialization" type="m:PersonInitialization"/>
+    <complexType name="PersonInitialization">
+        <annotation>
+            <appinfo source="http://www.ibm.com/ia/Annotation">
+                <event elementName="PersonInitialization"/>
+            </appinfo>
+        </annotation>
+        <sequence>
+            <element name="location" type="m1:Geometry">
+            </element>
+            <element name="name" type="string">
+            </element>
+            <element name="person" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="person"/>
+                        <businessType type="blur.model.Person"/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="profession" type="string">
+            </element>
+            <element name="role" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="role"/>
+                        <businessType type="blur.model.OrganizationalRole"/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="state" type="m:PersonState">
+            </element>
+            <element name="timestamp" type="dateTime">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <timestamp/>
+                    </appinfo>
+                </annotation>
+            </element>
+        </sequence>
+    </complexType>
+    <element name="PersonState" type="m:PersonState"/>
+    <simpleType name="PersonState">
+        <restriction base="string">
+            <enumeration value="active"/>
+            <enumeration value="inactive"/>
+        </restriction>
+    </simpleType>
+
+    <element name="TrafficCameraReport" type="m:TrafficCameraReport"/>
+    <complexType name="TrafficCameraReport">
+        <annotation>
+            <appinfo source="http://www.ibm.com/ia/Annotation">
+                <event elementName="TrafficCameraReport"/>
+            </appinfo>
+        </annotation>
+        <sequence>
+            <element name="cameraId" type="double">
+            </element>
+            <element name="cameraLocation" type="m1:Point">
+            </element>
+            <element name="licensePlateNumber" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="licensePlateNumber"/>
+                        <businessType type="blur.model.Vehicle"/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="timestamp" type="dateTime">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <timestamp/>
+                    </appinfo>
+                </annotation>
+            </element>
+        </sequence>
+    </complexType>
+
+    <element name="VehicleCreated" type="m:VehicleCreated"/>
+    <complexType name="VehicleCreated">
+        <annotation>
+            <appinfo source="http://www.ibm.com/ia/Annotation">
+                <event elementName="VehicleCreated"/>
+            </appinfo>
+        </annotation>
+        <sequence>
+            <element name="timestamp" type="dateTime">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <timestamp/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="vehicle" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="vehicle"/>
+                        <businessType type="blur.model.Vehicle"/>
+                    </appinfo>
+                </annotation>
+            </element>
+        </sequence>
+    </complexType>
+
+    <complexType name="VehicleDetails">
+        <sequence>
+            <element name="maker" type="string">
+            </element>
+            <element name="maximumSpeed" type="double">
+            </element>
+            <element name="model" type="string">
+            </element>
+            <element name="type" type="m:VehicleType">
+            </element>
+            <element name="year" type="dateTime">
+            </element>
+        </sequence>
+    </complexType>
+
+    <element name="VehicleInitialization" type="m:VehicleInitialization"/>
+    <complexType name="VehicleInitialization">
+        <annotation>
+            <appinfo source="http://www.ibm.com/ia/Annotation">
+                <event elementName="VehicleInitialization"/>
+            </appinfo>
+        </annotation>
+        <sequence>
+            <element name="details" type="m:VehicleDetails">
+            </element>
+            <element name="lastSeen" type="dateTime">
+            </element>
+            <element name="location" type="m1:Point">
+            </element>
+            <element name="organization" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="organization"/>
+                        <businessType type="blur.model.Organization"/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="owner" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="owner"/>
+                        <businessType type="blur.model.Person"/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="status" type="m:VehicleStatus">
+            </element>
+            <element name="timestamp" type="dateTime">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <timestamp/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="vehicle" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="vehicle"/>
+                        <businessType type="blur.model.Vehicle"/>
+                    </appinfo>
+                </annotation>
+            </element>
+        </sequence>
+    </complexType>
+    <element name="VehicleStatus" type="m:VehicleStatus"/>
+    <simpleType name="VehicleStatus">
+        <restriction base="string">
+            <enumeration value="inactive"/>
+            <enumeration value="active"/>
+        </restriction>
+    </simpleType>
+    <element name="VehicleType" type="m:VehicleType"/>
+    <simpleType name="VehicleType">
+        <restriction base="string">
+            <enumeration value="motorcycle"/>
+            <enumeration value="jeep"/>
+            <enumeration value="truck"/>
+        </restriction>
+    </simpleType>
+
+    <element name="VehicleUpdated" type="m:VehicleUpdated"/>
+    <complexType name="VehicleUpdated">
+        <annotation>
+            <appinfo source="http://www.ibm.com/ia/Annotation">
+                <event elementName="VehicleUpdated"/>
+            </appinfo>
+        </annotation>
+        <sequence>
+            <element name="timestamp" type="dateTime">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <timestamp/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="vehicle" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="vehicle"/>
+                        <businessType type="blur.model.Vehicle"/>
+                    </appinfo>
+                </annotation>
+            </element>
+        </sequence>
+    </complexType>
+
+</schema>
