@@ -1,5 +1,7 @@
 package blur.tests;
 
+import java.time.ZonedDateTime;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -7,6 +9,15 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import blur.model.BuildingInitialization;
+import blur.model.BuildingType;
+import blur.model.ConceptFactory;
+import blur.model.Person;
+import blur.model.PersonInitialization;
+import blur.model.PersonState;
+
+import com.ibm.geolib.geom.Point;
+import com.ibm.geolib.st.SpatioTemporalService;
 import com.ibm.ia.common.EventFactory;
 import com.ibm.ia.common.GatewayException;
 import com.ibm.ia.common.RoutingException;
@@ -46,9 +57,23 @@ public class MyTests {
 	@Test
 	public void test1() throws SolutionException, GatewayException,
 			RoutingException, InterruptedException {
-
-		// TODO: Write a test case here
 		
+		ZonedDateTime now = ZonedDateTime.now();
+		ConceptFactory cf = testDriver.getConceptFactory( ConceptFactory.class );
+
+		PersonInitialization pi = cf.createPersonInitialization(now);
+		pi.setName( "person1");
+		Relationship<Person> personRel = testDriver.createRelationship( Person.class, "person1");
+		pi.setPerson( personRel );
+		pi.setState(PersonState.inactive);
+		pi.setProfession( "bad guy" );
+		Point location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 35, 25 );
+		pi.setLocation( location );
+		testDriver.submitEvent(pi);
+
+		BuildingInitialization bi = cf.createBuildingInitialization( now );
+		bi.setType( BuildingType.appartment );
+		bi.setOwner(personRel);
+		testDriver.submitEvent(bi);
 	}
-	
 }
