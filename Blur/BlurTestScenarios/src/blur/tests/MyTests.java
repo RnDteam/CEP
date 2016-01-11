@@ -10,7 +10,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import blur.model.BuildingInitialization;
-import blur.model.BuildingType;
+import blur.model.*;
 import blur.model.ConceptFactory;
 import blur.model.Person;
 import blur.model.PersonInitialization;
@@ -65,15 +65,17 @@ public class MyTests {
 		pi.setName( "person1");
 		Relationship<Person> personRel = testDriver.createRelationship( Person.class, "person1");
 		pi.setPerson( personRel );
-		pi.setState(PersonState.inactive);
+		pi.setState(PersonState.INACTIVE);
 		pi.setProfession( "bad guy" );
 		Point location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 35, 25 );
 		pi.setLocation( location );
 		testDriver.submitEvent(pi);
 
 		BuildingInitialization bi = cf.createBuildingInitialization( now );
-		bi.setType( BuildingType.appartment );
+		bi.setType( BuildingType.APPARTMENT );
 		bi.setOwner(personRel);
+		bi.setUsageType(BuilidngUsageType.BANK_BRANCH);
+		bi.setBuilding( testDriver.createRelationship(Building.class, "B1"));
 		testDriver.submitEvent(bi);
 	}
 }
