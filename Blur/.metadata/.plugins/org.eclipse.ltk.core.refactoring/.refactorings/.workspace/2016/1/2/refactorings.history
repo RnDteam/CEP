@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;BlurRules&apos; to &apos;VehicleRuleAgent&apos;" description="Rename resource &apos;BlurRules&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/BlurRules" name="VehicleRuleAgent" stamp="1452085189166" updateReferences="true"/>
-</session>

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
-  <name>TestRule1</name>
-  <uuid>75e71587-6732-4f08-a606-1a344bd136be</uuid>
-  <locale>en_US</locale>
-</com.ibm.ia.designer.berl:BerlRule>

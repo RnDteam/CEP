@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ilog.rules.studio.model.base:VariableSet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
-  <name>globalQueries</name>
-  <uuid>5b149806-13d5-4aaf-ad66-3d2e8c961228</uuid>
-</ilog.rules.studio.model.base:VariableSet>

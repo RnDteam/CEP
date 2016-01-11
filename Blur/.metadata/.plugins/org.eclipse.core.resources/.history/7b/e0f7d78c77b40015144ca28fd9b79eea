@@ -1,4 +1,0 @@
-'VehicleRuleAgent' is an agent related to a Vehicle , 
-processing events :
-- Traffic Camera Report , where this Vehicle comes from the Vehicle of this Traffic Camera Report
- 

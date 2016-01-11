@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
-  <name>Dispatcher</name>
-  <uuid>86fec546-5e0b-46b9-b1b5-faac6e2313bc</uuid>
-  <locale>en_US</locale>
-</com.ibm.ia.designer.berl:BerlRule>
