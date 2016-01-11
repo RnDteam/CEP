@@ -1,4 +1,4 @@
-property uuid "c3ea56ed-0d03-4d4c-b6b5-a54ac7575ce8"
+property uuid "46b608f2-e3d5-4330-b633-6cd92f037379"
 property bdl_generated "true"
 package blur.model;
 
@@ -53,8 +53,14 @@ public class Building
     public void clear_organizations()
                 property collectionAttribute "organizations"
                 property update "true";
+    public java.lang.Double getExpectedCellularReportFrequency(java.time.ZonedDateTime arg0)
+                property "ia.entity.aggregate" "true"
+                property impureFunction "EXTERNAL";
     public blur.model.Organization getFrom_organizations(string arg0)
                 property collectionAttribute "organizations";
+    public java.lang.Double getRecentCellularReportFrequency(java.time.ZonedDateTime arg0)
+                property "ia.entity.aggregate" "true"
+                property impureFunction "EXTERNAL";
     public void removeFrom_organizations(blur.model.Organization arg0)
                 property collectionAttribute "organizations"
                 property update "true";
@@ -151,6 +157,35 @@ public class BuilidngUsageType
     public static final readonly blur.model.BuilidngUsageType FURNITURE_STORE
                 property "xsd.name" "FURNITURE_STORE"
                 property "xsd.order" "1";
+}
+
+public class CellularReport
+        implements com.ibm.ia.model.Event
+        property "brl.facets" "ilog.rules.brl.Date:timestamp"
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
+        property "xsd.eventElementName" "CellularReport"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
+{
+    public blur.model.Building building
+                property "xsd.name" "building"
+                property "xsd.order" "0"
+                property "xsd.useMapping" "true";
+    public blur.model.Person person
+                property "xsd.name" "person"
+                property "xsd.order" "1"
+                property "xsd.useMapping" "true";
+    public java.time.ZonedDateTime timestamp
+                property "ia.timestamp" "true"
+                property "xsd.name" "timestamp"
+                property "xsd.order" "2";
+    public CellularReport(java.time.ZonedDateTime timestamp)
+                property "dataio.default" "true";
+    public CellularReport(blur.model.Building building, blur.model.Person person, java.time.ZonedDateTime timestamp)
+                property groups "BALA"
+                property prototype "true";
 }
 
 public class Organization
@@ -344,6 +379,47 @@ public class Person
     public Person(string id)
                 property "dataio.default" "true";
     public Person(string id, com.ibm.geolib.geom.Geometry location, string name, string profession, blur.model.OrganizationalRole role, blur.model.PersonState state)
+                property groups "BALA"
+                property prototype "true";
+}
+
+public class PersonInitialization
+        implements com.ibm.ia.model.Event
+        property "brl.facets" "ilog.rules.brl.Date:timestamp;com.ibm.geolib.geom.Geometry:location"
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
+        property "xsd.eventElementName" "PersonInitialization"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
+{
+    public com.ibm.geolib.geom.Geometry location
+                property "xsd.name" "location"
+                property "xsd.order" "0";
+    public string name
+                property "xsd.name" "name"
+                property "xsd.order" "1";
+    public blur.model.Person person
+                property "xsd.name" "person"
+                property "xsd.order" "2"
+                property "xsd.useMapping" "true";
+    public string profession
+                property "xsd.name" "profession"
+                property "xsd.order" "3";
+    public blur.model.OrganizationalRole role
+                property "xsd.name" "role"
+                property "xsd.order" "4"
+                property "xsd.useMapping" "true";
+    public blur.model.PersonState state
+                property "xsd.name" "state"
+                property "xsd.order" "5";
+    public java.time.ZonedDateTime timestamp
+                property "ia.timestamp" "true"
+                property "xsd.name" "timestamp"
+                property "xsd.order" "6";
+    public PersonInitialization(java.time.ZonedDateTime timestamp)
+                property "dataio.default" "true";
+    public PersonInitialization(com.ibm.geolib.geom.Geometry location, string name, blur.model.Person person, string profession, blur.model.OrganizationalRole role, blur.model.PersonState state, java.time.ZonedDateTime timestamp)
                 property groups "BALA"
                 property prototype "true";
 }

@@ -33,6 +33,10 @@ a Building has a Usage Type ( a Builidng Usage Type ).
 a Building is related to a Person , named the Owner.
 a Building is related to several different Organizations.
 
+a Building has a recent cellular report frequency (numeric).
+a Building has an expected cellular report frequency (numeric).
+
+
 -- Vehicle
 a Vehicle Type can be one of: MOTORCYCLE, JEEP, TRUCK.
 

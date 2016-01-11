@@ -15,6 +15,18 @@ a Vehicle Updated is related to a Vehicle.
 a Vehicle Created is a business event. 
 a Vehicle Created is related to a Vehicle.
 
-
+-- Cellular Report
+a cellular report is a business event related to a Building. 
+a cellular report is related to a Person. 
+ 
 ]]></Bmd>
+    <Bmi><![CDATA[the recent cellular report frequency of a Building is aggregated from cellular reports ,
+        where this Building comes from the Building of each cellular report
+    as the number of cellular reports during the last period of 30 minute 
+    available for 30 minutes .
+
+the expected cellular report frequency of a Building is aggregated from cellular reports ,
+        where this Building comes from the Building of each cellular report
+    as the number of cellular reports during the last period of 24 hours
+    available for 24 hours .]]></Bmi>
 </BusinessModelDefinition>
