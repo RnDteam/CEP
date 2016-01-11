@@ -1,0 +1,4 @@
+'PersonAgent' is an agent related to a Person  , 
+processing events :
+- cellular report  , where this Person  comes from the Person of this cellular report , with a horizon of 24 hours 
+
