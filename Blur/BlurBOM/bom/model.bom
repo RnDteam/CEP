@@ -344,6 +344,51 @@ public class VehicleDetails
                 property "dataio.default" "true";
 }
 
+public class VehicleInitialization
+        implements com.ibm.ia.model.Event
+        property "brl.facets" "ilog.rules.brl.Date:timestamp"
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
+        property "xsd.eventElementName" "VehicleInitialization"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
+{
+    public blur.model.VehicleDetails details
+                property "xsd.name" "details"
+                property "xsd.order" "0";
+    public java.time.ZonedDateTime lastSeen
+                property "xsd.name" "lastSeen"
+                property "xsd.order" "1";
+    public com.ibm.geolib.geom.Point location
+                property "xsd.name" "location"
+                property "xsd.order" "2";
+    public blur.model.Organization organization
+                property "xsd.name" "organization"
+                property "xsd.order" "3"
+                property "xsd.useMapping" "true";
+    public blur.model.Person person
+                property "xsd.name" "person"
+                property "xsd.order" "4"
+                property "xsd.useMapping" "true";
+    public blur.model.VehicleStatus status
+                property "xsd.name" "status"
+                property "xsd.order" "5";
+    public java.time.ZonedDateTime timestamp
+                property "ia.timestamp" "true"
+                property "xsd.name" "timestamp"
+                property "xsd.order" "6";
+    public blur.model.Vehicle vehicle
+                property "xsd.name" "vehicle"
+                property "xsd.order" "7"
+                property "xsd.useMapping" "true";
+    public VehicleInitialization(java.time.ZonedDateTime timestamp)
+                property "dataio.default" "true";
+    public VehicleInitialization(blur.model.VehicleDetails details, java.time.ZonedDateTime lastSeen, com.ibm.geolib.geom.Point location, blur.model.Organization organization, blur.model.Person person, blur.model.VehicleStatus status, java.time.ZonedDateTime timestamp, blur.model.Vehicle vehicle)
+                property groups "BALA"
+                property prototype "true";
+}
+
 public class VehicleStatus
         property "de.generated" "true"
         property "ia.enum" "true"
