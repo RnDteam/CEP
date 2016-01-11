@@ -1,15 +1,20 @@
-*.class
+# do not want to share API keys
+acme_deliveries/solution_properties.xml
 
+# compiled rules
+*.sem
+
+# generated model
+model.jar
+
+# anything in the output folder
+*/.output/*
+
+*.class
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
-
 # Package Files #
-*.jar
 *.war
 *.ear
-.metadata
-.recommenders
-.history
-
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
