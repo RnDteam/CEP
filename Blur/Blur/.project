@@ -6,7 +6,12 @@
 		<project>Blur - Java Model</project>
 		<project>BlurBOM</project>
 		<project>VehicleRuleAgent</project>
+<<<<<<< HEAD
+		<project>BuildingAgent</project>
+		<project>PersonAgent</project>
+=======
 		<project>BlurExtensions</project>
+>>>>>>> 4f48d433e0d22b9f27fbf1e7cbe81037077a9aa3
 	</projects>
 	<buildSpec>
 		<buildCommand>

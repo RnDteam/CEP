@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><agent xmlns="http://www.ibm.com/ia/AgentDescriptor">
+  <name>PersonAgent</name>
+  <kind>Rule</kind>
+  <entity>blur.model.Person</entity>
+  <events>
+    <event>
+      <type>blur.model.CellularReport</type>
+      <mapping>{0}.person.get$Id()</mapping>
+      <horizon>PT24H</horizon>
+    </event>
+  </events>
+</agent>

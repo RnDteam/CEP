@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>hot building - local aggregate</name>
+  <uuid>82f778c2-61f5-4ef0-806c-accbe649ccf9</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[when a cellular report occurs
+definitions
+    set '24 hour cellular reports' to all cellular reports during the last period of 24 hours ;
+    set '24 hour count' to the number of elements in '24 hour cellular reports' ;
+    set 'recent cellular reports' to all cellular reports during the last period of 30 minutes ;
+    set count to the number of elements in 'recent cellular reports' ;
+if
+    count is more than 1.3 * ('24 hour count' / 48) 
+then
+    print "Odd!" ;]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>
