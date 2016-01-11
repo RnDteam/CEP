@@ -3,11 +3,11 @@
     <Bmd><![CDATA[-- person
 a person state can be one of : active, inactive.
 
-a person is a business entity identified by an id.
-a person has a name.
-a person has a profession.
-a person has a location (a geometry) used as the default geometry.
-a person has a state (a person state).
+a person is a business entity identified by an id with
+   a name,
+   a profession,
+   a location (a point) used as the default geometry,
+   a state (a person state).
 a person is related to an organizational role, named the role.
 
 -- organization	 
@@ -27,7 +27,7 @@ a building type can be one of: appartment, warehouse, commercial.
 a builidng usage type can be one of: bank branch, furniture store.
 
 a building is a business entity identified by an id.
-a building has a location (a geometry) used as the default geometry.
+a building has a location (a polygon) used as the default geometry.
 a building has a type (a building type).
 a building has a usage type ( a builidng usage type ).
 a building is related to a person , named the owner.
@@ -40,12 +40,12 @@ a building has an expected cellular report frequency (numeric).
 -- vehicle
 a vehicle type can be one of: motorcycle, jeep, truck.
 
-a vehicle details is a concept.
-a vehicle details has a maker.
-a vehicle details has a model.
-a vehicle details has a type (a vehicle type).
-a vehicle details has a year (date & time).
-a vehicle details has a maximum speed (numeric).
+a vehicle details is a concept with
+   a maker,
+   a model,
+   a type (a vehicle type),
+   a year (date & time),
+   a maximum speed (numeric).
 
 a vehicle status can be one of: inactive, active.
  
@@ -56,8 +56,6 @@ a vehicle has a details (a vehicle details).
 a vehicle has a last seen (date & time).
 a vehicle is related to a person, named the owner.
 a vehicle is related to an organization. 
-
-
 
 ]]></Bmd>
 </BusinessModelDefinition>

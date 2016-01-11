@@ -1,4 +1,4 @@
-property uuid "46b608f2-e3d5-4330-b633-6cd92f037379"
+property uuid "1b626eb7-6438-49db-aac6-78aec3d40d77"
 property bdl_generated "true"
 package blur.model;
 
@@ -18,7 +18,7 @@ public class Building
                 property update "true"
                 property "xsd.name" "id"
                 property "xsd.order" "0";
-    public com.ibm.geolib.geom.Geometry location
+    public com.ibm.geolib.geom.Polygon location
                 property update "true"
                 property "xsd.name" "location"
                 property "xsd.order" "1";
@@ -44,7 +44,7 @@ public class Building
                 property "xsd.order" "5";
     public Building(string id)
                 property "dataio.default" "true";
-    public Building(string id, com.ibm.geolib.geom.Geometry location, blur.model.Person owner, blur.model.BuildingType type, blur.model.BuilidngUsageType usageType)
+    public Building(string id, com.ibm.geolib.geom.Polygon location, blur.model.Person owner, blur.model.BuildingType type, blur.model.BuilidngUsageType usageType)
                 property groups "BALA"
                 property prototype "true";
     public void addTo_organizations(blur.model.Organization arg0)
@@ -354,7 +354,7 @@ public class Person
                 property update "true"
                 property "xsd.name" "id"
                 property "xsd.order" "0";
-    public com.ibm.geolib.geom.Geometry location
+    public com.ibm.geolib.geom.Point location
                 property update "true"
                 property "xsd.name" "location"
                 property "xsd.order" "1";
@@ -378,7 +378,7 @@ public class Person
                 property "xsd.order" "5";
     public Person(string id)
                 property "dataio.default" "true";
-    public Person(string id, com.ibm.geolib.geom.Geometry location, string name, string profession, blur.model.OrganizationalRole role, blur.model.PersonState state)
+    public Person(string id, com.ibm.geolib.geom.Point location, string name, string profession, blur.model.OrganizationalRole role, blur.model.PersonState state)
                 property groups "BALA"
                 property prototype "true";
 }

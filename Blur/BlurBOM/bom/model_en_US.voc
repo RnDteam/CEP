@@ -1,7 +1,7 @@
-uuid = a5da0294-de5e-4612-a8dc-d866db0a9705
+uuid = 4fc77591-6fbe-4b13-82b3-c412cdfbe311
 # blur.model.Building
 blur.model.Building#concept.label = building
-blur.model.Building.Building(java.lang.String,com.ibm.geolib.geom.Geometry,blur.model.Person,blur.model.BuildingType,blur.model.BuilidngUsageType)#phrase.navigation = a new {building} where {0, id} {1, location} {2, owner} {3, type} {4, usage type} 
+blur.model.Building.Building(java.lang.String,com.ibm.geolib.geom.Polygon,blur.model.Person,blur.model.BuildingType,blur.model.BuilidngUsageType)#phrase.navigation = a new {building} where {0, id} {1, location} {2, owner} {3, type} {4, usage type} 
 blur.model.Building.addTo_organizations(blur.model.Organization)#phrase.action = add {0} to the organizations of {this}
 blur.model.Building.clear_organizations()#phrase.action = clear the organizations of {this}
 blur.model.Building.getExpectedCellularReportFrequency(java.time.ZonedDateTime)#phrase.navigation[0] = {expected cellular report frequency} of {this} at the time of {0}
@@ -139,7 +139,7 @@ blur.model.OrganizationalRole.person#phrase.navigation = {person} of {this}
 
 # blur.model.Person
 blur.model.Person#concept.label = person
-blur.model.Person.Person(java.lang.String,com.ibm.geolib.geom.Geometry,java.lang.String,java.lang.String,blur.model.OrganizationalRole,blur.model.PersonState)#phrase.navigation = a new {person} where {0, id} {1, location} {2, name} {3, profession} {4, role} {5, state} 
+blur.model.Person.Person(java.lang.String,com.ibm.geolib.geom.Point,java.lang.String,java.lang.String,blur.model.OrganizationalRole,blur.model.PersonState)#phrase.navigation = a new {person} where {0, id} {1, location} {2, name} {3, profession} {4, role} {5, state} 
 blur.model.Person.id#phrase.navigation = {id} of {this}
 blur.model.Person.location#phrase.action = set the location of {this} to {location}
 blur.model.Person.location#phrase.clearer = clear the location of {this}
