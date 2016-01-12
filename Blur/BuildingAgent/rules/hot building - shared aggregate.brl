@@ -13,7 +13,8 @@ definitions
     set count to the recent cellular report frequency of 'the Building'; 
  
 if
-   count is more than 1.3 * ('24 hour count' / 48)
+   count is more than 1.3 * ('24 hour count' / 48) and there is at least one organization in the organizations of 'the Building' 
+	where the type of this organization is CRIMINAL ,
 then
     print "Odd!" ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

@@ -159,6 +159,34 @@ public class BuilidngUsageType
                 property "xsd.order" "1";
 }
 
+public class CellularCallReport
+        implements com.ibm.ia.model.Event
+        property "brl.facets" "ilog.rules.brl.Date:timestamp"
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
+        property "xsd.eventElementName" "CellularCallReport"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
+{
+    public blur.model.Building building
+                property "xsd.name" "building"
+                property "xsd.order" "0"
+                property "xsd.useMapping" "true";
+    public java.time.LocalTime callDuration
+                property "xsd.name" "callDuration"
+                property "xsd.order" "1";
+    public java.time.ZonedDateTime timestamp
+                property "ia.timestamp" "true"
+                property "xsd.name" "timestamp"
+                property "xsd.order" "2";
+    public CellularCallReport(java.time.ZonedDateTime timestamp)
+                property "dataio.default" "true";
+    public CellularCallReport(blur.model.Building building, java.time.LocalTime callDuration, java.time.ZonedDateTime timestamp)
+                property groups "BALA"
+                property prototype "true";
+}
+
 public class CellularReport
         implements com.ibm.ia.model.Event
         property "brl.facets" "ilog.rules.brl.Date:timestamp"
@@ -209,6 +237,26 @@ public class Organization
     public Organization(string id)
                 property "dataio.default" "true";
     public Organization(string id, blur.model.OrganizationType type)
+                property groups "BALA"
+                property prototype "true";
+}
+
+public class OrganizationCallReport
+        extends blur.model.CellularCallReport
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
+        property "xsd.eventElementName" "OrganizationCallReport"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
+{
+    public blur.model.Organization organization
+                property "xsd.name" "organization"
+                property "xsd.order" "0"
+                property "xsd.useMapping" "true";
+    public OrganizationCallReport(java.time.ZonedDateTime timestamp)
+                property "dataio.default" "true";
+    public OrganizationCallReport(blur.model.Organization organization, blur.model.Building building, java.time.LocalTime callDuration, java.time.ZonedDateTime timestamp)
                 property groups "BALA"
                 property prototype "true";
 }
@@ -439,6 +487,30 @@ public class PersonState
     public static final readonly blur.model.PersonState INACTIVE
                 property "xsd.name" "INACTIVE"
                 property "xsd.order" "1";
+}
+
+public class PersonalCallReport
+        extends blur.model.CellularCallReport
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
+        property "xsd.eventElementName" "PersonalCallReport"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
+{
+    public blur.model.Person callee
+                property "xsd.name" "callee"
+                property "xsd.order" "0"
+                property "xsd.useMapping" "true";
+    public blur.model.Person caller
+                property "xsd.name" "caller"
+                property "xsd.order" "1"
+                property "xsd.useMapping" "true";
+    public PersonalCallReport(java.time.ZonedDateTime timestamp)
+                property "dataio.default" "true";
+    public PersonalCallReport(blur.model.Person callee, blur.model.Person caller, blur.model.Building building, java.time.LocalTime callDuration, java.time.ZonedDateTime timestamp)
+                property groups "BALA"
+                property prototype "true";
 }
 
 public class TrafficCameraReport

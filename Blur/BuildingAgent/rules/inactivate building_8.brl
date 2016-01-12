@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>inactivate building_8</name>
+  <uuid>05372f5a-1ce0-4ea1-a196-bed25eaa74c1</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[when a cellular report has occurred 60 minutes ago
+if 
+	there is no cellular report after this cellular report
+then 
+	print "No cellular report in building " + the id of 'the Building' + " in the past 60 minutes";]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>

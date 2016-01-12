@@ -8,5 +8,10 @@
       <mapping>{0}.building.get$Id()</mapping>
       <horizon>PT24H</horizon>
     </event>
+    <event>
+      <type>blur.model.CellularCallReport</type>
+      <mapping>{0}.building.get$Id()</mapping>
+      <horizon>PT24H</horizon>
+    </event>
   </events>
 </agent>

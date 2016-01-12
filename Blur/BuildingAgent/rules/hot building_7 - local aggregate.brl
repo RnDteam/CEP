@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
-  <name>hot building - local aggregate</name>
+  <name>hot building_7 - local aggregate</name>
   <uuid>82f778c2-61f5-4ef0-806c-accbe649ccf9</uuid>
   <locale>en_US</locale>
   <definition><![CDATA[when a cellular report occurs

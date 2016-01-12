@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
-  <name>populated building</name>
+  <name>populated building_6</name>
   <uuid>c138de53-9772-4aed-9841-e6a5d3294aa3</uuid>
   <locale>en_US</locale>
   <definition><![CDATA[when a cellular report occurs
