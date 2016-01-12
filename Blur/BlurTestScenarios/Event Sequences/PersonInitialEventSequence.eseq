@@ -1,0 +1,22 @@
+define 'the person1' as the person identified by "person1" ;
+define 'the person2' as the person identified by "person2" ;
+
+emit a new person initialization where
+    the person is 'the person1' ,
+    the name is "a1" ,
+    the profession is "pro1" ,
+    the location is the point with 22 as longitude and 23 as latitude ,
+    the state is INACTIVE  ,
+    the timestamp is 1/10/2016 11:26:05 AM ,
+    the role is a new organizational role where
+        the id is "or1" ;
+
+emit a new person initialization where
+    the person is 'the person2' ,
+    the name is "a2" ,
+    the profession is "pro2" ,
+    the location is the point with 11 as longitude and 19 as latitude ,
+    the state is ACTIVE  ,
+    the role is a new organizational role where
+        the id is "or1",
+    time-stamped 10 minutes later;
