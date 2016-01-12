@@ -7,5 +7,4 @@ public class PathFinder implements IPathFinder{
 		System.out.println("********************************* PathFinder *****************************");
 		return true;
 	}
-	
 }
