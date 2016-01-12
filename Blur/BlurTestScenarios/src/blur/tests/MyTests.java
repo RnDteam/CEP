@@ -60,14 +60,14 @@ public class MyTests {
 		
 		ZonedDateTime now = ZonedDateTime.now();
 		ConceptFactory cf = testDriver.getConceptFactory( ConceptFactory.class );
-
+		
 		PersonInitialization pi = cf.createPersonInitialization(now);
 		pi.setName( "person1");
 		Relationship<Person> personRel = testDriver.createRelationship( Person.class, "person1");
 		pi.setPerson( personRel );
 		pi.setState(PersonState.INACTIVE);
 		pi.setProfession( "bad guy" );
-		Point location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 35, 25 );
+		Point location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 34.781768, 32.085300 );
 		pi.setLocation( location );
 		testDriver.submitEvent(pi);
 
@@ -75,7 +75,23 @@ public class MyTests {
 		bi.setType( BuildingType.APPARTMENT );
 		bi.setOwner(personRel);
 		bi.setUsageType(BuilidngUsageType.BANK_BRANCH);
-		bi.setBuilding( testDriver.createRelationship(Building.class, "B1"));
+		bi.setBuilding( testDriver.createRelationship(Building.class, "Crowne Plaza Beach"));
+		bi.setLocation(location);
 		testDriver.submitEvent(bi);
+		
+		for( int n=0; n < 100; n++ ) {
+			now = now.plusMinutes(10);
+			Thread.sleep(2000);
+			TrafficCameraReport tcr = cf.createTrafficCameraReport(now);
+			tcr.setCameraId( n );
+			int vehId = (int) (Math.random() * 10);
+			tcr.setLicensePlateNumber(testDriver.createRelationship( Vehicle.class, "veh-" + vehId ));
+			double fuzzx = Math.random();
+			double fuzzy = Math.random();
+			location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 34.781768 + fuzzy, 32.085300 + fuzzx );
+			tcr.setCameraLocation( location );
+			testDriver.submitEvent(tcr);
+			System.out.println( "Sending TrafficCameraReport");
+		}
 	}
 }

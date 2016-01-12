@@ -19,6 +19,8 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 		Vehicle entity = super.createEntityFromEvent(event);
 
 		if( event instanceof TrafficCameraReport ) {
+			System.out.println( "***** VehicleInitializer createEntityFromEvent ****** " );
+			
 			// TODO -- read the other fields of the Vehicle from the database
 			VehicleDetails myDetails = getConceptFactory(ConceptFactory.class)
 					.createVehicleDetails();
@@ -32,6 +34,8 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 	@Override
 	public void initializeEntity(Vehicle entity) throws ComponentException {
 		super.initializeEntity(entity);
+		System.out.println( "***** VehicleInitializer initializeEntity ****** " );
+
 		// this method will be called after createEntityFromEvent or if
 		// someone requests a vehicle using the REST API
 		
