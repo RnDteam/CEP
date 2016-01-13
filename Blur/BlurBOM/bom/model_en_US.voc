@@ -1,8 +1,34 @@
-uuid = 39ba397b-c704-4c9c-b94b-05b196abff83
+uuid = d5d95b31-6582-4a4a-8c9b-1c19b9c8b379
+# blur.model.Alert
+blur.model.Alert#concept.label = alert
+blur.model.Alert.Alert(blur.model.Building,java.lang.String,blur.model.Organization,blur.model.Person,java.lang.String,java.time.ZonedDateTime,blur.model.Vehicle)#phrase.navigation = a new {alert} where {0, building} {1, message} {2, organization} {3, person} {4, rule} {5, timestamp} {6, vehicle} 
+blur.model.Alert.building#phrase.action = set the building of {this} to {building}
+blur.model.Alert.building#phrase.clearer = clear the building of {this}
+blur.model.Alert.building#phrase.navigation = {building} of {this}
+blur.model.Alert.message#phrase.action = set the message of {this} to {message}
+blur.model.Alert.message#phrase.navigation = {message} of {this}
+blur.model.Alert.organization#phrase.action = set the organization of {this} to {organization}
+blur.model.Alert.organization#phrase.clearer = clear the organization of {this}
+blur.model.Alert.organization#phrase.navigation = {organization} of {this}
+blur.model.Alert.person#phrase.action = set the person of {this} to {person}
+blur.model.Alert.person#phrase.clearer = clear the person of {this}
+blur.model.Alert.person#phrase.navigation = {person} of {this}
+blur.model.Alert.rule#phrase.action = set the rule of {this} to {rule}
+blur.model.Alert.rule#phrase.navigation = {rule} of {this}
+blur.model.Alert.timestamp#phrase.action = set the timestamp of {this} to {timestamp}
+blur.model.Alert.timestamp#phrase.navigation = {timestamp} of {this}
+blur.model.Alert.vehicle#phrase.action = set the vehicle of {this} to {vehicle}
+blur.model.Alert.vehicle#phrase.clearer = clear the vehicle of {this}
+blur.model.Alert.vehicle#phrase.navigation = {vehicle} of {this}
+
 # blur.model.Building
 blur.model.Building#concept.label = building
 blur.model.Building.Building(java.lang.String,com.ibm.geolib.geom.Point,blur.model.Person,blur.model.BuildingType,blur.model.BuilidngUsageType)#phrase.navigation = a new {building} where {0, id} {1, location} {2, owner} {3, type} {4, usage type} 
+blur.model.Building.addTo_alerts(blur.model.Alert)#phrase.action = add {0} to the alerts of {this}
 blur.model.Building.addTo_organizations(blur.model.Organization)#phrase.action = add {0} to the organizations of {this}
+blur.model.Building.alerts#phrase.action = set the alerts of {this} to {alert}
+blur.model.Building.alerts#phrase.navigation = {alert} of {this}
+blur.model.Building.clear_alerts()#phrase.action = clear the alerts of {this}
 blur.model.Building.clear_organizations()#phrase.action = clear the organizations of {this}
 blur.model.Building.getExpectedCellularReportFrequency(java.time.ZonedDateTime)#phrase.navigation[0] = {expected cellular report frequency} of {this} at the time of {0}
 blur.model.Building.getExpectedCellularReportFrequency(java.time.ZonedDateTime)#phrase.navigation[1] = {expected cellular report frequency} of {this}
@@ -19,6 +45,7 @@ blur.model.Building.organizations#phrase.navigation = {organization} of {this}
 blur.model.Building.owner#phrase.action = set the owner of {this} to {owner}
 blur.model.Building.owner#phrase.clearer = clear the owner of {this}
 blur.model.Building.owner#phrase.navigation = {owner} of {this}
+blur.model.Building.removeFrom_alerts(blur.model.Alert)#phrase.action = remove {0} from the alerts of {this}
 blur.model.Building.removeFrom_organizations(blur.model.Organization)#phrase.action = remove {0} from the organizations of {this}
 blur.model.Building.type#phrase.action = set the type of {this} to {type}
 blur.model.Building.type#phrase.clearer = clear the type of {this}
@@ -64,17 +91,6 @@ blur.model.BuilidngUsageType#concept.label = builidng usage type
 blur.model.BuilidngUsageType.BANK_BRANCH#instance.label = BANK BRANCH
 blur.model.BuilidngUsageType.FURNITURE_STORE#instance.label = FURNITURE STORE
 
-# blur.model.CellularCallReport
-blur.model.CellularCallReport#concept.label = cellular call report
-blur.model.CellularCallReport.CellularCallReport(blur.model.Building,java.time.LocalTime,java.time.ZonedDateTime)#phrase.navigation = a new {cellular call report} where {0, building} {1, call duration} {2, timestamp} 
-blur.model.CellularCallReport.building#phrase.action = set the building of {this} to {building}
-blur.model.CellularCallReport.building#phrase.clearer = clear the building of {this}
-blur.model.CellularCallReport.building#phrase.navigation = {building} of {this}
-blur.model.CellularCallReport.callDuration#phrase.action = set the call duration of {this} to {call duration}
-blur.model.CellularCallReport.callDuration#phrase.navigation = {call duration} of {this}
-blur.model.CellularCallReport.timestamp#phrase.action = set the timestamp of {this} to {timestamp}
-blur.model.CellularCallReport.timestamp#phrase.navigation = {timestamp} of {this}
-
 # blur.model.CellularReport
 blur.model.CellularReport#concept.label = cellular report
 blur.model.CellularReport.CellularReport(blur.model.Building,blur.model.Person,java.time.ZonedDateTime)#phrase.navigation = a new {cellular report} where {0, building} {1, person} {2, timestamp} 
@@ -94,13 +110,6 @@ blur.model.Organization.id#phrase.navigation = {id} of {this}
 blur.model.Organization.type#phrase.action = set the type of {this} to {type}
 blur.model.Organization.type#phrase.clearer = clear the type of {this}
 blur.model.Organization.type#phrase.navigation = {type} of {this}
-
-# blur.model.OrganizationCallReport
-blur.model.OrganizationCallReport#concept.label = organization call report
-blur.model.OrganizationCallReport.OrganizationCallReport(blur.model.Organization,blur.model.Building,java.time.LocalTime,java.time.ZonedDateTime)#phrase.navigation = a new {organization call report} where {0, organization} {1, building} {2, call duration} {3, timestamp} 
-blur.model.OrganizationCallReport.organization#phrase.action = set the organization of {this} to {organization}
-blur.model.OrganizationCallReport.organization#phrase.clearer = clear the organization of {this}
-blur.model.OrganizationCallReport.organization#phrase.navigation = {organization} of {this}
 
 # blur.model.OrganizationInitialization
 blur.model.OrganizationInitialization#concept.label = organization initialization
@@ -199,16 +208,6 @@ blur.model.PersonInitialization.timestamp#phrase.navigation = {timestamp} of {th
 blur.model.PersonState#concept.label = person state
 blur.model.PersonState.ACTIVE#instance.label = ACTIVE
 blur.model.PersonState.INACTIVE#instance.label = INACTIVE
-
-# blur.model.PersonalCallReport
-blur.model.PersonalCallReport#concept.label = personal call report
-blur.model.PersonalCallReport.PersonalCallReport(blur.model.Person,blur.model.Person,blur.model.Building,java.time.LocalTime,java.time.ZonedDateTime)#phrase.navigation = a new {personal call report} where {0, callee} {1, caller} {2, building} {3, call duration} {4, timestamp} 
-blur.model.PersonalCallReport.callee#phrase.action = set the callee of {this} to {callee}
-blur.model.PersonalCallReport.callee#phrase.clearer = clear the callee of {this}
-blur.model.PersonalCallReport.callee#phrase.navigation = {callee} of {this}
-blur.model.PersonalCallReport.caller#phrase.action = set the caller of {this} to {caller}
-blur.model.PersonalCallReport.caller#phrase.clearer = clear the caller of {this}
-blur.model.PersonalCallReport.caller#phrase.navigation = {caller} of {this}
 
 # blur.model.TrafficCameraReport
 blur.model.TrafficCameraReport#concept.label = traffic camera report

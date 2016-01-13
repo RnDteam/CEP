@@ -6,10 +6,15 @@
   <definition><![CDATA[when a cellular report occurs
 definitions
     set 'the oranization' to the organization of the role of the person of this cellular report ;
-    set 'the building recent cellular reports' to all cellular reports during the last period of 5 minutes  where the organization of the role of the person is 'the oranization' ;
-    set count to the number of elements in 'the building recent cellular reports' ;    
-if 
-    the type of 'the oranization' is CRIMINAL  and  count is more than 5 
+    set 'the building recent cellular reports' to all cellular reports during the last period of 5 minutes
+        where the organization of the role of the person is 'the oranization' ;
+    set count to the number of elements in 'the building recent cellular reports' ;
+if
+    the type of 'the oranization' is CRIMINAL
+    and count is more than 5
 then
-    print "too many cellular reports of the same organization in the same building" ;]]></definition>
+    emit a new alert where
+        the building is 'the Building' ,
+        the message is "Too many cellular reports of the same organization in the same building" ,
+        the rule is the name of this rule ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

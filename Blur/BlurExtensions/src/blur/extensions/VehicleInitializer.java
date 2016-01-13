@@ -21,6 +21,8 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 		if( event instanceof TrafficCameraReport ) {
 			System.out.println( "***** VehicleInitializer createEntityFromEvent ****** " );
 			
+			// set the fields from the event...
+			
 			// TODO -- read the other fields of the Vehicle from the database
 			VehicleDetails myDetails = getConceptFactory(ConceptFactory.class)
 					.createVehicleDetails();
@@ -38,6 +40,9 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 
 		// this method will be called after createEntityFromEvent or if
 		// someone requests a vehicle using the REST API
+		
+		// set generic fields that are loaded from an external source...
+		
 		
 		// TODO -- read the other fields of the Vehicle from the database
 		VehicleDetails myDetails = getConceptFactory(ConceptFactory.class)
