@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<extensions xmlns="http://www.ibm.com/ia/ExtensionsDescriptor">
+<?xml version="1.0" encoding="UTF-8"?><extensions xmlns="http://www.ibm.com/ia/ExtensionsDescriptor">
     <extension class="blur.extensions.VehicleInitializer" fulfils="blur.model.Vehicle" type="com.ibm.ia.extension.spi.EntityInitializerService"/>
 </extensions>

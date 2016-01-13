@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
-  <name>Camera Report Test</name>
-  <uuid>eeeb81b0-b846-4e36-9764-f78e64c14135</uuid>
+  <name>Criminal Motorcycle</name>
+  <uuid>83b13485-3aa9-426c-b5a3-72a13a62385e</uuid>
+  <documentation><![CDATA[Need to add the call to the section 3.]]></documentation>
   <locale>en_US</locale>
   <definition><![CDATA[when a traffic camera report occurs
 definitions
@@ -14,5 +15,5 @@ if
     and ( 'the organization type of the owner' is CRIMINAL 
     or 'the owner id' has 2 depth association with a CRIMINAL organization)
 then
-    set the status of 'the vehicle' to ACTIVE;]]></definition>
+    set the status of 'the vehicle' to SUSPECT ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

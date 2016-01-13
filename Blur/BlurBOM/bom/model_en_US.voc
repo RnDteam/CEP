@@ -184,17 +184,17 @@ blur.model.PersonState.INACTIVE#instance.label = INACTIVE
 
 # blur.model.TrafficCameraReport
 blur.model.TrafficCameraReport#concept.label = traffic camera report
-blur.model.TrafficCameraReport.TrafficCameraReport(int,com.ibm.geolib.geom.Point,blur.model.Vehicle,java.time.ZonedDateTime)#phrase.navigation = a new {traffic camera report} where {0, camera id} {1, camera location} {2, license plate number} {3, timestamp} 
+blur.model.TrafficCameraReport.TrafficCameraReport(int,com.ibm.geolib.geom.Point,java.time.ZonedDateTime,blur.model.Vehicle)#phrase.navigation = a new {traffic camera report} where {0, camera id} {1, camera location} {2, timestamp} {3, vehicle} 
 blur.model.TrafficCameraReport.cameraId#phrase.action = set the camera id of {this} to {camera id}
 blur.model.TrafficCameraReport.cameraId#phrase.navigation = {camera id} of {this}
 blur.model.TrafficCameraReport.cameraLocation#phrase.action = set the camera location of {this} to {camera location}
 blur.model.TrafficCameraReport.cameraLocation#phrase.clearer = clear the camera location of {this}
 blur.model.TrafficCameraReport.cameraLocation#phrase.navigation = {camera location} of {this}
-blur.model.TrafficCameraReport.licensePlateNumber#phrase.action = set the license plate number of {this} to {license plate number}
-blur.model.TrafficCameraReport.licensePlateNumber#phrase.clearer = clear the license plate number of {this}
-blur.model.TrafficCameraReport.licensePlateNumber#phrase.navigation = {license plate number} of {this}
 blur.model.TrafficCameraReport.timestamp#phrase.action = set the timestamp of {this} to {timestamp}
 blur.model.TrafficCameraReport.timestamp#phrase.navigation = {timestamp} of {this}
+blur.model.TrafficCameraReport.vehicle#phrase.action = set the vehicle of {this} to {vehicle}
+blur.model.TrafficCameraReport.vehicle#phrase.clearer = clear the vehicle of {this}
+blur.model.TrafficCameraReport.vehicle#phrase.navigation = {vehicle} of {this}
 
 # blur.model.Vehicle
 blur.model.Vehicle#concept.label = vehicle
@@ -272,6 +272,7 @@ blur.model.VehicleInitialization.vehicle#phrase.navigation = {vehicle} of {this}
 blur.model.VehicleStatus#concept.label = vehicle status
 blur.model.VehicleStatus.ACTIVE#instance.label = ACTIVE
 blur.model.VehicleStatus.INACTIVE#instance.label = INACTIVE
+blur.model.VehicleStatus.SUSPECT#instance.label = SUSPECT
 
 # blur.model.VehicleType
 blur.model.VehicleType#concept.label = vehicle type

@@ -40,11 +40,11 @@ emit a new vehicle initialization where
 	emit a new traffic camera report where  
 	the camera id is 34,
 	the camera location is the point with 45 as longitude and 34 as latitude ,
-	the license plate number is 'the vehicle 1' ,
+	the vehicle is 'the vehicle 1' ,
 	the timestamp is 1/10/2016 5:42:21 PM   ;
 	
 	emit a new traffic camera report where  
 	the camera id is 56,
 	the camera location is the point with 81 as longitude and 32 as latitude ,
-	the license plate number is 'the vehicle 2' ,
+	the vehicle is 'the vehicle 2' ,
 	the timestamp is 1/7/2016 5:42:21 PM   ;

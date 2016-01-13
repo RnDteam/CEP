@@ -85,7 +85,7 @@ public class MyTests {
 			TrafficCameraReport tcr = cf.createTrafficCameraReport(now);
 			tcr.setCameraId( n );
 			int vehId = (int) (Math.random() * 10);
-			tcr.setLicensePlateNumber(testDriver.createRelationship( Vehicle.class, "veh-" + vehId ));
+			tcr.setVehicle(testDriver.createRelationship( Vehicle.class, "veh-" + vehId ));
 			double fuzzx = Math.random();
 			double fuzzy = Math.random();
 			location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 34.781768 + fuzzy, 32.085300 + fuzzx );

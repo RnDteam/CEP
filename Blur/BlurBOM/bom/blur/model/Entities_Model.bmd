@@ -47,7 +47,7 @@ a vehicle details is a concept with
    a year (date & time),
    a maximum speed (numeric).
 
-a vehicle status can be one of: INACTIVE, ACTIVE.
+a vehicle status can be one of: INACTIVE, ACTIVE, SUSPECT.
  
 a vehicle is a business entity identified by a license plate number.
 a vehicle has a location (a point).
@@ -59,6 +59,6 @@ a vehicle is related to an organization.
 
 ]]></Bmd>
     <Bmi><![CDATA[a vehicle is initialized from a traffic camera report , 
-	where this vehicle comes from the license plate number of this traffic camera report : 
+	where this vehicle comes from the vehicle of this traffic camera report : 
 	- set the location of this vehicle to the camera location of this traffic camera report. ]]></Bmi>
 </BusinessModelDefinition>

@@ -21,11 +21,16 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 		if( event instanceof TrafficCameraReport ) {
 			System.out.println( "***** VehicleInitializer createEntityFromEvent ****** " );
 			
+			entity.setLicensePlateNumber(((TrafficCameraReport) event).getVehicle().getKey());
+			entity.set$CreationTime(((TrafficCameraReport) event).getTimestamp());
+			entity.setLocation(((TrafficCameraReport) event).getCameraLocation());
+			
 			// TODO -- read the other fields of the Vehicle from the database
 			VehicleDetails myDetails = getConceptFactory(ConceptFactory.class)
 					.createVehicleDetails();
 			myDetails.setType(VehicleType.MOTORCYCLE);
 			entity.setDetails(myDetails);
+			
 		}
 
 		return entity;
@@ -36,13 +41,6 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 		super.initializeEntity(entity);
 		System.out.println( "***** VehicleInitializer initializeEntity ****** " );
 
-		// this method will be called after createEntityFromEvent or if
-		// someone requests a vehicle using the REST API
-		
-		// TODO -- read the other fields of the Vehicle from the database
-		VehicleDetails myDetails = getConceptFactory(ConceptFactory.class)
-				.createVehicleDetails();
-		myDetails.setType(VehicleType.MOTORCYCLE);
-		entity.setDetails(myDetails);
+		entity.setLastSeen(null);
 	}
 }

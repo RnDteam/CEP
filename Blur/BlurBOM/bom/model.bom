@@ -457,17 +457,17 @@ public class TrafficCameraReport
     public com.ibm.geolib.geom.Point cameraLocation
                 property "xsd.name" "cameraLocation"
                 property "xsd.order" "1";
-    public blur.model.Vehicle licensePlateNumber
-                property "xsd.name" "licensePlateNumber"
-                property "xsd.order" "2"
-                property "xsd.useMapping" "true";
     public java.time.ZonedDateTime timestamp
                 property "ia.timestamp" "true"
                 property "xsd.name" "timestamp"
-                property "xsd.order" "3";
+                property "xsd.order" "2";
+    public blur.model.Vehicle vehicle
+                property "xsd.name" "vehicle"
+                property "xsd.order" "3"
+                property "xsd.useMapping" "true";
     public TrafficCameraReport(java.time.ZonedDateTime timestamp)
                 property "dataio.default" "true";
-    public TrafficCameraReport(int cameraId, com.ibm.geolib.geom.Point cameraLocation, blur.model.Vehicle licensePlateNumber, java.time.ZonedDateTime timestamp)
+    public TrafficCameraReport(int cameraId, com.ibm.geolib.geom.Point cameraLocation, java.time.ZonedDateTime timestamp, blur.model.Vehicle vehicle)
                 property groups "BALA"
                 property prototype "true";
 }
@@ -632,13 +632,16 @@ public class VehicleStatus
         property "xsd.support" "true"
         property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
 {
-    domain {static INACTIVE, static ACTIVE}
+    domain {static INACTIVE, static ACTIVE, static SUSPECT}
     public static final readonly blur.model.VehicleStatus ACTIVE
                 property "xsd.name" "ACTIVE"
                 property "xsd.order" "0";
     public static final readonly blur.model.VehicleStatus INACTIVE
                 property "xsd.name" "INACTIVE"
                 property "xsd.order" "1";
+    public static final readonly blur.model.VehicleStatus SUSPECT
+                property "xsd.name" "SUSPECT"
+                property "xsd.order" "2";
 }
 
 public class VehicleType
