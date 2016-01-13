@@ -12,16 +12,20 @@ define 'building1 init' as a new building initialization where
 
 add the organization identified by "organization1" to the organizations of 'building1 init';
 add the organization identified by "organization2" to the organizations of 'building1 init';
+add the organization identified by "organization3" to the organizations of 'building1 init';
 emit 'building1 init'; 
 		
-emit a new building initialization where
+define 'building2 init' as a new building initialization where
 	the building is 'the building2',
-	the location is the point with 34 as longitude and 35 as latitude,
-	the type is COMMERCIAL ,
-	the usage type is FURNITURE STORE ,
-	the owner is a new person where the id is "125",
-	time-stamped 10 minutes later;
-	
+	the location is the point with 64 as longitude and 35 as latitude,
+	the type is WAREHOUSE,
+	the usage type is FURNITURE STORE  ,
+	the owner is a new person where the id is "124",
+	the timestamp is 1/13/2015 1:27:22 PM;
+
+add the organization identified by "organization3" to the organizations of 'building2 init';
+emit 'building2 init';
+ 
 emit a new building initialization where
 	the building is 'the building3',
 	the location is the point with 88 as longitude and 79 as latitude,

@@ -1,17 +1,19 @@
+//Building 1
+
 emit a new cellular report where
     the building is the building identified by "building1" , time-stamped 1/13/2016 12:14:18 PM ;
 
 emit a new cellular report where
-    the building is the building identified by "building1" , time-stamped 1 hours later; 
+    the building is the building identified by "building1" , time-stamped 59 minutes later; 
 
 emit a new cellular report where
-    the building is the building identified by "building1" , time-stamped 1 hours later; 
+    the building is the building identified by "building1" , time-stamped 59 minutes later; 
 
 emit a new cellular report where
-    the building is the building identified by "building1" , time-stamped 1 hours later; 
+    the building is the building identified by "building1" , time-stamped 59 minutes later; 
 
 emit a new cellular report where
-    the building is the building identified by "building1" , time-stamped 1 hours later; 
+    the building is the building identified by "building1" , time-stamped 59 minutes later; 
 
 emit a new cellular report where
     the building is the building identified by "building1" , time-stamped 1/14/2016 10:05:34 PM ;
@@ -21,4 +23,33 @@ emit a new cellular report where
 
 emit a new cellular report where
     the building is the building identified by "building1" , time-stamped 1 minutes later;
+    
+    
+    
+//Building 2
+
+emit a new cellular report where
+    the building is the building identified by "building2" , time-stamped 1/13/2016 12:14:18 PM ;
+
+emit a new cellular report where
+    the building is the building identified by "building2" , time-stamped 59 minutes later; 
+
+emit a new cellular report where
+    the building is the building identified by "building2" , time-stamped 59 minutes later; 
+
+emit a new cellular report where
+    the building is the building identified by "building2" , time-stamped 59 minutes later; 
+
+emit a new cellular report where
+    the building is the building identified by "building2" , time-stamped 59 minutes later; 
+
+emit a new cellular report where
+    the building is the building identified by "building2" , time-stamped 1/14/2016 10:05:34 PM ;
+    
+emit a new cellular report where
+    the building is the building identified by "building2" , time-stamped 1 minutes later;
+
+emit a new cellular report where
+    the building is the building identified by "building2" , time-stamped 1 minutes later;
+    
     

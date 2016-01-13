@@ -21,6 +21,5 @@ then
         the message is "Significant increase in the number of calls from the building " + the id of 'the Building' ,
         the rule is the name of this rule ;
      add ALERT to the alerts of 'the Building';
-     print the message of ALERT;
      emit ALERT;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

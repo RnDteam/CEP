@@ -9,7 +9,7 @@ the type is CRIMINAL,
 time-stamped 1/13/2015 10:17:25 AM;
 
 emit a new organization initialization where the organization is 'the organization2',
-the type is CRIMINAL,
+the type is CRIMINAL ,
 time-stamped 0 seconds later;
 
 emit a new organization initialization where the organization is 'the organization3',

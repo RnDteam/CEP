@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>inactive_building_8</name>
+  <uuid>afee9200-2fac-4e64-bc4d-cdba1ad9b824</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[when a cellular report has occurred 60 minutes ago, called LAST
+if
+    there is no cellular report after LAST
+then
+    define ALERT as a new alert where
+        the message is "No cellular report in building " + the id of 'the Building' + " in the past 60 minutes" ,
+        the building is 'the Building' ,
+        the rule is the name of this rule ;
+    emit ALERT ;]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>
