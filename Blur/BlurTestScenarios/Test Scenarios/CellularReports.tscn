@@ -1,0 +1,6 @@
+submit events from "EventInitialOrganizationSequence"; 
+submit events from "EventInitialBuildingTestSequence";
+submit events from "cellularReportsSequence";
+
+//check that for the building identified by "building1" : 
+//	- the number of alerts of this building is 1;   

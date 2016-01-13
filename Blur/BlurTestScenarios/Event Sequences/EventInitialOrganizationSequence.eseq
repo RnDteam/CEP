@@ -1,11 +1,23 @@
 define 'the organization1' as the organization  identified by "organization1";
 define 'the organization2' as the organization identified by "organization2";
 define 'the organization3' as the organization identified by "organization3";
+define 'the organization4' as the organization identified by "organization4";
+
 
 emit a new organization initialization where the organization is 'the organization1',
 the type is CRIMINAL,
-time-stamped 1/13/2016 10:17:25 AM;
+time-stamped 1/13/2015 10:17:25 AM;
 
 emit a new organization initialization where the organization is 'the organization2',
 the type is CRIMINAL,
-time-stamped 1 seconds later;
+time-stamped 0 seconds later;
+
+emit a new organization initialization where the organization is 'the organization3',
+the type is COMMERCIAL ,
+time-stamped 0 seconds later;
+
+emit a new organization initialization where the organization is 'the organization4',
+the type is CRIMINAL,
+time-stamped 0 seconds later;
+
+

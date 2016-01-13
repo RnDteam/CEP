@@ -1,0 +1,7 @@
+submit events from "EventInitialOrganizationSequence" ;
+
+check that the organization identified by "organization1" exists ; 
+check that the organization identified by "organization2" exists ;   
+check that the organization identified by "organization3" exists ;   
+check that the organization identified by "organization4" exists ;   
+ 
