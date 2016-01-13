@@ -18,7 +18,16 @@ a vehicle created is related to a vehicle.
 -- cellular report
 a cellular report is a business event related to a building. 
 a cellular report is related to a person. 
- 
+
+-- an alert
+an alert is a business event with
+    a message,
+    a rule.
+    
+an alert is related to a person [optional].
+an alert is related to a building [optional].
+an alert is related to a vehicle [optional].
+an alert is related to an organization [optional].
 ]]></Bmd>
     <Bmi><![CDATA[the recent cellular report frequency of a building is aggregated from cellular reports ,
         where this building comes from the building of each cellular report

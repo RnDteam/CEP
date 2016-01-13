@@ -25,6 +25,8 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 			entity.set$CreationTime(((TrafficCameraReport) event).getTimestamp());
 			entity.setLocation(((TrafficCameraReport) event).getCameraLocation());
 			
+			// set the fields from the event...
+			
 			// TODO -- read the other fields of the Vehicle from the database
 			VehicleDetails myDetails = getConceptFactory(ConceptFactory.class)
 					.createVehicleDetails();
@@ -42,5 +44,6 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 		System.out.println( "***** VehicleInitializer initializeEntity ****** " );
 
 		entity.setLastSeen(null);
+
 	}
 }

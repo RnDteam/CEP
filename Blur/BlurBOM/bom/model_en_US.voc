@@ -1,8 +1,34 @@
-uuid = 39ba397b-c704-4c9c-b94b-05b196abff83
+uuid = d5d95b31-6582-4a4a-8c9b-1c19b9c8b379
+# blur.model.Alert
+blur.model.Alert#concept.label = alert
+blur.model.Alert.Alert(blur.model.Building,java.lang.String,blur.model.Organization,blur.model.Person,java.lang.String,java.time.ZonedDateTime,blur.model.Vehicle)#phrase.navigation = a new {alert} where {0, building} {1, message} {2, organization} {3, person} {4, rule} {5, timestamp} {6, vehicle} 
+blur.model.Alert.building#phrase.action = set the building of {this} to {building}
+blur.model.Alert.building#phrase.clearer = clear the building of {this}
+blur.model.Alert.building#phrase.navigation = {building} of {this}
+blur.model.Alert.message#phrase.action = set the message of {this} to {message}
+blur.model.Alert.message#phrase.navigation = {message} of {this}
+blur.model.Alert.organization#phrase.action = set the organization of {this} to {organization}
+blur.model.Alert.organization#phrase.clearer = clear the organization of {this}
+blur.model.Alert.organization#phrase.navigation = {organization} of {this}
+blur.model.Alert.person#phrase.action = set the person of {this} to {person}
+blur.model.Alert.person#phrase.clearer = clear the person of {this}
+blur.model.Alert.person#phrase.navigation = {person} of {this}
+blur.model.Alert.rule#phrase.action = set the rule of {this} to {rule}
+blur.model.Alert.rule#phrase.navigation = {rule} of {this}
+blur.model.Alert.timestamp#phrase.action = set the timestamp of {this} to {timestamp}
+blur.model.Alert.timestamp#phrase.navigation = {timestamp} of {this}
+blur.model.Alert.vehicle#phrase.action = set the vehicle of {this} to {vehicle}
+blur.model.Alert.vehicle#phrase.clearer = clear the vehicle of {this}
+blur.model.Alert.vehicle#phrase.navigation = {vehicle} of {this}
+
 # blur.model.Building
 blur.model.Building#concept.label = building
 blur.model.Building.Building(java.lang.String,com.ibm.geolib.geom.Point,blur.model.Person,blur.model.BuildingType,blur.model.BuilidngUsageType)#phrase.navigation = a new {building} where {0, id} {1, location} {2, owner} {3, type} {4, usage type} 
+blur.model.Building.addTo_alerts(blur.model.Alert)#phrase.action = add {0} to the alerts of {this}
 blur.model.Building.addTo_organizations(blur.model.Organization)#phrase.action = add {0} to the organizations of {this}
+blur.model.Building.alerts#phrase.action = set the alerts of {this} to {alert}
+blur.model.Building.alerts#phrase.navigation = {alert} of {this}
+blur.model.Building.clear_alerts()#phrase.action = clear the alerts of {this}
 blur.model.Building.clear_organizations()#phrase.action = clear the organizations of {this}
 blur.model.Building.getExpectedCellularReportFrequency(java.time.ZonedDateTime)#phrase.navigation[0] = {expected cellular report frequency} of {this} at the time of {0}
 blur.model.Building.getExpectedCellularReportFrequency(java.time.ZonedDateTime)#phrase.navigation[1] = {expected cellular report frequency} of {this}
@@ -19,6 +45,7 @@ blur.model.Building.organizations#phrase.navigation = {organization} of {this}
 blur.model.Building.owner#phrase.action = set the owner of {this} to {owner}
 blur.model.Building.owner#phrase.clearer = clear the owner of {this}
 blur.model.Building.owner#phrase.navigation = {owner} of {this}
+blur.model.Building.removeFrom_alerts(blur.model.Alert)#phrase.action = remove {0} from the alerts of {this}
 blur.model.Building.removeFrom_organizations(blur.model.Organization)#phrase.action = remove {0} from the organizations of {this}
 blur.model.Building.type#phrase.action = set the type of {this} to {type}
 blur.model.Building.type#phrase.clearer = clear the type of {this}

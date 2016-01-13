@@ -32,6 +32,7 @@ a building has a type (a building type).
 a building has a usage type ( a builidng usage type ).
 a building is related to a person , named the owner.
 a building is related to several different organizations.
+a building has several different alerts.
 
 a building has a recent cellular report frequency (numeric).
 a building has an expected cellular report frequency (numeric).
