@@ -4,8 +4,11 @@
   <uuid>05372f5a-1ce0-4ea1-a196-bed25eaa74c1</uuid>
   <locale>en_US</locale>
   <definition><![CDATA[when a cellular report has occurred 60 minutes ago
-if 
-	there is no cellular report after this cellular report
-then 
-	print "No cellular report in building " + the id of 'the Building' + " in the past 60 minutes";]]></definition>
+if
+    there is no cellular report after this cellular report
+then
+    emit a new alert where
+        the building is 'the Building' ,
+        the message is "No cellular report in building " + the id of 'the Building' + " in the past 60 minutes" ,
+        the rule is the name of this rule ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

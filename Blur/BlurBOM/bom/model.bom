@@ -1,7 +1,54 @@
-property uuid "71d20e63-6b80-4226-97ff-99ed436b8ec2"
+property uuid "2df2eeca-532e-49f8-ad05-0b0801aea4aa"
 property bdl_generated "true"
 package blur.model;
 
+
+public class Alert
+        implements com.ibm.ia.model.Event
+        property "brl.facets" "ilog.rules.brl.Date:timestamp"
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
+        property "xsd.eventElementName" "Alert"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
+{
+    public blur.model.Building building
+                property optional "true"
+                property "xsd.name" "building"
+                property "xsd.order" "0"
+                property "xsd.useMapping" "true";
+    public string message
+                property "xsd.name" "message"
+                property "xsd.order" "1";
+    public blur.model.Organization organization
+                property optional "true"
+                property "xsd.name" "organization"
+                property "xsd.order" "2"
+                property "xsd.useMapping" "true";
+    public blur.model.Person person
+                property optional "true"
+                property "xsd.name" "person"
+                property "xsd.order" "3"
+                property "xsd.useMapping" "true";
+    public string rule
+                property "xsd.name" "rule"
+                property "xsd.order" "4";
+    public java.time.ZonedDateTime timestamp
+                property "ia.timestamp" "true"
+                property "xsd.name" "timestamp"
+                property "xsd.order" "5";
+    public blur.model.Vehicle vehicle
+                property optional "true"
+                property "xsd.name" "vehicle"
+                property "xsd.order" "6"
+                property "xsd.useMapping" "true";
+    public Alert(java.time.ZonedDateTime timestamp)
+                property "dataio.default" "true";
+    public Alert(blur.model.Building building, string message, blur.model.Organization organization, blur.model.Person person, string rule, java.time.ZonedDateTime timestamp, blur.model.Vehicle vehicle)
+                property groups "BALA"
+                property prototype "true";
+}
 
 public class Building
         implements com.ibm.ia.model.Entity
@@ -13,42 +60,53 @@ public class Building
         property "xsd.support" "true"
         property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
 {
+    public java.util.Set alerts domain 0,* class blur.model.Alert
+                property update "true"
+                property "xsd.collection" "blur.model.Alert"
+                property "xsd.name" "alert"
+                property "xsd.order" "0";
     public string id
                 property "ia.entity.id" "true"
                 property update "true"
                 property "xsd.name" "id"
-                property "xsd.order" "0";
+                property "xsd.order" "1";
     public com.ibm.geolib.geom.Point location
                 property update "true"
                 property "xsd.name" "location"
-                property "xsd.order" "1";
+                property "xsd.order" "2";
     public java.util.Set organizations domain 0,* class blur.model.Organization
                 property update "true"
                 property "xsd.collection" "java.lang.String"
                 property "xsd.name" "organization"
-                property "xsd.order" "2"
+                property "xsd.order" "3"
                 property "xsd.useMapping" "blur.model.Organization";
     public blur.model.Person owner
                 property "ia.reference" "true"
                 property update "true"
                 property "xsd.name" "owner"
-                property "xsd.order" "3"
+                property "xsd.order" "4"
                 property "xsd.useMapping" "true";
     public blur.model.BuildingType type
                 property update "true"
                 property "xsd.name" "type"
-                property "xsd.order" "4";
+                property "xsd.order" "5";
     public blur.model.BuilidngUsageType usageType
                 property update "true"
                 property "xsd.name" "usageType"
-                property "xsd.order" "5";
+                property "xsd.order" "6";
     public Building(string id)
                 property "dataio.default" "true";
     public Building(string id, com.ibm.geolib.geom.Point location, blur.model.Person owner, blur.model.BuildingType type, blur.model.BuilidngUsageType usageType)
                 property groups "BALA"
                 property prototype "true";
+    public void addTo_alerts(blur.model.Alert arg0)
+                property collectionAttribute "alerts"
+                property update "true";
     public void addTo_organizations(blur.model.Organization arg0)
                 property collectionAttribute "organizations"
+                property update "true";
+    public void clear_alerts()
+                property collectionAttribute "alerts"
                 property update "true";
     public void clear_organizations()
                 property collectionAttribute "organizations"
@@ -61,8 +119,14 @@ public class Building
     public java.lang.Double getRecentCellularReportFrequency(java.time.ZonedDateTime arg0)
                 property "ia.entity.aggregate" "true"
                 property impureFunction "EXTERNAL";
+    public void removeFrom_alerts(blur.model.Alert arg0)
+                property collectionAttribute "alerts"
+                property update "true";
     public void removeFrom_organizations(blur.model.Organization arg0)
                 property collectionAttribute "organizations"
+                property update "true";
+    public void set_alerts(java.util.Collection arg0 domain 0,* class blur.model.Alert)
+                property collectionAttribute "alerts"
                 property update "true";
     public void set_organizations(java.util.Collection arg0 domain 0,* class blur.model.Organization)
                 property collectionAttribute "organizations"
@@ -159,34 +223,6 @@ public class BuilidngUsageType
                 property "xsd.order" "1";
 }
 
-public class CellularCallReport
-        implements com.ibm.ia.model.Event
-        property "brl.facets" "ilog.rules.brl.Date:timestamp"
-        property "de.generated" "true"
-        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
-        property "xsd.eventElementName" "CellularCallReport"
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    public blur.model.Building building
-                property "xsd.name" "building"
-                property "xsd.order" "0"
-                property "xsd.useMapping" "true";
-    public java.time.LocalTime callDuration
-                property "xsd.name" "callDuration"
-                property "xsd.order" "1";
-    public java.time.ZonedDateTime timestamp
-                property "ia.timestamp" "true"
-                property "xsd.name" "timestamp"
-                property "xsd.order" "2";
-    public CellularCallReport(java.time.ZonedDateTime timestamp)
-                property "dataio.default" "true";
-    public CellularCallReport(blur.model.Building building, java.time.LocalTime callDuration, java.time.ZonedDateTime timestamp)
-                property groups "BALA"
-                property prototype "true";
-}
-
 public class CellularReport
         implements com.ibm.ia.model.Event
         property "brl.facets" "ilog.rules.brl.Date:timestamp"
@@ -237,26 +273,6 @@ public class Organization
     public Organization(string id)
                 property "dataio.default" "true";
     public Organization(string id, blur.model.OrganizationType type)
-                property groups "BALA"
-                property prototype "true";
-}
-
-public class OrganizationCallReport
-        extends blur.model.CellularCallReport
-        property "de.generated" "true"
-        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
-        property "xsd.eventElementName" "OrganizationCallReport"
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    public blur.model.Organization organization
-                property "xsd.name" "organization"
-                property "xsd.order" "0"
-                property "xsd.useMapping" "true";
-    public OrganizationCallReport(java.time.ZonedDateTime timestamp)
-                property "dataio.default" "true";
-    public OrganizationCallReport(blur.model.Organization organization, blur.model.Building building, java.time.LocalTime callDuration, java.time.ZonedDateTime timestamp)
                 property groups "BALA"
                 property prototype "true";
 }
@@ -487,30 +503,6 @@ public class PersonState
     public static final readonly blur.model.PersonState INACTIVE
                 property "xsd.name" "INACTIVE"
                 property "xsd.order" "1";
-}
-
-public class PersonalCallReport
-        extends blur.model.CellularCallReport
-        property "de.generated" "true"
-        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
-        property "xsd.eventElementName" "PersonalCallReport"
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    public blur.model.Person callee
-                property "xsd.name" "callee"
-                property "xsd.order" "0"
-                property "xsd.useMapping" "true";
-    public blur.model.Person caller
-                property "xsd.name" "caller"
-                property "xsd.order" "1"
-                property "xsd.useMapping" "true";
-    public PersonalCallReport(java.time.ZonedDateTime timestamp)
-                property "dataio.default" "true";
-    public PersonalCallReport(blur.model.Person callee, blur.model.Person caller, blur.model.Building building, java.time.LocalTime callDuration, java.time.ZonedDateTime timestamp)
-                property groups "BALA"
-                property prototype "true";
 }
 
 public class TrafficCameraReport

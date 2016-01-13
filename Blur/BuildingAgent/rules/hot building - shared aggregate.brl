@@ -9,12 +9,17 @@ one of the Types of the Organizations of 'the Building' is  CRIMINAL ]]></docume
   <locale>en_US</locale>
   <definition><![CDATA[when a cellular report occurs
 definitions
-    set '24 hour count' to the expected cellular report frequency of 'the Building'; 
-    set count to the recent cellular report frequency of 'the Building'; 
- 
+    set '24 hour count' to the expected cellular report frequency of 'the Building' ;
+    set count to the recent cellular report frequency of 'the Building' ;
 if
-   count is more than 1.3 * ('24 hour count' / 48) and there is at least one organization in the organizations of 'the Building' 
-	where the type of this organization is CRIMINAL ,
+    count is more than 1.3 * ( '24 hour count' / 48 )
+    and there is at least one organization in the organizations of 'the Building'
+        where the type of this organization is CRIMINAL ,
 then
-    print "Odd!" ;]]></definition>
+	define ALERT as a new alert where
+        the building is 'the Building' ,
+        the message is "Significant increase in the number of calls from the building " + the id of 'the Building' ,
+        the rule is the name of this rule ;
+     add ALERT to the alerts of 'the Building';
+     emit ALERT;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>
