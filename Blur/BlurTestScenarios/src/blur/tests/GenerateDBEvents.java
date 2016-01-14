@@ -33,6 +33,10 @@ private static void connectToDB() {
 			
 			if	(connection != null) {
 				
+				TablesGenerator.dropAallTables(connection);
+				TablesGenerator.generateAllTables(connection);
+			
+				
 				Statement statement = connection.createStatement();
 				//ResultSet rs = statement.executeQuery("select eventName, accountId, country, amount, merchantId, merchantType, merchantLocation, eventMethod from transactions");
 				ResultSet rs = statement.executeQuery("select * from traffic_events");

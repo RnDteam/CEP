@@ -24,12 +24,12 @@ an organizational role is related to an organizational role , named the manager.
 
 -- building 
 a building type can be one of: APPARTMENT, WAREHOUSE, COMMERCIAL.
-a builidng usage type can be one of: BANK BRANCH, FURNITURE STORE.
+a building usage type can be one of: BANK BRANCH, FURNITURE STORE.
 
 a building is a business entity identified by an id.
 a building has a location (a point) used as the default geometry.
 a building has a type (a building type).
-a building has a usage type ( a builidng usage type ).
+a building has a usage type ( a building usage type ).
 a building is related to a person , named the owner.
 a building is related to several different organizations.
 a building has several different alerts.
@@ -48,13 +48,14 @@ a vehicle details is a concept with
    a year (date & time),
    a maximum speed (numeric).
 
-a vehicle status can be one of: INACTIVE, ACTIVE, SUSPECT.
+a vehicle status can be one of: INACTIVE, ACTIVE.
  
 a vehicle is a business entity identified by a license plate number.
 a vehicle has a location (a point).
 a vehicle has a status (a vehicle status).
 a vehicle has a details (a vehicle details).
 a vehicle has a last seen (date & time).
+a vehicle has a suspicious(a boolean).
 a vehicle is related to a person, named the owner.
 a vehicle is related to an organization. 
 

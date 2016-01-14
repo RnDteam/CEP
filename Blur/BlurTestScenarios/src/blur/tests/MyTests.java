@@ -74,17 +74,17 @@ public class MyTests {
 		BuildingInitialization bi = cf.createBuildingInitialization( now );
 		bi.setType( BuildingType.APPARTMENT );
 		bi.setOwner(personRel);
-		bi.setUsageType(BuilidngUsageType.BANK_BRANCH);
+		bi.setUsageType(BuildingUsageType.BANK_BRANCH);
 		bi.setBuilding( testDriver.createRelationship(Building.class, "Crowne Plaza Beach"));
 		bi.setLocation(location);
 		testDriver.submitEvent(bi);
 		
-		for( int n=0; n < 100; n++ ) {
+		for( int n=0; n < 1000; n++ ) {
 			now = now.plusMinutes(10);
-			Thread.sleep(2000);
+			//Thread.sleep(2000);
 			TrafficCameraReport tcr = cf.createTrafficCameraReport(now);
 			tcr.setCameraId( n );
-			int vehId = (int) (Math.random() * 10);
+			int vehId = (int) (Math.random() * 30);
 			tcr.setVehicle(testDriver.createRelationship( Vehicle.class, "veh-" + vehId ));
 			double fuzzx = Math.random();
 			double fuzzy = Math.random();

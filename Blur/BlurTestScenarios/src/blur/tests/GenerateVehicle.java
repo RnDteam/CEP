@@ -46,6 +46,6 @@ public class GenerateVehicle {
 	}
 
 	private static String generateLocation() {
-		return null;
+		return RandomPoint.getRandomPoint();
 	}
 }

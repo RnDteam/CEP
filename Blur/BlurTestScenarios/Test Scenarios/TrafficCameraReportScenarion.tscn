@@ -1,0 +1,9 @@
+submit events from "PathFinderEventSequence"; 
+
+
+check that for the vehicle identified by "vehicle1"  : 
+	- this vehicle is suspicious ;
+check that for the vehicle identified by "vehicle2" :
+	- the status of this vehicle is ACTIVE;
+check that for the vehicle identified by "vehicle3" :
+	- the status of this vehicle is ACTIVE; 

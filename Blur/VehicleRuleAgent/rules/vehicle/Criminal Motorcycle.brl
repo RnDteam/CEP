@@ -15,5 +15,5 @@ if
     and ( 'the organization type of the owner' is CRIMINAL 
     or 'the owner id' has 2 depth association with a CRIMINAL organization)
 then
-    set the status of 'the vehicle' to SUSPECT ;]]></definition>
+	make it true that 'the vehicle' is suspicious ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>
