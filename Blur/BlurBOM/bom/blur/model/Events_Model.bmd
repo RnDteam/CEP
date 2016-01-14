@@ -5,7 +5,7 @@
 a traffic camera report is a business event.
 a traffic camera report has an camera id (integer).
 a traffic camera report has a camera location (a point).
-a traffic camera report is related to a vehicle , named the license plate number.
+a traffic camera report is related to a vehicle .
 
 -- vehicle updated
 a vehicle updated is a business event.
