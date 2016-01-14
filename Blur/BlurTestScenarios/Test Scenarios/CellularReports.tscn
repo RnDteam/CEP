@@ -2,5 +2,8 @@ submit events from "EventInitialOrganizationSequence";
 submit events from "EventInitialBuildingTestSequence";
 submit events from "cellularReportsSequence";
 
+// be warned that if the periodic rule in the building agent
+// where to cause the rule agent to run, then this count
+// if inactive buildings could change...
 check that for the building identified by "building1" : 
 	- the number of alerts of this building is 2;
