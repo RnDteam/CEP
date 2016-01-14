@@ -21,7 +21,11 @@ emit a new person initialization where
 emit a new vehicle initialization where 
 	the vehicle is 'the vehicle 1' ,
 	the details is a new vehicle details where 
-	the maker is "Maker1", the model is "T-10", the type is MOTORCYCLE  , the year is 6/1/2011 8:15:48 AM, the maximum speed is 290,
+		the maker is "Maker1", 
+		the model is "T-10", 
+		the type is MOTORCYCLE, 
+		the year is 6/1/2011 8:15:48 AM, 
+		the maximum speed is 290,
 	the status is INACTIVE   ,
 	the location is the point with 7.0095 as longitude and 43.6424 as latitude,
 	the last seen is 1/1/2016 8:19:19 AM,

@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
 Bundle-SymbolicName: Blur.BuildingAgent
-Bundle-Version: 0.13.0.qualifier
+Bundle-Version: 0.15.0.qualifier
 

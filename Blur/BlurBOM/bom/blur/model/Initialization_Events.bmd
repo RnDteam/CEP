@@ -73,18 +73,7 @@ a person is initialized from a person initialization , where this person comes f
     - set the state of this person to the state of this person initialization
     - set the role of this person to the role of this person initialization .
 
-<<<<<<< HEAD
 --Vehicle
-a vehicle is initialized from a vehicle initialization , where this vehicle comes from the vehicle of this vehicle initialization :
-    - set the organization of this vehicle to the organization of this vehicle initialization
-    - set the owner of this vehicle to the owner of this vehicle initialization
-    - set the location of this vehicle to the location of this vehicle initialization
-    - set the organization of this vehicle to the organization of this vehicle initialization
-    - set the status of this vehicle to the status of this vehicle initialization
-    - set the details of this vehicle to the details of this vehicle initialization
-    - set the last seen of this vehicle to the last seen of this vehicle initialization .]]></Bmi>
-=======
---Vehicle	
 a vehicle is initialized from a vehicle initialization , where this vehicle comes from the vehicle of this vehicle initialization : 
 	- set the organization of this vehicle to the organization of this vehicle initialization 
 	- set the owner of this vehicle to the owner of this vehicle initialization 
@@ -94,5 +83,4 @@ a vehicle is initialized from a vehicle initialization , where this vehicle come
 	- set the details of this vehicle to the details of this vehicle initialization 
 	- set the last seen of this vehicle to the last seen of this vehicle initialization 
 	- make it this vehicle initialization is suspicious that this vehicle is suspicious .]]></Bmi>
->>>>>>> CameraTrafficReportScenario
 </BusinessModelDefinition>

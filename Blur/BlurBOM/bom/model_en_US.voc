@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-uuid = 63b8baa3-d59b-4d44-b299-367df87c45b2
-=======
-uuid = bcafcc31-8d22-4f23-bd1c-ec0eecbd76ba
->>>>>>> CameraTrafficReportScenario
+uuid = bccc6859-ac68-4b13-9471-2e79c6f4fee6
 # blur.model.Alert
 blur.model.Alert#concept.label = alert
 blur.model.Alert.Alert(blur.model.Building,java.lang.String,blur.model.Organization,blur.model.Person,java.lang.String,java.time.ZonedDateTime,blur.model.Vehicle)#phrase.navigation = a new {alert} where {0, building} {1, message} {2, organization} {3, person} {4, rule} {5, timestamp} {6, vehicle} 

@@ -24,9 +24,6 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 
 		if( event instanceof TrafficCameraReport ) {
 			System.out.println( "***** VehicleInitializer createEntityFromEvent ****** " );
-			
-			entity.setLicensePlateNumber(((TrafficCameraReport) event).getVehicle().getKey());
-			entity.set$CreationTime(((TrafficCameraReport) event).getTimestamp());
 			entity.setLocation(((TrafficCameraReport) event).getCameraLocation());
 		}
 
@@ -55,8 +52,9 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 
 	private VehicleDetails getDetailsFromES(
 			String licensePlateNumber) {
-		// TODO Auto-generated method stub
-		return null;
+		ConceptFactory conceptFactory = getConceptFactory(ConceptFactory.class);
+		VehicleDetails vd = conceptFactory.createVehicleDetails();
+		return vd;
 	}
 
 	private Relationship<Organization> getOrganizationFromES(
