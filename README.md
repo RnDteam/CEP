@@ -22,3 +22,12 @@ https://git-scm.com/downloads
 
 Kanban Board
 https://goo.gl/DKDmeE
+
+Useful links:
+
+[ODM Developer Site](https://developer.ibm.com/odm)
+[ESA Visualizer](http://solutionbuddy.mybluemix.net/esaviz/)
+[Best Practices](https://developer.ibm.com/odm/docs/best-practices/)
+[dwAnswers for DSI](https://developer.ibm.com/answers/topics/ds-insights/)
+[DSI Projects](https://hub.jazz.net/explore/search?text=odm-dsi&scope=public)
+
