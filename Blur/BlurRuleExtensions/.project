@@ -3,6 +3,8 @@
 	<name>BlurRuleExtensions</name>
 	<comment></comment>
 	<projects>
+		<project>Blur - Java Model</project>
+		<project>BlurBOM</project>
 		<project>BlurServices</project>
 	</projects>
 	<buildSpec>

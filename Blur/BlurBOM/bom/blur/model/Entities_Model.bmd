@@ -6,6 +6,7 @@ a person state can be one of : ACTIVE, INACTIVE.
 a person is a business entity identified by an id with
    a name,
    a profession,
+   a risk score (numeric),
    a location (a point) used as the default geometry,
    a state (a person state).
 a person is related to an organizational role, named the role.
@@ -59,8 +60,18 @@ a vehicle has a suspicious(a boolean).
 a vehicle is related to a person, named the owner.
 a vehicle is related to an organization. 
 
-]]></Bmd>
+a risk score provider is a data provider , 
+	 accepts a person id,
+returns 
+	a risk score (numeric). ]]></Bmd>
     <Bmi><![CDATA[a vehicle is initialized from a traffic camera report , 
 	where this vehicle comes from the vehicle of this traffic camera report : 
-	- set the location of this vehicle to the camera location of this traffic camera report. ]]></Bmi>
+	- set the location of this vehicle to the camera location of this traffic camera report. 
+	
+a person is enriched by the risk score provider , 
+	 	given 
+	 		the person id from the id of this person , 
+ setting 
+ 	the risk score of this person 
+ 		to the risk score of this risk score provider.]]></Bmi>
 </BusinessModelDefinition>

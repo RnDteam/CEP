@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 IBM-IA-EntityAggregateExportVersion: 0
 IBM-IA-SolutionLocale: en_US
-IBM-IA-SolutionVersion: 0.15
+IBM-IA-SolutionVersion: 0.17
 IBM-IA-SolutionName: Blur
 

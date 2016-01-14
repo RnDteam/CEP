@@ -1,0 +1,10 @@
+submit events from "EventInitialOrganizationSequence";
+submit events from "EventInitialBuildingTestSequence" ; 
+
+check that the building identified by "building1" exists ;   
+check that the building identified by "building2" exists ;   
+check that the building identified by "building3" exists ;
+
+submit events from "cellularReportsSequence";
+
+continue processing until 1/14/2016 10:10:34 PM;

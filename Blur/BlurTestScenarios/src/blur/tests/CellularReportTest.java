@@ -60,8 +60,8 @@ public class CellularReportTest {
 
 	@After
 	public void tearDown() throws Exception {
-		Thread.sleep(5000);
 		testDriver.endTest();
+		Thread.sleep(5000);
 		testDriver.stopRecording();
 	}
 
@@ -169,8 +169,7 @@ public class CellularReportTest {
 			oneDayAgo = oneDayAgo.plusMinutes(2);
 		}	
 		
-		Thread.sleep(5000);
-		
+		Thread.sleep(5000);		
 		building1 = testDriver.fetchEntity(Building.class, BUILDING1);
 		Assert.assertEquals( "Should have 2 alerts", 2, building1.getAlerts().size() );
 		

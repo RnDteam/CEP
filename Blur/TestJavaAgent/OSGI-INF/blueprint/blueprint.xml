@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+    <bean class="blur.testjavaagent.TestJavaAgent" id="TestJavaAgentBean">
+
+        <!-- The file referenced by the agentDescResource property will be automatically
+        generated when the solution is exported as a Liberty feature. -->
+        <property name="agentDescResource" value="agent.xml"/>
+
+    </bean>
+    <service id="TestJavaAgentBeanService" interface="com.ibm.ia.agent.EntityAgentService" ref="TestJavaAgentBean">
+
+        <service-properties>
+            <!--The agent_name service property must correspond to the name of the agent
+            declared in the agent.adsc file. -->
+            <entry key="agent_name">
+                <value type="java.lang.String">blur.testjavaagent.TestJavaAgent</value>
+            </entry>
+        <entry key="solution_name"><value type="java.lang.String">Blur</value></entry><entry key="solution_version"><value type="java.lang.String">Blur-0.17</value></entry></service-properties>
+
+    </service>
+</blueprint>

@@ -1,4 +1,4 @@
-property uuid "730e0797-71e5-41f1-baff-8655b799d691"
+property uuid "ef51136b-3695-4e4a-91ae-1a01bbfb8161"
 property bdl_generated "true"
 package blur.model;
 
@@ -430,16 +430,20 @@ public class Person
                 property update "true"
                 property "xsd.name" "profession"
                 property "xsd.order" "3";
+    public final double riskScore
+                property update "true"
+                property "xsd.name" "riskScore"
+                property "xsd.order" "4";
     public blur.model.OrganizationalRole role
                 property "ia.reference" "true"
                 property update "true"
                 property "xsd.name" "role"
-                property "xsd.order" "4"
+                property "xsd.order" "5"
                 property "xsd.useMapping" "true";
     public blur.model.PersonState state
                 property update "true"
                 property "xsd.name" "state"
-                property "xsd.order" "5";
+                property "xsd.order" "6";
     public Person(string id)
                 property "dataio.default" "true";
     public Person(string id, com.ibm.geolib.geom.Point location, string name, string profession, blur.model.OrganizationalRole role, blur.model.PersonState state)
@@ -503,6 +507,33 @@ public class PersonState
     public static final readonly blur.model.PersonState INACTIVE
                 property "xsd.name" "INACTIVE"
                 property "xsd.order" "1";
+}
+
+public class RiskScoreProvider
+        property "de.generated" "true"
+        property "ia.dataProvider" "true"
+{
+    public blur.model.RiskScoreProviderResponse processRequest(blur.model.RiskScoreProviderRequest request)
+                throws java.lang.Exception;
+}
+
+public class RiskScoreProviderRequest
+        property "de.generated" "true"
+        property "ia.dataProvider" "blur.model.RiskScoreProvider"
+{
+    public final string personId;
+    public RiskScoreProviderRequest(string personId)
+                property "dataio.default" "true";
+}
+
+public class RiskScoreProviderResponse
+        property "de.generated" "true"
+        property "ia.dataProvider" "blur.model.RiskScoreProvider"
+{
+    public double riskScore;
+    public RiskScoreProviderResponse(double riskScore);
+    public RiskScoreProviderResponse()
+                property "dataio.default" "true";
 }
 
 public class TrafficCameraReport
