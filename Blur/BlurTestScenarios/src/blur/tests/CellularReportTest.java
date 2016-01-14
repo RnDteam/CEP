@@ -29,7 +29,6 @@ import com.ibm.ia.routing.RoutingError;
 import com.ibm.ia.testdriver.DebugReceiver;
 import com.ibm.ia.testdriver.IADebugReceiver;
 import com.ibm.ia.testdriver.TestDriver;
-import com.ibm.xylem.optimizers.ReducedForm.Check;
 
 public class CellularReportTest {
 
