@@ -111,6 +111,9 @@ public class CellularReportTest {
 		testDriver.submitEvent(organizationInitialization2);
 		testDriver.submitEvent(organizationInitialization3);
 		
+		// allow the server time to create the orgs
+		Thread.sleep(2000);
+		
 		Organization org1 = testDriver.fetchEntity(Organization.class, "organization1");
 		Assert.assertNotNull(org1);
 		Assert.assertEquals( "organization1", org1.getId() );
