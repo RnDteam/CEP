@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
-  <name>hot building - shared aggregate</name>
+  <name>hot building_7 - shared aggregate</name>
   <uuid>307f97aa-6369-4ca0-a71a-d811dbb60d61</uuid>
   <documentation><![CDATA[TODO:
 add a check for-
