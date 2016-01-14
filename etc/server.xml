@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!-- 
+# Licensed Materials - Property of IBM
+#
+# "Restricted Materials of IBM"
+#
+# Copyright IBM Corp. 2013 All Rights Reserved.
+#
+# US Government Users Restricted Rights - Use, duplication or
+# disclosure restricted by GSA ADP Schedule Contract with
+# IBM Corp.
+--><server description="CIS Development Server">
+
+	<featureManager>
+		<feature>restConnector-1.0</feature>
+		<feature>ssl-1.0</feature>
+		<feature>ia:iaRuntime-8.8.0</feature>
+		<feature>ia:iaDispatcher-8.8.0</feature>
+		<feature>ia:iaAnalytics-8.8.0</feature>
+		<feature>ia:iaHTTPGateway-8.8.0</feature>
+		<feature>ia:iaConnectivityInboundHTTP-8.8.0</feature>
+		<feature>ia:iaConnectivityOutboundHTTP-8.8.0</feature>
+		<feature>ia:iaMaps-8.8.0</feature>
+		<feature>adminCenter-1.0</feature>
+		<feature>monitor-1.0</feature>
+		<feature>usr:Blur-0.15</feature>
+	</featureManager>
+
+	<logging maxFiles="10" traceSpecification="com.ibm.ia.*=fine:com.ibm.rules.*=fine:*=info"/>
+
+	<httpEndpoint host="*" httpPort="${http.port}" httpsPort="${https.port}" id="defaultHttpEndpoint"/>
+
+	<xsServer catalogServer="true" listenerPort="${ia.listenerPort}" serverName="${ia.serverName}" transport="XIO"/>
+
+	<remoteFileAccess>
+		<!-- solutionManager and connectivityManager remote deployment
+		     require remote write access to the server output directory -->
+		<writeDir>${server.output.dir}</writeDir>
+	</remoteFileAccess>
+
+	<ssl id="defaultSSLConfig" clientAuthenticationSupported="true" keyStoreRef="defaultKeyStore" sslProtocol="TLS"/>
+	
+	<basicRegistry id="basic" realm="realm">
+   		<user name="tester" password="tester"/>
+	</basicRegistry>
+
+	<administrator-role>
+   		<user>tester</user>
+	</administrator-role>
+	
+	<keyStore id="defaultKeyStore" password="${ia.test.password}"/>
+		
+	<httpSession securityIntegrationEnabled="false"/>
+
+	<quickStartSecurity userName="${ia.test.user}" userPassword="${ia.test.password}"/>
+
+	<authorization-roles id="iaAuthorization">
+		<security-role name="iaRESTWriter">
+			<special-subject type="EVERYONE"/>
+		</security-role>
+		<security-role name="iaRESTReader">
+			<special-subject type="EVERYONE"/>
+		</security-role>
+		<security-role name="iaHTTPGatewaySubmitter">
+			<special-subject type="EVERYONE"/>
+		</security-role>
+		<security-role name="iaSolutionDeveloper">
+			<special-subject type="EVERYONE"/>
+		</security-role>
+	</authorization-roles>
+
+	<serverCommands startServerTimeout="120" stopServerTimeout="120"/>
+
+	<!-- *TODO* If required, enable connectivity using
+	            WebSphere MQ and supply the path to the
+	            WebSphere MQ 7.5 Resource Adaptor.
+	            Note that the WebSphere MQ 8 Resource Adaptor
+	            is not supported in single server cisDev profile.
+	            For example:
+	
+	<featureManager>
+		<feature>ia:iaConnectivityInboundJMS-8.8.0</feature>
+		<feature>ia:iaConnectivityOutboundJMS-8.8.0</feature>
+		<feature>wmqJmsClient-1.1</feature>
+	</featureManager>
+	
+	<variable
+		name="wmqJmsClient.rar.location"
+		value="*INSERT_PATH*/wmq.jmsra.rar" />
+	
+	-->
+
+	<!-- *TODO* If required, enable connectivity using 
+	            WebSphere Application Server JMS messaging provider.
+	            Note that the JMS 2.0 client is not supported in the
+	            single server cisDev profile.
+	            For example:
+	
+	<featureManager>
+		<feature>ia:iaConnectivityInboundJMS-8.8.0</feature>
+		<feature>ia:iaConnectivityOutboundJMS-8.8.0</feature>
+		<feature>wasJmsClient-1.1</feature>
+	</featureManager>
+	
+	-->
+    <ia_runtime debugPort="6543"/>
+    <ia_runtimeSolutionVersion currentVersion="Blur-0.15" solutionName="Blur"/>
+</server>
