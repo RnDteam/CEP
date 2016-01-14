@@ -1,9 +1,10 @@
 define 'the vehicle 1' as the vehicle  identified by "vehicle1"; 
 define 'the vehicle 2' as the vehicle  identified by "vehicle2"; 
+define 'the vehicle 3' as the vehicle  identified by "vehicle3"; 
 
 emit a new organization initialization where 
 	the organization is the organization identified by "3256",
-	the type is COMMERCIAL  ,
+	the type is COMMERCIAL ,
 	time-stamped 1/5/2016 11:09:11 AM; 
 
 emit a new organization role initialization where 
@@ -20,31 +21,60 @@ emit a new person initialization where
 emit a new vehicle initialization where 
 	the vehicle is 'the vehicle 1' ,
 	the details is a new vehicle details where 
-	the maker is "Maker1", the model is "T-10", the type is MOTORCYCLE  , the year is 6/1/2011 8:15:48 AM, the maximum speed is 290,
+		the maker is "Maker1", 
+		the model is "T-10", 
+		the type is MOTORCYCLE, 
+		the year is 6/1/2011 8:15:48 AM, 
+		the maximum speed is 290,
 	the status is INACTIVE   ,
 	the location is the point with 7.0095 as longitude and 43.6424 as latitude,
-	the last seen is 1/11/2016 8:19:19 AM,
+	the last seen is 1/1/2016 8:19:19 AM,
 	the organization is the organization identified by "3256", 
+	suspicious is false,
 	the owner is the person identified by "123" ,
-	time-stamped 1/11/2016;
+	time-stamped 1/1/2016;
 	
-	emit a new vehicle initialization where 
+emit a new vehicle initialization where 
 	the vehicle is 'the vehicle 2' ,
 	the details is a new vehicle details where 
 	the maker is "Maker2", the model is "T-11", the type is TRUCK , the year is 8/1/2013 8:15:48 AM, the maximum speed is 130,
-	the status is INACTIVE   ,
+	the status is INACTIVE ,
 	the location is the point with 55.0095 as longitude and 22.6424 as latitude,
-	the last seen is 1/11/2016 8:19:19 AM,
-	time-stamped 1/14/2016;
-	
-	emit a new traffic camera report where  
+	suspicious is false,
+	the last seen is 1/2/2016 8:19:19 AM,
+	time-stamped 1/4/2016;
+
+// Vehicle is suspect.
+emit a new traffic camera report where  
 	the camera id is 34,
 	the camera location is the point with 45 as longitude and 34 as latitude ,
-	the license plate number is 'the vehicle 1' ,
-	the timestamp is 1/10/2016 5:42:21 PM   ;
-	
-	emit a new traffic camera report where  
+	the vehicle is 'the vehicle 1' ,
+	the timestamp is 1/5/2016 5:42:21 PM   ;
+
+// Vehicle the is not suspect.
+emit a new traffic camera report where  
 	the camera id is 56,
 	the camera location is the point with 81 as longitude and 32 as latitude ,
-	the license plate number is 'the vehicle 2' ,
+	the vehicle is 'the vehicle 2' ,
 	the timestamp is 1/7/2016 5:42:21 PM   ;
+	
+emit a new traffic camera report where  
+	the camera id is 57,
+	the camera location is the point with 88 as longitude and 42 as latitude ,
+	the vehicle is 'the vehicle 2' ,
+	the timestamp is 1/8/2016 5:42:21 PM   ;
+
+// Vehicle that does not exist.
+emit a new traffic camera report where  
+	the camera id is 42,
+	the camera location is the point with 62 as longitude and 31 as latitude ,
+	the vehicle is 'the vehicle 3' ,
+	the timestamp is 1/14/2016 5:42:21 PM   ;
+	
+emit a new traffic camera report where  
+	the camera id is 44,
+	the camera location is the point with 66 as longitude and 33 as latitude ,
+	the vehicle is 'the vehicle 3' ,
+	the timestamp is 1/15/2016 5:42:21 PM   ;
+	
+	

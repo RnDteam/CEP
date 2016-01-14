@@ -90,7 +90,7 @@ public class CellularReportTest {
 		
 		BuildingInitialization buildingInitialization1 = conceptFactory.createBuildingInitialization(now);
 		buildingInitialization1.setBuilding(testDriver.createRelationship(Building.class, BUILDING1));
-		buildingInitialization1.setUsageType(BuilidngUsageType.BANK_BRANCH);
+		buildingInitialization1.setUsageType(BuildingUsageType.BANK_BRANCH);
 		buildingInitialization1.setType(BuildingType.APPARTMENT);
 		location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 34.781768 + Math.random(), 32.085300 + Math.random());
 		buildingInitialization1.setLocation(location);
@@ -100,7 +100,7 @@ public class CellularReportTest {
 		
 		BuildingInitialization buildingInitialization2 = conceptFactory.createBuildingInitialization(now);
 		buildingInitialization2.setBuilding(testDriver.createRelationship(Building.class, BUILDING2));
-		buildingInitialization2.setUsageType(BuilidngUsageType.FURNITURE_STORE);
+		buildingInitialization2.setUsageType(BuildingUsageType.FURNITURE_STORE);
 		buildingInitialization2.setType(BuildingType.COMMERCIAL);
 		location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 34.781768 + Math.random(), 32.085300 + Math.random());
 		buildingInitialization2.setLocation(location);

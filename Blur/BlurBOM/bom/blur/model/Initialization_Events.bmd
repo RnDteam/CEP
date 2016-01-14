@@ -9,7 +9,7 @@ a building initialization is related to a person , named the owner .
 a building initialization is related to several different organizations .
 a building initialization has a location ( a point ) used as the default geometry .
 a building initialization has a type ( a building type ) .
-a building initialization has a usage type ( a builidng usage type ) .
+a building initialization has a usage type ( a building usage type ) .
 
 --Organization
 an organization initialization is a business event.
@@ -42,6 +42,7 @@ a vehicle initialization has a location (a point) used as the default geometry.
 a vehicle initialization has a status (a vehicle status).
 a vehicle initialization has a details (a vehicle details).
 a vehicle initialization has a last seen (date & time).
+a vehicle initialization has a suspicious (a boolean ).
 
 
 ]]></Bmd>
@@ -73,12 +74,13 @@ a person is initialized from a person initialization , where this person comes f
     - set the role of this person to the role of this person initialization .
 
 --Vehicle
-a vehicle is initialized from a vehicle initialization , where this vehicle comes from the vehicle of this vehicle initialization :
-    - set the organization of this vehicle to the organization of this vehicle initialization
-    - set the owner of this vehicle to the owner of this vehicle initialization
-    - set the location of this vehicle to the location of this vehicle initialization
-    - set the organization of this vehicle to the organization of this vehicle initialization
-    - set the status of this vehicle to the status of this vehicle initialization
-    - set the details of this vehicle to the details of this vehicle initialization
-    - set the last seen of this vehicle to the last seen of this vehicle initialization .]]></Bmi>
+a vehicle is initialized from a vehicle initialization , where this vehicle comes from the vehicle of this vehicle initialization : 
+	- set the organization of this vehicle to the organization of this vehicle initialization 
+	- set the owner of this vehicle to the owner of this vehicle initialization 
+    - set the location of this vehicle to the location of this vehicle initialization 
+	- set the organization of this vehicle to the organization of this vehicle initialization 
+	- set the status of this vehicle to the status of this vehicle initialization 
+	- set the details of this vehicle to the details of this vehicle initialization 
+	- set the last seen of this vehicle to the last seen of this vehicle initialization 
+	- make it this vehicle initialization is suspicious that this vehicle is suspicious .]]></Bmi>
 </BusinessModelDefinition>
