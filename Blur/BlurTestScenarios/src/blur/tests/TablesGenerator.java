@@ -52,7 +52,8 @@ public class TablesGenerator {
 				+ "details_id varchar(255),"
 				+ "last_seen varchar(255),"
 				+ "owner_id varchar(255),"
-				+ "organization_id varchar(255))";
+				+ "organization_id varchar(255),"
+				+ "suspicious varchar(255))";
 		
 		return createVehicleStatement;
 	}

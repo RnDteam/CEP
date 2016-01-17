@@ -83,7 +83,7 @@ public class CellularReportFromDbTest {
 		String getAllOrganizationQuery = "select * from organizations";
 		String getAllBuildingsQuery = "select * from buildings";
 		
-		String databaseUrl = "jdbc:mysql://localhost:3306/mysql";
+		String databaseUrl = "jdbc:mysql://localhost:3306/cep_try";
 		String user = "root";
 		String password = "root";
 		
@@ -121,7 +121,7 @@ public class CellularReportFromDbTest {
 				
 				while (rs1.next()) {
 					OrganizationInitialization organizationInitialization1 = conceptFactory.createOrganizationInitialization(now);
-					OrganizationType organizationType = rs1.getString(2) == "CRIMINAL" ? OrganizationType.CRIMINAL : OrganizationType.COMMERCIAL;
+					OrganizationType organizationType = rs1.getString(2).equals("CRIMINAL") ? OrganizationType.CRIMINAL : OrganizationType.COMMERCIAL;
 					organizationInitialization1.setType(organizationType);
 					organizationInitialization1.setOrganization(testDriver.createRelationship(Organization.class, rs1.getString(1)));
 					organizations.add(organizationInitialization1);
@@ -135,15 +135,12 @@ public class CellularReportFromDbTest {
 				while (rs2.next()) {
 					BuildingInitialization buildingInitialization1 = conceptFactory.createBuildingInitialization(now);
 					buildingInitialization1.setBuilding(testDriver.createRelationship(Building.class, rs2.getString(1)));
-					BuildingUsageType buildingUsageType = rs2.getString(4) == "FURNITURE_STORE" ? BuildingUsageType.FURNITURE_STORE : BuildingUsageType.BANK_BRANCH;
+					BuildingUsageType buildingUsageType = rs2.getString(4).equals("FURNITURE_STORE") ? BuildingUsageType.FURNITURE_STORE : BuildingUsageType.BANK_BRANCH;
 					buildingInitialization1.setUsageType(buildingUsageType);
-					BuildingType buildingType = rs2.getString(3) == "WAREHOUSE" ? BuildingType.WAREHOUSE : (rs2.getString(3) == "APPARTMENT" ? BuildingType.APPARTMENT : BuildingType.COMMERCIAL);
+					BuildingType buildingType = rs2.getString(3).equals("WAREHOUSE") ? BuildingType.WAREHOUSE : (rs2.getString(3).equals("APPARTMENT") ? BuildingType.APPARTMENT : BuildingType.COMMERCIAL);
 					buildingInitialization1.setType(buildingType);
 					
-					double x = Double.parseDouble(rs2.getString(2).split(",")[0]);
-					double y = Double.parseDouble(rs2.getString(2).split(",")[1]);
-					
-					Point location = SpatioTemporalService.getService().getGeometryFactory().getPoint( x, y);
+					Point location = EntityDeserializer.getPointFromString(rs2.getString(2));
 					buildingInitialization1.setLocation(location);
 					buildingInitialization1.setOwner(testDriver.createRelationship(Person.class, "123"));
 					buildingInitialization1.addTo_organizations(testDriver.createRelationship(Organization.class, "organization1"));

@@ -77,6 +77,15 @@ public class EntityGenerator {
 		return query;
 	}
 	
+	public static String generatePerson(String id, String organizationRole, String location, String state) {
+		Random rand = new Random();
+		String name = "Name" + id;
+		String profession= "Profession" + rand.nextInt(100);
+		
+		String query = String.format("INSERT INTO persons VALUES ('%s', '%s', '%s', '%s', '%s', '%s')", id, name, profession, location, state, organizationRole);
+		return query;
+	}
+	
 	// vehicle
 	public static String generateVehicle(String vehId, String detailsId, String ownerId, String organizationId) {
 		String vehicleId = vehId.toString();
@@ -86,11 +95,22 @@ public class EntityGenerator {
 		String last_seen = generateDate();
 		String owner = ownerId.toString();
 		String organization = organizationId.toString();
+		String suspicious = "FALSE";
 
 		
 		String insertVehicleQuery = 
-				String.format("INSERT INTO vehicles VALUES ('%s','%s','%s','%s','%s','%s','%s')",
-						vehicleId, location, status, details, last_seen, owner, organization);
+				String.format("INSERT INTO vehicles VALUES ('%s','%s','%s','%s','%s','%s','%s', '%s')",
+						vehicleId, location, status, details, last_seen, owner, organization, suspicious);
+		
+		return insertVehicleQuery;
+	}
+	
+	public static String generateVehicle(String vehicleId, String detailsId, String ownerId, String organizationId,
+			String location, String status, String last_seen, String suspicious) {
+		
+		String insertVehicleQuery = 
+				String.format("INSERT INTO vehicles VALUES ('%s','%s','%s','%s','%s','%s','%s', '%s')",
+						vehicleId, location, status, detailsId, last_seen, ownerId, organizationId, suspicious);
 		
 		return insertVehicleQuery;
 	}

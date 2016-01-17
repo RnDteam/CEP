@@ -14,7 +14,7 @@ public class GenerateDBEvents {
 	
 public static void connectToDB() {
 		
-		String databaseUrl = "jdbc:mysql://localhost:3306/mysql";
+		String databaseUrl = "jdbc:mysql://localhost:3306/cep_try";
 		String user = "root";
 		String password = "root";
 		
