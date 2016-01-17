@@ -9,7 +9,7 @@ public class GenerateBuilding {
 	
 	public static Random random = new Random();
 	
-	public static String generateBuilding(Integer buildId, Integer persId) {
+	public static String generateBuilding(String buildId, String persId, String organizatioId) {
 		String buildingId = buildId.toString();
 		String location = generateLocation();
 		String type = generateType();
@@ -17,8 +17,8 @@ public class GenerateBuilding {
 		String personId = persId.toString();
 		
 		String insertVehicleQuery = 
-				String.format("INSERT INTO buildings VALUES ('{0}','{1}','{2}','{3}','{4}')",
-						buildingId, location, type, usage_type, personId);
+				String.format("insert into buildings (id, location, type, usage_type, owner_id, organization_id) VALUES ('%s','%s','%s','%s','%s', '%s')",
+						buildingId, location, type, usage_type, personId, organizatioId);
 		
 		return insertVehicleQuery;
 	}

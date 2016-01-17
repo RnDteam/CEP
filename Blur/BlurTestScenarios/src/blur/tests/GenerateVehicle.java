@@ -20,7 +20,7 @@ public class GenerateVehicle {
 
 		
 		String insertVehicleQuery = 
-				String.format("INSERT INTO vehicles VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')",
+				String.format("INSERT INTO vehicles VALUES ('%s','%s','%s','%s','%s','%s','%s')",
 						vehicleId, location, status, details, last_seen, owner, organization);
 		
 		return insertVehicleQuery;

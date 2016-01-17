@@ -4,18 +4,18 @@ import java.util.Random;
 
 public class OrganizationGenerator {
 
-	public static String generateOrganizationQuery(Integer id) {
+	public static String generateOrganizationQuery(String id) {
 		
-		String organizationType = null;
+		String type = null;
 		Random random = new Random();
 
 		if (random.nextBoolean()) {
-			organizationType = "CRIMINAL";
+			type = "CRIMINAL";
 		} else {
-			organizationType = "COMMERCIAL";
+			type = "COMMERCIAL";
 		}
 		
-		String sqlQuery = String.format("insert into organizations values ('{0}', '{1}'", id, organizationType);
+		String sqlQuery = String.format("insert into organizations (id, type) values ('%s', '%s')", id, type);
 		
 		return sqlQuery;
 	}
