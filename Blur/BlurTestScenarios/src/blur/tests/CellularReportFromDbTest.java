@@ -1,10 +1,12 @@
 package blur.tests;
 
-import static org.junit.Assert.*;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.ZonedDateTime;
-
-import blur.model.*;
+import java.util.ArrayList;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -13,9 +15,16 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import blur.model.Building;
+import blur.model.BuildingInitialization;
+import blur.model.BuildingType;
+import blur.model.BuildingUsageType;
+import blur.model.CellularReport;
 import blur.model.ConceptFactory;
 import blur.model.Organization;
 import blur.model.OrganizationInitialization;
+import blur.model.OrganizationType;
+import blur.model.Person;
 
 import com.ibm.geolib.geom.Point;
 import com.ibm.geolib.st.SpatioTemporalService;
@@ -25,20 +34,20 @@ import com.ibm.ia.common.RoutingException;
 import com.ibm.ia.common.SolutionException;
 import com.ibm.ia.common.debug.DebugInfo;
 import com.ibm.ia.model.Event;
-import com.ibm.ia.routing.RoutingError;
-import com.ibm.ia.testdriver.DebugReceiver;
 import com.ibm.ia.testdriver.IADebugReceiver;
 import com.ibm.ia.testdriver.TestDriver;
 
-public class CellularReportTest {
-
-	private static final String BUILDING2 = "building2";
-	private static final String BUILDING1 = "building1";
+public class CellularReportFromDbTest {
+	
 	protected static TestDriver testDriver;
 	protected static IADebugReceiver debugReceiver = new IADebugReceiver();
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		
+		// create Tables and Data for this test
+		GenerateDBEvents.connectToDB();
+		
 		testDriver = new TestDriver();
 		testDriver.connect();
 		testDriver.addDebugReceiver(debugReceiver);
@@ -71,8 +80,92 @@ public class CellularReportTest {
 		ConceptFactory conceptFactory = testDriver.getConceptFactory(ConceptFactory.class);
 		ZonedDateTime now = ZonedDateTime.now();
 		
+		String getAllOrganizationQuery = "select * from organizations";
+		String getAllBuildingsQuery = "select * from buildings";
 		
-		// Organization Initialization
+		String databaseUrl = "jdbc:mysql://localhost:3306/mysql";
+		String user = "root";
+		String password = "root";
+		
+		Connection connection = null;
+		
+		
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println("mysql jdbc driver is missing");
+		}
+		
+		
+		try {
+			connection = DriverManager.getConnection(databaseUrl, user, password);
+			if	(connection != null) {
+
+				Statement statement = connection.createStatement();
+				
+				/*connection.setAutoCommit(false);
+				statement.addBatch(getAllOrganizationQuery);
+				statement.addBatch(getAllBuildingsQuery);
+				
+				int[] results = statement.executeBatch();
+				connection.commit();*/
+				
+				//ResultSet rs = statement.executeQuery("select eventName, accountId, country, amount, merchantId, merchantType, merchantLocation, eventMethod from transactions");
+				ResultSet rs1 = statement.executeQuery(getAllOrganizationQuery);
+
+				ArrayList<OrganizationInitialization> organizations = new ArrayList<OrganizationInitialization>();
+				
+				while (rs1.next()) {
+					OrganizationInitialization organizationInitialization1 = conceptFactory.createOrganizationInitialization(now);
+					OrganizationType organizationType = rs1.getString(2) == "CRIMINAL" ? OrganizationType.CRIMINAL : OrganizationType.COMMERCIAL;
+					organizationInitialization1.setType(organizationType);
+					organizationInitialization1.setOrganization(testDriver.createRelationship(Organization.class, rs1.getString(1)));
+					organizations.add(organizationInitialization1);
+					
+					System.out.println(rs1.getString(1) + " " + rs1.getString(2));
+				}
+				
+				ResultSet rs2 = statement.executeQuery(getAllBuildingsQuery);
+				
+				ArrayList<BuildingInitialization> buildings = new ArrayList<BuildingInitialization>();
+				while (rs2.next()) {
+					BuildingInitialization buildingInitialization1 = conceptFactory.createBuildingInitialization(now);
+					buildingInitialization1.setBuilding(testDriver.createRelationship(Building.class, rs2.getString(1)));
+					BuildingUsageType buildingUsageType = rs2.getString(4) == "FURNITURE_STORE" ? BuildingUsageType.FURNITURE_STORE : BuildingUsageType.BANK_BRANCH;
+					buildingInitialization1.setUsageType(buildingUsageType);
+					BuildingType buildingType = rs2.getString(3) == "WAREHOUSE" ? BuildingType.WAREHOUSE : (rs2.getString(3) == "APPARTMENT" ? BuildingType.APPARTMENT : BuildingType.COMMERCIAL);
+					buildingInitialization1.setType(buildingType);
+					
+					double x = Double.parseDouble(rs2.getString(2).split(",")[0]);
+					double y = Double.parseDouble(rs2.getString(2).split(",")[1]);
+					
+					Point location = SpatioTemporalService.getService().getGeometryFactory().getPoint( x, y);
+					buildingInitialization1.setLocation(location);
+					buildingInitialization1.setOwner(testDriver.createRelationship(Person.class, "123"));
+					buildingInitialization1.addTo_organizations(testDriver.createRelationship(Organization.class, "organization1"));
+					
+					buildings.add(buildingInitialization1);
+					
+					System.out.println(rs2.getString(1) + " " + rs2.getString(2) + " " + rs2.getString(3) + " " + rs2.getString(4) + " " + rs2.getString(5) + " " + rs2.getString(6));
+				}
+			}
+			
+			System.out.println("Succeeded");
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	/*	// Organization Initialization
 		OrganizationInitialization organizationInitialization1 = conceptFactory.createOrganizationInitialization(now);
 		organizationInitialization1.setType(OrganizationType.CRIMINAL);
 		organizationInitialization1.setOrganization(testDriver.createRelationship(Organization.class, "organization1"));
@@ -179,6 +272,6 @@ public class CellularReportTest {
 			Event event = debugInfo.getEvent();
 			String eventXml = testDriver.getModelSerializer().serializeEvent(DataFormat.TYPED_XML, event );
 			System.out.println( "Event as XML: " + eventXml );
-		}
+		}*/
 	}
 }
