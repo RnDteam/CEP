@@ -5,7 +5,7 @@ acme_deliveries/solution_properties.xml
 *.sem
 
 # generated model
-model.jar
+*/model.jar
 
 # anything in the output folder
 */.output/*
