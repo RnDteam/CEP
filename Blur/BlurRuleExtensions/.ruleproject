@@ -7,9 +7,14 @@
   <paths xsi:type="ilog.rules.studio.model.xom:XOMPath" pathID="XOM">
     <entries xsi:type="ilog.rules.studio.model.xom:LibraryXOMPathEntry" name="org.eclipse.jdt.launching.JRE_CONTAINER" url="file:org.eclipse.jdt.launching.JRE_CONTAINER" kind="LIBRARY" exported="false"/>
     <entries xsi:type="ilog.rules.studio.model.xom:SystemXOMPathEntry" name="BlurServices" url="platform:/BlurServices" kind="JAVA_PROJECT" exported="true"/>
+    <entries xsi:type="ilog.rules.studio.model.xom:SystemXOMPathEntry" name="Blur - Java Model" url="platform:/Blur - Java Model" kind="JAVA_PROJECT" exported="true"/>
+    <entries xsi:type="ilog.rules.studio.model.xom:SystemXOMPathEntry" name="BlurBOM" url="platform:/BlurBOM" kind="RULE_PROJECT"/>
   </paths>
   <paths xsi:type="ilog.rules.studio.model.bom:BOMPath" pathID="BOM">
     <entries xsi:type="ilog.rules.studio.model.bom:BOMEntry" name="blurservicesmodel" url="platform:/BlurRuleExtensions/bom/blurservicesmodel.bom" origin="xom:/BlurRuleExtensions//BlurServices"/>
+    <entries xsi:type="ilog.rules.studio.model.bom:ProjectBOMEntry" name="BlurBOM" url="platform:/BlurBOM" kind="RULE_PROJECT">
+      <ruleProject href="BlurBOM#627742e0-cafa-48cd-9ea1-9df72a74b159"/>
+    </entries>
   </paths>
   <modelFolders xsi:type="ilog.rules.studio.model.base:SourceFolder">
     <name>rules</name>

@@ -1,7 +1,10 @@
 package blur.extensions;
 
+<<<<<<< HEAD
 import java.util.Random;
 
+=======
+>>>>>>> 2b9e66af4fcce98e137dd9f725fc95260bcd5f0f
 import blur.model.ConceptFactory;
 import blur.model.Organization;
 import blur.model.Person;
@@ -9,7 +12,12 @@ import blur.model.TrafficCameraReport;
 import blur.model.Vehicle;
 import blur.model.VehicleDetails;
 import blur.model.VehicleStatus;
-import blur.model.VehicleType;
+
+import com.ibm.ia.common.ComponentException;
+import com.ibm.ia.extension.EntityInitializer;
+import com.ibm.ia.extension.annotations.EntityInitializerDescriptor;
+import com.ibm.ia.model.Event;
+import com.ibm.ia.model.Relationship;
 
 import com.ibm.ia.common.ComponentException;
 import com.ibm.ia.common.GatewayException;

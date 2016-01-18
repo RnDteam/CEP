@@ -1,0 +1,2 @@
+define 'number of hot building alerts today' as the number of alerts during the current day,
+	where the rule of each alert contains "hot building"

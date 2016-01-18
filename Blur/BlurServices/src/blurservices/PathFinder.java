@@ -1,5 +1,7 @@
 package blurservices;
 
+import blur.model.Person;
+
 public class PathFinder implements IPathFinder{
 
 	@Override
@@ -10,5 +12,14 @@ public class PathFinder implements IPathFinder{
 		}
 
 		return false;
+	}
+
+	public boolean isGood( Person person, int depth ) {
+		if(depth < 3) {
+			return person.getName().contains("Dan");			
+		}
+		else {
+			return false;
+		}
 	}
 }

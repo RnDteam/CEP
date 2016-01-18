@@ -1,0 +1,13 @@
+submit events from "EventInitialOrganizationSequence";
+submit events from "EventInitialBuildingTestSequence" ; 
+
+check that the building identified by "building1" exists ;   
+check that the building identified by "building2" exists ;   
+check that the building identified by "building3" exists ;
+
+submit events from "cellularReportsSequence";
+
+// you should see several alerts that there are more than 1 criminal orgs
+// and it is 1 AM...
+
+continue processing until 1/15/2016 2:00:00 AM;
