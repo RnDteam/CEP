@@ -9,7 +9,6 @@
 		<project>BlurServices</project>
 		<project>BuildingAgent</project>
 		<project>VehicleRuleAgent</project>
-		<project>TestJavaAgent</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

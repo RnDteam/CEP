@@ -14,9 +14,11 @@ public class RiskScoreDataProvider extends DataProvider<RiskScoreProviderRequest
     
     @Override
     public RiskScoreProviderResponse processRequest(RiskScoreProviderRequest request) throws ComponentException {
+       
         ConceptFactory factory = getConceptFactory(ConceptFactory.class);
         RiskScoreProviderResponse response = factory.createRiskScoreProviderResponse();
         response.setRiskScore( request.getPersonId().length() * 10 );
         return response;
     }
+    
 }

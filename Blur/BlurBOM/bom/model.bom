@@ -1,815 +1,4 @@
-<<<<<<< HEAD
-property uuid "87c1402b-df20-4201-97bb-df9b9734673c"
-property bdl_generated "true"
-package blur.model;
-
-
-public class Alert
-        implements com.ibm.ia.model.Event
-        property "brl.facets" "ilog.rules.brl.Date:timestamp"
-        property "de.generated" "true"
-        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
-        property "xsd.eventElementName" "Alert"
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    public blur.model.Building building
-                property optional "true"
-                property "xsd.name" "building"
-                property "xsd.order" "0"
-                property "xsd.useMapping" "true";
-    public string message
-                property "xsd.name" "message"
-                property "xsd.order" "1";
-    public blur.model.Organization organization
-                property optional "true"
-                property "xsd.name" "organization"
-                property "xsd.order" "2"
-                property "xsd.useMapping" "true";
-    public blur.model.Person person
-                property optional "true"
-                property "xsd.name" "person"
-                property "xsd.order" "3"
-                property "xsd.useMapping" "true";
-    public string rule
-                property "xsd.name" "rule"
-                property "xsd.order" "4";
-    public java.time.ZonedDateTime timestamp
-                property "ia.timestamp" "true"
-                property "xsd.name" "timestamp"
-                property "xsd.order" "5";
-    public blur.model.Vehicle vehicle
-                property optional "true"
-                property "xsd.name" "vehicle"
-                property "xsd.order" "6"
-                property "xsd.useMapping" "true";
-    public Alert(java.time.ZonedDateTime timestamp)
-                property "dataio.default" "true";
-    public Alert(blur.model.Building building, string message, blur.model.Organization organization, blur.model.Person person, string rule, java.time.ZonedDateTime timestamp, blur.model.Vehicle vehicle)
-                property groups "BALA"
-                property prototype "true";
-}
-
-public class Building
-        implements com.ibm.ia.model.Entity
-        property "brl.facets" "com.ibm.geolib.geom.Geometry:location"
-        property "de.generated" "true"
-        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
-        property "xsd.entityElementName" "Building"
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    public java.util.Set alerts domain 0,* class blur.model.Alert
-                property update "true"
-                property "xsd.collection" "blur.model.Alert"
-                property "xsd.name" "alert"
-                property "xsd.order" "0";
-    public string id
-                property "ia.entity.id" "true"
-                property update "true"
-                property "xsd.name" "id"
-                property "xsd.order" "1";
-    public com.ibm.geolib.geom.Point location
-                property update "true"
-                property "xsd.name" "location"
-                property "xsd.order" "2";
-    public java.util.Set organizations domain 0,* class blur.model.Organization
-                property update "true"
-                property "xsd.collection" "java.lang.String"
-                property "xsd.name" "organization"
-                property "xsd.order" "3"
-                property "xsd.useMapping" "blur.model.Organization";
-    public blur.model.Person owner
-                property "ia.reference" "true"
-                property update "true"
-                property "xsd.name" "owner"
-                property "xsd.order" "4"
-                property "xsd.useMapping" "true";
-    public blur.model.BuildingType type
-                property update "true"
-                property "xsd.name" "type"
-                property "xsd.order" "5";
-    public blur.model.BuildingUsageType usageType
-                property update "true"
-                property "xsd.name" "usageType"
-                property "xsd.order" "6";
-    public Building(string id)
-                property "dataio.default" "true";
-    public Building(string id, com.ibm.geolib.geom.Point location, blur.model.Person owner, blur.model.BuildingType type, blur.model.BuildingUsageType usageType)
-                property groups "BALA"
-                property prototype "true";
-    public void addTo_alerts(blur.model.Alert arg0)
-                property collectionAttribute "alerts"
-                property update "true";
-    public void addTo_organizations(blur.model.Organization arg0)
-                property collectionAttribute "organizations"
-                property update "true";
-    public void clear_alerts()
-                property collectionAttribute "alerts"
-                property update "true";
-    public void clear_organizations()
-                property collectionAttribute "organizations"
-                property update "true";
-    public java.lang.Double getExpectedCellularReportFrequency(java.time.ZonedDateTime arg0)
-                property "ia.entity.aggregate" "true"
-                property impureFunction "EXTERNAL";
-    public blur.model.Organization getFrom_organizations(string arg0)
-                property collectionAttribute "organizations";
-    public java.lang.Double getRecentCellularReportFrequency(java.time.ZonedDateTime arg0)
-                property "ia.entity.aggregate" "true"
-                property impureFunction "EXTERNAL";
-    public void removeFrom_alerts(blur.model.Alert arg0)
-                property collectionAttribute "alerts"
-                property update "true";
-    public void removeFrom_organizations(blur.model.Organization arg0)
-                property collectionAttribute "organizations"
-                property update "true";
-    public void set_alerts(java.util.Collection arg0 domain 0,* class blur.model.Alert)
-                property collectionAttribute "alerts"
-                property update "true";
-    public void set_organizations(java.util.Collection arg0 domain 0,* class blur.model.Organization)
-                property collectionAttribute "organizations"
-                property update "true";
-}
-
-public class BuildingInitialization
-        implements com.ibm.ia.model.Event
-        property "brl.facets" "ilog.rules.brl.Date:timestamp;com.ibm.geolib.geom.Geometry:location"
-        property "de.generated" "true"
-        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
-        property "xsd.eventElementName" "BuildingInitialization"
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    public blur.model.Building building
-                property "xsd.name" "building"
-                property "xsd.order" "0"
-                property "xsd.useMapping" "true";
-    public com.ibm.geolib.geom.Point location
-                property "xsd.name" "location"
-                property "xsd.order" "1";
-    public java.util.Set organizations domain 0,* class blur.model.Organization
-                property "xsd.collection" "java.lang.String"
-                property "xsd.name" "organization"
-                property "xsd.order" "2"
-                property "xsd.useMapping" "blur.model.Organization";
-    public blur.model.Person owner
-                property "xsd.name" "owner"
-                property "xsd.order" "3"
-                property "xsd.useMapping" "true";
-    public java.time.ZonedDateTime timestamp
-                property "ia.timestamp" "true"
-                property "xsd.name" "timestamp"
-                property "xsd.order" "4";
-    public blur.model.BuildingType type
-                property "xsd.name" "type"
-                property "xsd.order" "5";
-    public blur.model.BuildingUsageType usageType
-                property "xsd.name" "usageType"
-                property "xsd.order" "6";
-    public BuildingInitialization(java.time.ZonedDateTime timestamp)
-                property "dataio.default" "true";
-    public BuildingInitialization(blur.model.Building building, com.ibm.geolib.geom.Point location, blur.model.Person owner, java.time.ZonedDateTime timestamp, blur.model.BuildingType type, blur.model.BuildingUsageType usageType)
-                property groups "BALA"
-                property prototype "true";
-    public void addTo_organizations(blur.model.Organization arg0)
-                property collectionAttribute "organizations";
-    public void clear_organizations()
-                property collectionAttribute "organizations";
-    public blur.model.Organization getFrom_organizations(string arg0)
-                property collectionAttribute "organizations";
-    public void removeFrom_organizations(blur.model.Organization arg0)
-                property collectionAttribute "organizations";
-    public void set_organizations(java.util.Collection arg0 domain 0,* class blur.model.Organization)
-                property collectionAttribute "organizations";
-}
-
-public class BuildingType
-        property "de.generated" "true"
-        property "ia.enum" "true"
-        property "xsd.definedNamespaces" ""
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    domain {static APPARTMENT, static WAREHOUSE, static COMMERCIAL}
-    public static final readonly blur.model.BuildingType APPARTMENT
-                property "xsd.name" "APPARTMENT"
-                property "xsd.order" "0";
-    public static final readonly blur.model.BuildingType COMMERCIAL
-                property "xsd.name" "COMMERCIAL"
-                property "xsd.order" "1";
-    public static final readonly blur.model.BuildingType WAREHOUSE
-                property "xsd.name" "WAREHOUSE"
-                property "xsd.order" "2";
-}
-
-public class BuildingUsageType
-        property "de.generated" "true"
-        property "ia.enum" "true"
-        property "xsd.definedNamespaces" ""
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    domain {static BANK_BRANCH, static FURNITURE_STORE}
-    public static final readonly blur.model.BuildingUsageType BANK_BRANCH
-                property "xsd.name" "BANK_BRANCH"
-                property "xsd.order" "0";
-    public static final readonly blur.model.BuildingUsageType FURNITURE_STORE
-                property "xsd.name" "FURNITURE_STORE"
-                property "xsd.order" "1";
-}
-
-public class CellularReport
-        implements com.ibm.ia.model.Event
-        property "brl.facets" "ilog.rules.brl.Date:timestamp"
-        property "de.generated" "true"
-        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
-        property "xsd.eventElementName" "CellularReport"
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    public blur.model.Building building
-                property "xsd.name" "building"
-                property "xsd.order" "0"
-                property "xsd.useMapping" "true";
-    public blur.model.Person person
-                property "xsd.name" "person"
-                property "xsd.order" "1"
-                property "xsd.useMapping" "true";
-    public java.time.ZonedDateTime timestamp
-                property "ia.timestamp" "true"
-                property "xsd.name" "timestamp"
-                property "xsd.order" "2";
-    public CellularReport(java.time.ZonedDateTime timestamp)
-                property "dataio.default" "true";
-    public CellularReport(blur.model.Building building, blur.model.Person person, java.time.ZonedDateTime timestamp)
-                property groups "BALA"
-                property prototype "true";
-}
-
-public class Organization
-        implements com.ibm.ia.model.Entity
-        property "de.generated" "true"
-        property "xsd.definedNamespaces" ""
-        property "xsd.entityElementName" "Organization"
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    public string id
-                property "ia.entity.id" "true"
-                property update "true"
-                property "xsd.name" "id"
-                property "xsd.order" "0";
-    public blur.model.OrganizationType type
-                property update "true"
-                property "xsd.name" "type"
-                property "xsd.order" "1";
-    public Organization(string id)
-                property "dataio.default" "true";
-    public Organization(string id, blur.model.OrganizationType type)
-                property groups "BALA"
-                property prototype "true";
-}
-
-public class OrganizationInitialization
-        implements com.ibm.ia.model.Event
-        property "brl.facets" "ilog.rules.brl.Date:timestamp"
-        property "de.generated" "true"
-        property "xsd.definedNamespaces" ""
-        property "xsd.eventElementName" "OrganizationInitialization"
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    public blur.model.Organization organization
-                property "xsd.name" "organization"
-                property "xsd.order" "0"
-                property "xsd.useMapping" "true";
-    public java.time.ZonedDateTime timestamp
-                property "ia.timestamp" "true"
-                property "xsd.name" "timestamp"
-                property "xsd.order" "1";
-    public blur.model.OrganizationType type
-                property "xsd.name" "type"
-                property "xsd.order" "2";
-    public OrganizationInitialization(java.time.ZonedDateTime timestamp)
-                property "dataio.default" "true";
-    public OrganizationInitialization(blur.model.Organization organization, java.time.ZonedDateTime timestamp, blur.model.OrganizationType type)
-                property groups "BALA"
-                property prototype "true";
-}
-
-public class OrganizationRoleInitialization
-        implements com.ibm.ia.model.Event
-        property "brl.facets" "ilog.rules.brl.Date:timestamp"
-        property "de.generated" "true"
-        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
-        property "xsd.eventElementName" "OrganizationRoleInitialization"
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    public blur.model.OrganizationalRole manager
-                property "xsd.name" "manager"
-                property "xsd.order" "0"
-                property "xsd.useMapping" "true";
-    public string name
-                property "xsd.name" "name"
-                property "xsd.order" "1";
-    public blur.model.Organization organization
-                property "xsd.name" "organization"
-                property "xsd.order" "2"
-                property "xsd.useMapping" "true";
-    public blur.model.OrganizationalRole organizationalRole
-                property "xsd.name" "organizationalRole"
-                property "xsd.order" "3"
-                property "xsd.useMapping" "true";
-    public blur.model.Person person
-                property "xsd.name" "person"
-                property "xsd.order" "4"
-                property "xsd.useMapping" "true";
-    public java.time.ZonedDateTime timestamp
-                property "ia.timestamp" "true"
-                property "xsd.name" "timestamp"
-                property "xsd.order" "5";
-    public OrganizationRoleInitialization(java.time.ZonedDateTime timestamp)
-                property "dataio.default" "true";
-    public OrganizationRoleInitialization(blur.model.OrganizationalRole manager, string name, blur.model.Organization organization, blur.model.OrganizationalRole organizationalRole, blur.model.Person person, java.time.ZonedDateTime timestamp)
-                property groups "BALA"
-                property prototype "true";
-}
-
-public class OrganizationType
-        property "de.generated" "true"
-        property "ia.enum" "true"
-        property "xsd.definedNamespaces" ""
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    domain {static CRIMINAL, static COMMERCIAL}
-    public static final readonly blur.model.OrganizationType COMMERCIAL
-                property "xsd.name" "COMMERCIAL"
-                property "xsd.order" "0";
-    public static final readonly blur.model.OrganizationType CRIMINAL
-                property "xsd.name" "CRIMINAL"
-                property "xsd.order" "1";
-}
-
-public class OrganizationalRole
-        implements com.ibm.ia.model.Entity
-        property "de.generated" "true"
-        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
-        property "xsd.entityElementName" "OrganizationalRole"
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    public string id
-                property "ia.entity.id" "true"
-                property update "true"
-                property "xsd.name" "id"
-                property "xsd.order" "0";
-    public blur.model.OrganizationalRole manager
-                property "ia.reference" "true"
-                property update "true"
-                property "xsd.name" "manager"
-                property "xsd.order" "1"
-                property "xsd.useMapping" "true";
-    public string name
-                property update "true"
-                property "xsd.name" "name"
-                property "xsd.order" "2";
-    public blur.model.Organization organization
-                property update "true"
-                property "xsd.name" "organization"
-                property "xsd.order" "3"
-                property "xsd.useMapping" "true";
-    public blur.model.Person person
-                property update "true"
-                property "xsd.name" "person"
-                property "xsd.order" "4"
-                property "xsd.useMapping" "true";
-    public OrganizationalRole(string id)
-                property "dataio.default" "true";
-    public OrganizationalRole(string id, blur.model.OrganizationalRole manager, string name, blur.model.Organization organization, blur.model.Person person)
-                property groups "BALA"
-                property prototype "true";
-}
-
-public class Person
-        implements com.ibm.ia.model.Entity
-        property "brl.facets" "com.ibm.geolib.geom.Geometry:location"
-        property "de.generated" "true"
-        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
-        property "xsd.entityElementName" "Person"
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    public string id
-                property "ia.entity.id" "true"
-                property update "true"
-                property "xsd.name" "id"
-                property "xsd.order" "0";
-    public com.ibm.geolib.geom.Point location
-                property update "true"
-                property "xsd.name" "location"
-                property "xsd.order" "1";
-    public string name
-                property update "true"
-                property "xsd.name" "name"
-                property "xsd.order" "2";
-    public string profession
-                property update "true"
-                property "xsd.name" "profession"
-                property "xsd.order" "3";
-    public blur.model.OrganizationalRole role
-                property "ia.reference" "true"
-                property update "true"
-                property "xsd.name" "role"
-                property "xsd.order" "4"
-                property "xsd.useMapping" "true";
-    public blur.model.PersonState state
-                property update "true"
-                property "xsd.name" "state"
-                property "xsd.order" "5";
-    public Person(string id)
-                property "dataio.default" "true";
-    public Person(string id, com.ibm.geolib.geom.Point location, string name, string profession, blur.model.OrganizationalRole role, blur.model.PersonState state)
-                property groups "BALA"
-                property prototype "true";
-}
-
-public class PersonInitialization
-        implements com.ibm.ia.model.Event
-        property "brl.facets" "ilog.rules.brl.Date:timestamp;com.ibm.geolib.geom.Geometry:location"
-        property "de.generated" "true"
-        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
-        property "xsd.eventElementName" "PersonInitialization"
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    public com.ibm.geolib.geom.Point location
-                property "xsd.name" "location"
-                property "xsd.order" "0";
-    public string name
-                property "xsd.name" "name"
-                property "xsd.order" "1";
-    public blur.model.Person person
-                property "xsd.name" "person"
-                property "xsd.order" "2"
-                property "xsd.useMapping" "true";
-    public string profession
-                property "xsd.name" "profession"
-                property "xsd.order" "3";
-    public blur.model.OrganizationalRole role
-                property "xsd.name" "role"
-                property "xsd.order" "4"
-                property "xsd.useMapping" "true";
-    public blur.model.PersonState state
-                property "xsd.name" "state"
-                property "xsd.order" "5";
-    public java.time.ZonedDateTime timestamp
-                property "ia.timestamp" "true"
-                property "xsd.name" "timestamp"
-                property "xsd.order" "6";
-    public PersonInitialization(java.time.ZonedDateTime timestamp)
-                property "dataio.default" "true";
-    public PersonInitialization(com.ibm.geolib.geom.Point location, string name, blur.model.Person person, string profession, blur.model.OrganizationalRole role, blur.model.PersonState state, java.time.ZonedDateTime timestamp)
-                property groups "BALA"
-                property prototype "true";
-}
-
-public class PersonState
-        property "de.generated" "true"
-        property "ia.enum" "true"
-        property "xsd.definedNamespaces" ""
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    domain {static ACTIVE, static INACTIVE}
-    public static final readonly blur.model.PersonState ACTIVE
-                property "xsd.name" "ACTIVE"
-                property "xsd.order" "0";
-    public static final readonly blur.model.PersonState INACTIVE
-                property "xsd.name" "INACTIVE"
-                property "xsd.order" "1";
-}
-
-public class TrafficCameraReport
-        implements com.ibm.ia.model.Event
-        property "brl.facets" "ilog.rules.brl.Date:timestamp"
-        property "de.generated" "true"
-        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
-        property "xsd.eventElementName" "TrafficCameraReport"
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    public int cameraId
-                property "xsd.name" "cameraId"
-                property "xsd.order" "0";
-    public com.ibm.geolib.geom.Point cameraLocation
-                property "xsd.name" "cameraLocation"
-                property "xsd.order" "1";
-    public java.time.ZonedDateTime timestamp
-                property "ia.timestamp" "true"
-                property "xsd.name" "timestamp"
-                property "xsd.order" "2";
-    public blur.model.Vehicle vehicle
-                property "xsd.name" "vehicle"
-                property "xsd.order" "3"
-                property "xsd.useMapping" "true";
-    public TrafficCameraReport(java.time.ZonedDateTime timestamp)
-                property "dataio.default" "true";
-    public TrafficCameraReport(int cameraId, com.ibm.geolib.geom.Point cameraLocation, java.time.ZonedDateTime timestamp, blur.model.Vehicle vehicle)
-                property groups "BALA"
-                property prototype "true";
-}
-
-public class Vehicle
-        implements com.ibm.ia.model.Entity
-        property "de.generated" "true"
-        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
-        property "xsd.entityElementName" "Vehicle"
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    public blur.model.VehicleDetails details
-                property "ia.reference" "true"
-                property update "true"
-                property "xsd.name" "details"
-                property "xsd.order" "0"
-                property "xsd.useMapping" "true";
-    public java.time.ZonedDateTime lastSeen
-                property update "true"
-                property "xsd.name" "lastSeen"
-                property "xsd.order" "1";
-    public string licensePlateNumber
-                property "ia.entity.id" "true"
-                property update "true"
-                property "xsd.name" "licensePlateNumber"
-                property "xsd.order" "2";
-    public com.ibm.geolib.geom.Point location
-                property update "true"
-                property "xsd.name" "location"
-                property "xsd.order" "3";
-    public blur.model.Organization organization
-                property update "true"
-                property "xsd.name" "organization"
-                property "xsd.order" "4"
-                property "xsd.useMapping" "true";
-    public blur.model.Person owner
-                property "ia.reference" "true"
-                property update "true"
-                property "xsd.name" "owner"
-                property "xsd.order" "5"
-                property "xsd.useMapping" "true";
-    public blur.model.VehicleStatus status
-                property update "true"
-                property "xsd.name" "status"
-                property "xsd.order" "6";
-    public boolean suspicious
-                property update "true"
-                property "xsd.name" "suspicious"
-                property "xsd.order" "7";
-    public Vehicle(string licensePlateNumber)
-                property "dataio.default" "true";
-    public Vehicle(blur.model.VehicleDetails details, java.time.ZonedDateTime lastSeen, string licensePlateNumber, com.ibm.geolib.geom.Point location, blur.model.Organization organization, blur.model.Person owner, blur.model.VehicleStatus status, boolean suspicious)
-                property groups "BALA"
-                property prototype "true";
-}
-
-public class VehicleCreated
-        implements com.ibm.ia.model.Event
-        property "brl.facets" "ilog.rules.brl.Date:timestamp"
-        property "de.generated" "true"
-        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
-        property "xsd.eventElementName" "VehicleCreated"
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    public java.time.ZonedDateTime timestamp
-                property "ia.timestamp" "true"
-                property "xsd.name" "timestamp"
-                property "xsd.order" "0";
-    public blur.model.Vehicle vehicle
-                property "xsd.name" "vehicle"
-                property "xsd.order" "1"
-                property "xsd.useMapping" "true";
-    public VehicleCreated(java.time.ZonedDateTime timestamp)
-                property "dataio.default" "true";
-    public VehicleCreated(java.time.ZonedDateTime timestamp, blur.model.Vehicle vehicle)
-                property groups "BALA"
-                property prototype "true";
-}
-
-public class VehicleDetails
-        implements com.ibm.ia.model.Entity
-        property "de.generated" "true"
-        property "xsd.definedNamespaces" ""
-        property "xsd.entityElementName" "VehicleDetails"
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    public string id
-                property "ia.entity.id" "true"
-                property update "true"
-                property "xsd.name" "id"
-                property "xsd.order" "0";
-    public string maker
-                property update "true"
-                property "xsd.name" "maker"
-                property "xsd.order" "1";
-    public double maximumSpeed
-                property update "true"
-                property "xsd.name" "maximumSpeed"
-                property "xsd.order" "2";
-    public string model
-                property update "true"
-                property "xsd.name" "model"
-                property "xsd.order" "3";
-    public blur.model.VehicleType type
-                property update "true"
-                property "xsd.name" "type"
-                property "xsd.order" "4";
-    public string year
-                property update "true"
-                property "xsd.name" "year"
-                property "xsd.order" "5";
-    public VehicleDetails(string id)
-                property "dataio.default" "true";
-    public VehicleDetails(string id, string maker, double maximumSpeed, string model, blur.model.VehicleType type, string year)
-                property groups "BALA"
-                property prototype "true";
-}
-
-public class VehicleDetailsInitialization
-        implements com.ibm.ia.model.Event
-        property "brl.facets" "ilog.rules.brl.Date:timestamp"
-        property "de.generated" "true"
-        property "xsd.definedNamespaces" ""
-        property "xsd.eventElementName" "VehicleDetailsInitialization"
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    public string maker
-                property "xsd.name" "maker"
-                property "xsd.order" "0";
-    public double maximumSpeed
-                property "xsd.name" "maximumSpeed"
-                property "xsd.order" "1";
-    public string model
-                property "xsd.name" "model"
-                property "xsd.order" "2";
-    public java.time.ZonedDateTime timestamp
-                property "ia.timestamp" "true"
-                property "xsd.name" "timestamp"
-                property "xsd.order" "3";
-    public blur.model.VehicleType type
-                property "xsd.name" "type"
-                property "xsd.order" "4";
-    public blur.model.VehicleDetails vehicleDetails
-                property "xsd.name" "vehicleDetails"
-                property "xsd.order" "5"
-                property "xsd.useMapping" "true";
-    public string year
-                property "xsd.name" "year"
-                property "xsd.order" "6";
-    public VehicleDetailsInitialization(java.time.ZonedDateTime timestamp)
-                property "dataio.default" "true";
-    public VehicleDetailsInitialization(string maker, double maximumSpeed, string model, java.time.ZonedDateTime timestamp, blur.model.VehicleType type, blur.model.VehicleDetails vehicleDetails, string year)
-                property groups "BALA"
-                property prototype "true";
-}
-
-public class VehicleInitialization
-        implements com.ibm.ia.model.Event
-        property "brl.facets" "ilog.rules.brl.Date:timestamp;com.ibm.geolib.geom.Geometry:location"
-        property "de.generated" "true"
-        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
-        property "xsd.eventElementName" "VehicleInitialization"
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    public blur.model.VehicleDetails details
-                property "xsd.name" "details"
-                property "xsd.order" "0"
-                property "xsd.useMapping" "true";
-    public java.time.ZonedDateTime lastSeen
-                property "xsd.name" "lastSeen"
-                property "xsd.order" "1";
-    public com.ibm.geolib.geom.Point location
-                property "xsd.name" "location"
-                property "xsd.order" "2";
-    public blur.model.Organization organization
-                property "xsd.name" "organization"
-                property "xsd.order" "3"
-                property "xsd.useMapping" "true";
-    public blur.model.Person owner
-                property "xsd.name" "owner"
-                property "xsd.order" "4"
-                property "xsd.useMapping" "true";
-    public blur.model.VehicleStatus status
-                property "xsd.name" "status"
-                property "xsd.order" "5";
-    public boolean suspicious
-                property "xsd.name" "suspicious"
-                property "xsd.order" "6";
-    public java.time.ZonedDateTime timestamp
-                property "ia.timestamp" "true"
-                property "xsd.name" "timestamp"
-                property "xsd.order" "7";
-    public blur.model.Vehicle vehicle
-                property "xsd.name" "vehicle"
-                property "xsd.order" "8"
-                property "xsd.useMapping" "true";
-    public VehicleInitialization(java.time.ZonedDateTime timestamp)
-                property "dataio.default" "true";
-    public VehicleInitialization(blur.model.VehicleDetails details, java.time.ZonedDateTime lastSeen, com.ibm.geolib.geom.Point location, blur.model.Organization organization, blur.model.Person owner, blur.model.VehicleStatus status, boolean suspicious, java.time.ZonedDateTime timestamp, blur.model.Vehicle vehicle)
-                property groups "BALA"
-                property prototype "true";
-}
-
-public class VehicleStatus
-        property "de.generated" "true"
-        property "ia.enum" "true"
-        property "xsd.definedNamespaces" ""
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    domain {static INACTIVE, static ACTIVE}
-    public static final readonly blur.model.VehicleStatus ACTIVE
-                property "xsd.name" "ACTIVE"
-                property "xsd.order" "0";
-    public static final readonly blur.model.VehicleStatus INACTIVE
-                property "xsd.name" "INACTIVE"
-                property "xsd.order" "1";
-}
-
-public class VehicleType
-        property "de.generated" "true"
-        property "ia.enum" "true"
-        property "xsd.definedNamespaces" ""
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    domain {static MOTORCYCLE, static JEEP, static TRUCK}
-    public static final readonly blur.model.VehicleType JEEP
-                property "xsd.name" "JEEP"
-                property "xsd.order" "0";
-    public static final readonly blur.model.VehicleType MOTORCYCLE
-                property "xsd.name" "MOTORCYCLE"
-                property "xsd.order" "1";
-    public static final readonly blur.model.VehicleType TRUCK
-                property "xsd.name" "TRUCK"
-                property "xsd.order" "2";
-}
-
-public class VehicleUpdated
-        implements com.ibm.ia.model.Event
-        property "brl.facets" "ilog.rules.brl.Date:timestamp"
-        property "de.generated" "true"
-        property "xsd.definedNamespaces" "xmlns:geom=\"http://www.ibm.com/geolib/geom\" "
-        property "xsd.eventElementName" "VehicleUpdated"
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    public java.time.ZonedDateTime timestamp
-                property "ia.timestamp" "true"
-                property "xsd.name" "timestamp"
-                property "xsd.order" "0";
-    public blur.model.Vehicle vehicle
-                property "xsd.name" "vehicle"
-                property "xsd.order" "1"
-                property "xsd.useMapping" "true";
-    public VehicleUpdated(java.time.ZonedDateTime timestamp)
-                property "dataio.default" "true";
-    public VehicleUpdated(java.time.ZonedDateTime timestamp, blur.model.Vehicle vehicle)
-                property groups "BALA"
-                property prototype "true";
-}
-
-=======
-property uuid "ef51136b-3695-4e4a-91ae-1a01bbfb8161"
+property uuid "7be42f94-f6f1-4e29-a649-1180ceb7df15"
 property bdl_generated "true"
 package blur.model;
 
@@ -1388,9 +577,11 @@ public class Vehicle
         property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
 {
     public blur.model.VehicleDetails details
+                property "ia.reference" "true"
                 property update "true"
                 property "xsd.name" "details"
-                property "xsd.order" "0";
+                property "xsd.order" "0"
+                property "xsd.useMapping" "true";
     public java.time.ZonedDateTime lastSeen
                 property update "true"
                 property "xsd.name" "lastSeen"
@@ -1456,37 +647,84 @@ public class VehicleCreated
 }
 
 public class VehicleDetails
+        implements com.ibm.ia.model.Entity
         property "de.generated" "true"
         property "xsd.definedNamespaces" ""
+        property "xsd.entityElementName" "VehicleDetails"
+        property "xsd.fileName" "model.xsd"
+        property "xsd.support" "true"
+        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
+{
+    public string id
+                property "ia.entity.id" "true"
+                property update "true"
+                property "xsd.name" "id"
+                property "xsd.order" "0";
+    public string maker
+                property update "true"
+                property "xsd.name" "maker"
+                property "xsd.order" "1";
+    public double maximumSpeed
+                property update "true"
+                property "xsd.name" "maximumSpeed"
+                property "xsd.order" "2";
+    public string model
+                property update "true"
+                property "xsd.name" "model"
+                property "xsd.order" "3";
+    public blur.model.VehicleType type
+                property update "true"
+                property "xsd.name" "type"
+                property "xsd.order" "4";
+    public string year
+                property update "true"
+                property "xsd.name" "year"
+                property "xsd.order" "5";
+    public VehicleDetails(string id)
+                property "dataio.default" "true";
+    public VehicleDetails(string id, string maker, double maximumSpeed, string model, blur.model.VehicleType type, string year)
+                property groups "BALA"
+                property prototype "true";
+}
+
+public class VehicleDetailsInitialization
+        implements com.ibm.ia.model.Event
+        property "brl.facets" "ilog.rules.brl.Date:timestamp"
+        property "de.generated" "true"
+        property "xsd.definedNamespaces" ""
+        property "xsd.eventElementName" "VehicleDetailsInitialization"
         property "xsd.fileName" "model.xsd"
         property "xsd.support" "true"
         property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
 {
     public string maker
-                property update "true"
                 property "xsd.name" "maker"
                 property "xsd.order" "0";
     public double maximumSpeed
-                property update "true"
                 property "xsd.name" "maximumSpeed"
                 property "xsd.order" "1";
     public string model
-                property update "true"
                 property "xsd.name" "model"
                 property "xsd.order" "2";
-    public blur.model.VehicleType type
-                property update "true"
-                property "xsd.name" "type"
+    public java.time.ZonedDateTime timestamp
+                property "ia.timestamp" "true"
+                property "xsd.name" "timestamp"
                 property "xsd.order" "3";
-    public java.time.ZonedDateTime year
-                property update "true"
-                property "xsd.name" "year"
+    public blur.model.VehicleType type
+                property "xsd.name" "type"
                 property "xsd.order" "4";
-    public VehicleDetails(string maker, double maximumSpeed, string model, blur.model.VehicleType type, java.time.ZonedDateTime year)
+    public blur.model.VehicleDetails vehicleDetails
+                property "xsd.name" "vehicleDetails"
+                property "xsd.order" "5"
+                property "xsd.useMapping" "true";
+    public string year
+                property "xsd.name" "year"
+                property "xsd.order" "6";
+    public VehicleDetailsInitialization(java.time.ZonedDateTime timestamp)
+                property "dataio.default" "true";
+    public VehicleDetailsInitialization(string maker, double maximumSpeed, string model, java.time.ZonedDateTime timestamp, blur.model.VehicleType type, blur.model.VehicleDetails vehicleDetails, string year)
                 property groups "BALA"
                 property prototype "true";
-    public VehicleDetails()
-                property "dataio.default" "true";
 }
 
 public class VehicleInitialization
@@ -1501,7 +739,8 @@ public class VehicleInitialization
 {
     public blur.model.VehicleDetails details
                 property "xsd.name" "details"
-                property "xsd.order" "0";
+                property "xsd.order" "0"
+                property "xsd.useMapping" "true";
     public java.time.ZonedDateTime lastSeen
                 property "xsd.name" "lastSeen"
                 property "xsd.order" "1";
@@ -1599,4 +838,3 @@ public class VehicleUpdated
                 property prototype "true";
 }
 
->>>>>>> 2b9e66af4fcce98e137dd9f725fc95260bcd5f0f

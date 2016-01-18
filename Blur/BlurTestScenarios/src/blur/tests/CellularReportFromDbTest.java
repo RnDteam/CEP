@@ -83,11 +83,7 @@ public class CellularReportFromDbTest {
 		String getAllOrganizationQuery = "select * from organizations";
 		String getAllBuildingsQuery = "select * from buildings";
 		
-<<<<<<< HEAD
 		String databaseUrl = "jdbc:mysql://localhost:3306/cep_try";
-=======
-		String databaseUrl = "jdbc:mysql://localhost:3306/mysql";
->>>>>>> 2b9e66af4fcce98e137dd9f725fc95260bcd5f0f
 		String user = "root";
 		String password = "root";
 		
@@ -107,11 +103,8 @@ public class CellularReportFromDbTest {
 			connection = DriverManager.getConnection(databaseUrl, user, password);
 			if	(connection != null) {
 
-<<<<<<< HEAD
 				generateEntities(connection);
 				
-=======
->>>>>>> 2b9e66af4fcce98e137dd9f725fc95260bcd5f0f
 				Statement statement = connection.createStatement();
 				
 				/*connection.setAutoCommit(false);
@@ -128,11 +121,7 @@ public class CellularReportFromDbTest {
 				
 				while (rs1.next()) {
 					OrganizationInitialization organizationInitialization1 = conceptFactory.createOrganizationInitialization(now);
-<<<<<<< HEAD
 					OrganizationType organizationType = rs1.getString(2).equals("CRIMINAL") ? OrganizationType.CRIMINAL : OrganizationType.COMMERCIAL;
-=======
-					OrganizationType organizationType = rs1.getString(2) == "CRIMINAL" ? OrganizationType.CRIMINAL : OrganizationType.COMMERCIAL;
->>>>>>> 2b9e66af4fcce98e137dd9f725fc95260bcd5f0f
 					organizationInitialization1.setType(organizationType);
 					organizationInitialization1.setOrganization(testDriver.createRelationship(Organization.class, rs1.getString(1)));
 					organizations.add(organizationInitialization1);
@@ -146,24 +135,12 @@ public class CellularReportFromDbTest {
 				while (rs2.next()) {
 					BuildingInitialization buildingInitialization1 = conceptFactory.createBuildingInitialization(now);
 					buildingInitialization1.setBuilding(testDriver.createRelationship(Building.class, rs2.getString(1)));
-<<<<<<< HEAD
 					BuildingUsageType buildingUsageType = rs2.getString(4).equals("FURNITURE_STORE") ? BuildingUsageType.FURNITURE_STORE : BuildingUsageType.BANK_BRANCH;
 					buildingInitialization1.setUsageType(buildingUsageType);
 					BuildingType buildingType = rs2.getString(3).equals("WAREHOUSE") ? BuildingType.WAREHOUSE : (rs2.getString(3).equals("APPARTMENT") ? BuildingType.APPARTMENT : BuildingType.COMMERCIAL);
 					buildingInitialization1.setType(buildingType);
 					
 					Point location = EntityDeserializer.getPointFromString(rs2.getString(2));
-=======
-					BuildingUsageType buildingUsageType = rs2.getString(4) == "FURNITURE_STORE" ? BuildingUsageType.FURNITURE_STORE : BuildingUsageType.BANK_BRANCH;
-					buildingInitialization1.setUsageType(buildingUsageType);
-					BuildingType buildingType = rs2.getString(3) == "WAREHOUSE" ? BuildingType.WAREHOUSE : (rs2.getString(3) == "APPARTMENT" ? BuildingType.APPARTMENT : BuildingType.COMMERCIAL);
-					buildingInitialization1.setType(buildingType);
-					
-					double x = Double.parseDouble(rs2.getString(2).split(",")[0]);
-					double y = Double.parseDouble(rs2.getString(2).split(",")[1]);
-					
-					Point location = SpatioTemporalService.getService().getGeometryFactory().getPoint( x, y);
->>>>>>> 2b9e66af4fcce98e137dd9f725fc95260bcd5f0f
 					buildingInitialization1.setLocation(location);
 					buildingInitialization1.setOwner(testDriver.createRelationship(Person.class, "123"));
 					buildingInitialization1.addTo_organizations(testDriver.createRelationship(Organization.class, "organization1"));
@@ -186,7 +163,6 @@ public class CellularReportFromDbTest {
 				e.printStackTrace();
 			}
 		}
-<<<<<<< HEAD
 	}
 	
 	public static void generateEntities(Connection connection) {
@@ -223,116 +199,5 @@ public class CellularReportFromDbTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-=======
-		
-	/*	// Organization Initialization
-		OrganizationInitialization organizationInitialization1 = conceptFactory.createOrganizationInitialization(now);
-		organizationInitialization1.setType(OrganizationType.CRIMINAL);
-		organizationInitialization1.setOrganization(testDriver.createRelationship(Organization.class, "organization1"));
-		
-		OrganizationInitialization organizationInitialization2 = conceptFactory.createOrganizationInitialization(now);
-		organizationInitialization2.setType(OrganizationType.CRIMINAL);
-		organizationInitialization2.setOrganization(testDriver.createRelationship(Organization.class, "organization2"));
-		
-		OrganizationInitialization organizationInitialization3 = conceptFactory.createOrganizationInitialization(now);
-		organizationInitialization3.setType(OrganizationType.COMMERCIAL);
-		organizationInitialization3.setOrganization(testDriver.createRelationship(Organization.class, "organization3"));
-		
-		// Building Initialization
-		Point location = null;
-		
-		BuildingInitialization buildingInitialization1 = conceptFactory.createBuildingInitialization(now);
-		buildingInitialization1.setBuilding(testDriver.createRelationship(Building.class, BUILDING1));
-		buildingInitialization1.setUsageType(BuildingUsageType.BANK_BRANCH);
-		buildingInitialization1.setType(BuildingType.APPARTMENT);
-		location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 34.781768 + Math.random(), 32.085300 + Math.random());
-		buildingInitialization1.setLocation(location);
-		buildingInitialization1.setOwner(testDriver.createRelationship(Person.class, "123"));
-		buildingInitialization1.addTo_organizations(testDriver.createRelationship(Organization.class, "organization1"));
-		buildingInitialization1.addTo_organizations(testDriver.createRelationship(Organization.class, "organization3"));
-		
-		BuildingInitialization buildingInitialization2 = conceptFactory.createBuildingInitialization(now);
-		buildingInitialization2.setBuilding(testDriver.createRelationship(Building.class, BUILDING2));
-		buildingInitialization2.setUsageType(BuildingUsageType.FURNITURE_STORE);
-		buildingInitialization2.setType(BuildingType.COMMERCIAL);
-		location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 34.781768 + Math.random(), 32.085300 + Math.random());
-		buildingInitialization2.setLocation(location);
-		buildingInitialization2.setOwner(testDriver.createRelationship(Person.class, "123"));
-		buildingInitialization2.addTo_organizations(testDriver.createRelationship(Organization.class, "organization3"));
-
-		testDriver.submitEvent(organizationInitialization1);
-		testDriver.submitEvent(organizationInitialization2);
-		testDriver.submitEvent(organizationInitialization3);
-		
-		Organization org1 = testDriver.fetchEntity(Organization.class, "organization1");
-		Assert.assertNotNull(org1);
-		Assert.assertEquals( "organization1", org1.getId() );
-		
-		testDriver.submitEvent(buildingInitialization1);
-		testDriver.submitEvent(buildingInitialization2);
-		
-		// allow the server time to create the buildings
-		Thread.sleep(2000);
-
-		Building building1 = testDriver.fetchEntity(Building.class, BUILDING1);
-		Assert.assertNotNull(building1);
-		Building building2 = testDriver.fetchEntity(Building.class, BUILDING2);
-		Assert.assertNotNull(building2);
-
-		ZonedDateTime oneDayAgo = now.minusDays(1);
-		
-		for (int i = 0; i < 4; i++) {
-			CellularReport cellularReport = conceptFactory.createCellularReport(oneDayAgo);
-			cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING1));
-			testDriver.submitEvent(cellularReport);
-			System.out.println(String.format("Submitted cellular report number {0} from 4 for buiding 1", i));
-			oneDayAgo = oneDayAgo.plusMinutes(50);
-		}
-	    oneDayAgo = oneDayAgo.plusHours(10);
-		for (int i = 0; i < 3; i++) {
-			CellularReport cellularReport = conceptFactory.createCellularReport(oneDayAgo);
-			cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING1));
-			testDriver.submitEvent(cellularReport);
-			System.out.println(String.format("Submitted cellular report number {0} from 3 for buiding 1", i));
-			oneDayAgo = oneDayAgo.plusMinutes(2);
-		}
-		
-		oneDayAgo = now.minusDays(1);
-		
-		for (int i = 0; i < 4; i++) {
-			CellularReport cellularReport = conceptFactory.createCellularReport(oneDayAgo);
-			cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING2));
-			testDriver.submitEvent(cellularReport);
-			System.out.println(String.format("Submitted cellular report number {0} from 4 for building 2", i));
-			oneDayAgo = oneDayAgo.plusMinutes(50);
-		}
-		
-		// manually advance time
-		testDriver.processPendingSchedules( oneDayAgo.plusHours(5));
-		oneDayAgo = oneDayAgo.plusHours(10);
-	    
-		for (int i = 0; i < 3; i++) {
-			CellularReport cellularReport = conceptFactory.createCellularReport(oneDayAgo);
-			cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING2));
-			testDriver.submitEvent(cellularReport);
-			System.out.println(String.format("Submitted cellular report number {0} from 3 for building 2", i));
-			oneDayAgo = oneDayAgo.plusMinutes(2);
-		}	
-		
-		Thread.sleep(5000);
-		
-		building1 = testDriver.fetchEntity(Building.class, BUILDING1);
-		Assert.assertEquals( "Should have 2 alerts", 2, building1.getAlerts().size() );
-		
-		DebugInfo[] debugInfos = debugReceiver.getDebugInfo( "buildingagent " );
-		
-		for (DebugInfo debugInfo : debugInfos) {
-			System.out.println( "DebugInfo: " + debugInfo );
-			
-			Event event = debugInfo.getEvent();
-			String eventXml = testDriver.getModelSerializer().serializeEvent(DataFormat.TYPED_XML, event );
-			System.out.println( "Event as XML: " + eventXml );
-		}*/
->>>>>>> 2b9e66af4fcce98e137dd9f725fc95260bcd5f0f
 	}
 }

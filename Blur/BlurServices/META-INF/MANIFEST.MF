@@ -2,11 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: BlurServices
 Bundle-SymbolicName: BlurServices
-<<<<<<< HEAD
-Bundle-Version: 0.16.0.qualifier
-=======
 Bundle-Version: 0.17.0.qualifier
->>>>>>> 2b9e66af4fcce98e137dd9f725fc95260bcd5f0f
 Export-Package: blurservices
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
