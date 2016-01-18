@@ -1,4 +1,4 @@
-property uuid "7be42f94-f6f1-4e29-a649-1180ceb7df15"
+property uuid "51174776-640a-4ce1-89d8-6bd6653bdfd1"
 property bdl_generated "true"
 package blur.model;
 
@@ -582,12 +582,10 @@ public class Vehicle
         property "xsd.support" "true"
         property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
 {
-    public blur.model.VehicleDetails details
-                property "ia.reference" "true"
+    public final blur.model.VehicleDetails details
                 property update "true"
                 property "xsd.name" "details"
-                property "xsd.order" "0"
-                property "xsd.useMapping" "true";
+                property "xsd.order" "0";
     public java.time.ZonedDateTime lastSeen
                 property update "true"
                 property "xsd.name" "lastSeen"
@@ -622,7 +620,7 @@ public class Vehicle
                 property "xsd.order" "7";
     public Vehicle(string licensePlateNumber)
                 property "dataio.default" "true";
-    public Vehicle(blur.model.VehicleDetails details, java.time.ZonedDateTime lastSeen, string licensePlateNumber, com.ibm.geolib.geom.Point location, blur.model.Organization organization, blur.model.Person owner, blur.model.VehicleStatus status, boolean suspicious)
+    public Vehicle(java.time.ZonedDateTime lastSeen, string licensePlateNumber, com.ibm.geolib.geom.Point location, blur.model.Organization organization, blur.model.Person owner, blur.model.VehicleStatus status, boolean suspicious)
                 property groups "BALA"
                 property prototype "true";
 }
@@ -653,84 +651,37 @@ public class VehicleCreated
 }
 
 public class VehicleDetails
-        implements com.ibm.ia.model.Entity
         property "de.generated" "true"
         property "xsd.definedNamespaces" ""
-        property "xsd.entityElementName" "VehicleDetails"
-        property "xsd.fileName" "model.xsd"
-        property "xsd.support" "true"
-        property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
-{
-    public string id
-                property "ia.entity.id" "true"
-                property update "true"
-                property "xsd.name" "id"
-                property "xsd.order" "0";
-    public string maker
-                property update "true"
-                property "xsd.name" "maker"
-                property "xsd.order" "1";
-    public double maximumSpeed
-                property update "true"
-                property "xsd.name" "maximumSpeed"
-                property "xsd.order" "2";
-    public string model
-                property update "true"
-                property "xsd.name" "model"
-                property "xsd.order" "3";
-    public blur.model.VehicleType type
-                property update "true"
-                property "xsd.name" "type"
-                property "xsd.order" "4";
-    public string year
-                property update "true"
-                property "xsd.name" "year"
-                property "xsd.order" "5";
-    public VehicleDetails(string id)
-                property "dataio.default" "true";
-    public VehicleDetails(string id, string maker, double maximumSpeed, string model, blur.model.VehicleType type, string year)
-                property groups "BALA"
-                property prototype "true";
-}
-
-public class VehicleDetailsInitialization
-        implements com.ibm.ia.model.Event
-        property "brl.facets" "ilog.rules.brl.Date:timestamp"
-        property "de.generated" "true"
-        property "xsd.definedNamespaces" ""
-        property "xsd.eventElementName" "VehicleDetailsInitialization"
         property "xsd.fileName" "model.xsd"
         property "xsd.support" "true"
         property "xsd.targetNamespace" "http://www.ibm.com/ia/xmlns/default/BlurBOM/model"
 {
     public string maker
+                property update "true"
                 property "xsd.name" "maker"
                 property "xsd.order" "0";
     public double maximumSpeed
+                property update "true"
                 property "xsd.name" "maximumSpeed"
                 property "xsd.order" "1";
     public string model
+                property update "true"
                 property "xsd.name" "model"
                 property "xsd.order" "2";
-    public java.time.ZonedDateTime timestamp
-                property "ia.timestamp" "true"
-                property "xsd.name" "timestamp"
-                property "xsd.order" "3";
     public blur.model.VehicleType type
+                property update "true"
                 property "xsd.name" "type"
-                property "xsd.order" "4";
-    public blur.model.VehicleDetails vehicleDetails
-                property "xsd.name" "vehicleDetails"
-                property "xsd.order" "5"
-                property "xsd.useMapping" "true";
+                property "xsd.order" "3";
     public string year
+                property update "true"
                 property "xsd.name" "year"
-                property "xsd.order" "6";
-    public VehicleDetailsInitialization(java.time.ZonedDateTime timestamp)
-                property "dataio.default" "true";
-    public VehicleDetailsInitialization(string maker, double maximumSpeed, string model, java.time.ZonedDateTime timestamp, blur.model.VehicleType type, blur.model.VehicleDetails vehicleDetails, string year)
+                property "xsd.order" "4";
+    public VehicleDetails(string maker, double maximumSpeed, string model, blur.model.VehicleType type, string year)
                 property groups "BALA"
                 property prototype "true";
+    public VehicleDetails()
+                property "dataio.default" "true";
 }
 
 public class VehicleInitialization
@@ -745,8 +696,7 @@ public class VehicleInitialization
 {
     public blur.model.VehicleDetails details
                 property "xsd.name" "details"
-                property "xsd.order" "0"
-                property "xsd.useMapping" "true";
+                property "xsd.order" "0";
     public java.time.ZonedDateTime lastSeen
                 property "xsd.name" "lastSeen"
                 property "xsd.order" "1";
@@ -817,6 +767,33 @@ public class VehicleType
     public static final readonly blur.model.VehicleType TRUCK
                 property "xsd.name" "TRUCK"
                 property "xsd.order" "2";
+}
+
+public class VehicleTypeProvider
+        property "de.generated" "true"
+        property "ia.dataProvider" "true"
+{
+    public blur.model.VehicleTypeProviderResponse processRequest(blur.model.VehicleTypeProviderRequest request)
+                throws java.lang.Exception;
+}
+
+public class VehicleTypeProviderRequest
+        property "de.generated" "true"
+        property "ia.dataProvider" "blur.model.VehicleTypeProvider"
+{
+    public final blur.model.VehicleDetails details;
+    public VehicleTypeProviderRequest(blur.model.VehicleDetails details)
+                property "dataio.default" "true";
+}
+
+public class VehicleTypeProviderResponse
+        property "de.generated" "true"
+        property "ia.dataProvider" "blur.model.VehicleTypeProvider"
+{
+    public blur.model.VehicleDetails fullDetails;
+    public VehicleTypeProviderResponse(blur.model.VehicleDetails fullDetails);
+    public VehicleTypeProviderResponse()
+                property "dataio.default" "true";
 }
 
 public class VehicleUpdated

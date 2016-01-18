@@ -43,10 +43,18 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 		String licensePlateNumber = entity.getLicensePlateNumber();
 		entity.setLastSeen(null);
 		entity.setOrganization(getOrganizationFromES(licensePlateNumber));
-		entity.setDetails(getDetailsFromES(licensePlateNumber));
 		entity.setOwner(getOwnerFromES(licensePlateNumber));
 		entity.setStatus(VehicleStatus.INACTIVE);
 		entity.setSuspicious(false);
+		
+		VehicleDetails details = entity.getDetails();
+		VehicleDetails newDetails = getDetailsFromES(licensePlateNumber);
+		details.setMaker(newDetails.getMaker());
+		details.setMaximumSpeed(newDetails.getMaximumSpeed());
+		details.setType(newDetails.getType());
+		details.setModel(newDetails.getModel());
+		details.setYear(newDetails.getYear());
+		
 
 	}
 
@@ -56,19 +64,17 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 		return getModelFactory().createRelationship(person);
 	}
 
-	private Relationship<VehicleDetails> getDetailsFromES(
+	private VehicleDetails getDetailsFromES(
 			String licensePlateNumber) {
 		random = new Random();
 		conceptFactory = getConceptFactory(ConceptFactory.class);
 		
-		VehicleDetails myDetails = conceptFactory.createVehicleDetails("Details-" + licensePlateNumber);
+		VehicleDetails myDetails = conceptFactory.createVehicleDetails();
 		myDetails.setType(VehicleType.MOTORCYCLE);
-		myDetails.setMaker("maker" + random.nextInt());
+		myDetails.setMaker("maker_" + random.nextInt());
 		myDetails.setMaximumSpeed(130);
-		
-		Relationship<VehicleDetails> detailsRelationship = getModelFactory().createRelationship(myDetails);
-		
-		return detailsRelationship;
+				
+		return myDetails;
 	}
 
 	private Relationship<Organization> getOrganizationFromES(

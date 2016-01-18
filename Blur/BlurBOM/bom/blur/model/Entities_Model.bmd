@@ -44,19 +44,19 @@ a vehicle type can be one of: MOTORCYCLE, JEEP, TRUCK.
 
 
 --a vehicle details is a concept with
-a vehicle details is a business entity identified by a id with
+a vehicle details is a concept with
    a maker,
    a model,
-   a type (a vehicle type),
    a year ,
-   a maximum speed (numeric).
+   a maximum speed (numeric),
+   a type (a vehicle type).
 
 a vehicle status can be one of: INACTIVE, ACTIVE.
  
 a vehicle is a business entity identified by a license plate number.
 a vehicle has a location (a point).
 a vehicle has a status (a vehicle status).
-a vehicle is related to a details (a vehicle details).
+a vehicle has a details (a vehicle details).
 a vehicle has a last seen (date & time).
 a vehicle has a suspicious(a boolean).
 a vehicle is related to a person, named the owner.
@@ -65,7 +65,11 @@ a vehicle is related to an organization.
 a risk score provider is a data provider , 
 	 accepts a person id,
 returns 
-	a risk score (numeric). ]]></Bmd>
+	a risk score (numeric). 
+	
+a vehicle type provider is a data provider , 
+	 accepts a details(a vehicle details ),
+	 returns a full details (a vehicle details ).]]></Bmd>
     <Bmi><![CDATA[a vehicle is initialized from a traffic camera report , 
 	where this vehicle comes from the vehicle of this traffic camera report : 
 	- set the location of this vehicle to the camera location of this traffic camera report. 
@@ -75,5 +79,9 @@ a person is enriched by the risk score provider ,
 	 		the person id from the id of this person , 
  setting 
  	the risk score of this person 
- 		to the risk score of this risk score provider.]]></Bmi>
+ 		to the risk score of this risk score provider.
+ 		
+a vehicle is enriched by the vehicle type provider , 
+	 given the details from the details of this vehicle , 
+	 setting the details of this vehicle to the full details of this vehicle type provider .  ]]></Bmi>
 </BusinessModelDefinition>

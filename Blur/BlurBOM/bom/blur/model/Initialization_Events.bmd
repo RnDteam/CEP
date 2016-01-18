@@ -40,18 +40,18 @@ a vehicle initialization is related to a person, named the owner.
 a vehicle initialization is related to an organization.
 a vehicle initialization has a location (a point) used as the default geometry.
 a vehicle initialization has a status (a vehicle status).
-a vehicle initialization is related to a details (a vehicle details).
+a vehicle initialization has a details (a vehicle details).
 a vehicle initialization has a last seen (date & time).
 a vehicle initialization has a suspicious (a boolean ).
 
 --Vehicle Details
-a vehicle details initialization is a business event.
-a vehicle details initialization is related to a vehicle details.
-a vehicle details initialization has a maker.
-a vehicle details initialization has a model.
-a vehicle details initialization has a type(a vehicle type ).
-a vehicle details initialization has a year.
-a vehicle details initialization has a maximum speed (numeric).
+--a vehicle details initialization is a business event.
+--a vehicle details initialization is related to a vehicle details.
+--a vehicle details initialization has a maker.
+--a vehicle details initialization has a model.
+--a vehicle details initialization has a type(a vehicle type ).
+--a vehicle details initialization has a year.
+--a vehicle details initialization has a maximum speed (numeric).
 
 
 ]]></Bmd>
@@ -94,10 +94,10 @@ a vehicle is initialized from a vehicle initialization , where this vehicle come
 	- make it this vehicle initialization is suspicious that this vehicle is suspicious .
 	
 --Vehicle Details
-a vehicle details  is initialized from a vehicle details initialization , where this vehicle details comes from the vehicle details of this vehicle details initialization : 
-	- set the maker of this vehicle details to the maker of this vehicle details initialization 
-	- set the model of this vehicle details to the model of this vehicle details initialization 
-    - set the type of this vehicle details to the type of this vehicle details initialization 
-	- set the year of this vehicle details to the year of this vehicle details initialization 
-	- set the maximum speed of this vehicle details to the maximum speed of this vehicle details initialization .]]></Bmi>
+--a vehicle details  is initialized from a vehicle details initialization , where this vehicle details comes from the vehicle details of this vehicle details initialization : 
+--	- set the maker of this vehicle details to the maker of this vehicle details initialization 
+--	- set the model of this vehicle details to the model of this vehicle details initialization 
+--    - set the type of this vehicle details to the type of this vehicle details initialization 
+--	- set the year of this vehicle details to the year of this vehicle details initialization 
+--	- set the maximum speed of this vehicle details to the maximum speed of this vehicle details initialization .]]></Bmi>
 </BusinessModelDefinition>
