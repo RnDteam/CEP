@@ -1,10 +1,6 @@
 package blur.extensions;
 
-import com.ibm.ia.common.ComponentException;
-import com.ibm.ia.model.Event;
-import com.ibm.ia.model.Relationship;
-import com.ibm.ia.extension.EntityInitializer;
-import com.ibm.ia.extension.annotations.EntityInitializerDescriptor;
+import java.util.Random;
 
 import blur.model.ConceptFactory;
 import blur.model.Organization;
@@ -15,8 +11,19 @@ import blur.model.VehicleDetails;
 import blur.model.VehicleStatus;
 import blur.model.VehicleType;
 
+import com.ibm.ia.common.ComponentException;
+import com.ibm.ia.common.GatewayException;
+import com.ibm.ia.common.SolutionException;
+import com.ibm.ia.extension.EntityInitializer;
+import com.ibm.ia.extension.annotations.EntityInitializerDescriptor;
+import com.ibm.ia.model.Event;
+import com.ibm.ia.model.Relationship;
+
 @EntityInitializerDescriptor(entityType = Vehicle.class)
 public class VehicleInitializer extends EntityInitializer<Vehicle> {
+
+	private Random random;
+	private ConceptFactory conceptFactory;
 
 	@Override
 	public Vehicle createEntityFromEvent(Event event) throws ComponentException {
@@ -46,15 +53,24 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 	}
 
 	private Relationship<Person> getOwnerFromES(String licensePlateNumber) {
-		// TODO Auto-generated method stub
-		return null;
+//		Person person = conceptFactory.createPerson("person" +random.nextInt(100));
+		Person person = conceptFactory.createPerson("1234");
+		return getModelFactory().createRelationship(person);
 	}
 
-	private VehicleDetails getDetailsFromES(
+	private Relationship<VehicleDetails> getDetailsFromES(
 			String licensePlateNumber) {
-		ConceptFactory conceptFactory = getConceptFactory(ConceptFactory.class);
-		VehicleDetails vd = conceptFactory.createVehicleDetails();
-		return vd;
+		random = new Random();
+		conceptFactory = getConceptFactory(ConceptFactory.class);
+		
+		VehicleDetails myDetails = conceptFactory.createVehicleDetails("Details-" + licensePlateNumber);
+		myDetails.setType(VehicleType.MOTORCYCLE);
+		myDetails.setMaker("maker" + random.nextInt());
+		myDetails.setMaximumSpeed(130);
+		
+		Relationship<VehicleDetails> detailsRelationship = getModelFactory().createRelationship(myDetails);
+		
+		return detailsRelationship;
 	}
 
 	private Relationship<Organization> getOrganizationFromES(

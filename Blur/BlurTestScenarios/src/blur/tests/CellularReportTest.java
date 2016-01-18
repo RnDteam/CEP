@@ -60,8 +60,8 @@ public class CellularReportTest {
 
 	@After
 	public void tearDown() throws Exception {
-		Thread.sleep(5000);
 		testDriver.endTest();
+		Thread.sleep(5000);
 		testDriver.stopRecording();
 	}
 
@@ -110,6 +110,9 @@ public class CellularReportTest {
 		testDriver.submitEvent(organizationInitialization1);
 		testDriver.submitEvent(organizationInitialization2);
 		testDriver.submitEvent(organizationInitialization3);
+		
+		// allow the server time to create the orgs
+		Thread.sleep(2000);
 		
 		Organization org1 = testDriver.fetchEntity(Organization.class, "organization1");
 		Assert.assertNotNull(org1);
@@ -166,12 +169,11 @@ public class CellularReportTest {
 			oneDayAgo = oneDayAgo.plusMinutes(2);
 		}	
 		
-		Thread.sleep(5000);
-		
+		Thread.sleep(5000);		
 		building1 = testDriver.fetchEntity(Building.class, BUILDING1);
 		Assert.assertEquals( "Should have 2 alerts", 2, building1.getAlerts().size() );
 		
-		DebugInfo[] debugInfos = debugReceiver.getDebugInfo( "buildingagent" );
+		DebugInfo[] debugInfos = debugReceiver.getDebugInfo( "buildingagent " );
 		
 		for (DebugInfo debugInfo : debugInfos) {
 			System.out.println( "DebugInfo: " + debugInfo );

@@ -41,11 +41,13 @@ a building has an expected cellular report frequency (numeric).
 -- vehicle
 a vehicle type can be one of: MOTORCYCLE, JEEP, TRUCK.
 
-a vehicle details is a concept with
+
+--a vehicle details is a concept with
+a vehicle details is a business entity identified by a id with
    a maker,
    a model,
    a type (a vehicle type),
-   a year (date & time),
+   a year ,
    a maximum speed (numeric).
 
 a vehicle status can be one of: INACTIVE, ACTIVE.
@@ -53,7 +55,7 @@ a vehicle status can be one of: INACTIVE, ACTIVE.
 a vehicle is a business entity identified by a license plate number.
 a vehicle has a location (a point).
 a vehicle has a status (a vehicle status).
-a vehicle has a details (a vehicle details).
+a vehicle is related to a details (a vehicle details).
 a vehicle has a last seen (date & time).
 a vehicle has a suspicious(a boolean).
 a vehicle is related to a person, named the owner.

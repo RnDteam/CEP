@@ -6,7 +6,5 @@
         </application-bnd>
     </application>
 
-    <ia_inboundHttpEndpoint endpoint="Blur/http-endpoint"/>
-
     <ia_outboundHttpEndpoint endpoint="Blur/outbount-endpoint"/>
 </server>

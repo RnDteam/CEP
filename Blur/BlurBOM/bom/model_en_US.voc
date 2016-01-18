@@ -1,4 +1,4 @@
-uuid = bccc6859-ac68-4b13-9471-2e79c6f4fee6
+uuid = 24f34399-2a44-44b4-a2f1-46945b06a5b0
 # blur.model.Alert
 blur.model.Alert#concept.label = alert
 blur.model.Alert.Alert(blur.model.Building,java.lang.String,blur.model.Organization,blur.model.Person,java.lang.String,java.time.ZonedDateTime,blur.model.Vehicle)#phrase.navigation = a new {alert} where {0, building} {1, message} {2, organization} {3, person} {4, rule} {5, timestamp} {6, vehicle} 
@@ -258,7 +258,8 @@ blur.model.VehicleCreated.vehicle#phrase.navigation = {vehicle} of {this}
 
 # blur.model.VehicleDetails
 blur.model.VehicleDetails#concept.label = vehicle details
-blur.model.VehicleDetails.VehicleDetails(java.lang.String,double,java.lang.String,blur.model.VehicleType,java.time.ZonedDateTime)#phrase.navigation = a new {vehicle details} where {0, maker} {1, maximum speed} {2, model} {3, type} {4, year} 
+blur.model.VehicleDetails.VehicleDetails(java.lang.String,java.lang.String,double,java.lang.String,blur.model.VehicleType,java.lang.String)#phrase.navigation = a new {vehicle details} where {0, id} {1, maker} {2, maximum speed} {3, model} {4, type} {5, year} 
+blur.model.VehicleDetails.id#phrase.navigation = {id} of {this}
 blur.model.VehicleDetails.maker#phrase.action = set the maker of {this} to {maker}
 blur.model.VehicleDetails.maker#phrase.navigation = {maker} of {this}
 blur.model.VehicleDetails.maximumSpeed#phrase.action = set the maximum speed of {this} to {maximum speed}
@@ -270,6 +271,26 @@ blur.model.VehicleDetails.type#phrase.clearer = clear the type of {this}
 blur.model.VehicleDetails.type#phrase.navigation = {type} of {this}
 blur.model.VehicleDetails.year#phrase.action = set the year of {this} to {year}
 blur.model.VehicleDetails.year#phrase.navigation = {year} of {this}
+
+# blur.model.VehicleDetailsInitialization
+blur.model.VehicleDetailsInitialization#concept.label = vehicle details initialization
+blur.model.VehicleDetailsInitialization.VehicleDetailsInitialization(java.lang.String,double,java.lang.String,java.time.ZonedDateTime,blur.model.VehicleType,blur.model.VehicleDetails,java.lang.String)#phrase.navigation = a new {vehicle details initialization} where {0, maker} {1, maximum speed} {2, model} {3, timestamp} {4, type} {5, vehicle details} {6, year} 
+blur.model.VehicleDetailsInitialization.maker#phrase.action = set the maker of {this} to {maker}
+blur.model.VehicleDetailsInitialization.maker#phrase.navigation = {maker} of {this}
+blur.model.VehicleDetailsInitialization.maximumSpeed#phrase.action = set the maximum speed of {this} to {maximum speed}
+blur.model.VehicleDetailsInitialization.maximumSpeed#phrase.navigation = {maximum speed} of {this}
+blur.model.VehicleDetailsInitialization.model#phrase.action = set the model of {this} to {model}
+blur.model.VehicleDetailsInitialization.model#phrase.navigation = {model} of {this}
+blur.model.VehicleDetailsInitialization.timestamp#phrase.action = set the timestamp of {this} to {timestamp}
+blur.model.VehicleDetailsInitialization.timestamp#phrase.navigation = {timestamp} of {this}
+blur.model.VehicleDetailsInitialization.type#phrase.action = set the type of {this} to {type}
+blur.model.VehicleDetailsInitialization.type#phrase.clearer = clear the type of {this}
+blur.model.VehicleDetailsInitialization.type#phrase.navigation = {type} of {this}
+blur.model.VehicleDetailsInitialization.vehicleDetails#phrase.action = set the vehicle details of {this} to {vehicle details}
+blur.model.VehicleDetailsInitialization.vehicleDetails#phrase.clearer = clear the vehicle details of {this}
+blur.model.VehicleDetailsInitialization.vehicleDetails#phrase.navigation = {vehicle details} of {this}
+blur.model.VehicleDetailsInitialization.year#phrase.action = set the year of {this} to {year}
+blur.model.VehicleDetailsInitialization.year#phrase.navigation = {year} of {this}
 
 # blur.model.VehicleInitialization
 blur.model.VehicleInitialization#concept.label = vehicle initialization
