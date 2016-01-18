@@ -33,11 +33,13 @@ import com.ibm.ia.common.debug.DebugInfo;
 import com.ibm.ia.model.Event;
 import com.ibm.ia.testdriver.IADebugReceiver;
 import com.ibm.ia.testdriver.TestDriver;
+import com.jhlabs.map.proj.StereographicAzimuthalProjection;
 
-public class CellularReportTest {
+public class CellularReportTest2 {
 
 	private static final String BUILDING2 = "building2";
 	private static final String BUILDING1 = "building1";
+	private static final int MINUTES_IN_A_DAY = 24 * 60;
 	protected static TestDriver testDriver;
 	protected static IADebugReceiver debugReceiver = new IADebugReceiver();
 	
@@ -74,7 +76,6 @@ public class CellularReportTest {
 		
 		ConceptFactory conceptFactory = testDriver.getConceptFactory(ConceptFactory.class);
 		ZonedDateTime now = ZonedDateTime.now();
-		
 		
 		// Organization Initialization
 		OrganizationInitialization organizationInitialization1 = conceptFactory.createOrganizationInitialization(now);
@@ -113,76 +114,73 @@ public class CellularReportTest {
 
 		testDriver.submitEvent(organizationInitialization1);
 		testDriver.submitEvent(organizationInitialization2);
-		testDriver.submitEvent(organizationInitialization3);
-		
-		Organization org1 = testDriver.fetchEntity(Organization.class, "organization1");
-		Assert.assertNotNull(org1);
-		Assert.assertEquals( "organization1", org1.getId() );
-		
+		testDriver.submitEvent(organizationInitialization3);	
 		testDriver.submitEvent(buildingInitialization1);
 		testDriver.submitEvent(buildingInitialization2);
 		
 		// allow the server time to create the buildings
-		Thread.sleep(2000);
+		Thread.sleep(2000);		
 
-		Building building1 = testDriver.fetchEntity(Building.class, BUILDING1);
-		Assert.assertNotNull(building1);
-		Building building2 = testDriver.fetchEntity(Building.class, BUILDING2);
-		Assert.assertNotNull(building2);
-
-		ZonedDateTime oneDayAgo = now.minusDays(1);
-		
-		for (int i = 0; i < 4; i++) {
+		// 48 reports in 24 hours
+		ZonedDateTime oneDayAgo = now.minusDays(7);
+		System.out.println(oneDayAgo);
+		for (int i = 0; i < 48; i += 1) {
 			CellularReport cellularReport = conceptFactory.createCellularReport(oneDayAgo);
 			cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING1));
 			testDriver.submitEvent(cellularReport);
-			System.out.println(String.format("Submitted cellular report number %d from 4 for buiding 1", i));
-			oneDayAgo = oneDayAgo.plusMinutes(50);
+			System.out.println(String.format("Submitted cellular report number %d from 48 for building 1", i + 1));
+			oneDayAgo = oneDayAgo.plusMinutes(30);
 		}
-	    oneDayAgo = oneDayAgo.plusHours(10);
-		for (int i = 0; i < 3; i++) {
+		
+		//Test Rule 8
+		testDriver.processPendingSchedules(oneDayAgo.plusHours(5));
+		ZonedDateTime oneEventTime = oneDayAgo.plusHours(3);
+		CellularReport cellularReport1 = conceptFactory.createCellularReport(oneEventTime);
+		cellularReport1.setBuilding(testDriver.createRelationship(Building.class, BUILDING1));
+		testDriver.submitEvent(cellularReport1);
+		System.out.println(String.format("Submitted one cellular report"));
+		
+		oneDayAgo = oneDayAgo.plusDays(1);
+		
+		// 24 reports in 24 hours
+		for (int i = 0; i < 24; i += 1) {
 			CellularReport cellularReport = conceptFactory.createCellularReport(oneDayAgo);
 			cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING1));
 			testDriver.submitEvent(cellularReport);
-			System.out.println(String.format("Submitted cellular report number %d from 3 for buiding 1", i));
-			oneDayAgo = oneDayAgo.plusMinutes(2);
+			System.out.println(String.format("Submitted cellular report number %d from 24 for building 1", i + 1));
+			oneDayAgo = oneDayAgo.plusHours(1);
 		}
 		
-		oneDayAgo = now.minusDays(1);
-		
-		for (int i = 0; i < 4; i++) {
+		// 5 reports in 5 minutes
+		for (int i = 0; i < 5; i += 1) {
 			CellularReport cellularReport = conceptFactory.createCellularReport(oneDayAgo);
-			cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING2));
+			cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING1));
 			testDriver.submitEvent(cellularReport);
-			System.out.println(String.format("Submitted cellular report number %d from 4 for building 2", i));
-			oneDayAgo = oneDayAgo.plusMinutes(50);
+			System.out.println(String.format("Submitted cellular resport number %d from 5 for building 1", i + 1));
+			oneDayAgo = oneDayAgo.plusMinutes(1);
 		}
 		
-		// manually advance time
-		testDriver.processPendingSchedules( oneDayAgo.plusHours(5));
+		oneDayAgo = oneDayAgo.plusHours(3);
+		
+		// 5 reports in 10 hours
+		for (int i = 0; i < 5; i += 1) {
+			CellularReport cellularReport = conceptFactory.createCellularReport(oneDayAgo);
+			cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING1));
+			testDriver.submitEvent(cellularReport);
+			System.out.println(String.format("Submitted cellular report number %d from 5 for building 1", i + 1));
+			oneDayAgo = oneDayAgo.plusHours(2);
+		}
+		
 		oneDayAgo = oneDayAgo.plusHours(10);
-	    
-		for (int i = 0; i < 3; i++) {
+		// 5 reports in 5 minutes
+		for (int i = 0; i < 5; i += 1) {
 			CellularReport cellularReport = conceptFactory.createCellularReport(oneDayAgo);
-			cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING2));
+			cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING1));
 			testDriver.submitEvent(cellularReport);
-			System.out.println(String.format("Submitted cellular report number %d from 3 for building 2", i));
-			oneDayAgo = oneDayAgo.plusMinutes(2);
-		}	
-		
-		Thread.sleep(5000);
-		
-		building1 = testDriver.fetchEntity(Building.class, BUILDING1);
-		Assert.assertEquals( "Should have 2 alerts", 2, building1.getAlerts().size() );
-		
-		DebugInfo[] debugInfos = debugReceiver.getDebugInfo( "buildingagent" );
-		
-		for (DebugInfo debugInfo : debugInfos) {
-			System.out.println( "DebugInfo: " + debugInfo );
-			
-			Event event = debugInfo.getEvent();
-			String eventXml = testDriver.getModelSerializer().serializeEvent(DataFormat.TYPED_XML, event );
-			System.out.println( "Event as XML: " + eventXml );
+			System.out.println(String.format("Submitted cellular resport number %d from 5 for building 1", i + 1));
+			oneDayAgo = oneDayAgo.plusMinutes(1);
 		}
 	}
+	
+	
 }

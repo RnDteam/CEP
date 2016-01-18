@@ -1,4 +1,4 @@
-property uuid "730e0797-71e5-41f1-baff-8655b799d691"
+property uuid "d9a70e90-a454-4a89-aff7-36e45a3fcb46"
 property bdl_generated "true"
 package blur.model;
 
@@ -18,34 +18,40 @@ public class Alert
                 property "xsd.name" "building"
                 property "xsd.order" "0"
                 property "xsd.useMapping" "true";
+    public double hours24
+                property "xsd.name" "hours24"
+                property "xsd.order" "1";
     public string message
                 property "xsd.name" "message"
-                property "xsd.order" "1";
+                property "xsd.order" "2";
+    public double minues30
+                property "xsd.name" "minues30"
+                property "xsd.order" "3";
     public blur.model.Organization organization
                 property optional "true"
                 property "xsd.name" "organization"
-                property "xsd.order" "2"
+                property "xsd.order" "4"
                 property "xsd.useMapping" "true";
     public blur.model.Person person
                 property optional "true"
                 property "xsd.name" "person"
-                property "xsd.order" "3"
+                property "xsd.order" "5"
                 property "xsd.useMapping" "true";
     public string rule
                 property "xsd.name" "rule"
-                property "xsd.order" "4";
+                property "xsd.order" "6";
     public java.time.ZonedDateTime timestamp
                 property "ia.timestamp" "true"
                 property "xsd.name" "timestamp"
-                property "xsd.order" "5";
+                property "xsd.order" "7";
     public blur.model.Vehicle vehicle
                 property optional "true"
                 property "xsd.name" "vehicle"
-                property "xsd.order" "6"
+                property "xsd.order" "8"
                 property "xsd.useMapping" "true";
     public Alert(java.time.ZonedDateTime timestamp)
                 property "dataio.default" "true";
-    public Alert(blur.model.Building building, string message, blur.model.Organization organization, blur.model.Person person, string rule, java.time.ZonedDateTime timestamp, blur.model.Vehicle vehicle)
+    public Alert(blur.model.Building building, double hours24, string message, double minues30, blur.model.Organization organization, blur.model.Person person, string rule, java.time.ZonedDateTime timestamp, blur.model.Vehicle vehicle)
                 property groups "BALA"
                 property prototype "true";
 }

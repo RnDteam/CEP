@@ -1,12 +1,16 @@
-uuid = bccc6859-ac68-4b13-9471-2e79c6f4fee6
+uuid = 432f0ef0-cda3-40cd-9e84-f617f53c02d3
 # blur.model.Alert
 blur.model.Alert#concept.label = alert
-blur.model.Alert.Alert(blur.model.Building,java.lang.String,blur.model.Organization,blur.model.Person,java.lang.String,java.time.ZonedDateTime,blur.model.Vehicle)#phrase.navigation = a new {alert} where {0, building} {1, message} {2, organization} {3, person} {4, rule} {5, timestamp} {6, vehicle} 
+blur.model.Alert.Alert(blur.model.Building,double,java.lang.String,double,blur.model.Organization,blur.model.Person,java.lang.String,java.time.ZonedDateTime,blur.model.Vehicle)#phrase.navigation = a new {alert} where {0, building} {1, hours24} {2, message} {3, minues30} {4, organization} {5, person} {6, rule} {7, timestamp} {8, vehicle} 
 blur.model.Alert.building#phrase.action = set the building of {this} to {building}
 blur.model.Alert.building#phrase.clearer = clear the building of {this}
 blur.model.Alert.building#phrase.navigation = {building} of {this}
+blur.model.Alert.hours24#phrase.action = set the hours24 of {this} to {hours24}
+blur.model.Alert.hours24#phrase.navigation = {hours24} of {this}
 blur.model.Alert.message#phrase.action = set the message of {this} to {message}
 blur.model.Alert.message#phrase.navigation = {message} of {this}
+blur.model.Alert.minues30#phrase.action = set the minues30 of {this} to {minues30}
+blur.model.Alert.minues30#phrase.navigation = {minues30} of {this}
 blur.model.Alert.organization#phrase.action = set the organization of {this} to {organization}
 blur.model.Alert.organization#phrase.clearer = clear the organization of {this}
 blur.model.Alert.organization#phrase.navigation = {organization} of {this}
