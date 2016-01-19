@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 property uuid "7dff2241-3beb-48a1-a497-2877e77bf6ee"
+=======
+property uuid "767763a4-8f01-4f6d-b0c0-d17ca9204836"
+>>>>>>> ac7040fce381ce0d0b5fc87ce3ab1299d44fe649
 property bdl_generated "true"
 package blur.model;
 
