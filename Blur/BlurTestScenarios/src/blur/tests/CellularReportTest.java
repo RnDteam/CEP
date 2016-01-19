@@ -1,10 +1,8 @@
 package blur.tests;
 
-import static org.junit.Assert.*;
-
 import java.time.ZonedDateTime;
-
-import blur.model.*;
+import java.util.ArrayList;
+import java.util.Set;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -13,9 +11,17 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import blur.model.Building;
+import blur.model.BuildingInitialization;
+import blur.model.BuildingType;
+import blur.model.BuildingUsageType;
+import blur.model.CellularReport;
 import blur.model.ConceptFactory;
 import blur.model.Organization;
 import blur.model.OrganizationInitialization;
+import blur.model.OrganizationType;
+import blur.model.Person;
+import blur.model.impl.Alert;
 
 import com.ibm.geolib.geom.Point;
 import com.ibm.geolib.st.SpatioTemporalService;
@@ -25,11 +31,8 @@ import com.ibm.ia.common.RoutingException;
 import com.ibm.ia.common.SolutionException;
 import com.ibm.ia.common.debug.DebugInfo;
 import com.ibm.ia.model.Event;
-import com.ibm.ia.routing.RoutingError;
-import com.ibm.ia.testdriver.DebugReceiver;
 import com.ibm.ia.testdriver.IADebugReceiver;
 import com.ibm.ia.testdriver.TestDriver;
-import com.ibm.xylem.optimizers.ReducedForm.Check;
 
 public class CellularReportTest {
 
@@ -61,8 +64,8 @@ public class CellularReportTest {
 
 	@After
 	public void tearDown() throws Exception {
-		Thread.sleep(5000);
 		testDriver.endTest();
+		Thread.sleep(5000);
 		testDriver.stopRecording();
 	}
 
@@ -91,7 +94,7 @@ public class CellularReportTest {
 		
 		BuildingInitialization buildingInitialization1 = conceptFactory.createBuildingInitialization(now);
 		buildingInitialization1.setBuilding(testDriver.createRelationship(Building.class, BUILDING1));
-		buildingInitialization1.setUsageType(BuilidngUsageType.BANK_BRANCH);
+		buildingInitialization1.setUsageType(BuildingUsageType.BANK_BRANCH);
 		buildingInitialization1.setType(BuildingType.APPARTMENT);
 		location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 34.781768 + Math.random(), 32.085300 + Math.random());
 		buildingInitialization1.setLocation(location);
@@ -101,7 +104,7 @@ public class CellularReportTest {
 		
 		BuildingInitialization buildingInitialization2 = conceptFactory.createBuildingInitialization(now);
 		buildingInitialization2.setBuilding(testDriver.createRelationship(Building.class, BUILDING2));
-		buildingInitialization2.setUsageType(BuilidngUsageType.FURNITURE_STORE);
+		buildingInitialization2.setUsageType(BuildingUsageType.FURNITURE_STORE);
 		buildingInitialization2.setType(BuildingType.COMMERCIAL);
 		location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 34.781768 + Math.random(), 32.085300 + Math.random());
 		buildingInitialization2.setLocation(location);
@@ -111,6 +114,9 @@ public class CellularReportTest {
 		testDriver.submitEvent(organizationInitialization1);
 		testDriver.submitEvent(organizationInitialization2);
 		testDriver.submitEvent(organizationInitialization3);
+		
+		// allow the server time to create the orgs
+		Thread.sleep(2000);
 		
 		Organization org1 = testDriver.fetchEntity(Organization.class, "organization1");
 		Assert.assertNotNull(org1);
@@ -133,7 +139,7 @@ public class CellularReportTest {
 			CellularReport cellularReport = conceptFactory.createCellularReport(oneDayAgo);
 			cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING1));
 			testDriver.submitEvent(cellularReport);
-			System.out.println(String.format("Submitted cellular report number {0} from 4 for buiding 1", i));
+			System.out.println(String.format("Submitted cellular report number %d from 4 for buiding 1", i));
 			oneDayAgo = oneDayAgo.plusMinutes(50);
 		}
 	    oneDayAgo = oneDayAgo.plusHours(10);
@@ -141,7 +147,7 @@ public class CellularReportTest {
 			CellularReport cellularReport = conceptFactory.createCellularReport(oneDayAgo);
 			cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING1));
 			testDriver.submitEvent(cellularReport);
-			System.out.println(String.format("Submitted cellular report number {0} from 3 for buiding 1", i));
+			System.out.println(String.format("Submitted cellular report number %d from 3 for buiding 1", i));
 			oneDayAgo = oneDayAgo.plusMinutes(2);
 		}
 		
@@ -151,7 +157,7 @@ public class CellularReportTest {
 			CellularReport cellularReport = conceptFactory.createCellularReport(oneDayAgo);
 			cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING2));
 			testDriver.submitEvent(cellularReport);
-			System.out.println(String.format("Submitted cellular report number {0} from 4 for building 2", i));
+			System.out.println(String.format("Submitted cellular report number %d from 4 for building 2", i));
 			oneDayAgo = oneDayAgo.plusMinutes(50);
 		}
 		
@@ -163,16 +169,15 @@ public class CellularReportTest {
 			CellularReport cellularReport = conceptFactory.createCellularReport(oneDayAgo);
 			cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING2));
 			testDriver.submitEvent(cellularReport);
-			System.out.println(String.format("Submitted cellular report number {0} from 3 for building 2", i));
+			System.out.println(String.format("Submitted cellular report number %d from 3 for building 2", i));
 			oneDayAgo = oneDayAgo.plusMinutes(2);
 		}	
 		
-		Thread.sleep(5000);
-		
+		Thread.sleep(5000);		
 		building1 = testDriver.fetchEntity(Building.class, BUILDING1);
 		Assert.assertEquals( "Should have 2 alerts", 2, building1.getAlerts().size() );
 		
-		DebugInfo[] debugInfos = debugReceiver.getDebugInfo( "buildingagent" );
+		DebugInfo[] debugInfos = debugReceiver.getDebugInfo( "buildingagent " );
 		
 		for (DebugInfo debugInfo : debugInfos) {
 			System.out.println( "DebugInfo: " + debugInfo );

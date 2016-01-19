@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:VariableSet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>globalQueries</name>
+  <uuid>374e5723-f740-4368-9829-fee253a20df7</uuid>
+  <variables name="defvarnumberx95ofx95hotx95buildingx95alertsx95today" type="double" verbalization="number of hot building alerts today"/>
+  <variables name="defvarnumberx95ofx95criminalx95organizations" type="double" verbalization="number of criminal organizations"/>
+</ilog.rules.studio.model.base:VariableSet>

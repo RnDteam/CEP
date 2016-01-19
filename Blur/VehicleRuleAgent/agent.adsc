@@ -1,4 +1,4 @@
 'vehicleruleagent' is an agent related to a vehicle ,
 processing events :
-    - traffic camera report, where this vehicle comes from the license plate number of this traffic camera report, 
+    - traffic camera report, where this vehicle comes from the vehicle of this traffic camera report, 
     	with a horizon of 0 weeks

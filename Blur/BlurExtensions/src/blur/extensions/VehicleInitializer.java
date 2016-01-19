@@ -1,18 +1,27 @@
 package blur.extensions;
 
-import com.ibm.ia.common.ComponentException;
-import com.ibm.ia.model.Event;
-import com.ibm.ia.extension.EntityInitializer;
-import com.ibm.ia.extension.annotations.EntityInitializerDescriptor;
+import java.util.Random;
 
 import blur.model.ConceptFactory;
+import blur.model.Organization;
+import blur.model.Person;
 import blur.model.TrafficCameraReport;
 import blur.model.Vehicle;
 import blur.model.VehicleDetails;
+import blur.model.VehicleStatus;
 import blur.model.VehicleType;
+
+import com.ibm.ia.common.ComponentException;
+import com.ibm.ia.extension.EntityInitializer;
+import com.ibm.ia.extension.annotations.EntityInitializerDescriptor;
+import com.ibm.ia.model.Event;
+import com.ibm.ia.model.Relationship;
 
 @EntityInitializerDescriptor(entityType = Vehicle.class)
 public class VehicleInitializer extends EntityInitializer<Vehicle> {
+
+	private Random random;
+	private ConceptFactory conceptFactory;
 
 	@Override
 	public Vehicle createEntityFromEvent(Event event) throws ComponentException {
@@ -20,14 +29,7 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 
 		if( event instanceof TrafficCameraReport ) {
 			System.out.println( "***** VehicleInitializer createEntityFromEvent ****** " );
-			
-			// set the fields from the event...
-			
-			// TODO -- read the other fields of the Vehicle from the database
-			VehicleDetails myDetails = getConceptFactory(ConceptFactory.class)
-					.createVehicleDetails();
-			myDetails.setType(VehicleType.MOTORCYCLE);
-			entity.setDetails(myDetails);
+			entity.setLocation(((TrafficCameraReport) event).getCameraLocation());
 		}
 
 		return entity;
@@ -38,16 +40,39 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 		super.initializeEntity(entity);
 		System.out.println( "***** VehicleInitializer initializeEntity ****** " );
 
-		// this method will be called after createEntityFromEvent or if
-		// someone requests a vehicle using the REST API
+		String licensePlateNumber = entity.getLicensePlateNumber();
+		entity.setLastSeen(null);
+		entity.setOrganization(getOrganizationFromES(licensePlateNumber));
+		entity.setDetails(getDetailsFromES(licensePlateNumber));
+		entity.setOwner(getOwnerFromES(licensePlateNumber));
+		entity.setStatus(VehicleStatus.INACTIVE);
+		entity.setSuspicious(false);
+
+	}
+
+	private Relationship<Person> getOwnerFromES(String licensePlateNumber) {
+//		Person person = conceptFactory.createPerson("person" +random.nextInt(100));
+		Person person = conceptFactory.createPerson("1234");
+		return getModelFactory().createRelationship(person);
+	}
+
+	private Relationship<VehicleDetails> getDetailsFromES(
+			String licensePlateNumber) {
+		random = new Random();
+		conceptFactory = getConceptFactory(ConceptFactory.class);
 		
-		// set generic fields that are loaded from an external source...
-		
-		
-		// TODO -- read the other fields of the Vehicle from the database
-		VehicleDetails myDetails = getConceptFactory(ConceptFactory.class)
-				.createVehicleDetails();
+		VehicleDetails myDetails = conceptFactory.createVehicleDetails("Details-" + licensePlateNumber);
 		myDetails.setType(VehicleType.MOTORCYCLE);
-		entity.setDetails(myDetails);
+		myDetails.setMaker("maker" + random.nextInt());
+		myDetails.setMaximumSpeed(130);
+		
+		Relationship<VehicleDetails> detailsRelationship = getModelFactory().createRelationship(myDetails);
+		
+		return detailsRelationship;
+	}
+
+	private Relationship<Organization> getOrganizationFromES(
+			String licensePlateNumber) {
+		return null;
 	}
 }

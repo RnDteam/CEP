@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>periodic using global agg</name>
+  <uuid>3f96eac3-fb60-470f-8e47-e963448ec8d4</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[if
+    the hour of day of now is the hour of day of 1/14/2016 1:00:00 AM
+    and 'number of criminal organizations' is more than 1
+then
+    emit a new alert where
+        the building is 'the Building' ,
+        the message is "It is 1AM and Building " + the id of 'the Building' + " is reporting that there are more than 1 criminal orgs" ;]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>

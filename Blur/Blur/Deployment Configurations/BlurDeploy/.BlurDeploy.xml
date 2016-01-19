@@ -10,7 +10,6 @@
 			<local/> 
 			<role>development</role>
 			<adminToolkitLocation>C:\Program Files\IBM\ODMInsights88\runtime\ia\bin</adminToolkitLocation>
-			<connectionPropertiesLocation>C:\Program Files\IBM\ODMInsights88\runtime\ia\etc\connection.properties</connectionPropertiesLocation>
 			<secureStoragePath>BlurDeploy</secureStoragePath>
 		</server>
 	</environment>
