@@ -2,6 +2,8 @@ package blur.tests;
 
 import java.util.Random;
 
+import blur.tests.EntityGenerator.RandomPoint;
+
 public class GeneratePersons {
 	
 	private static final String ACTIVE = "active";
