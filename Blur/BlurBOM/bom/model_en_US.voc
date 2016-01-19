@@ -1,4 +1,4 @@
-uuid = 46d71010-8e6d-4fca-8d91-e7e79ad55300
+uuid = c11ed526-d75d-4a17-bfb8-f0d97f4a3407
 # blur.model.Alert
 blur.model.Alert#concept.label = alert
 blur.model.Alert.Alert(blur.model.Building,double,java.lang.String,double,blur.model.Organization,blur.model.Person,java.lang.String,java.time.ZonedDateTime,blur.model.Vehicle)#phrase.navigation = a new {alert} where {0, building} {1, hours24} {2, message} {3, minues30} {4, organization} {5, person} {6, rule} {7, timestamp} {8, vehicle} 

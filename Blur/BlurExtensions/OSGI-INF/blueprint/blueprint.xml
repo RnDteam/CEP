@@ -22,6 +22,6 @@
             </entry>
         </service-properties>
     </service>
-<bean class="VehicleTypeDataPrivider" id="VehicleTypeDataPrividerBean"/>
-    <service id="VehicleTypeDataPrividerService" interface="com.ibm.ia.extension.spi.DataProviderService" ref="VehicleTypeDataPrividerBean"><service-properties><entry key="solution_name"><value type="java.lang.String">Blur</value></entry><entry key="solution_version"><value type="java.lang.String">Blur-0.17</value></entry></service-properties></service>
+<bean class="blur.extensions.VehicleTypeDataPrivider" id="blur.extensions.VehicleTypeDataPrividerBean"/>
+    <service id="blur.extensions.VehicleTypeDataPrividerService" interface="com.ibm.ia.extension.spi.DataProviderService" ref="blur.extensions.VehicleTypeDataPrividerBean"><service-properties><entry key="solution_name"><value type="java.lang.String">Blur</value></entry><entry key="solution_version"><value type="java.lang.String">Blur-0.17</value></entry></service-properties></service>
 </blueprint>
