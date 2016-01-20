@@ -43,8 +43,9 @@ import com.ibm.ia.testdriver.TestDriver;
 public class TrafficCameraReportTest {
 
 	protected static TestDriver testDriver;
-	private static String vehicle1;
-	private static String vehicle2;
+	private static final String vehicle1 = "vehicle1";
+	private static final String vehicle2 = "vehicle2";
+	private static final String vehicle3NotExists = "vehicle3";
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -181,12 +182,12 @@ public class TrafficCameraReportTest {
 		trafficCameraReport1.setVehicle(testDriver.createRelationship(Vehicle.class, vehicle2));
 		testDriver.submitEvent(trafficCameraReport1);
 
-//		TrafficCameraReport trafficCameraReport3 = conceptFactory.createTrafficCameraReport(oneDayAgo);
-//		trafficCameraReport3.setCameraId(3);
-//		location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 34.781768 + Math.random(), 32.085300 + Math.random());
-//		trafficCameraReport1.setCameraLocation(location);
-//		trafficCameraReport1.setVehicle(testDriver.createRelationship(Vehicle.class, "vehicle3"));
-//		testDriver.submitEvent(trafficCameraReport3);
+		TrafficCameraReport trafficCameraReport3 = conceptFactory.createTrafficCameraReport(oneDayAgo);
+		trafficCameraReport3.setCameraId(3);
+		location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 34.781768 + Math.random(), 32.085300 + Math.random());
+		trafficCameraReport1.setCameraLocation(location);
+		trafficCameraReport3.setVehicle(testDriver.createRelationship(Vehicle.class, vehicle3NotExists));
+		testDriver.submitEvent(trafficCameraReport3);
 	}
 
 	private void entitiesExistsAssertions(
@@ -338,9 +339,6 @@ public class TrafficCameraReportTest {
 			
 			String vehicleDetails1 = "vehicleDetails1";
 			String vehicleDetails2 = "vehicleDetails2";
-			
-			vehicle1 = "vehicle1";
-			vehicle2 = "vehicle2";
 			
 			ArrayList<String> queries = new ArrayList<String>();
 			

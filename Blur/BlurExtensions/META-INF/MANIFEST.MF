@@ -3,8 +3,8 @@ Bundle-ManifestVersion: 2
 Bundle-Name: BlurExtensions
 Bundle-SymbolicName: Blur.BlurExtensions
 Bundle-Version: 0.17.0.qualifier
-Import-Package: blur.model;version="[0.17.0.qualifier,0.18.0)",
- blur.model.impl;version="[0.17.0.qualifier,0.18.0)",
+Import-Package: blur.model;version="[0.17.0,0.18.0)",
+ blur.model.impl;version="[0.17.0,0.18.0)",
  com.ibm.ia.common,
  com.ibm.ia.common.spi,
  com.ibm.ia.engine.service,
@@ -15,8 +15,8 @@ Import-Package: blur.model;version="[0.17.0.qualifier,0.18.0)",
  com.ibm.ia.model.annotations,
  com.ibm.ia.scoring,
  com.ibm.ia.scoring.annotations,
- com.ibm.rules.generated;version="[0.17.0.qualifier,0.18.0)",
- com.ibm.rules.generated.dataie;version="[0.17.0.qualifier,0.18.0)",
- com.ibm.rules.generated.xml;version="[0.17.0.qualifier,0.18.0)",
+ com.ibm.rules.generated;version="[0.17.0,0.18.0)",
+ com.ibm.rules.generated.dataie;version="[0.17.0,0.18.0)",
+ com.ibm.rules.generated.xml;version="[0.17.0,0.18.0)",
  org.osgi.framework
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

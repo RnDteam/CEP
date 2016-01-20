@@ -4,6 +4,7 @@ import java.util.Random;
 
 import blur.model.ConceptFactory;
 import blur.model.Organization;
+import blur.model.OrganizationType;
 import blur.model.Person;
 import blur.model.TrafficCameraReport;
 import blur.model.Vehicle;
@@ -20,7 +21,7 @@ import com.ibm.ia.model.Relationship;
 @EntityInitializerDescriptor(entityType = Vehicle.class)
 public class VehicleInitializer extends EntityInitializer<Vehicle> {
 
-	private Random random;
+	private static Random random;
 	private ConceptFactory conceptFactory;
 
 	@Override
@@ -39,40 +40,72 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 	public void initializeEntity(Vehicle entity) throws ComponentException {
 		super.initializeEntity(entity);
 		System.out.println( "***** VehicleInitializer initializeEntity ****** " );
+		
+		random = new Random();
+		conceptFactory = getConceptFactory(ConceptFactory.class);
 
 		String licensePlateNumber = entity.getLicensePlateNumber();
 		entity.setLastSeen(null);
 		entity.setOrganization(getOrganizationFromES(licensePlateNumber));
-		entity.setDetails(getDetailsFromES(licensePlateNumber));
 		entity.setOwner(getOwnerFromES(licensePlateNumber));
 		entity.setStatus(VehicleStatus.INACTIVE);
 		entity.setSuspicious(false);
+		
+		VehicleDetails details = entity.getDetails();
+		VehicleDetails newDetails = getDetailsFromES(licensePlateNumber);
+		details.setMaker(newDetails.getMaker());
+		details.setMaximumSpeed(newDetails.getMaximumSpeed());
+		details.setType(newDetails.getType());
+		details.setModel(newDetails.getModel());
+		details.setYear(newDetails.getYear());
+		
 
 	}
 
 	private Relationship<Person> getOwnerFromES(String licensePlateNumber) {
 //		Person person = conceptFactory.createPerson("person" +random.nextInt(100));
 		Person person = conceptFactory.createPerson("1234");
+		person.setRole( getModelFactory().createRelationship(blur.model.OrganizationalRole.class, "3256"));
 		return getModelFactory().createRelationship(person);
 	}
 
-	private Relationship<VehicleDetails> getDetailsFromES(
+	private VehicleDetails getDetailsFromES(
 			String licensePlateNumber) {
-		random = new Random();
-		conceptFactory = getConceptFactory(ConceptFactory.class);
 		
-		VehicleDetails myDetails = conceptFactory.createVehicleDetails("Details-" + licensePlateNumber);
+		VehicleDetails myDetails = conceptFactory.createVehicleDetails();
+		
+//		myDetails.setType(generateStatus());
 		myDetails.setType(VehicleType.MOTORCYCLE);
-		myDetails.setMaker("maker" + random.nextInt());
-		myDetails.setMaximumSpeed(130);
-		
-		Relationship<VehicleDetails> detailsRelationship = getModelFactory().createRelationship(myDetails);
-		
-		return detailsRelationship;
+		myDetails.setMaker("Maker" + random.nextInt());
+		myDetails.setMaximumSpeed(random.nextInt(100) + 150);
+		Integer randomYear = (random.nextInt(2015 - 1980)) + 1980;
+		myDetails.setYear(randomYear.toString());
+				
+		return myDetails;
 	}
+	
+	private static VehicleType generateStatus() {
+		int vehicleStatusSize = VehicleType.values().length;
+		int randomStatusIndex = random.nextInt(vehicleStatusSize);
+		
+		return VehicleType.values()[randomStatusIndex];
+	}
+
 
 	private Relationship<Organization> getOrganizationFromES(
 			String licensePlateNumber) {
-		return null;
+		Organization myOrganization = conceptFactory.createOrganization("Organization-" + licensePlateNumber);
+		
+		myOrganization.setType(generateOrganizationType());
+		Relationship<Organization> organizationRelationship = getModelFactory().createRelationship(myOrganization);
+		
+		return organizationRelationship;
+	}
+
+	private OrganizationType generateOrganizationType() {
+		int organizationTypeSize = OrganizationType.values().length;
+		int randomStatusIndex = random.nextInt(organizationTypeSize);
+		
+		return OrganizationType.values()[randomStatusIndex];
 	}
 }

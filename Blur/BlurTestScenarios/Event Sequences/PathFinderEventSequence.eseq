@@ -62,50 +62,42 @@ emit a new person initialization where
 	the timestamp is 1/10/2016 10:42:14 AM;
 	
 // vehicle details 1
-emit a new vehicle details initialization where 
-	the vehicle details is the vehicle details identified by "vehicleDetails1", 
+define vehicleDetails1 as a new vehicle details where 
 	the maker is "Maker1", 
 	the model is "T-10", 
 	the type is MOTORCYCLE, 
 	the year is "2011", 
-	the maximum speed is 290,
-	the timestamp is 1/1/2016 8:41:18 AM;
+	the maximum speed is 290;
 	
 // vehicle details 2
-emit a new vehicle details initialization where 
-	the vehicle details is the vehicle details identified by "vehicleDetails2", 
+define vehicleDetails2 as a new vehicle details where 
 	the maker is "Maker2", 
 	the model is "T-11", 
 	the type is TRUCK , 
 	the year is "2013", 
-	the maximum speed is 130,
-	the timestamp is 1/1/2016 8:41:18 AM;
+	the maximum speed is 130;
 	
 // vehicle details 4
-emit a new vehicle details initialization where 
-	the vehicle details is the vehicle details identified by "vehicleDetails4", 
+define vehicleDetails4 as a new vehicle details where 
 	the maker is "Maker4", 
 	the model is "T-14", 
 	the type is MOTORCYCLE  , 
 	the year is "2011", 
-	the maximum speed is 130,
-	the timestamp is 1/1/2016 8:41:18 AM;
+	the maximum speed is 130;
 	
 // vehicle details 5
-emit a new vehicle details initialization where 
-	the vehicle details is the vehicle details identified by "vehicleDetails5", 
+define vehicleDetails5 as a new vehicle details where 
 	the maker is "Maker4", 
 	the model is "T-14", 
 	the type is MOTORCYCLE  , 
 	the year is "2011", 
-	the maximum speed is 130,
-	the timestamp is 1/1/2016 8:41:18 AM;
+	the maximum speed is 130;
 
 // vehicle 1
 emit a new vehicle initialization where 
 	the vehicle is 'the vehicle 1' ,
-	the details is the vehicle details identified by "vehicleDetails1" ,
-	the status is INACTIVE   ,
+	the details is vehicleDetails1 ,
+	the status is INACTIVE,
 	the location is the point with 7.0095 as longitude and 43.6424 as latitude,
 	the last seen is 1/1/2016 8:19:19 AM,
 	the organization is the organization identified by "3256", 
@@ -116,7 +108,7 @@ emit a new vehicle initialization where
 // vehicle 2
 emit a new vehicle initialization where 
 	the vehicle is 'the vehicle 2' ,
-	the details is the vehicle details identified by "vehicleDetails2" ,
+	the details is vehicleDetails2 ,
 	the status is INACTIVE ,
 	the location is the point with 55.0095 as longitude and 22.6424 as latitude,
 	suspicious is false,
@@ -126,7 +118,7 @@ emit a new vehicle initialization where
 // vehicle 4
 emit a new vehicle initialization where 
 	the vehicle is 'the vehicle 4' ,
-	the details is the vehicle details identified by "vehicleDetails4" ,
+	the details is vehicleDetails4 ,
 	the status is INACTIVE ,
 	the location is the point with 30 as longitude and 35 as latitude,
 	suspicious is false,
@@ -137,7 +129,7 @@ emit a new vehicle initialization where
 // vehicle 5
 emit a new vehicle initialization where 
 	the vehicle is 'the vehicle 5' ,
-	the details is the vehicle details identified by "vehicleDetails5" ,
+	the details is vehicleDetails5 ,
 	the status is INACTIVE ,
 	the location is the point with 30 as longitude and 33 as latitude,
 	suspicious is false,

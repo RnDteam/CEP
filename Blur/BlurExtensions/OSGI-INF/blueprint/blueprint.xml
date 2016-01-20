@@ -12,5 +12,16 @@
         </service-properties>
     </service>
 <bean class="blur.extensions.RiskScoreDataProvider" id="blur.extensions.RiskScoreDataProviderBean"/>
-    <service id="blur.extensions.RiskScoreDataProviderService" interface="com.ibm.ia.extension.spi.DataProviderService" ref="blur.extensions.RiskScoreDataProviderBean"><service-properties><entry key="solution_name"><value type="java.lang.String">Blur</value></entry><entry key="solution_version"><value type="java.lang.String">Blur-0.17</value></entry></service-properties></service>
+    <service id="blur.extensions.RiskScoreDataProviderService" interface="com.ibm.ia.extension.spi.DataProviderService" ref="blur.extensions.RiskScoreDataProviderBean">
+        <service-properties>
+            <entry key="solution_name">
+                <value type="java.lang.String">Blur</value>
+            </entry>
+            <entry key="solution_version">
+                <value type="java.lang.String">Blur-0.17</value>
+            </entry>
+        </service-properties>
+    </service>
+<bean class="blur.extensions.VehicleTypeDataPrivider" id="blur.extensions.VehicleTypeDataPrividerBean"/>
+    <service id="blur.extensions.VehicleTypeDataPrividerService" interface="com.ibm.ia.extension.spi.DataProviderService" ref="blur.extensions.VehicleTypeDataPrividerBean"><service-properties><entry key="solution_name"><value type="java.lang.String">Blur</value></entry><entry key="solution_version"><value type="java.lang.String">Blur-0.17</value></entry></service-properties></service>
 </blueprint>

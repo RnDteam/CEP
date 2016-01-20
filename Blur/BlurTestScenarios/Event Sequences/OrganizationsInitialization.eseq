@@ -1,0 +1,11 @@
+// organization 1
+emit a new organization initialization where 
+	the organization is the organization identified by "3256",
+	the type is COMMERCIAL     ,
+	time-stamped 1/1/2016 01:09:11 AM; 
+
+// organization 2
+emit a new organization initialization where 
+	the organization is the organization identified by "2222",
+	the type is CRIMINAL    ,
+	time-stamped 1/1/2016 01:09:11 AM; 
