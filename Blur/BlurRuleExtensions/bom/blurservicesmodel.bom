@@ -9,6 +9,6 @@ public interface IPathFinder
         property "OSGi.service" "blurservices.IPathFinder"
 {
     public static boolean isGood(blur.model.Person person, int depth);
-    public static boolean isTherePath(string ownerId, int arg2);
+    public static blur.model.Organization pathToCriminalOrganization(string ownerId, int arg2);
 }
 

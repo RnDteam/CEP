@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>Criminal Motorcycle because owner</name>
+  <uuid>6d4aab4f-0655-4e9b-a38e-7fa056b6217e</uuid>
+  <documentation><![CDATA[Need to add the call to the section 3.]]></documentation>
+  <locale>en_US</locale>
+  <definition><![CDATA[when a traffic camera report occurs
+definitions
+    set 'the owner' to the owner of 'the vehicle' ;
+    set 'the details' to the details of 'the vehicle' ;
+    set 'the vehicle type' to the type of 'the details'  ;
+    set 'the organization type of the owner' to the type of the organization of the role of the owner of 'the vehicle' ;
+if
+    'the vehicle type' is MOTORCYCLE
+    and 'the organization type of the owner' is CRIMINAL 
+then
+	make it true that 'the vehicle' is suspicious ;
+	set the organization of 'the vehicle' to the organization of the role of 'the owner' ;]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>

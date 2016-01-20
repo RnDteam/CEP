@@ -6,4 +6,6 @@ Bundle-Version: 0.17.0.qualifier
 Export-Package: blurservices
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Import-Package: blur.model
+Import-Package: blur.model,
+ com.ibm.ia.extension,
+ com.ibm.ia.extension.annotations
