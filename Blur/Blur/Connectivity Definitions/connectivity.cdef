@@ -1,0 +1,12 @@
+// Connectivity definitions for the solution
+define outbound binding 'outb' 
+	using 
+		message format application/xml  , 
+		protocol HTTP , 
+	delivering events : 
+		- alert . 
+		
+ define outbound HTTP endpoint 'endp' 
+	using 
+		binding 'outb' , 
+		url "http://192.168.83.153:8000/".
