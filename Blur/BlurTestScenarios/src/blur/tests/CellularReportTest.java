@@ -1,8 +1,6 @@
 package blur.tests;
 
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.Set;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -21,7 +19,6 @@ import blur.model.Organization;
 import blur.model.OrganizationInitialization;
 import blur.model.OrganizationType;
 import blur.model.Person;
-import blur.model.impl.Alert;
 
 import com.ibm.geolib.geom.Point;
 import com.ibm.geolib.st.SpatioTemporalService;
@@ -139,7 +136,7 @@ public class CellularReportTest {
 			CellularReport cellularReport = conceptFactory.createCellularReport(oneDayAgo);
 			cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING1));
 			testDriver.submitEvent(cellularReport);
-			System.out.println(String.format("Submitted cellular report number %d from 4 for buiding 1", i));
+			System.out.println(String.format("Submitted cellular report number {0} from 4 for buiding 1", i));
 			oneDayAgo = oneDayAgo.plusMinutes(50);
 		}
 	    oneDayAgo = oneDayAgo.plusHours(10);
@@ -147,7 +144,7 @@ public class CellularReportTest {
 			CellularReport cellularReport = conceptFactory.createCellularReport(oneDayAgo);
 			cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING1));
 			testDriver.submitEvent(cellularReport);
-			System.out.println(String.format("Submitted cellular report number %d from 3 for buiding 1", i));
+			System.out.println(String.format("Submitted cellular report number {0} from 3 for buiding 1", i));
 			oneDayAgo = oneDayAgo.plusMinutes(2);
 		}
 		
@@ -157,7 +154,7 @@ public class CellularReportTest {
 			CellularReport cellularReport = conceptFactory.createCellularReport(oneDayAgo);
 			cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING2));
 			testDriver.submitEvent(cellularReport);
-			System.out.println(String.format("Submitted cellular report number %d from 4 for building 2", i));
+			System.out.println(String.format("Submitted cellular report number {0} from 4 for building 2", i));
 			oneDayAgo = oneDayAgo.plusMinutes(50);
 		}
 		
@@ -169,7 +166,7 @@ public class CellularReportTest {
 			CellularReport cellularReport = conceptFactory.createCellularReport(oneDayAgo);
 			cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING2));
 			testDriver.submitEvent(cellularReport);
-			System.out.println(String.format("Submitted cellular report number %d from 3 for building 2", i));
+			System.out.println(String.format("Submitted cellular report number {0} from 3 for building 2", i));
 			oneDayAgo = oneDayAgo.plusMinutes(2);
 		}	
 		
@@ -177,7 +174,7 @@ public class CellularReportTest {
 		building1 = testDriver.fetchEntity(Building.class, BUILDING1);
 		Assert.assertEquals( "Should have 2 alerts", 2, building1.getAlerts().size() );
 		
-		DebugInfo[] debugInfos = debugReceiver.getDebugInfo( "buildingagent " );
+		DebugInfo[] debugInfos = debugReceiver.getDebugInfo( "buildingagent" );
 		
 		for (DebugInfo debugInfo : debugInfos) {
 			System.out.println( "DebugInfo: " + debugInfo );

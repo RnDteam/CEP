@@ -2,6 +2,7 @@ submit events from "EventInitialOrganizationSequence";
 submit events from "EventInitialBuildingTestSequence";
 submit events from "cellularReportsSequence";
 
+continue processing until 1/31/2016;
 // be warned that if the periodic rule in the building agent
 // where to cause the rule agent to run, then this count
 // if inactive buildings could change...

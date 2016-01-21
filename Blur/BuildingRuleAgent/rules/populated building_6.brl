@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>populated building_6</name>
+  <uuid>c138de53-9772-4aed-9841-e6a5d3294aa3</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[when a cellular report occurs
+definitions
+    set 'the oranization' to the organization of the role of the person of this cellular report ;
+    set 'the building recent cellular reports' to all cellular reports during the last period of 5 minutes
+        where the organization of the role of the person is 'the oranization' ;
+    set count to the number of elements in 'the building recent cellular reports' ;
+if
+    the type of 'the oranization' is CRIMINAL
+    and count is more than 5
+then
+    emit a new alert where
+        the building is 'the building' ,
+        the message is "Too many cellular reports of the same organization in the same building" ,
+        the rule is the name of this rule ;]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>

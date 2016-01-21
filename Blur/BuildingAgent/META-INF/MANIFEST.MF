@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-Bundle-SymbolicName: Blur.BuildingAgent
-Bundle-Version: 0.17.0.20160118143527
-

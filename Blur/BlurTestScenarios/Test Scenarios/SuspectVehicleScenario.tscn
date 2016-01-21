@@ -1,5 +1,0 @@
-submit events from "OrganizationsInitialization"; 
-submit events from "OrganizationRoleInitialization" ;
-submit events from "PersonInitialization" ;
-submit events from "VehicleInitialization";
-submit events from "TrafficCameraReporEvents";   

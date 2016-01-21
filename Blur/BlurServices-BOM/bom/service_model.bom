@@ -1,0 +1,14 @@
+
+property loadGetterSetterAsProperties "true"
+property origin "xom:/BlurServices-BOM//BlurServices2"
+property uuid "0b07075c-e9b2-4add-ac36-52dfb2b756ac"
+package blurservices;
+
+
+public interface IPathFinder
+        property "OSGi.service" "blurservices.PathFinder"
+{
+    public static boolean isGood(blur.model.Person arg1, int arg2);
+    public static boolean isTherePath(string arg1, int arg2);
+}
+

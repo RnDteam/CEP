@@ -10,11 +10,10 @@ definitions
     set 'the details' to the details of 'the vehicle' ;
     set 'the type' to the type of 'the details'  ;
     set 'the organization type of the owner' to the type of the organization of the role of the owner of 'the vehicle' ;
-    set 'criminal associated organization' to the criminal_organization that 'the owner id' has with 2 depth association;
 if
     'the type' is MOTORCYCLE
-    and 'criminal associated organization' is not null and 'the organization type of the owner' is not CRIMINAL
+    and ( 'the organization type of the owner' is CRIMINAL 
+    or 'the owner id' has 2 depth association with a CRIMINAL organization)
 then
-	make it true that 'the vehicle' is suspicious ;
-	set the organization of 'the vehicle' to 'criminal associated organization' ; ]]></definition>
+	make it true that 'the vehicle' is suspicious ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

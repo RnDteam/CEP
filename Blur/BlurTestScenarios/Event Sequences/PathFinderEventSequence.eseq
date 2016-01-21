@@ -1,103 +1,32 @@
 define 'the vehicle 1' as the vehicle  identified by "vehicle1"; 
 define 'the vehicle 2' as the vehicle  identified by "vehicle2"; 
 define 'the vehicle 3' as the vehicle  identified by "vehicle3"; 
-define 'the vehicle 4' as the vehicle  identified by "vehicle4"; 
-define 'the vehicle 5' as the vehicle  identified by "vehicle5"; 
 
-// organization 1
 emit a new organization initialization where 
 	the organization is the organization identified by "3256",
-	the type is COMMERCIAL     ,
+	the type is COMMERCIAL ,
 	time-stamped 1/5/2016 11:09:11 AM; 
 
-// organization 2
-emit a new organization initialization where 
-	the organization is the organization identified by "2222",
-	the type is CRIMINAL    ,
-	time-stamped 1/5/2016 11:09:11 AM; 
-
-// person1, organization 1
 emit a new organization role initialization where 
 	the organizational role is the organizational role identified by "3288" ,
 	the organization is the organization identified by "3256",
 	the timestamp is 1/7/2016 11:04:19 AM;  
-
-//person2, organization 2
-emit a new organization role initialization where 
-	the organizational role is the organizational role identified by "3299" ,
-	the organization is the organization identified by "2222",
-	the timestamp is 1/7/2016 11:04:19 AM; 
 	
-emit a new organization role initialization where 
-	the organizational role is the organizational role identified by "3311" ,
-	the organization is the organization identified by "3256",
-	the timestamp is 1/7/2016 11:04:19 AM; 
-
-// person1
 emit a new person initialization where 
 	the person is the person identified by "123", 
 	the name is "person1",
 	the role is the organizational role identified by "3288", 
 	the timestamp is 1/10/2016 10:42:14 AM;
 	
-// person2
-emit a new person initialization where 
-	the person is the person identified by "12355", 
-	the name is "person2",
-	the role is the organizational role identified by "3299", 
-	the timestamp is 1/10/2016 10:42:14 AM;
-	
-// person3
-emit a new person initialization where 
-	the person is the person identified by "3333", 
-	the name is "person3",
-	the role is the organizational role identified by "3311", 
-	the timestamp is 1/10/2016 10:42:14 AM;
-	
-// person4 - for the vehicle 3
-emit a new person initialization where 
-	the person is the person identified by "1234", 
-	the name is "person4",
-	the role is the organizational role identified by "3299", 
-	the timestamp is 1/10/2016 10:42:14 AM;
-	
-// vehicle details 1
-define vehicleDetails1 as a new vehicle details where 
-	the maker is "Maker1", 
-	the model is "T-10", 
-	the type is MOTORCYCLE, 
-	the year is "2011", 
-	the maximum speed is 290;
-	
-// vehicle details 2
-define vehicleDetails2 as a new vehicle details where 
-	the maker is "Maker2", 
-	the model is "T-11", 
-	the type is TRUCK , 
-	the year is "2013", 
-	the maximum speed is 130;
-	
-// vehicle details 4
-define vehicleDetails4 as a new vehicle details where 
-	the maker is "Maker4", 
-	the model is "T-14", 
-	the type is MOTORCYCLE  , 
-	the year is "2011", 
-	the maximum speed is 130;
-	
-// vehicle details 5
-define vehicleDetails5 as a new vehicle details where 
-	the maker is "Maker4", 
-	the model is "T-14", 
-	the type is MOTORCYCLE  , 
-	the year is "2011", 
-	the maximum speed is 130;
-
-// vehicle 1
 emit a new vehicle initialization where 
 	the vehicle is 'the vehicle 1' ,
-	the details is vehicleDetails1 ,
-	the status is INACTIVE,
+	the details is a new vehicle details where 
+		the maker is "Maker1", 
+		the model is "T-10", 
+		the type is MOTORCYCLE, 
+		the year is 6/1/2011 8:15:48 AM, 
+		the maximum speed is 290,
+	the status is INACTIVE   ,
 	the location is the point with 7.0095 as longitude and 43.6424 as latitude,
 	the last seen is 1/1/2016 8:19:19 AM,
 	the organization is the organization identified by "3256", 
@@ -105,36 +34,14 @@ emit a new vehicle initialization where
 	the owner is the person identified by "123" ,
 	time-stamped 1/1/2016;
 	
-// vehicle 2
 emit a new vehicle initialization where 
 	the vehicle is 'the vehicle 2' ,
-	the details is vehicleDetails2 ,
+	the details is a new vehicle details where 
+	the maker is "Maker2", the model is "T-11", the type is TRUCK , the year is 8/1/2013 8:15:48 AM, the maximum speed is 130,
 	the status is INACTIVE ,
 	the location is the point with 55.0095 as longitude and 22.6424 as latitude,
 	suspicious is false,
 	the last seen is 1/2/2016 8:19:19 AM,
-	time-stamped 1/4/2016;
-	
-// vehicle 4
-emit a new vehicle initialization where 
-	the vehicle is 'the vehicle 4' ,
-	the details is vehicleDetails4 ,
-	the status is INACTIVE ,
-	the location is the point with 30 as longitude and 35 as latitude,
-	suspicious is false,
-	the last seen is 1/2/2016 8:19:19 AM,
-	the owner is the person identified by "12355" ,
-	time-stamped 1/4/2016;
-	
-// vehicle 5
-emit a new vehicle initialization where 
-	the vehicle is 'the vehicle 5' ,
-	the details is vehicleDetails5 ,
-	the status is INACTIVE ,
-	the location is the point with 30 as longitude and 33 as latitude,
-	suspicious is false,
-	the last seen is 1/2/2016 8:19:19 AM,
-	the owner is the person identified by "3333" ,
 	time-stamped 1/4/2016;
 
 // Vehicle is suspect.
@@ -143,12 +50,6 @@ emit a new traffic camera report where
 	the camera location is the point with 45 as longitude and 34 as latitude ,
 	the vehicle is 'the vehicle 1' ,
 	the timestamp is 1/5/2016 5:42:21 PM   ;
-	
-emit a new traffic camera report where  
-	the camera id is 80,
-	the camera location is the point with 31 as longitude and 35 as latitude ,
-	the vehicle is 'the vehicle 1' ,
-	the timestamp is 1/16/2016 5:42:21 PM   ;
 
 // Vehicle the is not suspect.
 emit a new traffic camera report where  
@@ -169,24 +70,11 @@ emit a new traffic camera report where
 	the camera location is the point with 62 as longitude and 31 as latitude ,
 	the vehicle is 'the vehicle 3' ,
 	the timestamp is 1/14/2016 5:42:21 PM   ;
-
-// Others
+	
 emit a new traffic camera report where  
 	the camera id is 44,
 	the camera location is the point with 66 as longitude and 33 as latitude ,
 	the vehicle is 'the vehicle 3' ,
 	the timestamp is 1/15/2016 5:42:21 PM   ;
-	
-emit a new traffic camera report where  
-	the camera id is 99,
-	the camera location is the point with 30.1 as longitude and 35 as latitude ,
-	the vehicle is 'the vehicle 4' ,
-	the timestamp is 1/17/2016 5:42:21 PM   ;
-	
-emit a new traffic camera report where  
-	the camera id is 55,
-	the camera location is the point with 2 as longitude and 32 as latitude ,
-	the vehicle is 'the vehicle 5' ,
-	the timestamp is 1/17/2016 5:42:21 PM   ;
 	
 	

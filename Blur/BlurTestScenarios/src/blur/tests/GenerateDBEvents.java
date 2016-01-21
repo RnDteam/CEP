@@ -12,9 +12,9 @@ public class GenerateDBEvents {
 			connectToDB();
 	}
 	
-public static void connectToDB() {
+private static void connectToDB() {
 		
-		String databaseUrl = "jdbc:mysql://localhost:3306/cep_try";
+		String databaseUrl = "jdbc:mysql://localhost:3306/mysql";
 		String user = "root";
 		String password = "root";
 		
@@ -30,10 +30,21 @@ public static void connectToDB() {
 		
 		try {
 			connection = DriverManager.getConnection(databaseUrl, user, password);
+			
 			if	(connection != null) {
 				
-				TablesGenerator.dropAllTables(connection);
+				TablesGenerator.dropAallTables(connection);
 				TablesGenerator.generateAllTables(connection);
+			
+				
+				Statement statement = connection.createStatement();
+				//ResultSet rs = statement.executeQuery("select eventName, accountId, country, amount, merchantId, merchantType, merchantLocation, eventMethod from transactions");
+				ResultSet rs = statement.executeQuery("select * from traffic_events");
+				
+				while (rs.next()) {
+					System.out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3));
+					
+				}
 			}
 			
 			System.out.println("Succeeded");

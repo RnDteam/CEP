@@ -2,12 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: BlurServices
 Bundle-SymbolicName: BlurServices
-Bundle-Version: 0.17.0.qualifier
+Bundle-Version: 1.0.0
+Bundle-ClassPath: bin
 Export-Package: blurservices
-Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Import-Package: blur.model,
- com.ibm.geolib;version="1.4.1.CIS2015-11-03T181901Z",
- com.ibm.geolib.geom;version="1.4.1.CIS2015-11-03T181901Z",
- com.ibm.ia.extension,
- com.ibm.ia.extension.annotations
+Import-Package: blur.model;version="0.0.0.qualifier"
+Bundle-Blueprint: OSGI-INF/blueprint/*.xml

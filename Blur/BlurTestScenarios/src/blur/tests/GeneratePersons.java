@@ -2,8 +2,6 @@ package blur.tests;
 
 import java.util.Random;
 
-import blur.tests.EntityGenerator.RandomPoint;
-
 public class GeneratePersons {
 	
 	private static final String ACTIVE = "active";
@@ -22,7 +20,7 @@ public class GeneratePersons {
 		else {
 			state = INACTIVE;
 		}	
-		String query = String.format("INSERT INTO persons VALUES ('%s', '%s', '%s', '%s', '%s', '%s')", id, name, profession, location, state, organizationRole);
+		String query = String.format("INSERT INTO persons VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')", id, name, profession, location, state, organizationRole);
 		return query;
 	}
 }

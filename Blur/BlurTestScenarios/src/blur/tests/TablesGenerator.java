@@ -52,8 +52,7 @@ public class TablesGenerator {
 				+ "details_id varchar(255),"
 				+ "last_seen varchar(255),"
 				+ "owner_id varchar(255),"
-				+ "organization_id varchar(255),"
-				+ "suspicious varchar(255))";
+				+ "organization_id varchar(255))";
 		
 		return createVehicleStatement;
 	}
@@ -62,9 +61,8 @@ public class TablesGenerator {
 		String createBuildingStatement = "CREATE TABLE buildings (id varchar(255), "
 				+ "location varchar(255),"
 				+ "type varchar(255),"
-				+ "usage_type varchar(255), "
-				+ "owner_id varchar(255), "
-				+ "organization_id varchar(255))";
+				+ "usage_type varchar(255),"
+				+ "owner_id varchar(255))";
 		
 		return createBuildingStatement;
 	}
@@ -96,7 +94,7 @@ public class TablesGenerator {
 		return sql;
 	}
 	
-	public static void dropAllTables(Connection connection) {
+	public static void dropAallTables(Connection connection) {
 		String personDrop = dropTable("persons");
 		String buildingDrop = dropTable("buildings");
 		String organizationDrop = dropTable("organizations");

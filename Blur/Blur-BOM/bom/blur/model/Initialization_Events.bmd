@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessModelDefinition>
+    <Bmd><![CDATA[--Initialization Events
+
+-- Building 
+a building initialization is a business event .
+a building initialization is related to a building .
+a building initialization is related to a person , named the owner .
+a building initialization is related to several different organizations .
+a building initialization has a location ( a point ) used as the default geometry .
+a building initialization has a type ( a building type ) .
+a building initialization has a usage type ( a building usage type ) .
+
+--Organization
+an organization initialization is a business event.
+an organization initialization is related to an organization.
+an organization initialization has a type(an organization type).
+
+an organization role initialization is a business event.
+an organization role initialization is related to an organizational role.
+an organization role initialization has a name.
+an organization role initialization is related to an organization.
+an organization role initialization is related to an person.
+an organization role initialization is related to an organizational role , named the manager.
+
+--Person
+a person initialization is a business event.
+a person initialization has a name.
+a person initialization has a profession.
+a person initialization has a location (a point) used as the default geometry.
+a person initialization has a state (a person state).
+a person initialization is related to a person.
+a person initialization is related to an organizational role, named the role.
+
+
+--Vehicle
+a vehicle initialization is a business event.
+a vehicle initialization is related to an vehicle.
+a vehicle initialization is related to a person, named the owner.
+a vehicle initialization is related to an organization.
+a vehicle initialization has a location (a point) used as the default geometry.
+a vehicle initialization has a status (a vehicle status).
+a vehicle initialization has a details (a vehicle details).
+a vehicle initialization has a last seen (date & time).
+a vehicle initialization has a suspicious (a boolean ).
+
+
+]]></Bmd>
+</BusinessModelDefinition>
