@@ -1,14 +1,20 @@
 
 property loadGetterSetterAsProperties "true"
-property origin "xom:/BlurServices-BOM//BlurServices2"
-property uuid "0b07075c-e9b2-4add-ac36-52dfb2b756ac"
+property origin "xom:/BlurRuleExtensions//BlurServices"
+property uuid "64691cc5-c408-41c6-847c-0ccafab3b204"
 package blurservices;
 
 
 public interface IPathFinder
-        property "OSGi.service" "blurservices.PathFinder"
+        property "OSGi.service" "blurservices.IPathFinder"
 {
-    public static boolean isGood(blur.model.Person arg1, int arg2);
-    public static boolean isTherePath(string arg1, int arg2);
+    public static boolean isGood(blur.model.Person person, int depth);
+    public static blur.model.Organization pathToCriminalOrganization(string ownerId, int depth);
+}
+
+public class IRangeCalculator
+        property "OSGi.service" "blurservices.IRangeCalculator"
+{
+    public static com.ibm.geolib.geom.Polygon getRange(blur.model.Vehicle vehicle, int minutes);
 }
 
