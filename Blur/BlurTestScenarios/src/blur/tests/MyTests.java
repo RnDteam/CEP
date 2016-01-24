@@ -51,14 +51,9 @@ public class MyTests {
 	@After
 	public void tearDown() throws Exception {
         testDriver.endTest();
-	//	testDriver.stopRecording();
+		testDriver.stopRecording();
 	}
 
-	@Test
-	public void test2() {
-	ge
-	}
-	
 	@Test
 	public void test1() throws SolutionException, GatewayException,
 			RoutingException, InterruptedException {

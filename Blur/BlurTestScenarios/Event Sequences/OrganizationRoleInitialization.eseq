@@ -1,0 +1,16 @@
+// person1, organization 1
+emit a new organization role initialization where 
+	the organizational role is the organizational role identified by "3288" ,
+	the organization is the organization identified by "3256",
+	the timestamp is 1/1/2016 02:04:19 AM;  
+
+//person2, organization 2
+emit a new organization role initialization where 
+	the organizational role is the organizational role identified by "3299" ,
+	the organization is the organization identified by "2222",
+	the timestamp is 1/1/2016 02:04:19 AM; 
+	
+emit a new organization role initialization where 
+	the organizational role is the organizational role identified by "3311" ,
+	the organization is the organization identified by "3256",
+	the timestamp is 1/1/2016 02:04:19 AM; 
