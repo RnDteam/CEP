@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>CriminalsNearSuspiciousVehicle</name>
+  <uuid>40416d37-ce48-43be-b27f-fd1a46425da4</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[when a criminals near suspicious vehicle occurs
+definitions
+    set 'the event location' to the event location of this criminals near suspicious vehicle ;
+    set 'the close managers' to the persons of this criminals near suspicious vehicle
+        where the type of the role of each person is MANAGER ;
+if
+    the number of elements in 'the close managers' is more than 0
+then
+    define MANAGERS_NEAR_SUSPICIOUS_VEHICLE as a new managers near suspicious vehicle where
+        the event location is 'the event location' ,
+        the timestamp is the timestamp of this criminals near suspicious vehicle ,
+        the vehicle is 'the vehicle',
+        the range is the range of 'the vehicle' within 20 minutes;
+        
+    for each person in the persons of this criminals near suspicious vehicle :
+        - add this person to the persons of MANAGERS_NEAR_SUSPICIOUS_VEHICLE ;
+        
+    for each building in the buildings of this criminals near suspicious vehicle  :
+        - add this building  to the buildings of MANAGERS_NEAR_SUSPICIOUS_VEHICLE ;
+        
+    emit MANAGERS_NEAR_SUSPICIOUS_VEHICLE ;
+else
+    print "No managers found within 500 meters from the suspicous vehicle.." ;]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>

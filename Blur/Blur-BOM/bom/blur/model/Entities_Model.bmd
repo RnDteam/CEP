@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BusinessModelDefinition>
-    <Bmd><![CDATA[-- person
-a person state can be one of : ACTIVE, INACTIVE.
-
+    <Bmd><![CDATA[a person state can be one of : ACTIVE, INACTIVE.
 a person is a business entity identified by an id with
-   a name,
-   a profession,
-   a risk score (numeric),
-   a location (a point) used as the default geometry,
-   a state (a person state).
+a name,
+a profession,
+a risk score (numeric),
+a location (a point) used as the default geometry,
+a state (a person state).
 a person is related to an organizational role, named the role.
-
--- organization	 
+-- organization
 a organization type can be one of : CRIMINAL, COMMERCIAL.
-
 an organization is a business entity identified by an id.
 an organization has a type (an organization type).
-
+an organization role type can be one of :
+MANAGER, EMPLOYEE.
 an organizational role is a business entity identified by an id.
 an organizational role has a name.
+an organizational role has a type (an organization role type).
 an organizational role is related to an organization.
-an organizational role is related to a person. 
+an organizational role is related to a person.
 an organizational role is related to an organizational role , named the manager.
-
--- building 
+-- building
 a building type can be one of: APPARTMENT, WAREHOUSE, COMMERCIAL.
 a building usage type can be one of: BANK BRANCH, FURNITURE STORE.
-
 a building is a business entity identified by an id.
 a building has a location (a point) used as the default geometry.
 a building has a type (a building type).
@@ -34,23 +30,18 @@ a building has a usage type ( a building usage type ).
 a building is related to a person , named the owner.
 a building is related to several different organizations.
 a building has several different alerts.
-
 a building has a recent cellular report frequency (numeric).
 a building has an expected cellular report frequency (numeric).
-
-
 -- vehicle
 a vehicle type can be one of: MOTORCYCLE, JEEP, TRUCK.
-
+--a vehicle details is a concept with
 a vehicle details is a concept with
-   a maker,
-   a model,
-   a type (a vehicle type),
-   a year (date & time),
-   a maximum speed (numeric).
-
+a maker,
+a model,
+a year ,
+a maximum speed (numeric),
+a type (a vehicle type).
 a vehicle status can be one of: INACTIVE, ACTIVE.
- 
 a vehicle is a business entity identified by a license plate number.
 a vehicle has a location (a point).
 a vehicle has a status (a vehicle status).
@@ -58,20 +49,24 @@ a vehicle has a details (a vehicle details).
 a vehicle has a last seen (date & time).
 a vehicle has a suspicious(a boolean).
 a vehicle is related to a person, named the owner.
-a vehicle is related to an organization. 
-
-a risk score provider is a data provider , 
-	 accepts a person id,
-returns 
-	a risk score (numeric). ]]></Bmd>
-    <Bmi><![CDATA[a vehicle is initialized from a traffic camera report , 
-	where this vehicle comes from the vehicle of this traffic camera report : 
-	- set the location of this vehicle to the camera location of this traffic camera report. 
-	
-a person is enriched by the risk score provider , 
-	 	given 
-	 		the person id from the id of this person , 
- setting 
- 	the risk score of this person 
- 		to the risk score of this risk score provider.]]></Bmi>
+a vehicle is related to an organization.
+a risk score provider is a data provider ,
+accepts a person id,
+returns
+a risk score (numeric).
+a vehicle type provider is a data provider ,
+accepts a details(a vehicle details ),
+returns a full details (a vehicle details ).]]></Bmd>
+    <Bmi><![CDATA[a vehicle is initialized from a traffic camera report ,
+where this vehicle comes from the vehicle of this traffic camera report :
+- set the location of this vehicle to the camera location of this traffic camera report.
+a person is enriched by the risk score provider ,
+given
+the person id from the id of this person ,
+setting
+the risk score of this person
+to the risk score of this risk score provider.
+a vehicle is enriched by the vehicle type provider ,
+given the details from the details of this vehicle ,
+setting the details of this vehicle to the full details of this vehicle type provider .]]></Bmi>
 </BusinessModelDefinition>
