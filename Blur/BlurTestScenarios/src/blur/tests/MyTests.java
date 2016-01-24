@@ -54,10 +54,6 @@ public class MyTests {
 	//	testDriver.stopRecording();
 	}
 
-	@Test
-	public void test2() {
-	ge
-	}
 	
 	@Test
 	public void test1() throws SolutionException, GatewayException,
