@@ -1,0 +1,40 @@
+import blur.model.Alert;
+import com.ibm.ia.engine.runtime.PartialMoment;
+import com.ibm.rules.engine.ruledef.runtime.Rule;
+import com.ibm.rules.engine.runtime.RunningEngineWithWorkingMemory;
+import ilog.rules.brl.Date;
+import java.lang.Object;
+public signature EngineDataClass extends com.ibm.rules.engine.runtime.impl.AbstractEngineData {
+  public in out com.ibm.ia.model.Entity entity = null;
+  public in java.time.ZonedDateTime now = null;
+  public in java.lang.String partitionIndex = null;
+}
+
+ruleset IlrContext (EngineDataClass){
+  
+  query `number of hot building alerts today` 
+    stipulation com.ibm.rules.engine.ruledef.stipulations.Properties {
+      com.ibm.rules.engine.ruledef.stipulations.Properties.this.entry("queryInfo", "CurrentDay");
+    }
+  {
+    packageExecutionName = ""
+    ruleExecutionName = "number_of_hot_building_alerts_today"
+    localQueryResult:aggregate {
+      collect_class : Alert(this.`rule`.contains("hot building"); ((Date)this.timestamp).during(Date.thisDay()));
+    }
+    do {
+      PartialMoment(partitionIndex){0.0};
+    }
+  }
+  
+  query globalQuery {
+    packageExecutionName = ""
+    ruleExecutionName = "globalQuery"
+    globalQueryResult:aggregate {
+      partialMoment : PartialMoment();
+    }
+    do {
+      PartialMoment(null){partialMoment.getNumber(), partialMoment.getSum()};
+    }
+  }
+}

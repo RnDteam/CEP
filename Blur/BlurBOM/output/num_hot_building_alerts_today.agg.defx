@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><aggregate xmlns="http://www.ibm.com/ia/AggregateDescriptor">
+  <name>defvarnumberx95ofx95hotx95buildingx95alertsx95today</name>
+  <verbalization>number of hot building alerts today</verbalization>
+  <type>double</type>
+  <kind>count</kind>
+</aggregate>

@@ -1,0 +1,51 @@
+import blur.model.Organization;
+import blur.model.OrganizationType;
+import com.ibm.ia.engine.runtime.PartialMoment;
+import com.ibm.rules.engine.ruledef.runtime.Rule;
+import com.ibm.rules.engine.runtime.RunningEngineWithWorkingMemory;
+import java.lang.Object;
+public signature EngineDataClass extends com.ibm.rules.engine.runtime.impl.AbstractEngineData {
+  public in java.lang.Iterable entities = null;
+  public in out com.ibm.ia.model.Entity entity = null;
+  public in out Object globalQueryResult = null;
+  public in out Object localQueryResult = null;
+  public in java.time.ZonedDateTime now = null;
+  public in java.lang.String partitionIndex = null;
+}
+
+ruleset IlrContext (EngineDataClass){
+  
+  rule `number of criminal organizations` {
+    packageExecutionName = ""
+    ruleExecutionName = "number_of_criminal_organizations"
+    ruleExecutionShortName = "number_of_criminal_organizations"
+    when {
+      aggregateVariable:aggregate {
+        collect_class : Organization(this.type.equals(OrganizationType.CRIMINAL)) in entities;
+      }
+      do {
+        PartialMoment(partitionIndex){0.0};
+      }
+    }
+    then {
+      localQueryResult = aggregateVariable;
+    }
+  }
+  
+  rule globalQuery {
+    packageExecutionName = ""
+    ruleExecutionName = "globalQuery"
+    ruleExecutionShortName = "globalQuery"
+    when {
+      aggregateVariable:aggregate {
+        partialMoment : PartialMoment();
+      }
+      do {
+        PartialMoment(null){partialMoment.getNumber(), partialMoment.getSum()};
+      }
+    }
+    then {
+      globalQueryResult = aggregateVariable;
+    }
+  }
+}

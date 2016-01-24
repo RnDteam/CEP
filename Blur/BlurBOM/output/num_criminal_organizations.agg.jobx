@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><job xmlns="http://www.ibm.com/ia/JobDescriptor">
+  <name>defvarnumberx95ofx95criminalx95organizations</name>
+  <verbalization>number of criminal organizations</verbalization>
+  <type>double</type>
+  <kind>count</kind>
+  <parameter name="entityType">blur.model.Organization</parameter>
+  <schedule type="recurrent">
+    <duration unit="second">30</duration>
+  </schedule>
+</job>
