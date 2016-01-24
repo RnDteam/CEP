@@ -64,7 +64,7 @@ a vehicle has a details (a vehicle details).
 a vehicle has a last seen (date & time).
 a vehicle has a suspicious(a boolean).
 a vehicle is related to a person, named the owner.
-a vehicle is related to an organization. 
+a vehicle is related to an organization.
 
 a risk score provider is a data provider , 
 	 accepts a person id,
