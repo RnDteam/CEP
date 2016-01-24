@@ -44,6 +44,60 @@ a vehicle initialization has a details (a vehicle details).
 a vehicle initialization has a last seen (date & time).
 a vehicle initialization has a suspicious (a boolean ).
 
+--Vehicle Details
+--a vehicle details initialization is a business event.
+--a vehicle details initialization is related to a vehicle details.
+--a vehicle details initialization has a maker.
+--a vehicle details initialization has a model.
+--a vehicle details initialization has a type(a vehicle type ).
+--a vehicle details initialization has a year.
+--a vehicle details initialization has a maximum speed (numeric).
+
 
 ]]></Bmd>
+    <Bmi><![CDATA[--Building
+a building is initialized from a building initialization , where this building comes from the building of this building initialization :
+    - set the owner of this building to the owner of this building initialization
+    - set the location of this building to the location of this building initialization
+    - set the type of this building to the type of this building initialization
+    - set the usage type of this building to the usage type of this building initialization
+    - for each organization in the organizations of this building initialization : -- workaround for Defect 87855
+        - add this organization to the organizations of this building .
+
+--Organization
+an organization is initialized from an organization initialization , where this organization comes from the organization of this organization initialization :
+    - set the type of this organization to the type of this organization initialization .
+
+an organizational role is initialized from an organization role initialization , where this organizational role comes from the organizational role of this organization role initialization :
+    - set the name of the organizational role to the name of this organization role initialization
+    - set the organization of the organizational role to the organization of this organization role initialization
+    - set the person of the organizational role to the person of this organization role initialization
+    - set the manager of the organizational role to the manager of this organization role initialization .
+
+--Person
+a person is initialized from a person initialization , where this person comes from the person of this person initialization :
+    - set the name of this person to the name of this person initialization
+    - set the profession of this person to the profession of this person initialization
+    - set the location of this person to the location of this person initialization
+    - set the state of this person to the state of this person initialization
+    - set the role of this person to the role of this person initialization .
+
+--Vehicle
+a vehicle is initialized from a vehicle initialization , where this vehicle comes from the vehicle of this vehicle initialization : 
+	- set the organization of this vehicle to the organization of this vehicle initialization 
+	- set the owner of this vehicle to the owner of this vehicle initialization 
+    - set the location of this vehicle to the location of this vehicle initialization 
+	- set the organization of this vehicle to the organization of this vehicle initialization 
+	- set the status of this vehicle to the status of this vehicle initialization 
+	- set the details of this vehicle to the details of this vehicle initialization 
+	- set the last seen of this vehicle to the last seen of this vehicle initialization 
+	- make it this vehicle initialization is suspicious that this vehicle is suspicious .
+	
+--Vehicle Details
+--a vehicle details  is initialized from a vehicle details initialization , where this vehicle details comes from the vehicle details of this vehicle details initialization : 
+--	- set the maker of this vehicle details to the maker of this vehicle details initialization 
+--	- set the model of this vehicle details to the model of this vehicle details initialization 
+--    - set the type of this vehicle details to the type of this vehicle details initialization 
+--	- set the year of this vehicle details to the year of this vehicle details initialization 
+--	- set the maximum speed of this vehicle details to the maximum speed of this vehicle details initialization .]]></Bmi>
 </BusinessModelDefinition>

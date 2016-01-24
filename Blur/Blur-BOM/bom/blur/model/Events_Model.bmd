@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BusinessModelDefinition>
-    <Bmd><![CDATA[
+    <Bmd><![CDATA[a location based event is a business event.
+a location based event has an event location (a point).
+a location based event is related to several different persons.
+a location based event is related to several different buildings.
+
 -- traffic camera report
-a traffic camera report is a business event.
+a traffic camera report is a location based event.
 a traffic camera report has an camera id (integer).
 a traffic camera report has a camera location (a point).
 a traffic camera report is related to a vehicle .
+
+-- suspicious vehicle detected
+a suspicious vehicle detected is a location based event.
+a suspicious vehicle detected is related to a vehicle.
+
+--criminals near suspicious vehicle
+a criminals near suspicious vehicle is a location based event.
+a criminals near suspicious vehicle  is related to a vehicle.
+
+-- managers near suspicious vehicle
+a managers near suspicious vehicle is a location based event.
+a managers near suspicious vehicle is related to a vehicle.
+a managers near suspicious vehicle has a range (a polygon).
 
 -- vehicle updated
 a vehicle updated is a business event.
@@ -22,16 +39,23 @@ a cellular report is related to a person.
 -- an alert
 an alert is a business event with
     a message,
+    a hours24(numeric),
+    a minues30 (numeric),
     a rule.
+  
     
 an alert is related to a person [optional].
 an alert is related to a building [optional].
 an alert is related to a vehicle [optional].
 an alert is related to an organization [optional].
+
+
+
+
 ]]></Bmd>
     <Bmi><![CDATA[the recent cellular report frequency of a building is aggregated from cellular reports ,
         where this building comes from the building of each cellular report
-    as the number of cellular reports during the last period of 30 minute 
+    as the number of cellular reports during the last period of 30 minutes 
     available for 30 minutes .
 
 the expected cellular report frequency of a building is aggregated from cellular reports ,
