@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+	
 	<bean id="PathFinderBean" class="blurservices.PathFinder" />
 	<service id="PathFinderBeanService" ref="PathFinderBean" interface="blurservices.IPathFinder"></service>
+	
+	<bean id="RangeCalculatorBean" class="blurservices.RangeCalculator" />
+	<service id="RangeCalculatorBeanService" ref="RangeCalculatorBean" interface="blurservices.IRangeCalculator"></service>
+	
 </blueprint>
