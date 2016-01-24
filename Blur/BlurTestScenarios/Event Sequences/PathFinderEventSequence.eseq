@@ -24,7 +24,7 @@ emit a new vehicle initialization where
 		the maker is "Maker1", 
 		the model is "T-10", 
 		the type is MOTORCYCLE, 
-		the year is 6/1/2011 8:15:48 AM, 
+		the year is "2011", 
 		the maximum speed is 290,
 	the status is INACTIVE   ,
 	the location is the point with 7.0095 as longitude and 43.6424 as latitude,
@@ -37,7 +37,7 @@ emit a new vehicle initialization where
 emit a new vehicle initialization where 
 	the vehicle is 'the vehicle 2' ,
 	the details is a new vehicle details where 
-	the maker is "Maker2", the model is "T-11", the type is TRUCK , the year is 8/1/2013 8:15:48 AM, the maximum speed is 130,
+	the maker is "Maker2", the model is "T-11", the type is TRUCK , the year is "2013", the maximum speed is 130,
 	the status is INACTIVE ,
 	the location is the point with 55.0095 as longitude and 22.6424 as latitude,
 	suspicious is false,

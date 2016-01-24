@@ -1,3 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?><extensions xmlns="http://www.ibm.com/ia/ExtensionsDescriptor">
     <extension class="blur.extensions.RiskScoreDataProvider" fulfils="blur.model.RiskScoreProvider" type="com.ibm.ia.extension.spi.DataProviderService"/>
+    <extension class="VehicleTypeDataProvider" fulfils="blur.model.VehicleTypeProvider" type="com.ibm.ia.extension.spi.DataProviderService"/>
 </extensions>
