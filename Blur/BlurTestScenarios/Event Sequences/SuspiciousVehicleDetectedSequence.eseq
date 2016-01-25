@@ -66,7 +66,7 @@ emit a new organization role initialization where
 
 // persons
 emit a new person initialization where
-    the person is 'person1',
+    the person is 'the person 1',
     the name is "Some Bad Guy 1",
     the profession is "Criminal Profession (Manager)",
 	the role is 'the organization role 1',
@@ -75,7 +75,7 @@ emit a new person initialization where
     the timestamp is 1/25/2016 2:42:07 PM;
     
 emit a new person initialization where
-    the person is 'person2',
+    the person is 'the person 2',
     the name is "Some Bad Guy 2",
     the profession is "Criminal Profession" ,
     the location is the point with 22 as longitude and 23 as latitude,
