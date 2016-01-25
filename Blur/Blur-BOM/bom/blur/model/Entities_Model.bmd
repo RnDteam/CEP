@@ -71,9 +71,9 @@ a risk score provider is a data provider ,
 returns 
 	a risk score (numeric). 
 	
-a vehicle type provider is a data provider , 
-	 accepts a details(a vehicle details ),
-	 returns a full details (a vehicle details ).]]></Bmd>
+--a vehicle type provider is a data provider , 
+--	 accepts a details(a vehicle details ),
+--	 returns a full details (a vehicle details ).]]></Bmd>
     <Bmi><![CDATA[a vehicle is initialized from a traffic camera report , 
 	where this vehicle comes from the vehicle of this traffic camera report : 
 	- set the location of this vehicle to the camera location of this traffic camera report. 
@@ -85,7 +85,7 @@ a person is enriched by the risk score provider ,
  	the risk score of this person 
  		to the risk score of this risk score provider.
  		
-a vehicle is enriched by the vehicle type provider , 
-	 given the details from the details of this vehicle , 
-	 setting the details of this vehicle to the full details of this vehicle type provider .  ]]></Bmi>
+--a vehicle is enriched by the vehicle type provider , 
+--	 given the details from the details of this vehicle , 
+--	 setting the details of this vehicle to the full details of this vehicle type provider .  ]]></Bmi>
 </BusinessModelDefinition>
