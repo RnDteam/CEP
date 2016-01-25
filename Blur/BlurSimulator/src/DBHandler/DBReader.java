@@ -3,6 +3,12 @@ package DBHandler;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+
+import blur.model.TrafficCameraReport;
+import EntitiesInitialization.PersonExternalInit;
+import EntitiesInitialization.PersonInternalInit;
 import Events.TrafficCameraReportEvent;
 
 
@@ -12,7 +18,7 @@ public class DBReader {
 	private static final String USER_NAME = "root";
 	private static final String PASSWORD = "root";
 	
-	private static TrafficCameraReportEvent trafficCameraReportEvent = new TrafficCameraReportEvent();
+	private static Connection connection = null;
 
 	public static void closeConnection(Connection dbConnection) {
 		try {
@@ -20,24 +26,19 @@ public class DBReader {
 				dbConnection.close();
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
 	public static Connection getDBConnection() {
-			Connection connection = null;	
-			
-			try {
-				connection = DriverManager.getConnection(MY_SQL_DB_URL, USER_NAME, PASSWORD);
-			} catch (Exception e) {
-				e.printStackTrace();
-			} 
+			if(connection == null) {
+				try {
+					connection = DriverManager.getConnection(MY_SQL_DB_URL, USER_NAME, PASSWORD);
+				} catch (Exception e) {
+					e.printStackTrace();
+				} 
+			}
 		
 			return connection;
 		}
-	
-	public static TrafficCameraReportEvent getTrafficCameraReportEvent() {
-		return trafficCameraReportEvent;
-	}
 }

@@ -1,17 +1,17 @@
 package DBHandler;
 
-import java.sql.ResultSet;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
-
-import blur.model.TrafficCameraReport;
-import blur.model.Vehicle;
 
 import com.ibm.geolib.geom.Point;
 import com.ibm.geolib.st.SpatioTemporalService;
-import com.ibm.ia.gateway.SolutionGateway;
 
 public class ConverterUtility {
 
+	public static final ZonedDateTime absDate = ZonedDateTime.of(2016, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault());
+	
+	public static final ZonedDateTime initDate = absDate.minusYears(1);
+	
 	public static Point getPointFromString(String logntitude, String latitude) {
 		
 		return SpatioTemporalService.getService().getGeometryFactory().

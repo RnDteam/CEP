@@ -20,10 +20,8 @@ public class SubmitEvent implements Runnable{
 		try {
 			gateway.submit(eventToRun);
 		} catch (GatewayException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (RoutingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

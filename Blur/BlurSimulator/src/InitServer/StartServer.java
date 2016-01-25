@@ -1,20 +1,24 @@
 package InitServer;
 import java.io.IOException;
 import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.ThreadPoolExecutor;
 
 import DBHandler.DBReader;
+import EntitiesInitialization.PersonExternalInit;
+import EntitiesInitialization.PersonInternalInit;
+import Events.TrafficCameraReportEvent;
+import blur.model.PersonInitialization;
+import blur.model.PersonUpdate;
 import blur.model.TrafficCameraReport;
-import blur.model.Vehicle;
 
-import com.ibm.geolib.geom.Point;
-import com.ibm.geolib.st.SpatioTemporalService;
 import com.ibm.ia.common.GatewayException;
 import com.ibm.ia.common.RoutingException;
 import com.ibm.ia.gateway.GridConfiguration;
@@ -24,9 +28,7 @@ import com.ibm.ia.gateway.SolutionChangedException;
 import com.ibm.ia.gateway.SolutionGateway;
 import com.ibm.ia.gateway.client.GatewayClient;
 import com.ibm.ia.model.Event;
-import com.ibm.ia.model.Relationship;
 import com.ibm.ia.testdriver.TestDriver;
-import com.ibm.ws.objectgrid.thread.Executor;
 
 
 public class StartServer {
@@ -55,6 +57,20 @@ public class StartServer {
 			connection = GridConnectionFactory.createGridConnection(gridConfig);
 			SolutionGateway gateway = connection.getSolutionGateway("Blur");
 			
+//			PersonInitialization personInit1 = gateway.getEventFactory().createEvent(PersonInitialization.class);
+//			personInit1.setPerson(gateway.createRelationship(Person.class, "123"));
+//			personInit1.setName("NameTRY");
+//			personInit1.setTimestamp(ZonedDateTime.now().minusDays(5));
+//			gateway.submit(personInit1);
+//			
+//			Thread.sleep(1000L);
+//			
+//			PersonInitialization personInit2 = gateway.getEventFactory().createEvent(PersonInitialization.class);
+//			personInit2.setPerson(gateway.createRelationship(Person.class, "123"));
+//			personInit2.setProfession("ProffesionTry");
+//			personInit2.setTimestamp(ZonedDateTime.now().minusDays(1));
+//			gateway.submit(personInit2);
+			
 			getDataAndSendEvents(gateway);
 
 		} catch (Exception e) {
@@ -77,36 +93,45 @@ public class StartServer {
 		System.out.println("finished!");
 	}
 
-	private static void getDataAndSendEvents(SolutionGateway gateway)
+	public static void getDataAndSendEvents(SolutionGateway gateway)
 			throws SolutionChangedException, GatewayException, RoutingException {
-		List<TrafficCameraReport> trafficCamersReportList = DBReader.getTrafficCameraReportEvent().getAllEntities(gateway);
-		HashMap<ZonedDateTime, List<Event>> eventsMap = createTimeStampedEventsMap(trafficCamersReportList);
+		HashMap<ZonedDateTime, List<Event>> eventsMap = new HashMap<>();
+		
+//		addBuildingInitialization(eventsMap, gateway);
+//		addPersonsInitialization(eventsMap, gateway);
+		addTrafficCamersReportsToMap(eventsMap, gateway);
 		
 		submitEventsAsync(eventsMap, gateway);
-//		sendTrafficCameraReportEvents(gateway, trafficCamersReportList);
 	}
 
-	private static void submitEventsAsync(
+	private static void addPersonsInitialization(
 			HashMap<ZonedDateTime, List<Event>> eventsMap,
 			SolutionGateway gateway) {
-		ExecutorService executor = Executors.newFixedThreadPool(4);
+		List<PersonUpdate> internalPersonInitializationList = 
+				new PersonInternalInit().getAllEntities(gateway);
+		List<PersonInitialization> externalPersonInitialization = 
+				new PersonExternalInit().getAllEntities(gateway);
 		
-		for (ZonedDateTime time : eventsMap.keySet()) {
-			for (Event eventToSubmit : eventsMap.get(time)) {
-				executor.execute(new SubmitEvent(gateway, eventToSubmit));
+		ArrayList<Event> allPersonInitialization = new ArrayList<Event>();
+		allPersonInitialization.addAll(internalPersonInitializationList);
+		allPersonInitialization.addAll(externalPersonInitialization);
+		
+		// Add all person initialization.
+		for (Event personInit : allPersonInitialization) {
+			ZonedDateTime timestamp = personInit.get$Timestamp();
+			
+			if(eventsMap.get(timestamp) == null) {
+				eventsMap.put(timestamp, new ArrayList<Event>());
 			}
 			
-			try {
-				Thread.sleep(1000L);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			eventsMap.get(timestamp).add(personInit);
 		}
 	}
 
-	private static HashMap<ZonedDateTime, List<Event>> createTimeStampedEventsMap(
-			List<TrafficCameraReport> trafficCamersReportList) {
-		HashMap<ZonedDateTime, List<Event>> eventMap = new HashMap<>();
+	private static void addTrafficCamersReportsToMap(
+			HashMap<ZonedDateTime, List<Event>> eventMap, SolutionGateway gateway) {
+		List<TrafficCameraReport> trafficCamersReportList = 
+				new TrafficCameraReportEvent().getAllEntities(gateway);
 		
 		// Add the traffic camera reports.
 		for (TrafficCameraReport trafficCameraReport : trafficCamersReportList) {
@@ -118,20 +143,37 @@ public class StartServer {
 			
 			eventMap.get(trafficTimestamp).add(trafficCameraReport);
 		}
-		
-		return eventMap;
 	}
 
-	private static void sendTrafficCameraReportEvents(SolutionGateway gateway, List<TrafficCameraReport> trafficCamersReportList) throws GatewayException, RoutingException {
-		for (TrafficCameraReport trafficCameraReport : trafficCamersReportList) {
-			gateway.submit(trafficCameraReport);
+	private static void submitEventsAsync(
+			HashMap<ZonedDateTime, List<Event>> eventsMap,
+			SolutionGateway gateway) {
+		ExecutorService executor = Executors.newFixedThreadPool(4);
+		
+		Set<ZonedDateTime> keySet = eventsMap.keySet();
+		ArrayList<ZonedDateTime> sortedEvents = new ArrayList<ZonedDateTime>(keySet);
+		Collections.sort(sortedEvents);
+		
+		ZonedDateTime lastTimeStamp = sortedEvents.get(0);
+		
+		for (ZonedDateTime currTime : sortedEvents) {
+			for (Event eventToSubmit : eventsMap.get(currTime)) {
+				executor.execute(new SubmitEvent(gateway, eventToSubmit));
+			}
+			
 			try {
-				Thread.sleep(800L);
+				Thread.sleep(calculateDiffernceBetweenDates(currTime, lastTimeStamp));
+				
+				lastTimeStamp = currTime;
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
+
+	private static long calculateDiffernceBetweenDates(ZonedDateTime currTime,ZonedDateTime lastTimeStamp){
+		return ChronoUnit.MILLIS.between(lastTimeStamp.toLocalDateTime(), currTime.toLocalDateTime());
+		}
+
 
 }

@@ -31,6 +31,15 @@ a person initialization has a location (a point) used as the default geometry.
 a person initialization has a state (a person state).
 a person initialization is related to a person.
 a person initialization is related to an organizational role, named the role.
+ 
+-- Update Person
+a person update is a business event.
+a person update has a name.
+a person update has a profession.
+a person update has a location (a point) used as the default geometry.
+a person update has a state (a person state).
+a person update is related to a person.
+a person update is related to an organizational role, named the role.
 
 
 --Vehicle
