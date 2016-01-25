@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>VehicleRuleAgent</name>
+	<name>Blur-BOM</name>
 	<comment></comment>
 	<projects>
-		<project>BlurServices-BOM</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
-			<name>com.ibm.ia.designer.core.AgentProjectBuilder</name>
+			<name>com.ibm.bdsl.bdl.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.ia.designer.defl.builder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -18,7 +22,8 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>com.ibm.ia.designer.core.Agent</nature>
 		<nature>ilog.rules.studio.model.ruleNature</nature>
+		<nature>com.ibm.bdsl.bdl.nature</nature>
+		<nature>com.ibm.ia.designer.defl.nature</nature>
 	</natures>
 </projectDescription>

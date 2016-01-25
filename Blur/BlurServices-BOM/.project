@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>VehicleRuleAgent</name>
+	<name>BlurServices-BOM</name>
 	<comment></comment>
 	<projects>
-		<project>BlurServices-BOM</project>
+		<project>Blur-BOM</project>
+		<project>BlurServices</project>
 	</projects>
 	<buildSpec>
-		<buildCommand>
-			<name>com.ibm.ia.designer.core.AgentProjectBuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
 		<buildCommand>
 			<name>ilog.rules.studio.model.ruleBuilder</name>
 			<arguments>
@@ -18,7 +14,6 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>com.ibm.ia.designer.core.Agent</nature>
 		<nature>ilog.rules.studio.model.ruleNature</nature>
 	</natures>
 </projectDescription>

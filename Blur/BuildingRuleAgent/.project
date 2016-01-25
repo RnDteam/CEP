@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>VehicleRuleAgent</name>
+	<name>BuildingRuleAgent</name>
 	<comment></comment>
 	<projects>
-		<project>BlurServices-BOM</project>
+		<project>Blur-BOM</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
