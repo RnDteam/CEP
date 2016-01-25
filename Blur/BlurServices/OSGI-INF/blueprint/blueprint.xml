@@ -3,10 +3,5 @@
 	
 	<service id="PathFinder" interface="blurservices.IPathFinder">
 		<bean class="blurservices.PathFinder" />
-	</service>
-
-	<service id="RangeCalculator" interface="blurservices.IRangeCalculator">
-		<bean class="blurservices.RangeCalculator" />
-	</service>
-	
+	</service>	
 </blueprint>

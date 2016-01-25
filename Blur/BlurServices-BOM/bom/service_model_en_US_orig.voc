@@ -1,7 +1,0 @@
-# Vocabulary Properties
-uuid = 47d248a8-06ef-4c78-b3b2-33af71151854
-
-# blurservices.IPathFinder
-blurservices.IPathFinder#concept.label = IPath finder
-blurservices.IPathFinder.isGood(blur.model.Person,int)#phrase.navigation = {0} with  depth {1} is good
-blurservices.IPathFinder.isTherePath(java.lang.String,int)#phrase.navigation = {0} has {1} depth association with a CRIMINAL organization

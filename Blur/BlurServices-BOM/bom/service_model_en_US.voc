@@ -5,7 +5,4 @@ uuid = 73ee1681-3997-48d1-8112-05041c65d53d
 blurservices.IPathFinder#concept.label = IPath finder
 blurservices.IPathFinder.isGood(blur.model.Person,int)#phrase.navigation = {0} with  depth {1} is good
 blurservices.IPathFinder.isTherePath(java.lang.String,int)#phrase.navigation = {0} has {1} depth association with a CRIMINAL organization
-
-# blurservices.IRangeCalculator
-blurservices.IRangeCalculator#concept.label = IRange calculator
-blurservices.IRangeCalculator.getRange(blur.model.Vehicle,int)#phrase.navigation = the range of {0} within {1} minutes
+blurservices.IPathFinder.getRange(blur.model.Vehicle,int)#phrase.navigation = the range of {0} within {1} minutes

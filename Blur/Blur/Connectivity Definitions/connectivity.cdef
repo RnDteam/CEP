@@ -9,4 +9,4 @@ define outbound binding 'outb'
  define outbound HTTP endpoint 'endp' 
 	using 
 		binding 'outb' , 
-		url "http://192.168.83.153:8000/".
+		url "http://odm-dsi-alerts_dashboard.mybluemix.net".
