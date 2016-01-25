@@ -25,5 +25,9 @@ then
         
     emit MANAGERS_NEAR_SUSPICIOUS_VEHICLE ;
 else
-    print "No managers found within 500 meters from the suspicous vehicle." ;]]></definition>
+    define ALERT as a new alert where
+		the message is "No managers found within 500 meters from the suspicous vehicle " + the license plate number of 'the vehicle',
+		the vehicle is 'the vehicle',
+		the rule is the name of this rule;
+	emit ALERT;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

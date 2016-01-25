@@ -25,5 +25,9 @@ then
         
     emit CRIMINALS_NEAR_SUSPICIOUS_VEHICLE ;
 else
-    print "No criminals found within 500 meters from the suspicous vehicle." ;]]></definition>
+    define ALERT as a new alert where
+		the message is "No criminals found within 500 meters from the suspicous vehicle " + the license plate number of 'the vehicle',
+		the vehicle is 'the vehicle',
+		the rule is the name of this rule;
+	emit ALERT;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

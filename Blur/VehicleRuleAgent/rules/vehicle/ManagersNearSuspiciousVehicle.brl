@@ -13,8 +13,8 @@ if the number of elements in 'richable buildings' is more than 0 then
 
 for each building in 'richable buildings' :
 	- emit a new alert where
-		the vehicle is the vehicle of this managers near suspicious vehicle ,
+		the vehicle is 'the vehicle',
 		the rule is the name of this rule,
 		the building is this building,
-		;]]></definition>
+		the message is "Their are managers of " + the id of the organization of 'the vehicle' + " which can arrive the building " +  the id of this building + " in 20 minutes";]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

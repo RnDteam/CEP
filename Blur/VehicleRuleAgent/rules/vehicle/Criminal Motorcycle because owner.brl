@@ -15,5 +15,18 @@ if
     and 'the organization type of the owner' is CRIMINAL 
 then
 	make it true that 'the vehicle' is suspicious ;
-	set the organization of 'the vehicle' to the organization of the role of 'the owner' ;]]></definition>
+	set the organization of 'the vehicle' to the organization of the role of 'the owner' ;
+	
+	define SUSPICIOUS_VEHICLE_DETECTED as a new suspicious vehicle detected where
+		the event location is the event location of this traffic camera report ,
+		the timestamp is the timestamp of this traffic camera report,
+		the vehicle is 'the vehicle';
+				
+	for each person in the persons of this traffic camera report : 
+		- add this person to the persons of SUSPICIOUS_VEHICLE_DETECTED ;
+        
+    for each building in the buildings of this traffic camera report :
+        - add this building to the buildings of SUSPICIOUS_VEHICLE_DETECTED ;
+        
+    emit SUSPICIOUS_VEHICLE_DETECTED ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

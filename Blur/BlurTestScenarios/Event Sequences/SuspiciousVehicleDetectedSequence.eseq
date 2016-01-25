@@ -1,0 +1,84 @@
+define 'the vehicle 1' as the vehicle identified by "vehicle1";
+
+define 'the person 1' as the person identified by "person1";
+define 'the person 2' as the person identified by "person2";
+define 'the person 3' as the person identified by "person3";
+
+define 'the organization 1' as the organization identified by "organization1";
+define 'the organization 2' as the organization identified by "organization2";
+
+define 'the organization role 1' as the organizational role identified by "organizationRole1";
+define 'the organization role 2' as the organizational role identified by "organizationRole2";  
+
+define 'the building 1' as the building identified by "building1";
+define 'the building 2' as the building identified by "building2";
+define 'the building 3' as the building identified by "building3";
+
+// vehicles
+define 'the vehicle details 1' as a new vehicle details where 
+	the maker is "Maker1", 
+	the model is "T-10", 
+	the type is MOTORCYCLE, 
+	the year is "2011", 
+	the maximum speed is 290;
+	
+// vehicle 1 - Suspecious Vehicle
+emit a new vehicle initialization where 
+	the vehicle is 'the vehicle 1' ,
+	the details is 'the vehicle details 1', 
+	the status is ACTIVE,
+	the location is the point with 22 as longitude and 23 as latitude,
+	the last seen is 1/25/2016 4:01:01 PM,
+	the organization is the organization identified by "3256", 
+	suspicious is true,
+	the owner is the person identified by "123",
+	time-stamped 1/2/2016;
+
+// buildings
+
+
+// organizations
+// organization 1
+emit a new organization initialization where 
+	the organization is 'the organization 1',
+	the type is COMMERCIAL,
+	time-stamped 2/1/2015 3:13:35 PM;
+
+// organization 2
+emit a new organization initialization where 
+	the organization is 'the organization 2',
+	the type is CRIMINAL,
+	time-stamped 2/1/2015 3:13:35 PM;
+
+// organization roles
+// manager
+emit a new organization role initialization where 
+	the organizational role is 'the organization role 1',
+	the organization is 'the organization 2',
+	the timestamp is 1/25/2016 3:06:09 PM;
+
+// just a criminal person
+emit a new organization role initialization where 
+	the organizational role is 'the organization role 2',
+	the organization is 'the organization 2',
+	the manager is 'the organization role 1',
+	the timestamp is 1/25/2016 3:06:16 PM;
+
+// persons
+emit a new person initialization where
+    the person is 'person1',
+    the name is "Some Bad Guy 1",
+    the profession is "Criminal Profession (Manager)",
+	the role is 'the organization role 1',
+    the location is the point with 22 as longitude and 23 as latitude ,
+    the state is ACTIVE,
+    the timestamp is 1/25/2016 2:42:07 PM;
+    
+emit a new person initialization where
+    the person is 'person2',
+    the name is "Some Bad Guy 2",
+    the profession is "Criminal Profession" ,
+    the location is the point with 22 as longitude and 23 as latitude,
+    the state is ACTIVE,
+    the role is 'the organization role 2',
+    the timestamp is 1/25/2016 2:42:07 PM;
