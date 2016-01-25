@@ -5,7 +5,7 @@ Server URLs:
 [Global Event Aggregate](https://localhost:9443/ibm/ia/rest/solutions/Blur/aggregate/defvarnumberx95ofx95hotx95buildingx95alertsx95today),
 [Global Entity Aggregate](https://localhost:9443/ibm/ia/rest/solutions/Blur/aggregate/defvarnumberx95ofx95criminalx95organizations),
 [Map](https://localhost:9443/ibm/maps/),
-[Alerts Dashboard](http://localhost:8000)
+[Alerts Dashboard](http://odm-dsi-alerts_dashboard.mybluemix.net/)
 
 
 
