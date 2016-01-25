@@ -9,10 +9,10 @@ public interface IPathFinder
         property "OSGi.service" "blurservices.IPathFinder"
 {
     public static boolean isGood(blur.model.Person person, int depth);
-    public static java.lang.Boolean isTherePath(string ownerId, int depth);
+    public static boolean isTherePath(string ownerId, int depth);
 }
 
-public class IRangeCalculator
+public interface IRangeCalculator
         property "OSGi.service" "blurservices.IRangeCalculator"
 {
     public static com.ibm.geolib.geom.Polygon getRange(blur.model.Vehicle vehicle, int minutes);
