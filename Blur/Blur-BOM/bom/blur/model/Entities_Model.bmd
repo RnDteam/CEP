@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BusinessModelDefinition>
-    <Bmd><![CDATA[-- person
+    <Bmd><![CDATA[--alerted entity
+
+a location alerted entity is a business entity identified by a id with 
+a isAlerted,
+a location (a point) used as the default geometry.
+
+-- person
 a person state can be one of : ACTIVE, INACTIVE.
 
-a person is a business entity identified by an id with
+a person is a location alerted entity with
    a name,
    a profession,
    a risk score (numeric),
-   a location (a point) used as the default geometry,
    a state (a person state).
 a person is related to an organizational role, named the role.
 
@@ -31,16 +36,14 @@ an organizational role is related to an organizational role , named the manager.
 a building type can be one of: APPARTMENT, WAREHOUSE, COMMERCIAL.
 a building usage type can be one of: BANK BRANCH, FURNITURE STORE.
 
-a building is a business entity identified by an id.
-a building has a location (a point) used as the default geometry.
-a building has a type (a building type).
-a building has a usage type ( a building usage type ).
+a building is a location alerted entity with
+ a type (a building type),
+ a usage type ( a building usage type ),
+ a recent cellular report frequency (numeric),
+ an expected cellular report frequency (numeric).
 a building is related to a person , named the owner.
 a building is related to several different organizations.
 a building has several different alerts.
-
-a building has a recent cellular report frequency (numeric).
-a building has an expected cellular report frequency (numeric).
 
 
 -- vehicle
