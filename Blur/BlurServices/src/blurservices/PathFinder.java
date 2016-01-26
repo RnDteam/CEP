@@ -31,14 +31,19 @@ public class PathFinder implements IPathFinder {
 	@Override
 	public Polygon getRange(Vehicle vehicle, int minutes) {
 		
-		GeometryFactory geometryFactory = GeoSpatialService.getService().getGeometryFactory();
+		System.out.println("********************************* Get Range *****************************");
 		
-	//	Point point = vehicle.getLocation();
-				
-		Point point1 = geometryFactory.getPoint(0, 0);
-		Point point2 = geometryFactory.getPoint(3, 0);
-		Point point3 = geometryFactory.getPoint(3, 3);
-		Point point4 = geometryFactory.getPoint(0, 3);
+		GeometryFactory geometryFactory = GeoSpatialService.getService().getGeometryFactory();
+	
+		Point vehicleLocation = vehicle.getLocation();
+		double[] coord = vehicleLocation.getCoordinates();
+		
+		double shift = 1;
+		
+		Point point1 = geometryFactory.getPoint(coord[0] - shift, coord[1] - shift);
+		Point point2 = geometryFactory.getPoint(coord[0] - shift, coord[1] + shift);
+		Point point3 = geometryFactory.getPoint(coord[0] + shift, coord[1] + shift);
+		Point point4 = geometryFactory.getPoint(coord[0] + shift, coord[1] - shift);
 		
 		ArrayList<Point> pointsList = new ArrayList<Point>();
 		pointsList.add(point1);
