@@ -76,7 +76,8 @@ emit a new vehicle initialization where
 	the owner is the person identified by "12355" ,
 	time-stamped 1/2/2016;
 	
-// vehicle 5
+// vehicle 5 - not suspicious
+// The vehicle is MOTORCYCLE and its owner is not related to a CRIMINAL organization and is not 2 depth associated to a CRIMINAL organization
 emit a new vehicle initialization where 
 	the vehicle is 'the vehicle 5' ,
 	the details is vehicleDetails5 ,
