@@ -11,8 +11,6 @@ import blur.model.Vehicle;
 import blur.model.VehicleDetails;
 import blur.model.VehicleStatus;
 import blur.model.VehicleType;
-import blur.model.impl.OrganizationalRole;
-
 import com.ibm.ia.common.ComponentException;
 import com.ibm.ia.extension.EntityInitializer;
 import com.ibm.ia.extension.annotations.EntityInitializerDescriptor;
@@ -62,10 +60,10 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 		return getModelFactory().createRelationship(person);
 	}
 
-	private Relationship<VehicleDetails> getDetailsFromES(
+	private VehicleDetails getDetailsFromES(
 			String licensePlateNumber) {
 		
-		VehicleDetails myDetails = conceptFactory.createVehicleDetails("Details-" + licensePlateNumber);
+		VehicleDetails myDetails = conceptFactory.createVehicleDetails();
 		
 //		myDetails.setType(generateStatus());
 		myDetails.setType(VehicleType.MOTORCYCLE);
@@ -74,9 +72,7 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 		Integer randomYear = (random.nextInt(2015 - 1980)) + 1980;
 		myDetails.setYear(randomYear.toString());
 		
-		Relationship<VehicleDetails> detailsRelationship = getModelFactory().createRelationship(myDetails);
-		
-		return detailsRelationship;
+		return myDetails;
 	}
 	
 	private static VehicleType generateStatus() {

@@ -1,11 +1,9 @@
-package Events;
+package EventsHandler.Events;
 
 import java.sql.ResultSet;
 import com.ibm.ia.gateway.SolutionGateway;
-
 import DBHandler.ConverterUtility;
-import DBHandler.DBReader;
-import DBHandler.EventCreation;
+import EventsHandler.EventCreation;
 import blur.model.TrafficCameraReport;
 import blur.model.Vehicle;
 
@@ -27,6 +25,8 @@ public class TrafficCameraReportEvent extends EventCreation<TrafficCameraReport>
 			trafficCameraReportEvent.setCameraId(Integer.parseInt(cameraId));
 			trafficCameraReportEvent.setCameraLocation(ConverterUtility.getPointFromString(logntitude, latitude));
 			trafficCameraReportEvent.setVehicle(gateway.createRelationship(Vehicle.class, licensePlate));
+//			trafficCameraReportEvent.setPersons(arg0);
+			
 			trafficCameraReportEvent.setTimestamp(ConverterUtility.absDate.plusMinutes(Integer.parseInt(reportTime)));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -37,6 +37,6 @@ public class TrafficCameraReportEvent extends EventCreation<TrafficCameraReport>
 
 	@Override
 	public String getTableName() {
-		return "traffic_camera_reports";
+		return "RP_Traffic";
 	}
 }

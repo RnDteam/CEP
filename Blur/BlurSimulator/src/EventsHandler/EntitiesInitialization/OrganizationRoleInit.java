@@ -1,17 +1,17 @@
-package EntitiesInitialization;
+package EventsHandler.EntitiesInitialization;
 
 import java.sql.ResultSet;
 
 import com.ibm.ia.gateway.SolutionGateway;
 
 import DBHandler.ConverterUtility;
-import DBHandler.EventCreation;
+import EventsHandler.EventCreation;
 import blur.model.Organization;
 import blur.model.OrganizationRoleInitialization;
+import blur.model.OrganizationRoleType;
 import blur.model.OrganizationalRole;
-import blur.model.Person;
 
-public class OrganizaionRoleInit extends
+public class OrganizationRoleInit extends
 		EventCreation<OrganizationRoleInitialization> {
 
 	@Override
@@ -22,15 +22,14 @@ public class OrganizaionRoleInit extends
 			organizationRolesInitEvent = gateway.getEventFactory().createEvent(OrganizationRoleInitialization.class);
 			
 			String organizationRoleId = resultSet.getString(1);
-			String personId = resultSet.getString(2);
-			String roleName = resultSet.getString(3);
-			String managerId = resultSet.getString(4);
-			String organizationId = resultSet.getString(5);
+			String roleName = resultSet.getString(2);
+			String roleType = resultSet.getString(3);
+			String organizationId = resultSet.getString(4);
 			
+			organizationRolesInitEvent.setOrganizationalRole(
+					gateway.createRelationship(OrganizationalRole.class, organizationRoleId));
 			organizationRolesInitEvent.setName(roleName);
-			organizationRolesInitEvent.setOrganizationalRole(gateway.createRelationship(OrganizationalRole.class, organizationRoleId));
-			organizationRolesInitEvent.setPerson(gateway.createRelationship(Person.class, personId));
-			organizationRolesInitEvent.setManager(gateway.createRelationship(OrganizationalRole.class, managerId));
+			organizationRolesInitEvent.setType(getRoleTypeFromString(roleType));
 			organizationRolesInitEvent.setOrganization(gateway.createRelationship(Organization.class, organizationId));
 			organizationRolesInitEvent.setTimestamp(ConverterUtility.initDate);
 		} catch (Exception e) {
@@ -40,9 +39,21 @@ public class OrganizaionRoleInit extends
 		return organizationRolesInitEvent;
 	}
 
+	private OrganizationRoleType getRoleTypeFromString(String roleTypeString) {
+		String lowerCase = roleTypeString.toLowerCase();
+		
+		for (OrganizationRoleType roleType : OrganizationRoleType.values()) {
+			if(lowerCase.equals(roleType.toString().toLowerCase())) {
+				return roleType;
+			}
+		}
+		
+		return null;
+	}
+
 	@Override
 	public String getTableName() {
-		return "organization_roles";
+		return "OB_Organization_role";
 	}
 
 }

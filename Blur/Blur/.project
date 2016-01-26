@@ -8,6 +8,8 @@
 		<project>BlurExtensions</project>
 		<project>BlurServices</project>
 		<project>BuildingAgent</project>
+		<project>BuildingJavaAgent</project>
+		<project>PersonJavaAgent</project>
 		<project>VehicleRuleAgent</project>
 	</projects>
 	<buildSpec>

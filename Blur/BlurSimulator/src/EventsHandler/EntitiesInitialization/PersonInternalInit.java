@@ -1,17 +1,16 @@
-package EntitiesInitialization;
+package EventsHandler.EntitiesInitialization;
 
 import java.sql.ResultSet;
+
+import blur.model.OrganizationalRole;
+import blur.model.Person;
+import blur.model.PersonState;
+import blur.model.PersonUpdate;
 
 import com.ibm.ia.gateway.SolutionGateway;
 
 import DBHandler.ConverterUtility;
-import DBHandler.DBReader;
-import DBHandler.EventCreation;
-import blur.model.OrganizationalRole;
-import blur.model.Person;
-import blur.model.PersonInitialization;
-import blur.model.PersonState;
-import blur.model.PersonUpdate;
+import EventsHandler.EventCreation;
 
 public class PersonInternalInit extends EventCreation<PersonUpdate> {
 
@@ -26,15 +25,13 @@ public class PersonInternalInit extends EventCreation<PersonUpdate> {
 			String personId = resultSet.getString(1);
 			String name = resultSet.getString(2);
 			String organizationRoleId = resultSet.getString(3);
-			String proffesion = resultSet.getString(4);
-			String logntitude = resultSet.getString(5);
-			String latitude = resultSet.getString(6);
-			String state  =resultSet.getString(7);
+			String logntitude = resultSet.getString(4);
+			String latitude = resultSet.getString(5);
+			String state  =resultSet.getString(6);
 			
 			personInitEvent.setPerson(gateway.createRelationship(Person.class, personId));
 			personInitEvent.setName(name);
 			personInitEvent.setRole(gateway.createRelationship(OrganizationalRole.class, organizationRoleId));
-			personInitEvent.setProfession(proffesion);
 			personInitEvent.setLocation(ConverterUtility.getPointFromString(logntitude, latitude));
 			personInitEvent.setState(getPersonState(state));
 			
@@ -60,7 +57,7 @@ public class PersonInternalInit extends EventCreation<PersonUpdate> {
 
 	@Override
 	public String getTableName() {
-		return "persons_internal";
+		return "OB_Person";
 	}
 
 }

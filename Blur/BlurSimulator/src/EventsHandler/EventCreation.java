@@ -1,4 +1,4 @@
-package DBHandler;
+package EventsHandler;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -7,7 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import blur.model.TrafficCameraReport;
+import DBHandler.DBReader;
+import DBHandler.IDBInteraction;
 
 import com.ibm.ia.gateway.SolutionGateway;
 import com.ibm.ia.model.Event;
@@ -30,8 +31,7 @@ public abstract class EventCreation<T extends Event> implements IDBInteraction<T
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		DBReader.closeConnection(dbConnection);
+	
 		return eventsList;
 	}
 	

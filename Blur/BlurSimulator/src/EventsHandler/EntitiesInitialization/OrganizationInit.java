@@ -1,17 +1,14 @@
-package EntitiesInitialization;
+package EventsHandler.EntitiesInitialization;
 
 import java.sql.ResultSet;
 
 import com.ibm.ia.gateway.SolutionGateway;
 
 import DBHandler.ConverterUtility;
-import DBHandler.DBReader;
-import DBHandler.EventCreation;
+import EventsHandler.EventCreation;
 import blur.model.Organization;
 import blur.model.OrganizationInitialization;
 import blur.model.OrganizationType;
-import blur.model.TrafficCameraReport;
-import blur.model.Vehicle;
 
 public class OrganizationInit extends EventCreation<OrganizationInitialization> {
 
@@ -49,7 +46,7 @@ public class OrganizationInit extends EventCreation<OrganizationInitialization> 
 
 	@Override
 	public String getTableName() {
-		return "organizations";
+		return "OB_Organization";
 	}
 
 }

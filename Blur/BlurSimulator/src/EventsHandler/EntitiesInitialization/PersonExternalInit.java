@@ -1,4 +1,4 @@
-package EntitiesInitialization;
+package EventsHandler.EntitiesInitialization;
 
 import java.sql.ResultSet;
 
@@ -6,11 +6,8 @@ import com.ibm.ia.gateway.SolutionGateway;
 
 import blur.model.Person;
 import blur.model.PersonInitialization;
-import blur.model.TrafficCameraReport;
-import blur.model.Vehicle;
 import DBHandler.ConverterUtility;
-import DBHandler.DBReader;
-import DBHandler.EventCreation;
+import EventsHandler.EventCreation;
 
 public class PersonExternalInit extends EventCreation<PersonInitialization> {
 
@@ -37,7 +34,7 @@ public class PersonExternalInit extends EventCreation<PersonInitialization> {
 
 	@Override
 	public String getTableName() {
-		return "persons_external";
+		return "DB_People";
 	}
 
 }

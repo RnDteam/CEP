@@ -11,6 +11,15 @@ a building initialization has a location ( a point ) used as the default geometr
 a building initialization has a type ( a building type ) .
 a building initialization has a usage type ( a building usage type ) .
 
+-- Update Building
+a building update is a business event .
+a building update is related to a building .
+a building update is related to a person , named the owner .
+a building update is related to several different organizations .
+a building update has a location ( a point ) used as the default geometry .
+a building update has a type ( a building type ) .
+a building update has a usage type ( a building usage type ) .
+
 --Organization
 an organization initialization is a business event.
 an organization initialization is related to an organization.
@@ -19,6 +28,7 @@ an organization initialization has a type(an organization type).
 an organization role initialization is a business event.
 an organization role initialization is related to an organizational role.
 an organization role initialization has a name.
+an organization role initialization has a type(an organization role type).
 an organization role initialization is related to an organization.
 an organization role initialization is related to an person.
 an organization role initialization is related to an organizational role , named the manager.
@@ -31,7 +41,7 @@ a person initialization has a location (a point) used as the default geometry.
 a person initialization has a state (a person state).
 a person initialization is related to a person.
 a person initialization is related to an organizational role, named the role.
- 
+
 -- Update Person
 a person update is a business event.
 a person update has a name.
@@ -41,7 +51,6 @@ a person update has a state (a person state).
 a person update is related to a person.
 a person update is related to an organizational role, named the role.
 
-
 --Vehicle
 a vehicle initialization is a business event.
 a vehicle initialization is related to an vehicle.
@@ -49,18 +58,18 @@ a vehicle initialization is related to a person, named the owner.
 a vehicle initialization is related to an organization.
 a vehicle initialization has a location (a point) used as the default geometry.
 a vehicle initialization has a status (a vehicle status).
-a vehicle initialization is related to a details (a vehicle details).
+a vehicle initialization has a details (a vehicle details).
 a vehicle initialization has a last seen (date & time).
 a vehicle initialization has a suspicious (a boolean ).
 
 --Vehicle Details
-a vehicle details initialization is a business event.
-a vehicle details initialization is related to a vehicle details.
-a vehicle details initialization has a maker.
-a vehicle details initialization has a model.
-a vehicle details initialization has a type(a vehicle type ).
-a vehicle details initialization has a year.
-a vehicle details initialization has a maximum speed (numeric).
+--a vehicle details initialization is a business event.
+--a vehicle details initialization is related to a vehicle details.
+--a vehicle details initialization has a maker.
+--a vehicle details initialization has a model.
+--a vehicle details initialization has a type(a vehicle type ).
+--a vehicle details initialization has a year.
+--a vehicle details initialization has a maximum speed (numeric).
 
 
 ]]></Bmd>
@@ -79,6 +88,7 @@ an organization is initialized from an organization initialization , where this 
 
 an organizational role is initialized from an organization role initialization , where this organizational role comes from the organizational role of this organization role initialization :
     - set the name of the organizational role to the name of this organization role initialization
+    - set the type of the organizational role to the type of this organization role initialization
     - set the organization of the organizational role to the organization of this organization role initialization
     - set the person of the organizational role to the person of this organization role initialization
     - set the manager of the organizational role to the manager of this organization role initialization .
@@ -103,10 +113,10 @@ a vehicle is initialized from a vehicle initialization , where this vehicle come
 	- make it this vehicle initialization is suspicious that this vehicle is suspicious .
 	
 --Vehicle Details
-a vehicle details  is initialized from a vehicle details initialization , where this vehicle details comes from the vehicle details of this vehicle details initialization : 
-	- set the maker of this vehicle details to the maker of this vehicle details initialization 
-	- set the model of this vehicle details to the model of this vehicle details initialization 
-    - set the type of this vehicle details to the type of this vehicle details initialization 
-	- set the year of this vehicle details to the year of this vehicle details initialization 
-	- set the maximum speed of this vehicle details to the maximum speed of this vehicle details initialization .]]></Bmi>
+--a vehicle details  is initialized from a vehicle details initialization , where this vehicle details comes from the vehicle details of this vehicle details initialization : 
+--	- set the maker of this vehicle details to the maker of this vehicle details initialization 
+--	- set the model of this vehicle details to the model of this vehicle details initialization 
+--    - set the type of this vehicle details to the type of this vehicle details initialization 
+--	- set the year of this vehicle details to the year of this vehicle details initialization 
+--	- set the maximum speed of this vehicle details to the maximum speed of this vehicle details initialization .]]></Bmi>
 </BusinessModelDefinition>

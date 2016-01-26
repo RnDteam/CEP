@@ -1,4 +1,4 @@
-uuid = 790b021a-663c-4041-8992-8d5d747c1ae9
+uuid = b0a6e612-e822-4827-8404-5d3f253763e7
 # blur.model.Alert
 blur.model.Alert#concept.label = alert
 blur.model.Alert.Alert(blur.model.Building,double,java.lang.String,double,blur.model.Organization,blur.model.Person,java.lang.String,java.time.ZonedDateTime,blur.model.Vehicle)#phrase.navigation = a new {alert} where {0, building} {1, hours24} {2, message} {3, minues30} {4, organization} {5, person} {6, rule} {7, timestamp} {8, vehicle} 
@@ -90,6 +90,32 @@ blur.model.BuildingType.APPARTMENT#instance.label = APPARTMENT
 blur.model.BuildingType.COMMERCIAL#instance.label = COMMERCIAL
 blur.model.BuildingType.WAREHOUSE#instance.label = WAREHOUSE
 
+# blur.model.BuildingUpdate
+blur.model.BuildingUpdate#concept.label = building update
+blur.model.BuildingUpdate.BuildingUpdate(blur.model.Building,com.ibm.geolib.geom.Point,blur.model.Person,java.time.ZonedDateTime,blur.model.BuildingType,blur.model.BuildingUsageType)#phrase.navigation = a new {building update} where {0, building} {1, location} {2, owner} {3, timestamp} {4, type} {5, usage type} 
+blur.model.BuildingUpdate.addTo_organizations(blur.model.Organization)#phrase.action = add {0} to the organizations of {this}
+blur.model.BuildingUpdate.building#phrase.action = set the building of {this} to {building}
+blur.model.BuildingUpdate.building#phrase.clearer = clear the building of {this}
+blur.model.BuildingUpdate.building#phrase.navigation = {building} of {this}
+blur.model.BuildingUpdate.clear_organizations()#phrase.action = clear the organizations of {this}
+blur.model.BuildingUpdate.location#phrase.action = set the location of {this} to {location}
+blur.model.BuildingUpdate.location#phrase.clearer = clear the location of {this}
+blur.model.BuildingUpdate.location#phrase.navigation = {location} of {this}
+blur.model.BuildingUpdate.organizations#phrase.action = set the organizations of {this} to {organization}
+blur.model.BuildingUpdate.organizations#phrase.navigation = {organization} of {this}
+blur.model.BuildingUpdate.owner#phrase.action = set the owner of {this} to {owner}
+blur.model.BuildingUpdate.owner#phrase.clearer = clear the owner of {this}
+blur.model.BuildingUpdate.owner#phrase.navigation = {owner} of {this}
+blur.model.BuildingUpdate.removeFrom_organizations(blur.model.Organization)#phrase.action = remove {0} from the organizations of {this}
+blur.model.BuildingUpdate.timestamp#phrase.action = set the timestamp of {this} to {timestamp}
+blur.model.BuildingUpdate.timestamp#phrase.navigation = {timestamp} of {this}
+blur.model.BuildingUpdate.type#phrase.action = set the type of {this} to {type}
+blur.model.BuildingUpdate.type#phrase.clearer = clear the type of {this}
+blur.model.BuildingUpdate.type#phrase.navigation = {type} of {this}
+blur.model.BuildingUpdate.usageType#phrase.action = set the usage type of {this} to {usage type}
+blur.model.BuildingUpdate.usageType#phrase.clearer = clear the usage type of {this}
+blur.model.BuildingUpdate.usageType#phrase.navigation = {usage type} of {this}
+
 # blur.model.BuildingUsageType
 blur.model.BuildingUsageType#concept.label = building usage type
 blur.model.BuildingUsageType.BANK_BRANCH#instance.label = BANK BRANCH
@@ -106,6 +132,42 @@ blur.model.CellularReport.person#phrase.clearer = clear the person of {this}
 blur.model.CellularReport.person#phrase.navigation = {person} of {this}
 blur.model.CellularReport.timestamp#phrase.action = set the timestamp of {this} to {timestamp}
 blur.model.CellularReport.timestamp#phrase.navigation = {timestamp} of {this}
+
+# blur.model.CriminalsNearSuspiciousVehicle
+blur.model.CriminalsNearSuspiciousVehicle#concept.label = criminals near suspicious vehicle
+blur.model.CriminalsNearSuspiciousVehicle.CriminalsNearSuspiciousVehicle(blur.model.Vehicle,com.ibm.geolib.geom.Point,java.time.ZonedDateTime)#phrase.navigation = a new {criminals near suspicious vehicle} where {0, vehicle} {1, event location} {2, timestamp} 
+blur.model.CriminalsNearSuspiciousVehicle.vehicle#phrase.action = set the vehicle of {this} to {vehicle}
+blur.model.CriminalsNearSuspiciousVehicle.vehicle#phrase.clearer = clear the vehicle of {this}
+blur.model.CriminalsNearSuspiciousVehicle.vehicle#phrase.navigation = {vehicle} of {this}
+
+# blur.model.LocationBasedEvent
+blur.model.LocationBasedEvent#concept.label = location based event
+blur.model.LocationBasedEvent.LocationBasedEvent(com.ibm.geolib.geom.Point,java.time.ZonedDateTime)#phrase.navigation = a new {location based event} where {0, event location} {1, timestamp} 
+blur.model.LocationBasedEvent.addTo_buildings(blur.model.Building)#phrase.action = add {0} to the buildings of {this}
+blur.model.LocationBasedEvent.addTo_persons(blur.model.Person)#phrase.action = add {0} to the persons of {this}
+blur.model.LocationBasedEvent.buildings#phrase.action = set the buildings of {this} to {building}
+blur.model.LocationBasedEvent.buildings#phrase.navigation = {building} of {this}
+blur.model.LocationBasedEvent.clear_buildings()#phrase.action = clear the buildings of {this}
+blur.model.LocationBasedEvent.clear_persons()#phrase.action = clear the persons of {this}
+blur.model.LocationBasedEvent.eventLocation#phrase.action = set the event location of {this} to {event location}
+blur.model.LocationBasedEvent.eventLocation#phrase.clearer = clear the event location of {this}
+blur.model.LocationBasedEvent.eventLocation#phrase.navigation = {event location} of {this}
+blur.model.LocationBasedEvent.persons#phrase.action = set the persons of {this} to {person}
+blur.model.LocationBasedEvent.persons#phrase.navigation = {person} of {this}
+blur.model.LocationBasedEvent.removeFrom_buildings(blur.model.Building)#phrase.action = remove {0} from the buildings of {this}
+blur.model.LocationBasedEvent.removeFrom_persons(blur.model.Person)#phrase.action = remove {0} from the persons of {this}
+blur.model.LocationBasedEvent.timestamp#phrase.action = set the timestamp of {this} to {timestamp}
+blur.model.LocationBasedEvent.timestamp#phrase.navigation = {timestamp} of {this}
+
+# blur.model.ManagersNearSuspiciousVehicle
+blur.model.ManagersNearSuspiciousVehicle#concept.label = managers near suspicious vehicle
+blur.model.ManagersNearSuspiciousVehicle.ManagersNearSuspiciousVehicle(com.ibm.geolib.geom.Polygon,blur.model.Vehicle,com.ibm.geolib.geom.Point,java.time.ZonedDateTime)#phrase.navigation = a new {managers near suspicious vehicle} where {0, range} {1, vehicle} {2, event location} {3, timestamp} 
+blur.model.ManagersNearSuspiciousVehicle.range#phrase.action = set the range of {this} to {range}
+blur.model.ManagersNearSuspiciousVehicle.range#phrase.clearer = clear the range of {this}
+blur.model.ManagersNearSuspiciousVehicle.range#phrase.navigation = {range} of {this}
+blur.model.ManagersNearSuspiciousVehicle.vehicle#phrase.action = set the vehicle of {this} to {vehicle}
+blur.model.ManagersNearSuspiciousVehicle.vehicle#phrase.clearer = clear the vehicle of {this}
+blur.model.ManagersNearSuspiciousVehicle.vehicle#phrase.navigation = {vehicle} of {this}
 
 # blur.model.Organization
 blur.model.Organization#concept.label = organization
@@ -129,7 +191,7 @@ blur.model.OrganizationInitialization.type#phrase.navigation = {type} of {this}
 
 # blur.model.OrganizationRoleInitialization
 blur.model.OrganizationRoleInitialization#concept.label = organization role initialization
-blur.model.OrganizationRoleInitialization.OrganizationRoleInitialization(blur.model.OrganizationalRole,java.lang.String,blur.model.Organization,blur.model.OrganizationalRole,blur.model.Person,java.time.ZonedDateTime)#phrase.navigation = a new {organization role initialization} where {0, manager} {1, name} {2, organization} {3, organizational role} {4, person} {5, timestamp} 
+blur.model.OrganizationRoleInitialization.OrganizationRoleInitialization(blur.model.OrganizationalRole,java.lang.String,blur.model.Organization,blur.model.OrganizationalRole,blur.model.Person,java.time.ZonedDateTime,blur.model.OrganizationRoleType)#phrase.navigation = a new {organization role initialization} where {0, manager} {1, name} {2, organization} {3, organizational role} {4, person} {5, timestamp} {6, type} 
 blur.model.OrganizationRoleInitialization.manager#phrase.action = set the manager of {this} to {manager}
 blur.model.OrganizationRoleInitialization.manager#phrase.clearer = clear the manager of {this}
 blur.model.OrganizationRoleInitialization.manager#phrase.navigation = {manager} of {this}
@@ -146,6 +208,14 @@ blur.model.OrganizationRoleInitialization.person#phrase.clearer = clear the pers
 blur.model.OrganizationRoleInitialization.person#phrase.navigation = {person} of {this}
 blur.model.OrganizationRoleInitialization.timestamp#phrase.action = set the timestamp of {this} to {timestamp}
 blur.model.OrganizationRoleInitialization.timestamp#phrase.navigation = {timestamp} of {this}
+blur.model.OrganizationRoleInitialization.type#phrase.action = set the type of {this} to {type}
+blur.model.OrganizationRoleInitialization.type#phrase.clearer = clear the type of {this}
+blur.model.OrganizationRoleInitialization.type#phrase.navigation = {type} of {this}
+
+# blur.model.OrganizationRoleType
+blur.model.OrganizationRoleType#concept.label = organization role type
+blur.model.OrganizationRoleType.EMPLOYEE#instance.label = EMPLOYEE
+blur.model.OrganizationRoleType.MANAGER#instance.label = MANAGER
 
 # blur.model.OrganizationType
 blur.model.OrganizationType#concept.label = organization type
@@ -154,7 +224,7 @@ blur.model.OrganizationType.CRIMINAL#instance.label = CRIMINAL
 
 # blur.model.OrganizationalRole
 blur.model.OrganizationalRole#concept.label = organizational role
-blur.model.OrganizationalRole.OrganizationalRole(java.lang.String,blur.model.OrganizationalRole,java.lang.String,blur.model.Organization,blur.model.Person)#phrase.navigation = a new {organizational role} where {0, id} {1, manager} {2, name} {3, organization} {4, person} 
+blur.model.OrganizationalRole.OrganizationalRole(java.lang.String,blur.model.OrganizationalRole,java.lang.String,blur.model.Organization,blur.model.Person,blur.model.OrganizationRoleType)#phrase.navigation = a new {organizational role} where {0, id} {1, manager} {2, name} {3, organization} {4, person} {5, type} 
 blur.model.OrganizationalRole.id#phrase.navigation = {id} of {this}
 blur.model.OrganizationalRole.manager#phrase.action = set the manager of {this} to {manager}
 blur.model.OrganizationalRole.manager#phrase.clearer = clear the manager of {this}
@@ -167,6 +237,9 @@ blur.model.OrganizationalRole.organization#phrase.navigation = {organization} of
 blur.model.OrganizationalRole.person#phrase.action = set the person of {this} to {person}
 blur.model.OrganizationalRole.person#phrase.clearer = clear the person of {this}
 blur.model.OrganizationalRole.person#phrase.navigation = {person} of {this}
+blur.model.OrganizationalRole.type#phrase.action = set the type of {this} to {type}
+blur.model.OrganizationalRole.type#phrase.clearer = clear the type of {this}
+blur.model.OrganizationalRole.type#phrase.navigation = {type} of {this}
 
 # blur.model.Person
 blur.model.Person#concept.label = person
@@ -214,16 +287,43 @@ blur.model.PersonState#concept.label = person state
 blur.model.PersonState.ACTIVE#instance.label = ACTIVE
 blur.model.PersonState.INACTIVE#instance.label = INACTIVE
 
+# blur.model.PersonUpdate
+blur.model.PersonUpdate#concept.label = person update
+blur.model.PersonUpdate.PersonUpdate(com.ibm.geolib.geom.Point,java.lang.String,blur.model.Person,java.lang.String,blur.model.OrganizationalRole,blur.model.PersonState,java.time.ZonedDateTime)#phrase.navigation = a new {person update} where {0, location} {1, name} {2, person} {3, profession} {4, role} {5, state} {6, timestamp} 
+blur.model.PersonUpdate.location#phrase.action = set the location of {this} to {location}
+blur.model.PersonUpdate.location#phrase.clearer = clear the location of {this}
+blur.model.PersonUpdate.location#phrase.navigation = {location} of {this}
+blur.model.PersonUpdate.name#phrase.action = set the name of {this} to {name}
+blur.model.PersonUpdate.name#phrase.navigation = {name} of {this}
+blur.model.PersonUpdate.person#phrase.action = set the person of {this} to {person}
+blur.model.PersonUpdate.person#phrase.clearer = clear the person of {this}
+blur.model.PersonUpdate.person#phrase.navigation = {person} of {this}
+blur.model.PersonUpdate.profession#phrase.action = set the profession of {this} to {profession}
+blur.model.PersonUpdate.profession#phrase.navigation = {profession} of {this}
+blur.model.PersonUpdate.role#phrase.action = set the role of {this} to {role}
+blur.model.PersonUpdate.role#phrase.clearer = clear the role of {this}
+blur.model.PersonUpdate.role#phrase.navigation = {role} of {this}
+blur.model.PersonUpdate.state#phrase.action = set the state of {this} to {state}
+blur.model.PersonUpdate.state#phrase.clearer = clear the state of {this}
+blur.model.PersonUpdate.state#phrase.navigation = {state} of {this}
+blur.model.PersonUpdate.timestamp#phrase.action = set the timestamp of {this} to {timestamp}
+blur.model.PersonUpdate.timestamp#phrase.navigation = {timestamp} of {this}
+
+# blur.model.SuspiciousVehicleDetected
+blur.model.SuspiciousVehicleDetected#concept.label = suspicious vehicle detected
+blur.model.SuspiciousVehicleDetected.SuspiciousVehicleDetected(blur.model.Vehicle,com.ibm.geolib.geom.Point,java.time.ZonedDateTime)#phrase.navigation = a new {suspicious vehicle detected} where {0, vehicle} {1, event location} {2, timestamp} 
+blur.model.SuspiciousVehicleDetected.vehicle#phrase.action = set the vehicle of {this} to {vehicle}
+blur.model.SuspiciousVehicleDetected.vehicle#phrase.clearer = clear the vehicle of {this}
+blur.model.SuspiciousVehicleDetected.vehicle#phrase.navigation = {vehicle} of {this}
+
 # blur.model.TrafficCameraReport
 blur.model.TrafficCameraReport#concept.label = traffic camera report
-blur.model.TrafficCameraReport.TrafficCameraReport(int,com.ibm.geolib.geom.Point,java.time.ZonedDateTime,blur.model.Vehicle)#phrase.navigation = a new {traffic camera report} where {0, camera id} {1, camera location} {2, timestamp} {3, vehicle} 
+blur.model.TrafficCameraReport.TrafficCameraReport(int,com.ibm.geolib.geom.Point,blur.model.Vehicle,com.ibm.geolib.geom.Point,java.time.ZonedDateTime)#phrase.navigation = a new {traffic camera report} where {0, camera id} {1, camera location} {2, vehicle} {3, event location} {4, timestamp} 
 blur.model.TrafficCameraReport.cameraId#phrase.action = set the camera id of {this} to {camera id}
 blur.model.TrafficCameraReport.cameraId#phrase.navigation = {camera id} of {this}
 blur.model.TrafficCameraReport.cameraLocation#phrase.action = set the camera location of {this} to {camera location}
 blur.model.TrafficCameraReport.cameraLocation#phrase.clearer = clear the camera location of {this}
 blur.model.TrafficCameraReport.cameraLocation#phrase.navigation = {camera location} of {this}
-blur.model.TrafficCameraReport.timestamp#phrase.action = set the timestamp of {this} to {timestamp}
-blur.model.TrafficCameraReport.timestamp#phrase.navigation = {timestamp} of {this}
 blur.model.TrafficCameraReport.vehicle#phrase.action = set the vehicle of {this} to {vehicle}
 blur.model.TrafficCameraReport.vehicle#phrase.clearer = clear the vehicle of {this}
 blur.model.TrafficCameraReport.vehicle#phrase.navigation = {vehicle} of {this}
@@ -263,8 +363,7 @@ blur.model.VehicleCreated.vehicle#phrase.navigation = {vehicle} of {this}
 
 # blur.model.VehicleDetails
 blur.model.VehicleDetails#concept.label = vehicle details
-blur.model.VehicleDetails.VehicleDetails(java.lang.String,java.lang.String,double,java.lang.String,blur.model.VehicleType,java.lang.String)#phrase.navigation = a new {vehicle details} where {0, id} {1, maker} {2, maximum speed} {3, model} {4, type} {5, year} 
-blur.model.VehicleDetails.id#phrase.navigation = {id} of {this}
+blur.model.VehicleDetails.VehicleDetails(java.lang.String,double,java.lang.String,blur.model.VehicleType,java.lang.String)#phrase.navigation = a new {vehicle details} where {0, maker} {1, maximum speed} {2, model} {3, type} {4, year} 
 blur.model.VehicleDetails.maker#phrase.action = set the maker of {this} to {maker}
 blur.model.VehicleDetails.maker#phrase.navigation = {maker} of {this}
 blur.model.VehicleDetails.maximumSpeed#phrase.action = set the maximum speed of {this} to {maximum speed}
@@ -276,26 +375,6 @@ blur.model.VehicleDetails.type#phrase.clearer = clear the type of {this}
 blur.model.VehicleDetails.type#phrase.navigation = {type} of {this}
 blur.model.VehicleDetails.year#phrase.action = set the year of {this} to {year}
 blur.model.VehicleDetails.year#phrase.navigation = {year} of {this}
-
-# blur.model.VehicleDetailsInitialization
-blur.model.VehicleDetailsInitialization#concept.label = vehicle details initialization
-blur.model.VehicleDetailsInitialization.VehicleDetailsInitialization(java.lang.String,double,java.lang.String,java.time.ZonedDateTime,blur.model.VehicleType,blur.model.VehicleDetails,java.lang.String)#phrase.navigation = a new {vehicle details initialization} where {0, maker} {1, maximum speed} {2, model} {3, timestamp} {4, type} {5, vehicle details} {6, year} 
-blur.model.VehicleDetailsInitialization.maker#phrase.action = set the maker of {this} to {maker}
-blur.model.VehicleDetailsInitialization.maker#phrase.navigation = {maker} of {this}
-blur.model.VehicleDetailsInitialization.maximumSpeed#phrase.action = set the maximum speed of {this} to {maximum speed}
-blur.model.VehicleDetailsInitialization.maximumSpeed#phrase.navigation = {maximum speed} of {this}
-blur.model.VehicleDetailsInitialization.model#phrase.action = set the model of {this} to {model}
-blur.model.VehicleDetailsInitialization.model#phrase.navigation = {model} of {this}
-blur.model.VehicleDetailsInitialization.timestamp#phrase.action = set the timestamp of {this} to {timestamp}
-blur.model.VehicleDetailsInitialization.timestamp#phrase.navigation = {timestamp} of {this}
-blur.model.VehicleDetailsInitialization.type#phrase.action = set the type of {this} to {type}
-blur.model.VehicleDetailsInitialization.type#phrase.clearer = clear the type of {this}
-blur.model.VehicleDetailsInitialization.type#phrase.navigation = {type} of {this}
-blur.model.VehicleDetailsInitialization.vehicleDetails#phrase.action = set the vehicle details of {this} to {vehicle details}
-blur.model.VehicleDetailsInitialization.vehicleDetails#phrase.clearer = clear the vehicle details of {this}
-blur.model.VehicleDetailsInitialization.vehicleDetails#phrase.navigation = {vehicle details} of {this}
-blur.model.VehicleDetailsInitialization.year#phrase.action = set the year of {this} to {year}
-blur.model.VehicleDetailsInitialization.year#phrase.navigation = {year} of {this}
 
 # blur.model.VehicleInitialization
 blur.model.VehicleInitialization#concept.label = vehicle initialization

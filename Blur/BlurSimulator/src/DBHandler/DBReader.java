@@ -3,13 +3,6 @@ package DBHandler;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-
-import blur.model.TrafficCameraReport;
-import EntitiesInitialization.PersonExternalInit;
-import EntitiesInitialization.PersonInternalInit;
-import Events.TrafficCameraReportEvent;
 
 
 public class DBReader {
@@ -20,10 +13,10 @@ public class DBReader {
 	
 	private static Connection connection = null;
 
-	public static void closeConnection(Connection dbConnection) {
+	public static void closeConnection() {
 		try {
-			if(dbConnection != null) {
-				dbConnection.close();
+			if(connection != null) {
+				connection.close();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
