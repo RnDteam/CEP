@@ -58,7 +58,7 @@ a vehicle details is a concept with
 a vehicle status can be one of: INACTIVE, ACTIVE.
  
 a vehicle is a business entity identified by a license plate number.
-a vehicle has a location (a point).
+a vehicle has a location (a point) used as the default geometry.
 a vehicle has a status (a vehicle status).
 a vehicle has a details (a vehicle details).
 a vehicle has a last seen (date & time).

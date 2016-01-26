@@ -19,6 +19,7 @@ an organization initialization has a type(an organization type).
 an organization role initialization is a business event.
 an organization role initialization is related to an organizational role.
 an organization role initialization has a name.
+an organization role initialization has a type(an organization role type).
 an organization role initialization is related to an organization.
 an organization role initialization is related to an person.
 an organization role initialization is related to an organizational role , named the manager.
@@ -70,6 +71,7 @@ an organization is initialized from an organization initialization , where this 
 
 an organizational role is initialized from an organization role initialization , where this organizational role comes from the organizational role of this organization role initialization :
     - set the name of the organizational role to the name of this organization role initialization
+    - set the type of the organizational role to the type of this organization role initialization
     - set the organization of the organizational role to the organization of this organization role initialization
     - set the person of the organizational role to the person of this organization role initialization
     - set the manager of the organizational role to the manager of this organization role initialization .

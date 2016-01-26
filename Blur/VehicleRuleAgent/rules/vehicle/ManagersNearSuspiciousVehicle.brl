@@ -5,16 +5,23 @@
   <locale>en_US</locale>
   <definition><![CDATA[when a managers near suspicious vehicle occurs
 
-definitions 
+definitions
+	set 'range' to the range of this managers near suspicious vehicle;
 	set 'richable buildings' to the buildings of this managers near suspicious vehicle 
-	where the range of this managers near suspicious vehicle contains each building ;
+	where 'range' contains each building;
 	
-if the number of elements in 'richable buildings' is more than 0 then
+if the number of elements in 'richable buildings' is more than 0 
 
-for each building in 'richable buildings' :
-	- emit a new alert where
+then
+	for each building in 'richable buildings' :
+		- emit a new alert where
+			the vehicle is 'the vehicle',
+			the rule is the name of this rule,
+			the building is this building,
+			the message is "Their are managers of " + the id of the organization of 'the vehicle' + " which can arrive the building " +  the id of this building + " in 20 minutes";
+else
+	emit a new alert where
 		the vehicle is 'the vehicle',
 		the rule is the name of this rule,
-		the building is this building,
-		the message is "Their are managers of " + the id of the organization of 'the vehicle' + " which can arrive the building " +  the id of this building + " in 20 minutes";]]></definition>
+		the message is "Their are managers of " + the id of the organization of 'the vehicle' + " which can arrive to SOME range";]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>
