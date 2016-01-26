@@ -1,9 +1,15 @@
 package blurservices;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import blur.model.Person;
 import blur.model.Vehicle;
+import blur.model.VehicleDetails;
 
 import com.ibm.geolib.GeoSpatialService;
 import com.ibm.geolib.geom.GeometryFactory;
@@ -12,6 +18,60 @@ import com.ibm.geolib.geom.Point;
 import com.ibm.geolib.geom.Polygon;
 
 public class PathFinder implements IPathFinder {
+	
+	private static final String MY_SQL_DB_URL = "jdbc:mysql://localhost:3306/cep_try";
+	private static final String USER_NAME = "root";
+	private static final String PASSWORD = "root";
+	private static Connection dbConnection = null;
+	private static final String personLinkTableName = "person_link";
+
+
+	public static void closeConnection(Connection dbConnection) {
+		try {
+			if(dbConnection != null) {
+				dbConnection.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public static Connection getDBConnection() {
+		if(dbConnection == null) {
+			try {
+				dbConnection = DriverManager.getConnection(MY_SQL_DB_URL, USER_NAME, PASSWORD);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dbConnection;
+	}
+
+	public boolean getPersonLinkToCriminalFromDB(VehicleDetails vehicle_details) {
+		String personIdColumn = "Id";
+		String personLinkColumn = "Link";
+		String getPersonLinkQuery = "SELECT " + personLinkColumn + " FROM " + personLinkTableName + " WHERE ";
+		
+		getPersonLinkQuery += personIdColumn + "='" + vehicle_details.getMaker() + "'";
+		
+		String personLinkString = null;
+		try {
+			Statement statement = dbConnection.createStatement();
+			ResultSet resultSet = statement.executeQuery(getPersonLinkQuery);
+			
+			while (resultSet.next()) {
+				if (personLinkString != null){
+					System.out.println("Two rows with the same person Id");
+				}
+				personLinkString = resultSet.getString(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		closeConnection(dbConnection);
+		
+		return (personLinkString != null && personLinkString.equals("1"));
+	}
+	
 	@Override
 	public boolean isTherePath(String ownerId, int depth) {
 		System.out.println("********************************* PathFinder *****************************");
