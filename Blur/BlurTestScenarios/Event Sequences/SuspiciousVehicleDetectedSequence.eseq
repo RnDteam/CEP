@@ -1,0 +1,153 @@
+define 'suspicious vehicle 1' as the vehicle identified by "vehicle1";
+
+define 'bad manager' as the person identified by "bad manager";
+define 'bad guy 2' as the person identified by "bad guy 2";
+define 'good guy 3' as the person identified by "good guy 3";
+
+define 'commercial organization 1' as the organization identified by "commercial organization 1";
+define 'criminal organization 2' as the organization identified by "criminal organization 2";
+
+define 'manager role 1' as the organizational role identified by "manager role 1";
+define 'not manager role2' as the organizational role identified by "organization role 2";  
+
+define 'criminal building 1' as the building identified by "criminal building 1";
+define 'criminal building 2' as the building identified by "criminal building 2";
+define 'criminal building out of range 3' as the building identified by "commercial building 3";
+
+define 'suspicious vehicle 1 point' as the point with 22 as longitude and 23 as latitude ; 
+
+// vehicles
+define 'suspicious vehicle details 1' as a new vehicle details where 
+	the maker is "Maker1",
+	the model is "T-10",
+	the type is MOTORCYCLE,
+	the year is "2011", 
+	the maximum speed is 290;
+	
+emit a new vehicle initialization where 
+	the vehicle is 'suspicious vehicle 1' ,
+	the details is 'suspicious vehicle details 1', 
+	the status is ACTIVE,
+	the location is 'suspicious vehicle 1 point',
+	the last seen is 1/25/2016 4:01:01 PM,
+	the organization is 'criminal organization 2', 
+	suspicious is true,
+	the owner is the person identified by "123",
+	time-stamped 1/2/2016;
+
+// organizations
+emit a new organization initialization where 
+	the organization is 'commercial organization 1',
+	the type is COMMERCIAL,
+	time-stamped 2/1/2015 3:13:35 PM;
+
+emit a new organization initialization where 
+	the organization is 'criminal organization 2',
+	the type is CRIMINAL,
+	time-stamped 2/1/2015 3:13:35 PM;
+
+// organization roles
+// manager
+emit a new organization role initialization where 
+	the organizational role is 'manager role 1',
+	the organization is 'criminal organization 2',
+	the type is MANAGER,
+	the timestamp is 1/25/2016 3:06:09 PM;
+
+// just a criminal person
+emit a new organization role initialization where 
+	the organizational role is 'not manager role2',
+	the organization is 'criminal organization 2',
+	the type is EMPLOYEE,
+	the timestamp is 1/25/2016 3:06:16 PM;
+
+// persons
+emit a new person initialization where
+    the person is 'bad manager',
+    the name is "Some Bad Guy 1",
+    the profession is "Criminal Profession (Manager)",
+	the role is 'manager role 1',
+    the location is the point with 22 as longitude and 23 as latitude ,
+    the state is ACTIVE,
+    the timestamp is 1/25/2016 2:42:07 PM;
+    
+emit a new person initialization where
+    the person is 'bad guy 2',
+    the name is "Some Bad Guy 2",
+    the profession is "Criminal Profession" ,
+    the location is the point with 22 as longitude and 23 as latitude,
+    the state is ACTIVE,
+    the role is 'not manager role2',
+    the timestamp is 1/25/2016 2:42:07 PM;
+    
+// buildings
+define 'criminal building 1 init' as a new building initialization where 
+	the building is 'criminal building 1' , 
+	the location is the point with 22 as longitude and 23 as latitude,
+	the type is APPARTMENT, 
+	the usage type is BANK BRANCH ,
+	the timestamp is 1/25/2016 5:15:25 PM;
+add 'commercial organization 1' to the organizations of 'criminal building 1 init';
+add 'criminal organization 2' to the organizations of 'criminal building 1 init';
+emit 'criminal building 1 init';
+
+define 'criminal building 2 init' as a new building initialization where 
+	the building is 'criminal building 2' , 
+	the location is the point with 22 as longitude and 23 as latitude,
+	the type is APPARTMENT , 
+	the usage type is BANK BRANCH ,
+	the timestamp is 1/25/2016 5:15:25 PM;
+add 'criminal organization 2' to the organizations of 'criminal building 2 init';
+emit 'criminal building 2 init';
+
+define 'criminal building out of range 3 init' as a new building initialization where 
+	the building is 'criminal building out of range 3',
+	the location is the point with 55 as longitude and 55 as latitude,
+	the type is APPARTMENT , 
+	the usage type is BANK BRANCH ,
+	the timestamp is 1/25/2016 5:15:25 PM;
+add 'criminal organization 2' to the organizations of 'criminal building 2 init';
+emit 'criminal building out of range 3 init';
+
+// suspicious vehicle detected events
+define 'suspicious vehicle detected init' as a new suspicious vehicle detected where  
+	the event location is 'suspicious vehicle 1 point',
+	the vehicle is 'suspicious vehicle 1' ,
+	the timestamp is 1/25/2016 5:35:48 PM ;
+add 'criminal building 1' to the buildings of 'suspicious vehicle detected init';
+add 'criminal building 2' to the buildings of 'suspicious vehicle detected init';
+add 'bad guy 2' to the persons of 'suspicious vehicle detected init' ;
+add 'bad manager' to the persons of 'suspicious vehicle detected init' ;
+add 'good guy 3' to the persons of 'suspicious vehicle detected init' ; 
+emit 'suspicious vehicle detected init';
+
+define 'suspicious vehicle detected init with no CRIMINALS' as a new suspicious vehicle detected where  
+	the event location is 'suspicious vehicle 1 point',
+	the vehicle is 'suspicious vehicle 1' ,
+	the timestamp is 1/25/2016 5:35:48 PM ;
+add 'criminal building 1' to the buildings of 'suspicious vehicle detected init with no CRIMINALS';
+add 'criminal building 2' to the buildings of 'suspicious vehicle detected init with no CRIMINALS';
+add 'criminal building out of range 3' to the buildings of 'suspicious vehicle detected init with no CRIMINALS';
+add 'good guy 3' to the persons of 'suspicious vehicle detected init with no CRIMINALS'; 
+emit 'suspicious vehicle detected init with no CRIMINALS';
+
+define 'suspicious vehicle detected init with no MANAGERS' as a new suspicious vehicle detected where  
+	the event location is 'suspicious vehicle 1 point',
+	the vehicle is 'suspicious vehicle 1' ,
+	the timestamp is 1/25/2016 5:35:48 PM ;
+add 'criminal building 1' to the buildings of 'suspicious vehicle detected init with no MANAGERS';
+add 'criminal building 2' to the buildings of 'suspicious vehicle detected init with no MANAGERS';
+add 'criminal building out of range 3' to the buildings of 'suspicious vehicle detected init with no MANAGERS';
+add 'bad guy 2' to the persons of 'suspicious vehicle detected init with no MANAGERS' ;
+add 'good guy 3' to the persons of 'suspicious vehicle detected init with no MANAGERS'; 
+emit 'suspicious vehicle detected init with no MANAGERS';
+
+define 'suspicious vehicle detected init with MANAGERS and with NO CRIMINAL BUILDINGS AROUND' as a new suspicious vehicle detected where  
+	the event location is 'suspicious vehicle 1 point',
+	the vehicle is 'suspicious vehicle 1' ,
+	the timestamp is 1/25/2016 5:35:48 PM ;
+add 'bad guy 2' to the persons of 'suspicious vehicle detected init with MANAGERS and with NO CRIMINAL BUILDINGS AROUND' ;
+add 'bad manager' to the persons of 'suspicious vehicle detected init with MANAGERS and with NO CRIMINAL BUILDINGS AROUND' ;
+add 'good guy 3' to the persons of 'suspicious vehicle detected init with MANAGERS and with NO CRIMINAL BUILDINGS AROUND' ;
+add 'criminal building out of range 3' to the buildings of 'suspicious vehicle detected init with MANAGERS and with NO CRIMINAL BUILDINGS AROUND' ;
+emit 'suspicious vehicle detected init with MANAGERS and with NO CRIMINAL BUILDINGS AROUND';

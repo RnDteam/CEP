@@ -2,3 +2,9 @@
 processing events :
     - traffic camera report, where this vehicle comes from the vehicle of this traffic camera report, 
     	with a horizon of 0 weeks
+    	
+   	- criminals near suspicious vehicle , where this vehicle comes from the vehicle of this criminals near suspicious vehicle , with a horizon of 0 weeks 
+   	
+   	- managers near suspicious vehicle , where this vehicle comes from the vehicle of this managers near suspicious vehicle , with a horizon of 0 weeks 
+   	
+   	- suspicious vehicle detected , where this vehicle comes from the vehicle of this suspicious vehicle detected, with a horizon of 0 weeks 

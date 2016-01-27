@@ -4,8 +4,8 @@
   <uuid>c503cd66-34b9-4319-a052-8b094010fae7</uuid>
   <locale>en_US</locale>
   <definition><![CDATA[when a traffic camera report occurs
-if
-    the owner of 'the vehicle' with depth 2 is good
+if 
+    the owner of 'the vehicle'  with depth 2 is good
 then
     emit a new alert where
         the message is "Found a good person: " + the name of the owner of 'the vehicle' ,

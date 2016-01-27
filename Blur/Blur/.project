@@ -4,12 +4,10 @@
 	<comment></comment>
 	<projects>
 		<project>Blur - Java Model</project>
-		<project>BlurBOM</project>
+		<project>Blur-BOM</project>
 		<project>BlurExtensions</project>
 		<project>BlurServices</project>
-		<project>BuildingAgent</project>
-		<project>BuildingJavaAgent</project>
-		<project>PersonJavaAgent</project>
+		<project>BuildingRuleAgent</project>
 		<project>VehicleRuleAgent</project>
 	</projects>
 	<buildSpec>

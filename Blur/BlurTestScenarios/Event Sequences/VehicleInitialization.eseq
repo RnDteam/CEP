@@ -2,13 +2,45 @@ define 'the vehicle 1' as the vehicle  identified by "vehicle1";
 define 'the vehicle 2' as the vehicle  identified by "vehicle2"; 
 define 'the vehicle 3' as the vehicle  identified by "vehicle3"; 
 define 'the vehicle 4' as the vehicle  identified by "vehicle4"; 
-define 'the vehicle 5' as the vehicle  identified by "vehicle5"; 
+define 'the vehicle 5' as the vehicle  identified by "vehicle5";
+
+// vehicle details 1
+define vehicleDetails1 as a new vehicle details where 
+	the maker is "Maker1", 
+	the model is "T-10", 
+	the type is MOTORCYCLE, 
+	the year is "2011", 
+	the maximum speed is 290;
+	
+// vehicle details 2
+define vehicleDetails2 as a new vehicle details where
+	the maker is "Maker2", 
+	the model is "T-11", 
+	the type is TRUCK , 
+	the year is "2013", 
+	the maximum speed is 130;
+	
+// vehicle details 4
+define vehicleDetails4 as a new vehicle details where
+	the maker is "Maker4", 
+	the model is "T-14", 
+	the type is MOTORCYCLE  , 
+	the year is "2011", 
+	the maximum speed is 130;
+	
+// vehicle details 5
+define vehicleDetails5 as a new vehicle details where  
+	the maker is "Maker4", 
+	the model is "T-14", 
+	the type is MOTORCYCLE  , 
+	the year is "2011", 
+	the maximum speed is 130;
 
 // vehicle 1 - Suspecious Vehicle
 // The vehicle is MOTORCYCLE and 2 depth associated to CRIMINAL organization
 emit a new vehicle initialization where 
 	the vehicle is 'the vehicle 1' ,
-	the details is the vehicle details identified by "vehicleDetails1" ,
+	the details is vehicleDetails1 , 
 	the status is INACTIVE   ,
 	the location is the point with 7.0095 as longitude and 43.6424 as latitude,
 	the last seen is 1/1/2016 8:19:19 AM,
@@ -21,7 +53,7 @@ emit a new vehicle initialization where
 // The vehicle is A TRUCK
 emit a new vehicle initialization where 
 	the vehicle is 'the vehicle 2' ,
-	the details is the vehicle details identified by "vehicleDetails2" ,
+	the details is vehicleDetails2,
 	the status is INACTIVE ,
 	the location is the point with 55.0095 as longitude and 22.6424 as latitude,
 	suspicious is false,
@@ -36,7 +68,7 @@ emit a new vehicle initialization where
 // The vehicle is MOTORCYCLE and is related to CRIMINAL organization.
 emit a new vehicle initialization where 
 	the vehicle is 'the vehicle 4' ,
-	the details is the vehicle details identified by "vehicleDetails4" ,
+	the details is vehicleDetails4 ,
 	the status is INACTIVE ,
 	the location is the point with 30 as longitude and 35 as latitude,
 	suspicious is false,
@@ -44,10 +76,11 @@ emit a new vehicle initialization where
 	the owner is the person identified by "12355" ,
 	time-stamped 1/2/2016;
 	
-// vehicle 5
+// vehicle 5 - not suspicious
+// The vehicle is MOTORCYCLE and its owner is not related to a CRIMINAL organization and is not 2 depth associated to a CRIMINAL organization
 emit a new vehicle initialization where 
 	the vehicle is 'the vehicle 5' ,
-	the details is the vehicle details identified by "vehicleDetails5" ,
+	the details is vehicleDetails5 ,
 	the status is INACTIVE ,
 	the location is the point with 30 as longitude and 33 as latitude,
 	suspicious is false,

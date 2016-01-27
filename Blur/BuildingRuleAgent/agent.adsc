@@ -1,0 +1,3 @@
+'BuildingRuleAgent' is an agent related to a building  , 
+processing events :
+- cellular report  , where this building  comes from the building of this cellular report , with a horizon of 24 hours

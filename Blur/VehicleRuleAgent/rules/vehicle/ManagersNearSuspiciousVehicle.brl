@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>ManagersNearSuspiciousVehicle</name>
+  <uuid>e71e0bf3-313f-4cbd-8145-e768ad3518fd</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[when a managers near suspicious vehicle occurs
+
+definitions
+	set 'range' to the range of this managers near suspicious vehicle;
+	set 'richable buildings' to the buildings of this managers near suspicious vehicle 
+	where 'range' contains each building;
+	
+if the number of elements in 'richable buildings' is more than 0 
+
+then
+	for each building in 'richable buildings' :
+		- emit a new alert where
+			the vehicle is 'the vehicle',
+			the rule is the name of this rule,
+			the building is this building,
+			the message is "Their are managers of " + the id of the organization of 'the vehicle' + " which can arrive the building " +  the id of this building + " in 20 minutes";
+else
+	emit a new alert where
+		the vehicle is 'the vehicle',
+		the rule is the name of this rule,
+		the message is "Their are managers of " + the id of the organization of 'the vehicle' + " which can arrive to SOME range";]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>

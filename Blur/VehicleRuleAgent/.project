@@ -3,8 +3,7 @@
 	<name>VehicleRuleAgent</name>
 	<comment></comment>
 	<projects>
-		<project>BlurBOM</project>
-		<project>BlurRuleExtensions</project>
+		<project>BlurServices-BOM</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
