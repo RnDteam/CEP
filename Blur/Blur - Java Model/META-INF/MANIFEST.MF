@@ -12,6 +12,7 @@ Export-Package: blur.model;version="0.23.0.qualifier",
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: com.ibm.geolib.crs;version="[1.4.0,1.5.0)",
  com.ibm.geolib.geom;version="[1.4.0,1.5.0)",
+ com.ibm.geolib.st;version="[1.4.0,1.5.0)",
  com.ibm.geolib.unit;version="[1.4.0,1.5.0)",
  com.ibm.ia.engine.dataie.event;version="[1.4.0,1.5.0)",
  com.ibm.ia.engine.dataie.event.impl;version="[1.30.0,1.31.0)",

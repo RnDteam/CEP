@@ -16,6 +16,7 @@ import com.ibm.geolib.geom.GeometryFactory;
 import com.ibm.geolib.geom.LinearRing;
 import com.ibm.geolib.geom.Point;
 import com.ibm.geolib.geom.Polygon;
+import com.ibm.geolib.st.MovingGeometry;
 
 public class PathFinder implements IPathFinder {
 	
@@ -95,8 +96,8 @@ public class PathFinder implements IPathFinder {
 		
 		GeometryFactory geometryFactory = GeoSpatialService.getService().getGeometryFactory();
 	
-		Point vehicleLocation = vehicle.getLocation();
-		double[] coord = vehicleLocation.getCoordinates();
+		MovingGeometry<Point> vehicleLocation = vehicle.getLocation();
+		double[] coord = vehicleLocation.getLastObservedGeometry().getCoordinates();
 		
 		double shift = 1;
 		

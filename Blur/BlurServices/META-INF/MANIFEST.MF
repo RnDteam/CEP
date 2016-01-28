@@ -8,6 +8,10 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: blur.model,
  com.ibm.geolib;version="1.4.1.CIS2015-11-03T181901Z",
+ com.ibm.geolib.crs;version="1.4.1.CIS2015-11-03T181901Z",
  com.ibm.geolib.geom;version="1.4.1.CIS2015-11-03T181901Z",
+ com.ibm.geolib.impl.d2.geom;version="1.4.1.CIS2015-11-03T181901Z",
+ com.ibm.geolib.st;version="1.4.1.CIS2015-11-03T181901Z",
+ com.ibm.geolib.unit;version="1.4.1.CIS2015-11-03T181901Z",
  com.ibm.ia.extension,
  com.ibm.ia.extension.annotations

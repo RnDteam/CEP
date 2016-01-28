@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>CellularReportForPersonsLocation</name>
+  <uuid>6d787330-5a40-4934-bf4e-fffd465d6d3e</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[when a cellular report occurs 
+then move 'the person' to the location of the building of this cellular report at the timestamp of this cellular report ; ]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>

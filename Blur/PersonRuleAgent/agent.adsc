@@ -1,3 +1,4 @@
 'PersonRuleAgent' is an agent related to a person, 
 processing events :
 - cellular call report  , where this person  comes from the callee of this cellular call report, with a horizon of 0 days
+- cellular report , where this person comes from the person of this cellular report , with a horizon of 0 days

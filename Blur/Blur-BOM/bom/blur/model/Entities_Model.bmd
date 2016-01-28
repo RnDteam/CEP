@@ -7,7 +7,7 @@ a person is a business entity identified by an id with
    a name,
    a profession,
    a risk score (numeric),
-   a location (a point) used as the default geometry,
+   a location (a moving geometry ) used as the default moving geometry,
    a state (a person state).
 a person is related to an organizational role, named the role.
 
@@ -58,7 +58,7 @@ a vehicle details is a concept with
 a vehicle status can be one of: INACTIVE, ACTIVE.
  
 a vehicle is a business entity identified by a license plate number.
-a vehicle has a location (a point) used as the default geometry.
+a vehicle has a location (a moving geometry ) used as the default moving geometry.
 a vehicle has a status (a vehicle status).
 a vehicle has a details (a vehicle details).
 a vehicle has a last seen (date & time).
@@ -76,7 +76,7 @@ returns
 --	 returns a full details (a vehicle details ).]]></Bmd>
     <Bmi><![CDATA[a vehicle is initialized from a traffic camera report , 
 	where this vehicle comes from the vehicle of this traffic camera report : 
-	- set the location of this vehicle to the camera location of this traffic camera report. 
+	- move this vehicle to the camera location of this traffic camera report at the timestamp of this traffic camera report . 
 	
 a person is enriched by the risk score provider , 
 	 	given 
