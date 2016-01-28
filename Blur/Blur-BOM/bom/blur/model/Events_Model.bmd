@@ -49,6 +49,11 @@ a potential bank crime report is related to a person, named the callee.
 a potential bank crime report is related to a person, named the caller.
 a potential bank crime report has a radius in meters (numeric).
 
+-- dwelled building report
+a dwelled building report is a business event.
+a dwelled building report is related to a person.
+a dwelled building report is related to a building.
+
 -- an alert
 an alert is a business event with
     a message,

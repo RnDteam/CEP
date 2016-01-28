@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>IdentifyRecentDwellBuildings</name>
+  <uuid>82e610e1-30a2-4f9e-816e-495e478d9730</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[when a cellular call report occurs
+
+definitions
+	set 'nearby distance' to 10;
+	
+	set 'the callee' to the callee of this cellular call report;
+	set 'the caller' to the caller of this cellular call report ; 
+	set 'callee organization' to the organization of the role of 'the callee';
+	set 'timestamp' to the timestamp of this cellular call report ;
+	set 'dwelled buildings' to the buildings of this cellular call report 
+	where 'the callee' has been located within 'nearby distance' meters of each building since 30 minutes before 'timestamp'
+	and it is not true that 'the callee' has been located within 'nearby distance' meters of each building since 2 hours before 'timestamp';
+	
+	 
+	
+if  the type of 'callee organization' is not CRIMINAL and the relationship depth between 'the callee' and 'the caller'
+
+then
+for each building in 'dwelled buildings' : 
+	- emit a new dwelled building report where 
+	the building is this building , 
+	the person is 'the callee' , 
+	the timestamp is 'timestamp'; ]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>

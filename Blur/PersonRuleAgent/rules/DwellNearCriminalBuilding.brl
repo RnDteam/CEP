@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>DwellNearCriminalBuilding</name>
+  <uuid>28d84ba5-bfb0-4558-bb5a-46cb7cb8ef0f</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[when a dwelled building report occurs 
+definitions 
+	set 'criminal organizations' to the organizations of the building of this dwelled building report 
+	where the type of each organization is CRIMINAL ; 
+	 
+then
+for each organization in 'criminal organizations' : 
+	- define ALERT as a new alert where 
+	the message is "Associate the " + the id of the person + " to " + the id of this organization + " for building " + the id of the building,  
+	the building is the building of this dwelled building report,
+	the person is the person,
+	the organization is this organization
+	- emit ALERT;]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>
