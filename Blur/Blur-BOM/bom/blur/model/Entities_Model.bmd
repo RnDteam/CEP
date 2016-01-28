@@ -3,8 +3,8 @@
     <Bmd><![CDATA[--alerted entity
 
 a location alerted entity is a business entity identified by a id with 
-a isAlerted,
-a location (a point) used as the default geometry.
+	an alert message,
+	a location (a point) used as the default geometry.
 
 -- person
 a person state can be one of : ACTIVE, INACTIVE.
@@ -60,14 +60,22 @@ a vehicle details is a concept with
 
 a vehicle status can be one of: INACTIVE, ACTIVE.
  
-a vehicle is a business entity identified by a license plate number.
-a vehicle has a location (a point) used as the default geometry.
-a vehicle has a status (a vehicle status).
-a vehicle has a details (a vehicle details).
-a vehicle has a last seen (date & time).
-a vehicle has a suspicious(a boolean).
+a vehicle is a business entity identified by a license plate number with	
+	a status (a vehicle status),
+	a details (a vehicle details),
+	a last seen (date & time),
+	a suspicious(a boolean),
+	a location (a point) used as the default geometry,
+	an alert message.
 a vehicle is related to a person, named the owner.
 a vehicle is related to an organization.
+-- add for presenting in the map
+a vehicle has a p_model.
+a vehicle has a p_maker.
+a vehicle has a p_year.
+a vehicle has a p_maximum speed(numeric).
+a vehicle has a p_type (a vehicle type).
+
 
 a risk score provider is a data provider , 
 	 accepts a person id,

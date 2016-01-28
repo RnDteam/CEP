@@ -11,5 +11,6 @@ then
         the message is "No cellular report in building " + the id of 'the building' + " in the past 60 minutes" ,
         the building is 'the building' ,
         the rule is the name of this rule ;
+    set the alert message of 'the building' to "No cellular report in building " + the id of 'the building' + " in the past 60 minutes";
     emit ALERT ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

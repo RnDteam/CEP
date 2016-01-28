@@ -92,7 +92,14 @@ a vehicle is initialized from a vehicle initialization , where this vehicle come
 	- set the details of this vehicle to the details of this vehicle initialization 
 	- set the last seen of this vehicle to the last seen of this vehicle initialization 
 	- make it this vehicle initialization is suspicious that this vehicle is suspicious
-	- set the organization of this vehicle to the organization of the role of the owner of this vehicle.
+	- set the organization of this vehicle to the organization of the role of the owner of this vehicle
+-- for presenting on map
+	- set the p_model of this vehicle to the model of the details of this vehicle 
+	- set the p_maker of this vehicle to the maker of the details of this vehicle
+	- set the p_year of this vehicle to the year of the details of this vehicle 
+	- set the p_maximum speed of this vehicle to the maximum speed of the details of this vehicle
+	- set the p_type of this vehicle to the type of the details of this vehicle . 
+ 
 	
 --Vehicle Details
 --a vehicle details  is initialized from a vehicle details initialization , where this vehicle details comes from the vehicle details of this vehicle details initialization : 
