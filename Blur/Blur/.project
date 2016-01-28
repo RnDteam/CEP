@@ -7,7 +7,9 @@
 		<project>Blur-BOM</project>
 		<project>BlurExtensions</project>
 		<project>BlurServices</project>
+		<project>BuildingJavaAgent</project>
 		<project>BuildingRuleAgent</project>
+		<project>PersonJavaAgent</project>
 		<project>VehicleRuleAgent</project>
 	</projects>
 	<buildSpec>

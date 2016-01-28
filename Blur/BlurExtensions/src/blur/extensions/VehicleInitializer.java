@@ -32,8 +32,8 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 	private static final String USER_NAME = "root";
 	private static final String PASSWORD = "root";
 	private static Connection dbConnection = null;
-	private static final String vehicleTableName = "DB_vehicle";
-	private static final String vehicleTypeTableName = "DB_vehicle_details";
+	private static final String vehicleTableName = "DB_Vehicles";
+	private static final String vehicleTypeTableName = "dn_vehicle-type";
 
 
 
@@ -105,25 +105,27 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 		
 		getVehicleTypeQuery += vehicleMakerColumn + "='" + vehicle_details.getMaker() + "' AND ";
 		getVehicleTypeQuery += vehicleModelColumn + "='" + vehicle_details.getModel() + "' AND ";
-		getVehicleTypeQuery += vehicleYearColumn + "='" + vehicle_details.getYear() + "'";
+		getVehicleTypeQuery += vehicleYearColumn + "='" + vehicle_details.getYear() + "';";
 		
 		String vehicleTypeString = null;
 		double vehicleMaxSpeedString = 0.0;
 
+//		System.out.println(getVehicleTypeQuery);
 		try {
 			Statement statement = dbConnection.createStatement();
+			System.out.println(1);
 			ResultSet resultSet = statement.executeQuery(getVehicleTypeQuery);
-			
+			System.out.println(2);
 			while (resultSet.next()) {
 				if (vehicleTypeString != null){
 					System.out.println("Two rows with the same Vehicle Details");
 				}
-				
+//				System.out.println(resultSet.getString(1)+resultSet.getString(2));
 				vehicleMaxSpeedString = Double.parseDouble(resultSet.getString(1));
 				vehicleTypeString = resultSet.getString(2);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 		closeConnection(dbConnection);
 		
@@ -143,19 +145,20 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 		String ownerIdColumn = "Owner_ID";
 
 		String getVehicleQuery = "SELECT " 
-				+ vehicleMakerColumn + "," + vehicleModelColumn + "," + vehicleYearColumn + "," + ownerIdColumn + "," 
+				+ vehicleMakerColumn + "," + vehicleModelColumn + "," + vehicleYearColumn + "," + ownerIdColumn
 				+ " FROM " + vehicleTableName 
-				+ " WHERE " + vehicleLicensePlateColumn + "='" + vehicle.getLicensePlateNumber() + "'";
-
+				+ " WHERE " + vehicleLicensePlateColumn + "='" + vehicle.getLicensePlateNumber() + "';";
+		
+//		System.out.println("Statement:" + getVehicleQuery);
 		String personLinkString = null;
 		try {
 			Statement statement = dbConnection.createStatement();
 			ResultSet resultSet = statement.executeQuery(getVehicleQuery);
-
 			while (resultSet.next()) {
 				if (personLinkString != null){
 					System.out.println("Two rows with the same vehicle license plate");
 				}
+//				System.out.println(resultSet.getString(1)+resultSet.getString(2)+resultSet.getString(3)+resultSet.getString(4));
 				convertDBRowToEntity(resultSet, vehicle);
 			}
 		} catch (SQLException e) {
@@ -210,8 +213,8 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 	public void initializeEntity(Vehicle entity) throws ComponentException {
 		super.initializeEntity(entity);
 		System.out.println( "***** VehicleInitializer initializeEntity ****** " );
-
-//		setVehicleFromDB(entity);
+		getDBConnection();
+		setVehicleFromDB(entity);
 
 	}
 
