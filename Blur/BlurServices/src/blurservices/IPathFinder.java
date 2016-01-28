@@ -9,4 +9,5 @@ public interface IPathFinder {
 	public boolean isTherePath(String ownerId, int depth);
 	public boolean isGood( Person person, int depth );
 	public Polygon getRange(Vehicle vehicle, int minutes);
+	public int getRelationshipDepth(Person first, Person second);
 }

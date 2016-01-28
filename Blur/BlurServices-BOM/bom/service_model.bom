@@ -8,7 +8,9 @@ package blurservices;
 public interface IPathFinder
         property "OSGi.service" "blurservices.IPathFinder"
 {
+    public static com.ibm.geolib.geom.Polygon getRange(blur.model.Vehicle vehicle, int minutes);
+    public static int getRelationshipDepth(blur.model.Person first, blur.model.Person second);
     public static boolean isGood(blur.model.Person person, int depth);
     public static boolean isTherePath(string ownerId, int depth);
-    public static com.ibm.geolib.geom.Polygon getRange(blur.model.Vehicle vehicle, int minutes);
 }
+

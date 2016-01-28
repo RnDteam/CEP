@@ -115,4 +115,11 @@ public class PathFinder implements IPathFinder {
 		Polygon polygon = geometryFactory.getPolygon(linearRing);
 		return polygon;
 	}
+	
+	@Override
+	public int getRelationshipDepth(Person first, Person second) {
+		
+		// TODO : get from DB
+		return 2;
+	}
 }

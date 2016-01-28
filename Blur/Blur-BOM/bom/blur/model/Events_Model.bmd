@@ -34,7 +34,20 @@ a vehicle created is related to a vehicle.
 
 -- cellular report
 a cellular report is a business event related to a building. 
-a cellular report is related to a person. 
+a cellular report is related to a person.
+
+-- cellular call report
+a cellular call report is a location based event.
+a cellular call report is related to a person , named the callee.
+a cellular call report is related to a person, named the caller.
+
+-- potential bank crime report
+a potential bank crime report is a business event.
+a potential bank crime report is related to several different persons.
+a potential bank crime report is related to a building.
+a potential bank crime report is related to a person, named the callee.
+a potential bank crime report is related to a person, named the caller.
+a potential bank crime report has a radius in meters (numeric).
 
 -- an alert
 an alert is a business event with
@@ -42,14 +55,12 @@ an alert is a business event with
     a hours24(numeric),
     a minues30 (numeric),
     a rule.
-  
     
 an alert is related to a person [optional].
 an alert is related to a building [optional].
 an alert is related to a vehicle [optional].
 an alert is related to an organization [optional].
-
-
+an alert is related to several different persons [optional].
 
 
 ]]></Bmd>

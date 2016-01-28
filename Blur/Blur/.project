@@ -9,6 +9,7 @@
 		<project>BlurServices</project>
 		<project>BuildingRuleAgent</project>
 		<project>VehicleRuleAgent</project>
+		<project>PersonRuleAgent</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
