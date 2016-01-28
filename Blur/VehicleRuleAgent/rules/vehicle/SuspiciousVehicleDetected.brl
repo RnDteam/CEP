@@ -29,5 +29,6 @@ else
 		the message is "No criminals found within 500 meters from the suspicous vehicle " + the license plate number of 'the vehicle',
 		the vehicle is 'the vehicle',
 		the rule is the name of this rule;
+	set the alert message of 'the vehicle' to "No criminals found within 500 meters from the suspicous vehicle " + the license plate number of 'the vehicle';
 	emit ALERT;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

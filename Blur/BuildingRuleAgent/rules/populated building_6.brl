@@ -16,5 +16,6 @@ then
     emit a new alert where
         the building is 'the building' ,
         the message is "Too many cellular reports of the same organization in the same building" ,
-        the rule is the name of this rule ;]]></definition>
+        the rule is the name of this rule ;
+    set the alert message of 'the building' to "Too many cellular reports of the same organization in the same building";]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

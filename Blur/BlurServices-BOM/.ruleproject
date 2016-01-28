@@ -6,8 +6,8 @@
   <categories>any</categories>
   <paths xsi:type="ilog.rules.studio.model.xom:XOMPath" pathID="XOM">
     <entries xsi:type="ilog.rules.studio.model.xom:LibraryXOMPathEntry" name="org.eclipse.jdt.launching.JRE_CONTAINER" url="file:org.eclipse.jdt.launching.JRE_CONTAINER" kind="LIBRARY" exported="false"/>
-    <entries xsi:type="ilog.rules.studio.model.xom:SystemXOMPathEntry" name="Blur-BOM" url="platform:/Blur-BOM" kind="RULE_PROJECT" exported="true"/>
     <entries xsi:type="ilog.rules.studio.model.xom:SystemXOMPathEntry" name="BlurServices" url="platform:/BlurServices" kind="JAVA_PROJECT" exported="true"/>
+    <entries xsi:type="ilog.rules.studio.model.xom:SystemXOMPathEntry" name="Blur-BOM" url="platform:/Blur-BOM" kind="RULE_PROJECT"/>
   </paths>
   <paths xsi:type="ilog.rules.studio.model.bom:BOMPath" pathID="BOM">
     <entries xsi:type="ilog.rules.studio.model.bom:BOMEntry" name="service_model" url="platform:/BlurServices-BOM/bom/service_model.bom" origin="xom:/BlurServices-BOM//BlurServices2"/>
