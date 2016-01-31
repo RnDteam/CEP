@@ -2,6 +2,9 @@
 <com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
   <name>DwellNearCriminalBuilding</name>
   <uuid>28d84ba5-bfb0-4558-bb5a-46cb7cb8ef0f</uuid>
+  <documentation><![CDATA[1.3.1.2.2.1 to 1.3.1.2.2.1.1
+
+If we don't want to update fields of the person, but only emit an alert, would prefer to put this rule under Building Rule Agent, so it could have the most updated status of the buildings]]></documentation>
   <locale>en_US</locale>
   <definition><![CDATA[when a dwelled building report occurs 
 definitions 

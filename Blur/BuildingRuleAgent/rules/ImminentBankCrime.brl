@@ -2,6 +2,7 @@
 <com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
   <name>ImminentBankCrime</name>
   <uuid>6e682e28-d08d-4dd4-a3d0-1fa1e141b3a2</uuid>
+  <documentation><![CDATA[1.3.1.1.1.2 to 1.3.1.1.1.2.1]]></documentation>
   <locale>en_US</locale>
   <definition><![CDATA[when a potential bank crime report occurs 
 definitions 

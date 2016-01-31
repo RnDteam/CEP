@@ -2,21 +2,23 @@
 <com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
   <name>CellularCallForCriminalsNearBank</name>
   <uuid>cb34f1a1-fe05-4b93-9084-b71ece0639b6</uuid>
+  <documentation><![CDATA[1.3.1.1 to 1.3.1.1.1.2]]></documentation>
   <locale>en_US</locale>
-  <definition><![CDATA[when a cellular call report occurs
+  <definition><![CDATA[when a criminal cellular call report occurs
 
 definitions 
 	set 'radius to bank' to 500;
 	set 'nearby people radius' to 500;
 	set 'nearby bank radius' to 'radius to bank'  + 'nearby people radius' ;
+	set 'the cellular call report' to the cellular call report of this criminal cellular call report ; 
 	
-	set 'the callee' to the callee of this cellular call report;
-	set 'the caller' to the caller of this cellular call report;
+	set 'the callee' to the callee of 'the cellular call report';
+	set 'the caller' to the caller of 'the cellular call report';
 	set 'callee organization' to the organization of the role of 'the callee';
-	set 'nearby callee people' to the persons of this cellular call report
+	set 'nearby callee people' to the persons of 'the cellular call report'
 		where the distance between each person and 'the callee' in meters is less than 'nearby people radius' 
 			and the organization of the role of each person is 'callee organization';
-	set 'nearby banks' to the buildings of this cellular call report 
+	set 'nearby banks' to the buildings of 'the cellular call report' 
 	where the usage type of each building is BANK BRANCH and 
 	the distance between each building and 'the callee' in meters is less than 'nearby bank radius' ;
 	set 'relationship  depth' to the relationship depth between 'the callee' and 'the caller' ;

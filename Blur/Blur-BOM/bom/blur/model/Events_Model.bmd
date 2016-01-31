@@ -41,6 +41,10 @@ a cellular call report is a location based event.
 a cellular call report is related to a person , named the callee.
 a cellular call report is related to a person, named the caller.
 
+-- criminal cellular call report
+a criminal cellular call report is a business event.
+a criminal cellular call report has a cellular call report.
+
 -- potential bank crime report
 a potential bank crime report is a business event.
 a potential bank crime report is related to several different persons.
@@ -53,6 +57,12 @@ a potential bank crime report has a radius in meters (numeric).
 a dwelled building report is a business event.
 a dwelled building report is related to a person.
 a dwelled building report is related to a building.
+
+-- dwelling with criminal report
+a dwelling with criminal report is a business event.
+a dwelling with criminal report has a nearby distance in meters (numeric).
+a dwelling with criminal report is related to a person, named the suspect.
+a dwelling with criminal report is related to a person, named the potential collaborator.
 
 -- an alert
 an alert is a business event with
