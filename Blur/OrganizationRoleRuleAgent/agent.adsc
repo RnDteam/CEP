@@ -1,0 +1,3 @@
+'OrganizationRoleRuleAgent' is an agent related to an organizational role  , 
+processing events :
+- update role event , where this organizational role  comes from the organizational role of this update role event

@@ -8,8 +8,6 @@ import java.sql.Statement;
 import java.util.Random;
 
 import blur.model.ConceptFactory;
-import blur.model.Organization;
-import blur.model.OrganizationType;
 import blur.model.Person;
 import blur.model.TrafficCameraReport;
 import blur.model.Vehicle;
@@ -17,6 +15,9 @@ import blur.model.VehicleDetails;
 import blur.model.VehicleStatus;
 import blur.model.VehicleType;
 
+import com.ibm.geolib.geom.Point;
+import com.ibm.geolib.st.MovingGeometry;
+import com.ibm.geolib.st.SpatioTemporalService;
 import com.ibm.ia.common.ComponentException;
 import com.ibm.ia.extension.EntityInitializer;
 import com.ibm.ia.extension.annotations.EntityInitializerDescriptor;
@@ -203,7 +204,11 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 
 		if( event instanceof TrafficCameraReport ) {
 			System.out.println( "***** VehicleInitializer createEntityFromEvent ****** " );
-			entity.setLocation(((TrafficCameraReport) event).getCameraLocation());
+			MovingGeometry<Point> location = SpatioTemporalService.getService().getMovingGeometryFactory().getMovingGeometry();
+			TrafficCameraReport report = (TrafficCameraReport) event;
+			location.setGeometryAtTime(report.getCameraLocation(), report.getTimestamp());
+			
+			entity.setLocation(location);
 		}
 
 		return entity;

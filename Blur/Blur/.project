@@ -11,6 +11,8 @@
 		<project>BuildingRuleAgent</project>
 		<project>PersonJavaAgent</project>
 		<project>VehicleRuleAgent</project>
+		<project>PersonRuleAgent</project>
+		<project>OrganizationRoleRuleAgent</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

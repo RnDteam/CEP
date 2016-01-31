@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>UpdateRole</name>
+  <uuid>9e8f8e41-7b56-4ce2-a073-f00791e46c56</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[when an update role event  occurs
+then
+set the organization of 'the organizational role' to the organization of this update role event ; ]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>

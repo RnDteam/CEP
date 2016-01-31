@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>DwellNearCriminals</name>
+  <uuid>3d21b4ae-78de-44f4-a171-ab1cd3fa0600</uuid>
+  <documentation><![CDATA[1.3.1.2.2.2 to 1.3.1.2.2.2.1
+
+
+If we don't want to update fields of the person, but only emit an alert, would prefer that this person in the agent.adsc the collaborator, othewise the suspect.]]></documentation>
+  <locale>en_US</locale>
+  <definition><![CDATA[when a dwelling with criminal report occurs 
+definitions 
+	set 'nearby distance' to the nearby distance in meters of this dwelling with criminal report ;
+	set 'dwelling time' to 8 hours ;
+	
+	set 'the collaborator' to the potential collaborator of this dwelling with criminal report  ;
+	set 'collaborator organization' to the organization of the role of 'the collaborator';
+	set 'the suspect' to the suspect of this dwelling with criminal report ; 
+	set 'encounters' to the encounters between 'the suspect' and 'the collaborator'  within proximity of 'nearby distance' meters;
+	set 'the cutoff point' to 'dwelling time'  before the timestamp of this dwelling with criminal report ;
+	set 'too late encounters' to 'encounters' where
+		the start of each time period is after 'the cutoff point'; 
+	
+if the number of 'too late encounters' is 0
+
+then 
+
+define ALERT as a new alert where 
+	the message is "Suspect person " + the id of 'the suspect' + " has been with criminal " + the id of 'the collaborator',
+	the person is the suspect of this dwelling with criminal report,
+	the organization is 'collaborator organization';
+	
+emit ALERT;]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>

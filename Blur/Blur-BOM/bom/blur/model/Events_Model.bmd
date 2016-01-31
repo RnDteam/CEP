@@ -33,8 +33,40 @@ a vehicle created is a business event.
 a vehicle created is related to a vehicle.
 
 -- cellular report
-a cellular report is a business event related to a building. 
-a cellular report is related to a person. 
+a cellular report is a business event related to a building.
+a cellular report is related to a person.
+
+-- update role event
+an update role event is a business event related to an organizational role.
+an update role event is related to an organization.
+
+-- cellular call report
+a cellular call report is a location based event.
+a cellular call report is related to a person , named the callee.
+a cellular call report is related to a person, named the caller.
+
+-- criminal cellular call report
+a criminal cellular call report is a business event.
+a criminal cellular call report has a cellular call report.
+
+-- potential bank crime report
+a potential bank crime report is a business event.
+a potential bank crime report is related to several different persons.
+a potential bank crime report is related to a building.
+a potential bank crime report is related to a person, named the callee.
+a potential bank crime report is related to a person, named the caller.
+a potential bank crime report has a radius in meters (numeric).
+
+-- dwelled building report
+a dwelled building report is a business event.
+a dwelled building report is related to a person.
+a dwelled building report is related to a building.
+
+-- dwelling with criminal report
+a dwelling with criminal report is a business event.
+a dwelling with criminal report has a nearby distance in meters (numeric).
+a dwelling with criminal report is related to a person, named the suspect.
+a dwelling with criminal report is related to a person, named the potential collaborator.
 
 -- an alert
 an alert is a business event with
@@ -42,14 +74,12 @@ an alert is a business event with
     a hours24(numeric),
     a minues30 (numeric),
     a rule.
-  
     
 an alert is related to a person [optional].
 an alert is related to a building [optional].
 an alert is related to a vehicle [optional].
 an alert is related to an organization [optional].
-
-
+an alert is related to several different persons [optional].
 
 
 ]]></Bmd>
