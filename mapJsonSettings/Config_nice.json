@@ -1,0 +1,154 @@
+{
+	"feeds": [{
+		"feedIndex": 0,
+		"geometryType": "Point",
+		"hoverAttribute": "id",
+		"idAttribute": "id",
+		"locationAttribute": "location",
+		"name": "blur.model.Building",
+		"pollintervalms": 5000,
+		"style": {
+			"externalGraphic": {
+				"Icon0": {
+					"value": "app/images/maki/home-24@2x.png"
+				}
+			},
+			"fillColor": {
+				"default": {
+					"value": "#ff8c00"
+				}
+			},
+			"fillOpacity": {
+				"default": {
+					"value": 0.65
+				}
+			},
+			"graphicHeight": {
+				"default": {
+					"value": 28
+				}
+			},
+			"graphicWidth": {
+				"default": {
+					"value": 28
+				}
+			},
+			"pointRadius": {
+				"default": {
+					"value": 14
+				}
+			},
+			"strokeColor": {
+				"default": {
+					"value": "#e70"
+				}
+			},
+			"strokeWidth": {
+				"default": {
+					"value": "2"
+				}
+			}
+		},
+		"url": "rest/solutions/Blur/layers/blur.model.Building",
+		"useIcons": true
+	}, {
+		"feedIndex": 1,
+		"geometryType": "Point",
+		"hoverAttribute": "suspicious",
+		"idAttribute": "licensePlateNumber",
+		"locationAttribute": "location",
+		"name": "blur.model.Vehicle",
+		"pollintervalms": 5000,
+		"style": {
+			"externalGraphic": {
+				"Icon0": {
+					"attribute": "suspicious",
+					"comparator": "==",
+					"ranges": ["false", "true"],
+					"values": ["app/images/maki/car-24@2x.png", "app/images/maki/taxi-24@2x.png"]
+				}
+			},
+			"fillColor": {
+				"default": {
+					"attribute": "suspicious",
+					"comparator": "==",
+					"ranges": ["false", "true"],
+					"values": ["#6495ed", "#ff0000"]
+				}
+			},
+			"graphicHeight": {
+				"default": {
+					"value": 22
+				}
+			},
+			"graphicWidth": {
+				"default": {
+					"value": 22
+				}
+			},
+			"pointRadius": {
+				"default": {
+					"value": "11"
+				}
+			},
+			"strokeColor": {
+				"default": {
+					"value": "#000000"
+				}
+			},
+			"strokeWidth": {
+				"default": {
+					"value": "0"
+				}
+			}
+		},
+		"url": "rest/solutions/Blur/layers/blur.model.Vehicle",
+		"useIcons": true
+	}, {
+		"feedIndex": 2,
+		"geometryType": "Point",
+		"hoverAttribute": "profession",
+		"idAttribute": "id",
+		"locationAttribute": "location",
+		"name": "blur.model.Person",
+		"pollintervalms": 5000,
+		"style": {
+			"fillColor": {
+				"default": {
+					"value": "#f4a460"
+				}
+			},
+			"graphicHeight": {
+				"default": {
+					"value": 28
+				}
+			},
+			"graphicWidth": {
+				"default": {
+					"value": 28
+				}
+			},
+			"pointRadius": {
+				"default": {
+					"value": 14
+				}
+			},
+			"strokeColor": {
+				"default": {
+					"value": "#e70"
+				}
+			},
+			"strokeWidth": {
+				"default": {
+					"value": 1
+				}
+			}
+		},
+		"url": "rest/solutions/Blur/layers/blur.model.Person"
+	}],
+	"mapSpecification": {
+		"name": "OSM"
+	},
+	"solutionName": "Blur",
+	"title": ""
+}
