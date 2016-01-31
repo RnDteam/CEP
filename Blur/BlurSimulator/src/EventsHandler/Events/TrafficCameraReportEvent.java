@@ -7,7 +7,7 @@ import EventsHandler.EventCreation;
 import blur.model.TrafficCameraReport;
 import blur.model.Vehicle;
 
-public class TrafficCameraReportEvent extends EventCreation<TrafficCameraReport>{
+public class TrafficCameraReportEvent extends AbsLocationBasedEvent<TrafficCameraReport>{
 	
 
 	@Override
@@ -25,7 +25,9 @@ public class TrafficCameraReportEvent extends EventCreation<TrafficCameraReport>
 			trafficCameraReportEvent.setCameraId(Integer.parseInt(cameraId));
 			trafficCameraReportEvent.setCameraLocation(ConverterUtility.getPointFromString(logntitude, latitude));
 			trafficCameraReportEvent.setVehicle(gateway.createRelationship(Vehicle.class, licensePlate));
-//			trafficCameraReportEvent.setPersons(arg0);
+			trafficCameraReportEvent.setPersons(getAllPersons(gateway));
+			trafficCameraReportEvent.setBuildings(getAllBuildings(gateway));
+			trafficCameraReportEvent.setEventLocation(ConverterUtility.getPointFromString(logntitude, latitude));
 			
 			trafficCameraReportEvent.setTimestamp(ConverterUtility.absDate.plusMinutes(Integer.parseInt(reportTime)));
 		} catch (Exception e) {

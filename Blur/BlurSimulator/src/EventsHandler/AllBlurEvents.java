@@ -12,8 +12,9 @@ public enum AllBlurEvents {
 	BuildingExternal(new BuildingExternalInit()),
 	BuildingInternal(new BuildingInternalInit()),
 	
-	TrafficCameraReport(new TrafficCameraReportEvent());
-//	CellularReport(new CellularReportEvent());
+//	TrafficCameraReport(new TrafficCameraReportEvent()),
+//	CellularCallReport(new CellularCallReportEvent());
+	CellularReport(new CellularReportEvent());
 	
 	private EventCreation<Event> event;
 
