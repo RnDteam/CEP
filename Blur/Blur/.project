@@ -10,6 +10,7 @@
 		<project>BuildingRuleAgent</project>
 		<project>VehicleRuleAgent</project>
 		<project>PersonRuleAgent</project>
+		<project>OrganizationRoleRuleAgent</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

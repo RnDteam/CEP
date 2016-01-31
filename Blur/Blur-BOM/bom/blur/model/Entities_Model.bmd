@@ -11,7 +11,7 @@ a person is a business entity identified by an id with
    a state (a person state).
 a person is related to an organizational role, named the role.
 
--- organization	 
+-- organization
 a organization type can be one of : CRIMINAL, COMMERCIAL.
 
 an organization is a business entity identified by an id.
