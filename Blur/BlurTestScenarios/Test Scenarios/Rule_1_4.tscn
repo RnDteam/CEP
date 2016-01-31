@@ -1,0 +1,4 @@
+submit events from "PersonInitialization";
+submit events from "OrganizationRoleInitialization";
+submit events from "OrganizationsInitialization";
+submit events from "EventInitialBuildingTestSequence";

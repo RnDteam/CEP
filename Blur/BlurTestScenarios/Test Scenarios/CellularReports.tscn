@@ -1,4 +1,4 @@
-submit events from "EventInitialOrganizationSequence"; 
+submit events from "EventInitialOrganizationSequence";
 submit events from "EventInitialBuildingTestSequence";
 submit events from "cellularReportsSequence";
 
