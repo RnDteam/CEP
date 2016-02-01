@@ -1,8 +1,6 @@
 package EventsHandler.EntitiesInitialization;
 
 import java.sql.ResultSet;
-import java.time.ZonedDateTime;
-
 import com.ibm.ia.gateway.SolutionGateway;
 
 import blur.model.Building;
@@ -27,12 +25,11 @@ public class BuildingExternalInit extends EventCreation<BuildingInitialization> 
 			String buildingType = resultSet.getString(4);
 			String ownerId = resultSet.getString(5);
 
-			ZonedDateTime reportTimeStamp =  ConverterUtility.initDate;
 			buildingInitEvent.setBuilding(gateway.createRelationship(Building.class, buildingId));
-			buildingInitEvent.setLocation(ConverterUtility.getMovingGeometryFromString(logntitude, latitude, reportTimeStamp));
+			buildingInitEvent.setLocation(ConverterUtility.getPointFromString(logntitude, latitude));
 			buildingInitEvent.setType(convertBuildingType(buildingType));
 			buildingInitEvent.setOwner(gateway.createRelationship(Person.class, ownerId));
-			buildingInitEvent.setTimestamp(reportTimeStamp);
+			buildingInitEvent.setTimestamp(ConverterUtility.initDate);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

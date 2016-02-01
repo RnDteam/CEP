@@ -11,8 +11,6 @@ import com.ibm.ia.gateway.SolutionGateway;
 import blur.model.Building;
 import blur.model.CellularReport;
 import blur.model.Person;
-import blur.model.TrafficCameraReport;
-import blur.model.Vehicle;
 import DBHandler.ConverterUtility;
 import DBHandler.DBReader;
 import EventsHandler.EventCreation;

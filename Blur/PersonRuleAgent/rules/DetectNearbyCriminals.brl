@@ -13,7 +13,7 @@ definitions
 	set 'callee organization' to the organization of the role of 'the callee';
 	set 'timestamp' to the timestamp of 'the cellular call report' ;
 	set 'nearby criminals' to the persons of 'the cellular call report'
-	where the distance between the latest observed geometry of 'the callee' and the latest observed geometry of each person in meters is less than 'nearby distance' 
+	where the distance between 'the callee' and each person in meters is less than 'nearby distance' 
 	and the type of the organization of the role of each person is CRIMINAL ;
 	
 if  the type of 'callee organization' is not CRIMINAL and the relationship depth between 'the callee' and 'the caller' is less than 1

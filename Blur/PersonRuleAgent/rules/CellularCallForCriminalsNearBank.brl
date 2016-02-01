@@ -16,11 +16,11 @@ definitions
 	set 'the caller' to the caller of 'the cellular call report';
 	set 'callee organization' to the organization of the role of 'the callee';
 	set 'nearby callee people' to the persons of 'the cellular call report'
-		where the distance between the latest observed geometry of each person and the latest observed geometry of 'the callee' in meters is less than 'nearby people radius' 
+		where the distance between each person and 'the callee' in meters is less than 'nearby people radius' 
 			and the organization of the role of each person is 'callee organization';
 	set 'nearby banks' to the buildings of 'the cellular call report' 
 	where the usage type of each building is BANK BRANCH and 
-	the distance between the latest observed geometry of each building and the latest observed geometry of 'the callee' in meters is less than 'nearby bank radius' ;
+	the distance between each building and 'the callee' in meters is less than 'nearby bank radius' ;
 	set 'relationship  depth' to the relationship depth between 'the callee' and 'the caller' ;
 
 

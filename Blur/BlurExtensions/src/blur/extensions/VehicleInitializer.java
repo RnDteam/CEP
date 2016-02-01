@@ -47,6 +47,7 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 			e.printStackTrace();
 		}
 	}
+	
 	public static Connection getDBConnection() {
 		if(dbConnection == null) {
 			try {
@@ -57,44 +58,6 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 		}
 		return dbConnection;
 	}
-
-	/**
-	public Relationship<Organization> getOrganizationFromDB(String ownerId) {
-		String vehicleMakerColumn = "Maker";
-		String vehicleModelColumn = "Model";
-		String vehicleYearColumn = "Year";
-		String vehicleMaxSpeedColumn = "Max_Speed";
-		String vehicleTypeColumn = "Type";
-		String getVehicleTypeQuery = "SELECT " + vehicleMaxSpeedColumn +"," + vehicleTypeColumn + " FROM " + vehicleTypeTableName + " WHERE ";
-		
-		getVehicleTypeQuery += vehicleMakerColumn + "='" + vehicle_details.getMaker() + "' AND ";
-		getVehicleTypeQuery += vehicleModelColumn + "='" + vehicle_details.getModel() + "' AND ";
-		getVehicleTypeQuery += vehicleYearColumn + "='" + vehicle_details.getYear() + "'";
-		
-		String vehicleTypeString = null;
-		double vehicleMaxSpeedString = 0.0;
-		try {
-			Statement statement = dbConnection.createStatement();
-			ResultSet resultSet = statement.executeQuery(getVehicleTypeQuery);
-			
-			while (resultSet.next()) {
-				if (vehicleTypeString != null){
-					System.out.println("Two rows with the same ownerId");
-				}
-				
-				vehicleMaxSpeedString = Double.parseDouble(resultSet.getString(1));
-				vehicleTypeString = resultSet.getString(2);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		closeConnection(dbConnection);
-		
-		Organization myOrganization = conceptFactory.createOrganization("");
-		Relationship<Organization> organizationRelationship = getModelFactory().createRelationship(myOrganization);
-		return organizationRelationship;
-	}
-	**/
 	
 	public void setVehicleTypeSpeedFromDB(VehicleDetails vehicle_details) {
 		String vehicleMakerColumn = "Maker";
@@ -226,34 +189,4 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 	private Relationship<Person> getOwnerFromES(String ownerId) {
 		return getModelFactory().createRelationship(Person.class, ownerId);
 	}
-
-	/**
-	private VehicleDetails getDetailsFromES(String licensePlateNumber) {
-		VehicleDetails myDetails = conceptFactory.createVehicleDetails();
-		//		myDetails.setType(generateStatus());
-		myDetails.setType(VehicleType.MOTORCYCLE);
-		myDetails.setMaker("Maker" + random.nextInt());
-		myDetails.setMaximumSpeed(random.nextInt(100) + 150);
-		Integer randomYear = (random.nextInt(2015 - 1980)) + 1980;
-		myDetails.setYear(randomYear.toString());
-		return myDetails;
-	}
-	private static VehicleType generateStatus() {
-		int vehicleStatusSize = VehicleType.values().length;
-		int randomStatusIndex = random.nextInt(vehicleStatusSize);
-		return VehicleType.values()[randomStatusIndex];
-	}
-	private Relationship<Organization> getOrganizationFromES(
-			String licensePlateNumber) {
-		Organization myOrganization = conceptFactory.createOrganization("Organization-" + licensePlateNumber);
-		myOrganization.setType(generateOrganizationType());
-		Relationship<Organization> organizationRelationship = getModelFactory().createRelationship(myOrganization);
-		return organizationRelationship;
-	}
-	private OrganizationType generateOrganizationType() {
-		int organizationTypeSize = OrganizationType.values().length;
-		int randomStatusIndex = random.nextInt(organizationTypeSize);
-		return OrganizationType.values()[randomStatusIndex];
-	}
-	**/
 }

@@ -5,10 +5,7 @@ import java.sql.ResultSet;
 import com.ibm.ia.gateway.SolutionGateway;
 
 import DBHandler.ConverterUtility;
-import blur.model.Building;
 import blur.model.CellularCallReport;
-import blur.model.CellularReport;
-import blur.model.LocationBasedEvent;
 import blur.model.Person;
 
 public class CellularCallReportEvent extends

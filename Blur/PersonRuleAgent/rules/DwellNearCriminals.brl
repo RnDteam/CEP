@@ -15,7 +15,7 @@ definitions
 	set 'the collaborator' to the potential collaborator of this dwelling with criminal report  ;
 	set 'collaborator organization' to the organization of the role of 'the collaborator';
 	set 'the suspect' to the suspect of this dwelling with criminal report ; 
-	set 'encounters' to the encounters between 'the suspect' and the latest observed geometry of 'the collaborator'  within proximity of 'nearby distance' meters;
+	set 'encounters' to the encounters between 'the suspect' and 'the collaborator'  within proximity of 'nearby distance' meters;
 	set 'the cutoff point' to 'dwelling time'  before the timestamp of this dwelling with criminal report ;
 	set 'too late encounters' to 'encounters' where
 		the start of each time period is after 'the cutoff point';

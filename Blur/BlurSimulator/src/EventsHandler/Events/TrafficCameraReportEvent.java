@@ -3,7 +3,6 @@ package EventsHandler.Events;
 import java.sql.ResultSet;
 import com.ibm.ia.gateway.SolutionGateway;
 import DBHandler.ConverterUtility;
-import EventsHandler.EventCreation;
 import blur.model.TrafficCameraReport;
 import blur.model.Vehicle;
 
