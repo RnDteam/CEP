@@ -1,0 +1,13 @@
+submit events from "PersonInBuildingCellurarReport";
+
+
+check that the person identified by "person1" exists ; 
+check that for the person identified by "person1" : 
+	- the profession of this person is not null
+	- the role of this person is not null 
+	- the location of this person is not null
+	- the location of this person intersects the point with 34.2 as longitude and 35 as latitude; 
+	
+check that the person identified by "person2" exists ; 
+check that for the person identified by "person2" : 
+	- the location of this person is not null ; 

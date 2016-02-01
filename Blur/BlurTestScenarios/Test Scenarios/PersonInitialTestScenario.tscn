@@ -1,1 +1,14 @@
 submit events from "PersonInitialEventSequence";
+
+
+
+
+check that the person identified by "person1" exists ; 
+check that for the person identified by "person1" : 
+	- the profession of this person is not null
+	- the role of this person is not null 
+	- the location of this person is not null ; 
+	
+check that the person identified by "person2" exists ; 
+check that for the person identified by "person2" : 
+	- the location of this person is not null ; 

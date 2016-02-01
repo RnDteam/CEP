@@ -1,0 +1,156 @@
+define 'criminal_org' as the organization identified by "criminal_org" ;
+define 'criminal_org_2' as the organization identified by "criminal_org_2" ;
+define 'non_criminal_org' as the organization identified by "non_criminal_org" ;
+
+define 'role1_criminal' as the organizational role identified by "role1_criminal"; 
+define 'role2_non_criminal' as the organizational role identified by "role2_non_criminal";
+
+define 'person1' as the person identified by "person1";
+define 'person2' as the person identified by "person2";
+
+define 'building1' as the building identified by "building1"; 
+define 'building2' as the building identified by "building2";
+define 'building3' as the building identified by "building3";
+define 'building4' as the building identified by "building4";
+ 
+// organization 1 -- Criminal
+emit a new organization initialization where
+    the organization is criminal_org,
+    the type is CRIMINAL , time-stamped 1/1/2015 01:09:11 AM ;
+
+// organization 2 -- Criminal
+emit a new organization initialization where
+    the organization is criminal_org_2 ,
+    the type is CRIMINAL , time-stamped 1/1/2015 01:09:11 AM ;
+
+// organization 3  -- Non criminal
+emit a new organization initialization where
+    the organization is non_criminal_org,
+    the type is COMMERCIAL , time-stamped 1/1/2015 01:09:11 AM ;
+
+
+// Organization role 1
+emit a new organization role initialization where
+    the organizational role is role1_criminal,
+    the organization is criminal_org ,
+    the timestamp is 1/1/2015 02:04:19 AM ;
+
+// Organization role 2
+emit a new organization role initialization where
+    the organizational role is role2_non_criminal  ,
+    the organization is non_criminal_org ,
+    the timestamp is 1/1/2015 02:04:19 AM ;
+
+
+// Person 1
+emit a new person initialization where
+    the person is person1  ,
+    the name is "a1" ,
+    the profession is "pro1" ,
+    the location is the point with 22 as longitude and 23 as latitude ,
+    the state is INACTIVE ,
+    the timestamp is 1/10/2015 11:26:05 AM ,
+    the role is role1_criminal ;
+
+// Person 2
+emit a new person initialization where
+    the person is person2 ,
+    the name is "a2" ,
+    the profession is "pro2" ,
+    the location is the point with 22 as longitude and 23 as latitude ,
+    the state is INACTIVE ,
+    the timestamp is 1/10/2015 11:26:05 AM ,
+    the role is role2_non_criminal  ;
+
+// Building  1: 1 criminal
+define 'building1_init' as a new building initialization where
+    the building is building1  ,
+    the location is the point with 34 as longitude and 35 as latitude ,
+    the type is APPARTMENT ,
+    the usage type is BANK BRANCH ,
+    the owner is a new person where
+        the id is "124" ,
+    the timestamp is 1/13/2015 1:25:22 PM ;
+
+add criminal_org to the organizations of building1_init ;
+
+// Building  2: 1 non criminal
+define 'building2_init' as a new building initialization where
+    the building is building2  ,
+    the location is the point with 34.1 as longitude and 35 as latitude ,
+    the type is APPARTMENT ,
+    the usage type is BANK BRANCH ,
+    the owner is a new person where
+        the id is "124" ,
+    the timestamp is 1/13/2015 1:25:22 PM ;
+
+add non_criminal_org to the organizations of building2_init ;
+
+// Building  3: 1 criminal & 1 non_criminal
+define 'building3_init' as a new building initialization where
+    the building is building3  ,
+    the location is the point with 34.2 as longitude and 35 as latitude ,
+    the type is APPARTMENT ,
+    the usage type is BANK BRANCH ,
+    the owner is a new person where
+        the id is "124" ,
+    the timestamp is 1/13/2015 1:25:22 PM ;
+
+add criminal_org to the organizations of building3_init ;
+add non_criminal_org to the organizations of building3_init ;
+
+// Building  4: 2 criminals
+define 'building4_init' as a new building initialization where
+    the building is building4  ,
+    the location is the point with 34.2 as longitude and 35 as latitude ,
+    the type is APPARTMENT ,
+    the usage type is BANK BRANCH ,
+    the owner is a new person where
+        the id is "124" ,
+    the timestamp is 1/13/2015 1:25:22 PM ;
+
+add criminal_org to the organizations of building4_init ;
+add criminal_org_2 to the organizations of building4_init ;
+
+// Building Initialization emit
+emit building1_init ;
+emit building2_init ;
+emit building3_init ;
+emit building4_init ;
+
+// Cellular Report 1 -- Rule has to be fired!
+
+emit a new cellular report where
+    the building is building1 ,
+    the person is person1 ,
+    time-stamped 2/1/2016 1:30:00 PM ;
+// Cellular Report 2
+emit a new cellular report where
+    the building is building2 ,
+    the person is person1 ,
+    time-stamped 5 minutes later  ;
+// Cellular Report 3
+emit a new cellular report where
+    the building is building3  ,
+    the person is person1 , time-stamped 5 minutes later ;
+// Cellular Report 4
+emit a new cellular report where
+    the building is building4,
+    the person is person1 , time-stamped 5 minutes later  ;
+
+// Cellular Report 5
+emit a new cellular report where
+    the building is building1 ,
+    the person is person2 , time-stamped 5 minutes later  ;
+// Cellular Report 6
+emit a new cellular report where
+    the building is building2 ,
+    the person is person2 , time-stamped 5 minutes later  ;
+// Cellular Report 7
+emit a new cellular report where
+    the building is building3 ,
+    the person is person2 , time-stamped 5 minutes later ;
+// Cellular Report 8
+emit a new cellular report where
+    the building is building4 ,
+    the person is person2 , time-stamped 5 minutes later  ;

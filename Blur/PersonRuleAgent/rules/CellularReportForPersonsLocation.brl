@@ -4,7 +4,8 @@
   <uuid>6d787330-5a40-4934-bf4e-fffd465d6d3e</uuid>
   <locale>en_US</locale>
   <definition><![CDATA[when a cellular report occurs 
+if the location of 'the person' is not null
 then
-move 'the person' to the location of the building of this cellular report at the timestamp of this cellular report ;
+move 'the person' to the latest observed geometry of the building of this cellular report at the timestamp of this cellular report ;
 ]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

@@ -5,22 +5,22 @@ check that the building identified by "building2" exists ;
 check that the building identified by "building3" exists ;   
 
 
-check that for the building identified by "building1" : 
-	- the location of this building intersects the point with 34 as longitude and 35 as latitude
+check that for the building identified by "building1" :
+	- the point with 34 as longitude and 35 as latitude intersects the  location of this building  
 	- the type of this building is APPARTMENT 
 	- the usage type of this building is BANK BRANCH
 	- the owner of this building is null 
 	- the number of organizations of this building equals 1;	
 
 check that for the building identified by "building2" : 
-	- the location of this building intersects the point with 64 as longitude and 35 as latitude 
+	-  the point with 64 as longitude and 35 as latitude intersects the location of this building
 	- the type of this building is WAREHOUSE 
 	- the usage type of this building is FURNITURE STORE  
 	- the owner of this building is null 
 	- the number of organizations of this building equals 1	;	
 	
 check that for the building identified by "building3" : 
-	- the location of this building intersects the point with 88 as longitude and 79 as latitude 
+	- the point with 88 as longitude and 79 as latitude intersects the location of this building 
 	- the type of this building is WAREHOUSE 
 	- the usage type of this building is BANK BRANCH  
 	- the owner of this building is null 

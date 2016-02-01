@@ -5,25 +5,23 @@
   <locale>en_US</locale>
   <definition><![CDATA[when a cellular report occurs
 definitions
-	set 'organizations' to the organizations of the building of this cellular report;
-	set 'criminal organizations' to 'organizations'
-	where the type of each organization is CRIMINAL ;
-
-
-if the number of 'criminal organizations' is 1 and the number of 'organizations' is 1
-	and the type of the organization of the role of 'the person' is not CRIMINAL 
-
+    set 'organizations' to the organizations of the building of this cellular report ;
+    set 'criminal organizations' to 'organizations'
+        where the type of each organization is CRIMINAL ;
+if
+    the number of 'criminal organizations' is 1
+    and the number of 'organizations' is 1
+    and the type of the organization of the role of 'the person' is not CRIMINAL
 then
-for each organization in 'organizations' : 
-	- emit a new update role event where 
-	the organization is this organization , 
-	the organizational role is the role of 'the person',
-	the timestamp is the timestamp of this cellular report ; 
-
-define ALERT as a new alert where 
-	the building is the building of this cellular report ,
-	the person is 'the person' ,
-	the organization is the organization of the role of 'the person',
-	the message is "The person " + the id of 'the person' + "is a criminal in organization " + the id of the organization of the role of 'the person';
-emit ALERT;]]></definition>
+    for each organization in 'organizations' :
+        - emit a new update role event where
+            the organization is this organization ,
+            the organizational role is the role of 'the person' ,
+            the timestamp is the timestamp of this cellular report ;
+    define ALERT as a new alert where
+        the building is the building of this cellular report ,
+        the person is 'the person' ,
+        the organization is the organization of the role of 'the person' ,
+        the message is "The person " + the id of 'the person' + "is a criminal in organization " + the id of the organization of the role of 'the person' ;
+    emit ALERT ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>
