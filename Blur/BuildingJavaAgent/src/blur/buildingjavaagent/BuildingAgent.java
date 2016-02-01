@@ -8,6 +8,7 @@ import blur.model.Person;
 
 import com.ibm.geolib.geom.Point;
 import com.ibm.geolib.st.MovingGeometry;
+import com.ibm.geolib.st.SpatioTemporalService;
 import com.ibm.ia.common.AgentException;
 import com.ibm.ia.agent.EntityAgent;
 import com.ibm.ia.model.Event;
@@ -15,7 +16,8 @@ import com.ibm.ia.model.Relationship;
 
 public class BuildingAgent extends EntityAgent<Building> {
    
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public void process(Event event) throws AgentException {
     	Building thisBuilding = getBoundEntity();
         
@@ -25,10 +27,16 @@ public class BuildingAgent extends EntityAgent<Building> {
     	if (event instanceof BuildingUpdate) {
 			BuildingUpdate buildingUpdate = (BuildingUpdate) event;
 			
-			MovingGeometry<Point> location = buildingUpdate.getLocation();
+			Point location = buildingUpdate.getLocation();
 			
 			if(location != null) {
-				thisBuilding.setLocation(location);
+				MovingGeometry<Point> buildingLocation = thisBuilding.getLocation();
+				if (buildingLocation == null) {
+					buildingLocation = SpatioTemporalService.getService().getMovingGeometryFactory().getMovingGeometry();
+					thisBuilding.setLocation(buildingLocation);					
+				}
+				
+				buildingLocation.setGeometryAtTime(location, buildingUpdate.getTimestamp());
 			}
 			
 			BuildingType type = buildingUpdate.getType();

@@ -42,7 +42,7 @@ emit a new vehicle initialization where
 	the vehicle is 'the vehicle 1' ,
 	the details is vehicleDetails1 , 
 	the status is INACTIVE   ,
-	the location is the point with 7.0095 as longitude and 43.6424 as latitude,
+	the location is the point with 7.0095 as longitude and 43.6424 as latitude ,
 	the last seen is 1/1/2016 8:19:19 AM,
 	the organization is the organization identified by "3256", 
 	suspicious is false,
