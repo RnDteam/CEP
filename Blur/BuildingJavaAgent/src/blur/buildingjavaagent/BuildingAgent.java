@@ -7,6 +7,7 @@ import blur.model.BuildingUsageType;
 import blur.model.Person;
 
 import com.ibm.geolib.geom.Point;
+import com.ibm.geolib.st.MovingGeometry;
 import com.ibm.ia.common.AgentException;
 import com.ibm.ia.agent.EntityAgent;
 import com.ibm.ia.model.Event;
@@ -24,7 +25,7 @@ public class BuildingAgent extends EntityAgent<Building> {
     	if (event instanceof BuildingUpdate) {
 			BuildingUpdate buildingUpdate = (BuildingUpdate) event;
 			
-			Point location = buildingUpdate.getLocation();
+			MovingGeometry<Point> location = buildingUpdate.getLocation();
 			
 			if(location != null) {
 				thisBuilding.setLocation(location);

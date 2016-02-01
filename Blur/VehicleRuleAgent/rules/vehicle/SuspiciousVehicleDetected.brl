@@ -7,7 +7,7 @@
 definitions
     set 'the event location' to the event location of this suspicious vehicle detected ;
     set 'the close criminals' to the persons of this suspicious vehicle detected
-        where the distance between each person and 'the event location' in meters is less than 500
+        where the distance between the latest observed geometry of each person and 'the event location' in meters is less than 500
         and the type of the organization of the role of each person is CRIMINAL ; 
 if
     the number of elements in 'the close criminals' is more than 0

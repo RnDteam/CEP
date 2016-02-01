@@ -6,6 +6,7 @@ import blur.model.PersonState;
 import blur.model.PersonUpdate;
 
 import com.ibm.geolib.geom.Point;
+import com.ibm.geolib.st.MovingGeometry;
 import com.ibm.ia.common.AgentException;
 import com.ibm.ia.agent.EntityAgent;
 import com.ibm.ia.model.Event;
@@ -36,7 +37,7 @@ public class PersonAgent extends EntityAgent<Person> {
 				thisPerson.setProfession(proffesion);
 			}
 			
-			Point location = thisPerson.getLocation();
+			MovingGeometry<Point> location = thisPerson.getLocation();
 			
 			if(location != null) {
 				thisPerson.setLocation(location);

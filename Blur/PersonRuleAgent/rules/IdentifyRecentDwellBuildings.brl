@@ -14,8 +14,8 @@ definitions
 	set 'callee organization' to the organization of the role of 'the callee';
 	set 'timestamp' to the timestamp of 'the cellular call report' ;
 	set 'dwelled buildings' to the buildings of 'the cellular call report' 
-	where 'the callee' has been located within 'nearby distance' meters of each building since 30 minutes before 'timestamp'
-	and it is not true that 'the callee' has been located within 'nearby distance' meters of each building since 2 hours before 'timestamp';
+	where 'the callee' has been located within 'nearby distance' meters of the latest observed geometry of each building since 30 minutes before 'timestamp'
+	and it is not true that 'the callee' has been located within 'nearby distance' meters of the latest observed geometry of each building since 2 hours before 'timestamp';
 	
 if  the type of 'callee organization' is not CRIMINAL and the relationship depth between 'the callee' and 'the caller' is less than 1
 

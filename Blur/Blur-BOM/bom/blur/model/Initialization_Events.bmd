@@ -7,7 +7,7 @@ a building initialization is a business event .
 a building initialization is related to a building .
 a building initialization is related to a person , named the owner .
 a building initialization is related to several different organizations .
-a building initialization has a location ( a point ) used as the default geometry .
+a building initialization has a location ( a moving geometry  ) used as the default moving geometry  .
 a building initialization has a type ( a building type ) .
 a building initialization has a usage type ( a building usage type ) .
 
@@ -16,7 +16,7 @@ a building update is a business event .
 a building update is related to a building .
 a building update is related to a person , named the owner .
 a building update is related to several different organizations .
-a building update has a location ( a point ) used as the default geometry .
+a building update has a location ( a moving geometry  ) used as the default moving geometry  .
 a building update has a type ( a building type ) .
 a building update has a usage type ( a building usage type ) .
 
@@ -37,7 +37,7 @@ an organization role initialization is related to an organizational role , named
 a person initialization is a business event.
 a person initialization has a name.
 a person initialization has a profession.
-a person initialization has a location (a point) used as the default geometry.
+a person initialization has a location (a moving geometry) used as the default moving geometry .
 a person initialization has a state (a person state).
 a person initialization is related to a person.
 a person initialization is related to an organizational role, named the role.
@@ -46,7 +46,7 @@ a person initialization is related to an organizational role, named the role.
 a person update is a business event.
 a person update has a name.
 a person update has a profession.
-a person update has a location (a point) used as the default geometry.
+a person update has a location (a moving geometry ) used as the default moving geometry .
 a person update has a state (a person state).
 a person update is related to a person.
 a person update is related to an organizational role, named the role.
@@ -56,7 +56,7 @@ a vehicle initialization is a business event.
 a vehicle initialization is related to an vehicle.
 a vehicle initialization is related to a person, named the owner.
 a vehicle initialization is related to an organization.
-a vehicle initialization has a location (a point) used as the default geometry.
+a vehicle initialization has a location (a moving geometry ) used as the default moving geometry .
 a vehicle initialization has a status (a vehicle status).
 a vehicle initialization has a details (a vehicle details).
 a vehicle initialization has a last seen (date & time).
@@ -100,7 +100,7 @@ a person is initialized from a person initialization , where this person comes f
     - set the location of this person to the location of this person initialization
     - set the state of this person to the state of this person initialization
     - set the role of this person to the role of this person initialization .
-
+ 
 --Vehicle
 a vehicle is initialized from a vehicle initialization , where this vehicle comes from the vehicle of this vehicle initialization : 
 	- set the owner of this vehicle to the owner of this vehicle initialization 

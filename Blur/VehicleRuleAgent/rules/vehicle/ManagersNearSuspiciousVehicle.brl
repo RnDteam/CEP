@@ -8,7 +8,7 @@
 definitions
 	set 'range' to the range of this managers near suspicious vehicle;
 	set 'richable buildings' to the buildings of this managers near suspicious vehicle 
-	where 'range' contains each building;
+	where 'range' contains the latest observed geometry of each building;
 	
 if the number of elements in 'richable buildings' is more than 0 
 

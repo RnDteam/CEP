@@ -1,6 +1,7 @@
 package EventsHandler.EntitiesInitialization;
 
 import java.sql.ResultSet;
+import java.time.ZonedDateTime;
 
 import blur.model.OrganizationalRole;
 import blur.model.Person;
@@ -29,13 +30,14 @@ public class PersonInternalInit extends EventCreation<PersonUpdate> {
 			String latitude = resultSet.getString(5);
 			String state  =resultSet.getString(6);
 			
+			ZonedDateTime reportTimeStamp =  ConverterUtility.initDate;
 			personInitEvent.setPerson(gateway.createRelationship(Person.class, personId));
 			personInitEvent.setName(name);
 			personInitEvent.setRole(gateway.createRelationship(OrganizationalRole.class, organizationRoleId));
-			personInitEvent.setLocation(ConverterUtility.getPointFromString(logntitude, latitude));
+			personInitEvent.setLocation(ConverterUtility.getMovingGeometryFromString(logntitude, latitude, reportTimeStamp));
 			personInitEvent.setState(getPersonState(state));
 			
-			personInitEvent.setTimestamp(ConverterUtility.initDate);
+			personInitEvent.setTimestamp(reportTimeStamp);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

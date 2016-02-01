@@ -1,11 +1,13 @@
 package EventsHandler.EntitiesInitialization;
 
 import java.sql.ResultSet;
+import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
 import com.ibm.ia.gateway.SolutionGateway;
 import com.ibm.ia.model.Relationship;
+
 import blur.model.Building;
 import blur.model.BuildingType;
 import blur.model.BuildingUpdate;
@@ -32,8 +34,9 @@ public class BuildingInternalInit extends EventCreation<BuildingUpdate>{
 			String usageType = resultSet.getString(6);
 			String organizationId = resultSet.getString(7);
 
+			ZonedDateTime reportTimeStamp =  ConverterUtility.initDate;
 			buildingInitEvent.setBuilding(gateway.createRelationship(Building.class, buildingId));
-			buildingInitEvent.setLocation(ConverterUtility.getPointFromString(logntitude, latitude));
+			buildingInitEvent.setLocation(ConverterUtility.getMovingGeometryFromString(logntitude, latitude, reportTimeStamp));
 			buildingInitEvent.setType(convertBuildingType(buildingType));
 			buildingInitEvent.setUsageType(convertUsageType(usageType));
 			buildingInitEvent.setOwner(gateway.createRelationship(Person.class, ownerId));
@@ -42,7 +45,7 @@ public class BuildingInternalInit extends EventCreation<BuildingUpdate>{
 			organizations.add(gateway.createRelationship(Organization.class, organizationId));
 			
 			buildingInitEvent.setOrganizations(organizations);
-			buildingInitEvent.setTimestamp(ConverterUtility.initDate);
+			buildingInitEvent.setTimestamp(reportTimeStamp);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

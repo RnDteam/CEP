@@ -7,7 +7,7 @@
   <definition><![CDATA[when a potential bank crime report occurs 
 definitions 
 	set 'nearby criminals' to the persons of this potential bank crime report 
-	where the distance between 'the building' and
+	where the distance between the latest observed geometry of 'the building' and
 		  the location of each person in meters is less than the radius in meters of this potential bank crime report ;
 	
 	

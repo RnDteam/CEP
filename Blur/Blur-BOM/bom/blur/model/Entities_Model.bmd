@@ -4,7 +4,7 @@
 
 a location alerted entity is a business entity identified by a id with 
 	an alert message,
-	a location (a point) used as the default geometry.
+	a location (a moving geometry ) used as the default moving geometry.
 
 -- person
 a person state can be one of : ACTIVE, INACTIVE.
@@ -13,7 +13,6 @@ a person is a location alerted entity with
    a name,
    a profession,
    a risk score (numeric),
-   a location (a moving geometry ) used as the default moving geometry,
    a state (a person state).
 a person is related to an organizational role, named the role.
 

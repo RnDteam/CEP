@@ -1,6 +1,7 @@
 package EventsHandler.EntitiesInitialization;
 
 import java.sql.ResultSet;
+import java.time.ZonedDateTime;
 
 import com.ibm.ia.gateway.SolutionGateway;
 
@@ -26,11 +27,12 @@ public class BuildingExternalInit extends EventCreation<BuildingInitialization> 
 			String buildingType = resultSet.getString(4);
 			String ownerId = resultSet.getString(5);
 
+			ZonedDateTime reportTimeStamp =  ConverterUtility.initDate;
 			buildingInitEvent.setBuilding(gateway.createRelationship(Building.class, buildingId));
-			buildingInitEvent.setLocation(ConverterUtility.getPointFromString(logntitude, latitude));
+			buildingInitEvent.setLocation(ConverterUtility.getMovingGeometryFromString(logntitude, latitude, reportTimeStamp));
 			buildingInitEvent.setType(convertBuildingType(buildingType));
 			buildingInitEvent.setOwner(gateway.createRelationship(Person.class, ownerId));
-			buildingInitEvent.setTimestamp(ConverterUtility.initDate);
+			buildingInitEvent.setTimestamp(reportTimeStamp);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
