@@ -100,16 +100,13 @@ public class CellularReportWithMovingGeometryTest {
 		organizationInitialization3.setOrganization(org3);
 		
 		// Organization role Initialization		
-		OrganizationRoleInitialization orgRole1 = conceptFactory.createOrganizationRoleInitialization(now);
-		orgRole1.setOrganization(org1);
-		Relationship<OrganizationalRole> role1 = testDriver.createRelationship(OrganizationalRole.class, "role1");
-		orgRole1.setOrganizationalRole(role1);
+		OrganizationRoleInitialization organizationRoleInitialization1 = conceptFactory.createOrganizationRoleInitialization(now);
+		organizationRoleInitialization1.setOrganizationalRole(testDriver.createRelationship(OrganizationalRole.class, "role1"));
+		organizationInitialization1.setOrganization(testDriver.createRelationship(Organization.class, "organization1"));
 		
-		OrganizationRoleInitialization orgRole2 = conceptFactory.createOrganizationRoleInitialization(now);
-		orgRole1.setOrganization(org3);
-		Relationship<OrganizationalRole> role2 = testDriver.createRelationship(OrganizationalRole.class, "role2");
-		orgRole1.setOrganizationalRole(role2);
-		
+		OrganizationRoleInitialization organizationRoleInitialization2 = conceptFactory.createOrganizationRoleInitialization(now);
+		organizationRoleInitialization2.setOrganizationalRole(testDriver.createRelationship(OrganizationalRole.class, "role2"));
+		organizationInitialization2.setOrganization(testDriver.createRelationship(Organization.class, "organization3"));
 		
 		Point location = null;
 		
@@ -118,7 +115,7 @@ public class CellularReportWithMovingGeometryTest {
 		personInitialization1.setPerson(testDriver.createRelationship(Person.class, "person1"));
 		personInitialization1.setName("a1");
 		personInitialization1.setProfession("pro1");
-		personInitialization1.setRole(role1); //Criminal
+		personInitialization1.setRole(testDriver.createRelationship(OrganizationalRole.class, "role1")); //Criminal
 		personInitialization1.setState(PersonState.ACTIVE);
 		location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 34.781768 + Math.random(), 32.085300 + Math.random());
 		personInitialization1.setLocation(location);
@@ -127,7 +124,7 @@ public class CellularReportWithMovingGeometryTest {
 		personInitialization2.setPerson(testDriver.createRelationship(Person.class, "person2"));
 		personInitialization2.setName("b2");
 		personInitialization2.setProfession("pro2");
-		personInitialization2.setRole(role2); //Criminal
+		personInitialization2.setRole(testDriver.createRelationship(OrganizationalRole.class, "role2")); // None Criminal
 		personInitialization2.setState(PersonState.ACTIVE);
 		location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 34.781768 + Math.random(), 32.085300 + Math.random());
 		personInitialization2.setLocation(location);
@@ -181,8 +178,8 @@ public class CellularReportWithMovingGeometryTest {
 		testDriver.submitEvent(organizationInitialization1);
 		testDriver.submitEvent(organizationInitialization2);
 		testDriver.submitEvent(organizationInitialization3);
-		testDriver.submitEvent(orgRole1);
-		testDriver.submitEvent(orgRole2);
+		testDriver.submitEvent(organizationRoleInitialization1);
+		testDriver.submitEvent(organizationRoleInitialization2);
 		testDriver.submitEvent(personInitialization1);
 		testDriver.submitEvent(personInitialization2);
 		testDriver.submitEvent(buildingInitialization1);
@@ -192,13 +189,13 @@ public class CellularReportWithMovingGeometryTest {
 		
 		
 		
-		Building building1 = testDriver.fetchEntity(Building.class, "building1");
+/*		Building building1 = testDriver.fetchEntity(Building.class, "building1");
 		Assert.assertNotNull(building1);
 		Building building2 = testDriver.fetchEntity(Building.class, "building2");
 		Assert.assertNotNull(building2);		
 		Building building3 = testDriver.fetchEntity(Building.class, "building3");
 		Assert.assertNotNull(building3);
-		
+		*/
 		// allow the server time to create the entities
 		Thread.sleep(3000);
 /*		
@@ -231,7 +228,6 @@ public class CellularReportWithMovingGeometryTest {
 		}
 	*/
 		// manually advance time
-		testDriver.processPendingSchedules( oneDayAgo.plusHours(5));
 		Thread.sleep(5000);		
 	}
 }
