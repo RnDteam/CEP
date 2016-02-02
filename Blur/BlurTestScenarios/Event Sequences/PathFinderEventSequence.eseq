@@ -139,52 +139,52 @@ emit a new vehicle initialization where
 
 // Vehicle is suspect.
 emit a new traffic camera report where  
-	the camera id is 34,
+	the camera id is "34",
 	the camera location is the point with 45 as longitude and 34 as latitude ,
 	the vehicle is 'the vehicle 1' ,
 	the timestamp is 1/5/2016 5:42:21 PM   ;
 	
 emit a new traffic camera report where  
-	the camera id is 80,
+	the camera id is "80",
 	the camera location is the point with 31 as longitude and 35 as latitude ,
 	the vehicle is 'the vehicle 1' ,
 	the timestamp is 1/16/2016 5:42:21 PM   ;
 
 // Vehicle the is not suspect.
 emit a new traffic camera report where  
-	the camera id is 56,
+	the camera id is "56",
 	the camera location is the point with 81 as longitude and 32 as latitude ,
 	the vehicle is 'the vehicle 2' ,
 	the timestamp is 1/7/2016 5:42:21 PM   ;
 	
 emit a new traffic camera report where  
-	the camera id is 57,
+	the camera id is "57",
 	the camera location is the point with 88 as longitude and 42 as latitude ,
 	the vehicle is 'the vehicle 2' ,
 	the timestamp is 1/8/2016 5:42:21 PM   ;
 
 // Vehicle that does not exist.
 emit a new traffic camera report where  
-	the camera id is 42,
+	the camera id is "42",
 	the camera location is the point with 62 as longitude and 31 as latitude ,
 	the vehicle is 'the vehicle 3' ,
 	the timestamp is 1/14/2016 5:42:21 PM   ;
 
 // Others
 emit a new traffic camera report where  
-	the camera id is 44,
+	the camera id is "44",
 	the camera location is the point with 66 as longitude and 33 as latitude ,
 	the vehicle is 'the vehicle 3' ,
 	the timestamp is 1/15/2016 5:42:21 PM   ;
 	
 emit a new traffic camera report where  
-	the camera id is 99,
+	the camera id is "99",
 	the camera location is the point with 30.1 as longitude and 35 as latitude ,
 	the vehicle is 'the vehicle 4' ,
 	the timestamp is 1/17/2016 5:42:21 PM   ;
 	
 emit a new traffic camera report where  
-	the camera id is 55,
+	the camera id is "55",
 	the camera location is the point with 2 as longitude and 32 as latitude ,
 	the vehicle is 'the vehicle 5' ,
 	the timestamp is 1/17/2016 5:42:21 PM   ;

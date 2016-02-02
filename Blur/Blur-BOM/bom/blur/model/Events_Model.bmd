@@ -7,7 +7,7 @@ a location based event is related to several different buildings.
 
 -- traffic camera report
 a traffic camera report is a location based event.
-a traffic camera report has an camera id (integer).
+a traffic camera report has an camera id.
 a traffic camera report has a camera location (a point).
 a traffic camera report is related to a vehicle .
 

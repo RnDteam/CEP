@@ -13,6 +13,7 @@ import java.util.concurrent.Executors;
 import DBHandler.ConverterUtility;
 import DBHandler.DBReader;
 import EventsHandler.AllBlurEvents;
+
 import com.ibm.ia.common.GatewayException;
 import com.ibm.ia.common.RoutingException;
 import com.ibm.ia.gateway.GridConfiguration;
@@ -36,8 +37,8 @@ public class StartServer {
 		TestDriver testDriver = new  TestDriver();
 		try {
 			testDriver.connect();
-			testDriver.deleteAllEntities();
-			testDriver.resetSolutionState();
+//			testDriver.deleteAllEntities();
+//			testDriver.resetSolutionState();
 			testDriver.startRecording();
 		} catch (GatewayException e1) {
 			e1.printStackTrace();
@@ -50,20 +51,6 @@ public class StartServer {
 			
 			connection = GridConnectionFactory.createGridConnection(gridConfig);
 			SolutionGateway gateway = connection.getSolutionGateway("Blur");
-			
-//			PersonInitialization personInit1 = gateway.getEventFactory().createEvent(PersonInitialization.class);
-//			personInit1.setPerson(gateway.createRelationship(Person.class, "123"));
-//			personInit1.setName("NameTRY");
-//			personInit1.setTimestamp(ZonedDateTime.now().minusDays(5));
-//			gateway.submit(personInit1);
-//			
-//			Thread.sleep(1000L);
-//			
-//			PersonInitialization personInit2 = gateway.getEventFactory().createEvent(PersonInitialization.class);
-//			personInit2.setPerson(gateway.createRelationship(Person.class, "123"));
-//			personInit2.setProfession("ProffesionTry");
-//			personInit2.setTimestamp(ZonedDateTime.now().minusDays(1));
-//			gateway.submit(personInit2);
 			
 			getDataAndSendEvents(gateway);
 
@@ -90,16 +77,6 @@ public class StartServer {
 	public static void getDataAndSendEvents(SolutionGateway gateway)
 			throws SolutionChangedException, GatewayException, RoutingException {
 		HashMap<ZonedDateTime, List<Event>> eventsMap = new HashMap<>();
-		
-//		// Entities initialization events
-//		addOrganizationInitialization(eventsMap, gateway);
-//		addOrganizationRoleInitialization(eventsMap, gateway);
-//		addPersonsInitialization(eventsMap, gateway);
-//		addBuildingInitialization(eventsMap, gateway);
-//		
-//		// Events
-//		addTrafficCamersReports(eventsMap, gateway);
-//		addCellularReports(eventsMap, gateway);
 		
 		addAllEventsToMap(eventsMap, gateway);
 		
@@ -140,11 +117,19 @@ public class StartServer {
 		for (ZonedDateTime currTime : sortedEvents) {
 			for (Event eventToSubmit : eventsMap.get(currTime)) {
 				executor.execute(new SubmitEvent(gateway, eventToSubmit));
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 			
 			try {
 				if(currTime.isAfter(ConverterUtility.absDate.minusDays(1))) {
 //					Thread.sleep(((calculateDiffernceBetweenDates(currTime, lastTimeStamp) * 1000) / 5) * 2);
+					Thread.sleep(200);
+				}
+				else {
 					Thread.sleep(1000);
 				}
 				
