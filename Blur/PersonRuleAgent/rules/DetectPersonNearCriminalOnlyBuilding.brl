@@ -7,7 +7,7 @@
 definitions
     set 'organizations' to the organizations of the building of this cellular report ;
     set 'criminal organizations' to 'organizations'
-        where the type of each organization is CRIMINAL ;
+        where the type of each organization is CRIMINAL ;   
 if
     the number of 'criminal organizations' is 1
     and the number of 'organizations' is 1
@@ -22,6 +22,8 @@ then
         the building is the building of this cellular report ,
         the person is 'the person' ,
         the organization is the organization of the role of 'the person' ,
-        the message is "The person " + the id of 'the person' + "is a criminal in organization " + the id of the organization of the role of 'the person' ;
+        the message is "The person " + the id of 'the person' + "is a criminal, changes old organization " + the id of the organization of the role of 'the person' ;
+        
+        set the alert message of 'the person' to "The person " + the id of 'the person' + "is a criminal, changes old organization " + the id of the organization of the role of 'the person' ;
     emit ALERT ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>
