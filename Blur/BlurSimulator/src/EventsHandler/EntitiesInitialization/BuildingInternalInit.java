@@ -43,7 +43,7 @@ public class BuildingInternalInit extends EventCreation<BuildingUpdate>{
 			organizations.add(gateway.createRelationship(Organization.class, organizationId));
 			
 			buildingInitEvent.setOrganizations(organizations);
-			buildingInitEvent.setTimestamp(ConverterUtility.initDate);
+			buildingInitEvent.setTimestamp(ConverterUtility.initDate.plusDays(days));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

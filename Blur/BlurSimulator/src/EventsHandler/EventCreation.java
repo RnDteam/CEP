@@ -17,6 +17,8 @@ public abstract class EventCreation<T extends Event> implements IDBInteraction<T
 
 	private final String getAllEventsQuery ="SELECT * FROM " + getTableName();
 	
+	public static int days = 0;
+	
 	@Override
 	public List<T> getAllEntities(SolutionGateway gateway) {
 		Connection dbConnection = DBReader.getDBConnection();
@@ -28,6 +30,7 @@ public abstract class EventCreation<T extends Event> implements IDBInteraction<T
 			while (resultSet.next()) {
 				eventsList.add(convertDBRowToObject(resultSet, gateway));
 			}
+			days++;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

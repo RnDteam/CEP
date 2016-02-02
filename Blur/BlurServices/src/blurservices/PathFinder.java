@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import blur.model.Building;
+import blur.model.OrganizationalRole;
 import blur.model.Person;
 import blur.model.Vehicle;
 import blur.model.VehicleDetails;
@@ -24,7 +26,7 @@ public class PathFinder implements IPathFinder {
 	private static final String USER_NAME = "root";
 	private static final String PASSWORD = "root";
 	private static Connection dbConnection = null;
-	private static final String personLinkTableName = "person_link";
+	private static final String personLinkTableName = "ob_links";
 
 
 	public static void closeConnection(Connection dbConnection) {
@@ -47,12 +49,12 @@ public class PathFinder implements IPathFinder {
 		return dbConnection;
 	}
 
-	public boolean getPersonLinkToCriminalFromDB(VehicleDetails vehicle_details) {
-		String personIdColumn = "Id";
-		String personLinkColumn = "Link";
+	public boolean getPersonLinkToCriminalFromDB(String personId) {
+		String personIdColumn = "Person_ID";
+		String personLinkColumn = "Have_link_to_criminal";
 		String getPersonLinkQuery = "SELECT " + personLinkColumn + " FROM " + personLinkTableName + " WHERE ";
 		
-		getPersonLinkQuery += personIdColumn + "='" + vehicle_details.getMaker() + "'";
+		getPersonLinkQuery += personIdColumn + "='" + personId + "'";
 		
 		String personLinkString = null;
 		try {
@@ -76,7 +78,7 @@ public class PathFinder implements IPathFinder {
 	@Override
 	public boolean isTherePath(String ownerId, int depth) {
 		System.out.println("********************************* PathFinder *****************************");
-		return true;
+		return getPersonLinkToCriminalFromDB(ownerId);
 	}
 
 	@Override
@@ -119,8 +121,14 @@ public class PathFinder implements IPathFinder {
 	
 	@Override
 	public int getRelationshipDepth(Person first, Person second) {
+		boolean areKnowEachOther =
+				first.getRole().resolve().getOrganization().getKey().equals(
+						second.getRole().resolve().getOrganization().getKey());
+
+		if(areKnowEachOther) {
+			return 0;
+		}
 		
-		// TODO : get from DB
 		return 2;
 	}
 }

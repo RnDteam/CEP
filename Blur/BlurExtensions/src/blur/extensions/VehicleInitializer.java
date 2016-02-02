@@ -34,7 +34,7 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 	private static final String PASSWORD = "root";
 	private static Connection dbConnection = null;
 	private static final String vehicleTableName = "DB_Vehicles";
-	private static final String vehicleTypeTableName = "dn_vehicle-type";
+	private static final String vehicleTypeTableName = "dn_vehicle_type";
 
 
 

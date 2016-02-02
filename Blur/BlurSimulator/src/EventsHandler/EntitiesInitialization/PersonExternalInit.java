@@ -23,8 +23,9 @@ public class PersonExternalInit extends EventCreation<PersonInitialization> {
 			
 			personInitEvent.setPerson(gateway.createRelationship(Person.class, personId));
 			personInitEvent.setName(name);
+			personInitEvent.setLocation(ConverterUtility.getPointFromDouble(34.938636, 29.55648));
 			
-			personInitEvent.setTimestamp(ConverterUtility.initDate.minusDays(1));
+			personInitEvent.setTimestamp(ConverterUtility.initDate.plusDays(days));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

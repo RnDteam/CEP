@@ -31,7 +31,7 @@ public class OrganizationRoleInit extends
 			organizationRolesInitEvent.setName(roleName);
 			organizationRolesInitEvent.setType(getRoleTypeFromString(roleType));
 			organizationRolesInitEvent.setOrganization(gateway.createRelationship(Organization.class, organizationId));
-			organizationRolesInitEvent.setTimestamp(ConverterUtility.initDate);
+			organizationRolesInitEvent.setTimestamp(ConverterUtility.initDate.plusDays(days));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
