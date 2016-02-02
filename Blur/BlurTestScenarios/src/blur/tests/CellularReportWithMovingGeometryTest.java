@@ -129,8 +129,6 @@ public class CellularReportWithMovingGeometryTest {
 		location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 34.781768 + Math.random(), 32.085300 + Math.random());
 		personInitialization2.setLocation(location);
 		
-		
-		
 		// Building Initialization	
 		// Building 1 - 1 criminal
 		BuildingInitialization buildingInitialization1 = conceptFactory.createBuildingInitialization(now);
