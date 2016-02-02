@@ -14,9 +14,9 @@ public class ConverterUtility {
 	public static final ZonedDateTime initDate = absDate.minusYears(1);
 	
 	public static Point getPointFromString(String logntitude, String latitude) {
-		
-		return SpatioTemporalService.getService().getGeometryFactory().
-				getPoint(Double.parseDouble(logntitude), Double.parseDouble(latitude));
+		double logt = Double.parseDouble(logntitude);
+		double lat = Double.parseDouble(latitude);
+		return getPointFromDouble(logt, lat);
 		
 	}
 	
@@ -26,6 +26,11 @@ public class ConverterUtility {
 		location.setGeometryAtTime(point, reportTime);
 		
 		return location;
+	}
+
+	public static Point getPointFromDouble(double longt, double lat) {
+		return SpatioTemporalService.getService().getGeometryFactory().
+		getPoint(longt, lat);
 	}
 
 }

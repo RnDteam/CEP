@@ -1,5 +1,5 @@
 emit a new traffic camera report where
-    the camera id is 1 ,
+    the camera id is "1" ,
     the camera location is the point with 34 as longitude and 35 as latitude ,
     the vehicle is the vehicle identified by "123",
 	the timestamp is 1/11/2016 5:49:04 PM;

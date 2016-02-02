@@ -45,19 +45,19 @@ public class PersonAgent extends EntityAgent<Person> {
 				MovingGeometry<Point> personLocation = thisPerson.getLocation();
 				if (personLocation == null) {
 					personLocation = SpatioTemporalService.getService().getMovingGeometryFactory().getMovingGeometry();
-					thisPerson.setLocation(personLocation);					
+//					thisPerson.setLocation(personLocation);				
 				}
 				
 				personLocation.setGeometryAtTime(location, personUpdateEvent.getTimestamp());
 			}
 			
-			PersonState state = thisPerson.getState();
+			PersonState state = personUpdateEvent.getState();
 			
 			if(state != null) {
 				thisPerson.setState(state);
 			}
 			
-			Relationship<OrganizationalRole> role = thisPerson.getRole();
+			Relationship<OrganizationalRole> role = personUpdateEvent.getRole();
 			
 			if(role != null) {
 				thisPerson.setRole(role);
