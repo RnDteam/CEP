@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
-  <name>CellularCallForCriminalsNearBank</name>
+  <name>CellularCallForCriminalsNearBank_1311</name>
   <uuid>cb34f1a1-fe05-4b93-9084-b71ece0639b6</uuid>
   <documentation><![CDATA[1.3.1.1 to 1.3.1.1.1.2]]></documentation>
   <locale>en_US</locale>
@@ -25,16 +25,17 @@ definitions
 
 
 if the type of 'callee organization' is CRIMINAL and 
-	the number of 'nearby callee people' is at least 2 and 'relationship  depth' is at least 1
+	'relationship  depth' is more than 1 and
+	the number of 'nearby callee people' is at least 2
 	
 then
 
 for each building in 'nearby banks' : 
 	- define POTENTIAL_BANK_CRIME as a new potential bank crime report where 
-	the callee is 'the callee' , 
-	the caller is 'the caller' , 
-	the building is this building,
-	the radius in meters is 'radius to bank'
+		the callee is 'the callee' , 
+		the caller is 'the caller' , 
+		the building is this building,
+		the radius in meters is 'radius to bank'
 
 	- for each person in 'nearby callee people' : 
 		- add this person to the persons of POTENTIAL_BANK_CRIME 
