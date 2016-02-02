@@ -25,7 +25,7 @@ define ALERT as a new alert where
 set the alert message of 'the building' to "Send police car to bank " + the id of 'the building';
 		
 for each person in 'nearby criminals' : 
-	- add this person to the persons of ALERT ; 
+	- add this person to the persons of ALERT 
 	- set the alert message of this person to "Send police car to bank " + the id of 'the building';
 			
 emit ALERT;
