@@ -27,9 +27,12 @@ import blur.model.PersonState;
 
 import com.ibm.geolib.geom.Point;
 import com.ibm.geolib.st.SpatioTemporalService;
+import com.ibm.ia.common.DataFormat;
 import com.ibm.ia.common.GatewayException;
 import com.ibm.ia.common.RoutingException;
 import com.ibm.ia.common.SolutionException;
+import com.ibm.ia.common.debug.DebugInfo;
+import com.ibm.ia.model.Event;
 import com.ibm.ia.testdriver.IADebugReceiver;
 import com.ibm.ia.testdriver.TestDriver;
 
@@ -210,7 +213,6 @@ public class ChangePersonLocationTest {
 		Assert.assertNotNull(person1);
 		
 		Assert.assertTrue(building1.getLocation().intersects(person1.getLocation()));
-
 
 	}
 }
