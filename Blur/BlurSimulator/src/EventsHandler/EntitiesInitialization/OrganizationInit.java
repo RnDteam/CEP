@@ -24,7 +24,7 @@ public class OrganizationInit extends EventCreation<OrganizationInitialization> 
 			
 			organizationInitEvent.setOrganization(gateway.createRelationship(Organization.class, organizationId));
 			organizationInitEvent.setType(getOrganizationType(organizationType));
-			organizationInitEvent.setTimestamp(ConverterUtility.initDate);
+			organizationInitEvent.setTimestamp(ConverterUtility.initDate.plusDays(days));
 			
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,5 +1,6 @@
 package InitServer;
 
+import com.ibm.ia.common.EventCapacityExceededException;
 import com.ibm.ia.common.GatewayException;
 import com.ibm.ia.common.RoutingException;
 import com.ibm.ia.gateway.SolutionGateway;
@@ -19,7 +20,11 @@ public class SubmitEvent implements Runnable{
 	public void run() {
 		try {
 			gateway.submit(eventToRun);
-		} catch (GatewayException e) {
+		} catch(EventCapacityExceededException e) {
+			System.out.println("********************Too much********************************");
+			e.printStackTrace();
+		}
+		catch (GatewayException e) {
 			e.printStackTrace();
 		} catch (RoutingException e) {
 			e.printStackTrace();

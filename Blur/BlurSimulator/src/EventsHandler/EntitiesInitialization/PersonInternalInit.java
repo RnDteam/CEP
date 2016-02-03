@@ -34,7 +34,7 @@ public class PersonInternalInit extends EventCreation<PersonUpdate> {
 			personInitEvent.setLocation(ConverterUtility.getPointFromString(logntitude, latitude));
 			personInitEvent.setState(getPersonState(state));
 			
-			personInitEvent.setTimestamp(ConverterUtility.initDate);
+			personInitEvent.setTimestamp(ConverterUtility.initDate.plusDays(days));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

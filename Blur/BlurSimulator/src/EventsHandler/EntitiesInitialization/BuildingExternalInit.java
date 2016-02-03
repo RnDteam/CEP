@@ -29,7 +29,7 @@ public class BuildingExternalInit extends EventCreation<BuildingInitialization> 
 			buildingInitEvent.setLocation(ConverterUtility.getPointFromString(logntitude, latitude));
 			buildingInitEvent.setType(convertBuildingType(buildingType));
 			buildingInitEvent.setOwner(gateway.createRelationship(Person.class, ownerId));
-			buildingInitEvent.setTimestamp(ConverterUtility.initDate);
+			buildingInitEvent.setTimestamp(ConverterUtility.initDate.plusDays(days));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
