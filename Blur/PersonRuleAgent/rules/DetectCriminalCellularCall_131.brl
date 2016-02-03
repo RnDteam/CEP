@@ -5,15 +5,12 @@
   <documentation><![CDATA[Detects cellular call by a criminal (1.3.1)]]></documentation>
   <locale>en_US</locale>
   <definition><![CDATA[when a cellular call report occurs
-
-definitions 
-	set 'the caller' to the caller of this cellular call report ;
-	set 'caller organization' to the organization of the role of 'the caller';
-	
-if the type of 'caller organization' is CRIMINAL
-
+definitions
+    set 'the caller' to the caller of this cellular call report ;
+    set 'caller organization' to the organization of the role of 'the caller' ;
+if
+    the type of 'caller organization' is CRIMINAL
 then
-emit a new criminal cellular call report where 
-	the cellular call report is this cellular call report ;
-]]></definition>
+    emit a new criminal cellular call report where
+        the cellular call report is this cellular call report ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

@@ -232,7 +232,7 @@ public class CellularReportWithMovingGeometryTest {
 		cellularReport = conceptFactory.createCellularReport(oneDayAgo);
 		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING4_1_CRIMINAL_1_COMMERCIAL));
 		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON1_ROLE1));
-		testDriver.submitEvent(cellularReport);
+		//testDriver.submitEvent(cellularReport);
 		oneDayAgo = oneDayAgo.plusMinutes(1);
 
 		cellularReport = conceptFactory.createCellularReport(oneDayAgo);

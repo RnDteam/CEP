@@ -14,4 +14,5 @@ Import-Package: blur.model,
  com.ibm.geolib.st;version="1.4.1.CIS2015-11-03T181901Z",
  com.ibm.geolib.unit;version="1.4.1.CIS2015-11-03T181901Z",
  com.ibm.ia.extension,
- com.ibm.ia.extension.annotations
+ com.ibm.ia.extension.annotations,
+ com.ibm.ia.model;version="1.4.1.CIS2015-11-03T181901Z"

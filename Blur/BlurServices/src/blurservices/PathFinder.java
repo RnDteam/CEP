@@ -128,7 +128,6 @@ public class PathFinder implements IPathFinder {
 		if(areKnowEachOther) {
 			return 0;
 		}
-		
 		return 2;
 	}
 }
