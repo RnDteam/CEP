@@ -1,89 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BusinessModelDefinition>
-    <Bmd><![CDATA[--alerted entity
+    <Bmd><![CDATA[-- person
+a person state can be one of :
+    ACTIVE , INACTIVE .
 
-a location alerted entity is a business entity identified by a id with 
-	an alert message,
-	a location (a moving geometry ) used as the default moving geometry.
-
--- person
-a person state can be one of : ACTIVE, INACTIVE.
-
-a person is a location alerted entity with
-   a name,
-   a profession,
-   a risk score (numeric),
-   a state (a person state).
-a person is related to an organizational role, named the role.
+a person is a business entity identified by an id with
+    a name ,
+    a profession ,
+    a risk score ( numeric ) ,
+    a state ( a person state ) ,
+    an alert message ,
+    a location ( a moving geometry ) used as the default moving geometry .
+a person is related to an organizational role , named the role .
 
 -- organization
-a organization type can be one of : CRIMINAL, COMMERCIAL.
+a organization type can be one of :
+    CRIMINAL , COMMERCIAL .
 
-an organization is a business entity identified by an id.
-an organization has a type (an organization type).
+an organization is a business entity identified by an id .
+an organization has a type ( an organization type ) .
 
-an organization role type can be one of : 
-	 MANAGER, EMPLOYEE.
+an organization role type can be one of :
+    MANAGER , EMPLOYEE .
 
-an organizational role is a business entity identified by an id.
-an organizational role has a name.
-an organizational role has a type (an organization role type).
-an organizational role is related to an organization.
-an organizational role is related to a person. 
-an organizational role is related to an organizational role , named the manager.
+an organizational role is a business entity identified by an id .
+an organizational role has a name .
+an organizational role has a type ( an organization role type ) .
+an organizational role is related to an organization .
+an organizational role is related to a person .
+an organizational role is related to an organizational role , named the manager .
 
--- building 
-a building type can be one of: APPARTMENT, WAREHOUSE, COMMERCIAL.
-a building usage type can be one of: BANK BRANCH, FURNITURE STORE.
+-- building
+a building type can be one of :
+    APPARTMENT , WAREHOUSE , COMMERCIAL .
+a building usage type can be one of :
+    BANK BRANCH , FURNITURE STORE .
 
-a building is a location alerted entity with
- a type (a building type),
- a usage type ( a building usage type ),
- a recent cellular report frequency (numeric),
- an expected cellular report frequency (numeric).
-a building is related to a person , named the owner.
-a building is related to several different organizations.
-a building has several different alerts.
+a building is a business entity identified by an id with
+    a type ( a building type ) ,
+    a usage type ( a building usage type ) ,
+    a recent cellular report frequency ( numeric ) ,
+    an expected cellular report frequency ( numeric ) ,
+    an alert message ,
+    a location ( a moving geometry ) used as the default moving geometry .
+a building is related to a person , named the owner .
+a building is related to several different organizations .
+a building has several different alerts .
 
 
 -- vehicle
-a vehicle type can be one of: MOTORCYCLE, JEEP, TRUCK.
+a vehicle type can be one of :
+    MOTORCYCLE , JEEP , TRUCK .
 
 
 --a vehicle details is a concept with
 a vehicle details is a concept with
-   a maker,
-   a model,
-   a year ,
-   a maximum speed (numeric),
-   a type (a vehicle type).
+    a maker ,
+    a model ,
+    a year ,
+    a maximum speed ( numeric ) ,
+    a type ( a vehicle type ) .
 
-a vehicle status can be one of: INACTIVE, ACTIVE.
- 
-a vehicle is a business entity identified by a license plate number.
-a vehicle has a location (a moving geometry ) used as the default moving geometry.
-a vehicle has a status (a vehicle status).
-a vehicle has a details (a vehicle details).
-a vehicle has a last seen (date & time).
-a vehicle has a suspicious(a boolean).
-a vehicle has an alert message.
+a vehicle status can be one of :
+    INACTIVE , ACTIVE .
 
-a vehicle is related to a person, named the owner.
-a vehicle is related to an organization.
+a vehicle is a business entity identified by a license plate number .
+a vehicle has a location ( a moving geometry ) used as the default moving geometry .
+a vehicle has a status ( a vehicle status ) .
+a vehicle has a details ( a vehicle details ) .
+a vehicle has a last seen ( date & time ) .
+a vehicle has a suspicious ( a boolean ) .
+a vehicle has an alert message .
+
+a vehicle is related to a person , named the owner .
+a vehicle is related to an organization .
 -- add for presenting in the map
-a vehicle has a p_model.
-a vehicle has a p_maker.
-a vehicle has a p_year.
-a vehicle has a p_maximum speed(numeric).
-a vehicle has a p_type (a vehicle type).
+a vehicle has a p_model .
+a vehicle has a p_maker .
+a vehicle has a p_year .
+a vehicle has a p_maximum speed ( numeric ) .
+a vehicle has a p_type ( a vehicle type ) .
 
 
-a risk score provider is a data provider , 
-	 accepts a person id,
-returns 
-	a risk score (numeric). 
-	
---a vehicle type provider is a data provider , 
+a risk score provider is a data provider ,
+    accepts a person id , returns a risk score ( numeric ) .
+
+--a vehicle type provider is a data provider ,
 --	 accepts a details(a vehicle details ),
 --	 returns a full details (a vehicle details ).]]></Bmd>
     <Bmi><![CDATA[a vehicle is initialized from a traffic camera report , 
