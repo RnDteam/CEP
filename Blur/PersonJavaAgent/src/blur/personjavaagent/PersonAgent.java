@@ -62,6 +62,8 @@ public class PersonAgent extends EntityAgent<Person> {
 			if(role != null) {
 				thisPerson.setRole(role);
 			}
+			
+			updateBoundEntity(thisPerson);
 		}
         
     }

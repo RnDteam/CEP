@@ -39,6 +39,6 @@ public class TrafficCameraReportEvent extends AbsLocationBasedEvent<TrafficCamer
 
 	@Override
 	public String getTableName() {
-		return "RP_Traffic";
+		return "RP_Traffic2";
 	}
 }

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Random;
 
+import blur.model.BuildingType;
 import blur.model.ConceptFactory;
 import blur.model.Person;
 import blur.model.TrafficCameraReport;
@@ -32,13 +33,11 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 	private static final String MY_SQL_DB_URL = "jdbc:mysql://localhost:3306/cep_try";
 	private static final String USER_NAME = "root";
 	private static final String PASSWORD = "root";
-	private static Connection dbConnection = null;
+	private Connection dbConnection = null;
 	private static final String vehicleTableName = "DB_Vehicles";
 	private static final String vehicleTypeTableName = "dn_vehicle_type";
 
-
-
-	public static void closeConnection(Connection dbConnection) {
+	public void closeConnection() {
 		try {
 			if(dbConnection != null) {
 				dbConnection.close();
@@ -48,9 +47,10 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 		}
 	}
 	
-	public static Connection getDBConnection() {
+	public Connection getDBConnection() {
 		if(dbConnection == null) {
 			try {
+				Class.forName("com.mysql.jdbc.Driver").newInstance();
 				dbConnection = DriverManager.getConnection(MY_SQL_DB_URL, USER_NAME, PASSWORD);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -77,9 +77,7 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 //		System.out.println(getVehicleTypeQuery);
 		try {
 			Statement statement = dbConnection.createStatement();
-			System.out.println(1);
 			ResultSet resultSet = statement.executeQuery(getVehicleTypeQuery);
-			System.out.println(2);
 			while (resultSet.next()) {
 				if (vehicleTypeString != null){
 					System.out.println("Two rows with the same Vehicle Details");
@@ -91,10 +89,9 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
-		closeConnection(dbConnection);
 		
 		if (vehicleTypeString != null){
-			vehicle_details.setType(VehicleType.valueOf(vehicleTypeString));
+			vehicle_details.setType(convertVehicleType(vehicleTypeString));
 		}
 		
 		vehicle_details.setMaximumSpeed(vehicleMaxSpeedString);
@@ -113,7 +110,6 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 				+ " FROM " + vehicleTableName 
 				+ " WHERE " + vehicleLicensePlateColumn + "='" + vehicle.getLicensePlateNumber() + "';";
 		
-//		System.out.println("Statement:" + getVehicleQuery);
 		String personLinkString = null;
 		try {
 			Statement statement = dbConnection.createStatement();
@@ -122,13 +118,11 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 				if (personLinkString != null){
 					System.out.println("Two rows with the same vehicle license plate");
 				}
-//				System.out.println(resultSet.getString(1)+resultSet.getString(2)+resultSet.getString(3)+resultSet.getString(4));
 				convertDBRowToEntity(resultSet, vehicle);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		closeConnection(dbConnection);
 
 	}
 
@@ -140,7 +134,7 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 		vehicle.setStatus(VehicleStatus.INACTIVE);
 		vehicle.setSuspicious(false);
 
-		VehicleDetails details = vehicle.getDetails();
+		VehicleDetails details = conceptFactory.createVehicleDetails();
 		try {
 			details.setMaker(row.getString(1));
 			details.setModel(row.getString(2));
@@ -153,26 +147,27 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-
 		
 	}
 
 	@Override
 	public Vehicle createEntityFromEvent(Event event) throws ComponentException {
+		if (!(event instanceof TrafficCameraReport))
+			return null;
+		
+		System.out.println( "***** VehicleInitializer createEntityFromEvent ****** " );
+		TrafficCameraReport report = (TrafficCameraReport) event;
 		Vehicle entity = super.createEntityFromEvent(event);
 
-		if( event instanceof TrafficCameraReport ) {
-			System.out.println( "***** VehicleInitializer createEntityFromEvent ****** " );
-			MovingGeometry<Point> location = SpatioTemporalService.getService().getMovingGeometryFactory().getMovingGeometry();
-			TrafficCameraReport report = (TrafficCameraReport) event;
-			location.setGeometryAtTime(report.getCameraLocation(), report.getTimestamp());
-			
-			entity.setLocation(location);
-		}
+		MovingGeometry<Point> location = SpatioTemporalService.getService().getMovingGeometryFactory().getMovingGeometry();
+		
+		location.setGeometryAtTime(report.getCameraLocation(), report.getTimestamp());
+		entity.setLocation(location);
+
 
 		return entity;
 	}
@@ -183,10 +178,22 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 		System.out.println( "***** VehicleInitializer initializeEntity ****** " );
 		getDBConnection();
 		setVehicleFromDB(entity);
-
+		closeConnection();
 	}
 
 	private Relationship<Person> getOwnerFromES(String ownerId) {
 		return getModelFactory().createRelationship(Person.class, ownerId);
+	}
+	
+	private VehicleType convertVehicleType(String type) {
+		String lowerCase = type.toLowerCase();
+		
+		for (VehicleType vehicleType : VehicleType.values()) {
+			if(lowerCase.equals(vehicleType.toString().toLowerCase())) {
+				return vehicleType;
+			}
+		}
+		
+		return null;
 	}
 }

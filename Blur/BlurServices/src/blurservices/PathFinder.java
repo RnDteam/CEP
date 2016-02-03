@@ -25,11 +25,11 @@ public class PathFinder implements IPathFinder {
 	private static final String MY_SQL_DB_URL = "jdbc:mysql://localhost:3306/cep_try";
 	private static final String USER_NAME = "root";
 	private static final String PASSWORD = "root";
-	private static Connection dbConnection = null;
+	private Connection dbConnection = null;
 	private static final String personLinkTableName = "ob_links";
 
 
-	public static void closeConnection(Connection dbConnection) {
+	public void closeConnection() {
 		try {
 			if(dbConnection != null) {
 				dbConnection.close();
@@ -38,9 +38,10 @@ public class PathFinder implements IPathFinder {
 			e.printStackTrace();
 		}
 	}
-	public static Connection getDBConnection() {
+	public Connection getDBConnection() {
 		if(dbConnection == null) {
 			try {
+				Class.forName("com.mysql.jdbc.Driver").newInstance();
 				dbConnection = DriverManager.getConnection(MY_SQL_DB_URL, USER_NAME, PASSWORD);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -58,6 +59,7 @@ public class PathFinder implements IPathFinder {
 		
 		String personLinkString = null;
 		try {
+			getDBConnection();
 			Statement statement = dbConnection.createStatement();
 			ResultSet resultSet = statement.executeQuery(getPersonLinkQuery);
 			
@@ -70,7 +72,7 @@ public class PathFinder implements IPathFinder {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		closeConnection(dbConnection);
+		closeConnection();
 		
 		return (personLinkString != null && personLinkString.equals("1"));
 	}

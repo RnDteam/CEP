@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import DBHandler.ConverterUtility;
 import DBHandler.DBReader;
@@ -37,8 +38,8 @@ public class StartServer {
 		TestDriver testDriver = new  TestDriver();
 		try {
 			testDriver.connect();
-//			testDriver.deleteAllEntities();
-//			testDriver.resetSolutionState();
+			testDriver.deleteAllEntities();
+			testDriver.resetSolutionState();
 			testDriver.startRecording();
 		} catch (GatewayException e1) {
 			e1.printStackTrace();
@@ -52,7 +53,7 @@ public class StartServer {
 			connection = GridConnectionFactory.createGridConnection(gridConfig);
 			SolutionGateway gateway = connection.getSolutionGateway("Blur");
 			
-			getDataAndSendEvents(gateway);
+			getDataAndSendEvents(gridConfig, gateway);
 
 		} catch (Exception e) {
 			System.out.println("Failed!");
@@ -74,13 +75,13 @@ public class StartServer {
 		System.out.println("finished!");
 	}
 
-	public static void getDataAndSendEvents(SolutionGateway gateway)
+	public static void getDataAndSendEvents(GridConfiguration config, SolutionGateway gateway)
 			throws SolutionChangedException, GatewayException, RoutingException {
 		HashMap<ZonedDateTime, List<Event>> eventsMap = new HashMap<>();
 		
 		addAllEventsToMap(eventsMap, gateway);
 		
-		submitEventsAsync(eventsMap, gateway);
+		submitEventsAsync(eventsMap, config);
 	}
 
 	private static void addAllEventsToMap(
@@ -105,8 +106,24 @@ public class StartServer {
 
 	private static void submitEventsAsync(
 			HashMap<ZonedDateTime, List<Event>> eventsMap,
-			SolutionGateway gateway) {
+			final GridConfiguration config) {
+		
+		List<GridConnection> connections = Collections.synchronizedList(new ArrayList<>());
 		ExecutorService executor = Executors.newFixedThreadPool(4);
+		ThreadLocal<SolutionGateway> gateway = new ThreadLocal<SolutionGateway>() {
+
+			@Override
+			protected SolutionGateway initialValue() {
+				try {
+					GridConnection connection = GridConnectionFactory.createGridConnection(config);
+					connections.add(connection);
+					return connection.getSolutionGateway("Blur");
+				} catch (GatewayException e) {
+					throw new RuntimeException(e);
+				}
+			}
+			
+		};
 		
 		Set<ZonedDateTime> keySet = eventsMap.keySet();
 		ArrayList<ZonedDateTime> sortedEvents = new ArrayList<ZonedDateTime>(keySet);
@@ -116,25 +133,46 @@ public class StartServer {
 		
 		for (ZonedDateTime currTime : sortedEvents) {
 			for (Event eventToSubmit : eventsMap.get(currTime)) {
-				executor.execute(new SubmitEvent(gateway, eventToSubmit));
-				try {
-					Thread.sleep(500);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+				executor.execute(new SubmitEvent(gateway.get(), eventToSubmit));
+				//new SubmitEvent(gateway, eventToSubmit).run();
+//				try {
+//					Thread.sleep(500);
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
 			}
 			
 			try {
 				if(currTime.isAfter(ConverterUtility.absDate.minusDays(1))) {
-//					Thread.sleep(((calculateDiffernceBetweenDates(currTime, lastTimeStamp) * 1000) / 5) * 2);
-					Thread.sleep(200);
+					Thread.sleep(calculateDiffernceBetweenDates(currTime, lastTimeStamp) * 1000);
+//					Thread.sleep(200);
 				}
 				else {
-					Thread.sleep(1000);
+//					Thread.sleep(1000);
 				}
 				
 				lastTimeStamp = currTime;
 			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		executor.shutdown();
+		
+		try {
+			if (executor.awaitTermination(2, TimeUnit.MINUTES)) {
+				closeAllConnections(connections);
+			}
+		}catch(InterruptedException e) {
+			closeAllConnections(connections);
+		}
+	}
+
+	private static void closeAllConnections(List<GridConnection> connections) {
+		for (GridConnection connection : connections) {
+			try {
+				connection.close();
+			}catch(IOException e) {
 				e.printStackTrace();
 			}
 		}

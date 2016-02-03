@@ -56,6 +56,8 @@ public class BuildingAgent extends EntityAgent<Building> {
 			if(usageType != null) {
 				thisBuilding.setUsageType(usageType);
 			}
+			
+			updateBoundEntity(thisBuilding);
 		}
     	 
     }

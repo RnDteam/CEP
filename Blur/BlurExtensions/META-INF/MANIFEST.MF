@@ -3,6 +3,8 @@ Bundle-ManifestVersion: 2
 Bundle-Name: BlurExtensions
 Bundle-SymbolicName: Blur.BlurExtensions
 Bundle-Version: 0.23.0.qualifier
+Bundle-ClassPath: lib/mysql-connector-java-5.1.37-bin.jar,
+ .
 Import-Package: blur.model;version="[0.23.0.qualifier,0.24.0)",
  blur.model.impl;version="[0.23.0.qualifier,0.24.0)",
  com.ibm.geolib;version="1.4.1.CIS2015-11-03T181901Z",
@@ -24,5 +26,6 @@ Import-Package: blur.model;version="[0.23.0.qualifier,0.24.0)",
  com.ibm.rules.generated;version="[0.23.0.qualifier,0.24.0)",
  com.ibm.rules.generated.dataie;version="[0.23.0.qualifier,0.24.0)",
  com.ibm.rules.generated.xml;version="[0.23.0.qualifier,0.24.0)",
+ javax.naming,
  org.osgi.framework
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
