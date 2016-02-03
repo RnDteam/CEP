@@ -121,9 +121,9 @@ public class PathFinder implements IPathFinder {
 	
 	@Override
 	public int getRelationshipDepth(Person first, Person second) {
-		boolean areKnowEachOther =
-				first.getRole().resolve().getOrganization().getKey().equals(
-						second.getRole().resolve().getOrganization().getKey());
+		
+		boolean areKnowEachOther = first.getRole().resolve().getOrganization().getKey().equals(
+							       second.getRole().resolve().getOrganization().getKey());
 
 		if(areKnowEachOther) {
 			return 0;

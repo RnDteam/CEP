@@ -21,11 +21,13 @@ definitions
 	set 'nearby banks' to the buildings of 'the cellular call report' 
 	where the usage type of each building is BANK BRANCH and 
 	the distance between each building and 'the callee' in meters is less than 'nearby bank radius' ;
-	set 'relationship  depth' to the relationship depth between 'the callee' and 'the caller' ;
+	set 'is callee is a manager' to the type of the role of 'the callee' is MANAGER;
+	set 'is caller is a manager' to the type of the role of 'the caller' is MANAGER;
+	set 'either callee or caller is a manager' to 'is callee is a manager' or 'is caller is a manager' ; 
 
 
 if the type of 'callee organization' is CRIMINAL and 
-	'relationship  depth' is more than 1 and
+	'either callee or caller is a manager' and
 	the number of 'nearby callee people' is at least 2
 	
 then
