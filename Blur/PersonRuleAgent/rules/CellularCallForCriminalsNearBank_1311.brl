@@ -10,17 +10,17 @@ definitions
 	set 'radius to bank' to 500;
 	set 'nearby people radius' to 500;
 	set 'nearby bank radius' to 'radius to bank'  + 'nearby people radius' ;
-	set 'the cellular call report' to the cellular call report of this criminal cellular call report ; 
+	set 'the cellular call report' to the cellular call report of this criminal cellular call report ;
 	
 	set 'the callee' to the callee of 'the cellular call report';
 	set 'the caller' to the caller of 'the cellular call report';
 	set 'callee organization' to the organization of the role of 'the callee';
 	set 'nearby callee people' to the persons of 'the cellular call report'
 		where the distance between each person and 'the callee' in meters is less than 'nearby people radius' 
-			and the organization of the role of each person is 'callee organization';
+		and the organization of the role of each person is 'callee organization';
 	set 'nearby banks' to the buildings of 'the cellular call report' 
-	where the usage type of each building is BANK BRANCH and 
-	the distance between each building and 'the callee' in meters is less than 'nearby bank radius' ;
+		where the usage type of each building is BANK BRANCH
+		and	the distance between each building and 'the callee' in meters is less than 'nearby bank radius' ;
 	set 'is callee is a manager' to the type of the role of 'the callee' is MANAGER;
 	set 'is caller is a manager' to the type of the role of 'the caller' is MANAGER;
 	set 'either callee or caller is a manager' to 'is callee is a manager' or 'is caller is a manager' ; 
