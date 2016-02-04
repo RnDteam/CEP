@@ -12,5 +12,6 @@ if
     the type of 'caller organization' is CRIMINAL
 then
     emit a new criminal cellular call report where
-        the cellular call report is this cellular call report ;]]></definition>
+        the cellular call report is this cellular call report,
+        the timestamp is the timestamp of this cellular call report ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>
