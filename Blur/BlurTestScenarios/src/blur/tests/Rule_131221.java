@@ -175,5 +175,4 @@ public class Rule_131221 {
 			System.out.println( "Event as XML: " + eventXml );
 		}
 	}
-
 }

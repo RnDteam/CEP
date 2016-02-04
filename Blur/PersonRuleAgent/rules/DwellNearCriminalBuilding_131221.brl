@@ -24,15 +24,16 @@ definitions
         where the type of each organization is CRIMINAL ;
     set 'nearby distance' to the nearby distance in meters of this dwelled building report ;
     set 'building encounters' to the encounters between 'the person' and the latest observed geometry of 'the building' within proximity of 'nearby distance' meters ;
-    set 'late encounters' to 'building encounters'
+    
+    set 'the number of late encounters' to the number of time periods in 'building encounters',
         where the start of each time period is after 30 minutes before the timestamp of this dwelled building report ;
-    set 'on time encounters' to 'building encounters'
+		
+	set 'the number of on time encounters' to the number of time periods in 'building encounters',
         where the start of each time period is after 2 hours before the timestamp of this dwelled building report ;
-        
-    set 'the number of late encounters' to the number of elements in 'late encounters' ;
-    set 'the number of on time encounters' to the number of elements in 'on time encounters' ;  
 if
     the number of 'criminal organizations' is 1
+    and 'the number of late encounters' is 0
+    and 'the number of on time encounters' is at least 1
 then
     for each organization in 'criminal organizations' :
         - define ALERT as a new alert where
