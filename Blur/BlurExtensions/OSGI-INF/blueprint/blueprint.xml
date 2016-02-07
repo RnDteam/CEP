@@ -7,7 +7,7 @@
                 <value type="java.lang.String">Blur</value>
             </entry>
             <entry key="solution_version">
-                <value type="java.lang.String">Blur-0.23</value>
+                <value type="java.lang.String">Blur-0.26</value>
             </entry>
         </service-properties>
     </service>
@@ -18,7 +18,7 @@
                 <value type="java.lang.String">Blur</value>
             </entry>
             <entry key="solution_version">
-                <value type="java.lang.String">Blur-0.23</value>
+                <value type="java.lang.String">Blur-0.26</value>
             </entry>
         </service-properties>
     </service>
