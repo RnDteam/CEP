@@ -285,27 +285,81 @@ public class Rule_13111 {
 
 		ZonedDateTime oneDayAfter = now.plusDays(1);
 
-		CellularCallReport cellularCallReport1 = conceptFactory.createCellularCallReport(oneDayAfter);
+//		// fires
+//		CellularCallReport cellularCallReport1 = conceptFactory.createCellularCallReport(oneDayAfter);
+//
+//		List<Relationship<Person>> criminal_persons1 = new ArrayList<Relationship<Person>>();
+//		criminal_persons1.add(testDriver.createRelationship(Person.class, PERSON_ANOTHER_CRIMINAL_1));
+//		criminal_persons1.add(testDriver.createRelationship(Person.class, PERSON_ANOTHER_CRIMINAL_2));
+//		cellularCallReport1.set_persons(criminal_persons1);
+//
+//		List<Relationship<Building>> buildings1 = new ArrayList<Relationship<Building>>();
+//		buildings1.add(testDriver.createRelationship(Building.class, BUILDING_1_BANK));
+//		buildings1.add(testDriver.createRelationship(Building.class, BUILDING_2_BANK));
+//		buildings1.add(testDriver.createRelationship(Building.class, BUILDING_3_BANK));
+//		cellularCallReport1.set_buildings(buildings1);
+//
+//		cellularCallReport1.setCallee(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_CALLEE));
+//		cellularCallReport1.setCaller(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_CALLER));
+//
+//		testDriver.submitEvent(cellularCallReport1);
+		
+//		// callee and caller are switched
+//		CellularCallReport cellularCallReport2 = conceptFactory.createCellularCallReport(oneDayAfter);
+//
+//		List<Relationship<Person>> criminal_persons2 = new ArrayList<Relationship<Person>>();
+//		criminal_persons2.add(testDriver.createRelationship(Person.class, PERSON_ANOTHER_CRIMINAL_1));
+//		criminal_persons2.add(testDriver.createRelationship(Person.class, PERSON_ANOTHER_CRIMINAL_2));
+//		cellularCallReport2.set_persons(criminal_persons2);
+//
+//		List<Relationship<Building>> buildings2 = new ArrayList<Relationship<Building>>();
+//		buildings2.add(testDriver.createRelationship(Building.class, BUILDING_1_BANK));
+//		buildings2.add(testDriver.createRelationship(Building.class, BUILDING_2_BANK));
+//		buildings2.add(testDriver.createRelationship(Building.class, BUILDING_3_BANK));
+//		cellularCallReport2.set_buildings(buildings2);
+//
+//		cellularCallReport2.setCallee(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_CALLER));
+//		cellularCallReport2.setCaller(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_CALLEE));
+//
+//		testDriver.submitEvent(cellularCallReport2);
+		
+//		// won't fire (only one person is there)
+//		CellularCallReport cellularCallReport3 = conceptFactory.createCellularCallReport(oneDayAfter);
+//
+//		List<Relationship<Person>> criminal_persons2 = new ArrayList<Relationship<Person>>();
+//		criminal_persons2.add(testDriver.createRelationship(Person.class, PERSON_ANOTHER_CRIMINAL_1));
+//		criminal_persons2.add(testDriver.createRelationship(Person.class, PERSON_ANOTHER_CRIMINAL_2));
+//		cellularCallReport3.set_persons(criminal_persons2);
+//
+//		List<Relationship<Building>> buildings3 = new ArrayList<Relationship<Building>>();
+//		buildings3.add(testDriver.createRelationship(Building.class, BUILDING_1_BANK));
+//		buildings3.add(testDriver.createRelationship(Building.class, BUILDING_2_BANK));
+//		buildings3.add(testDriver.createRelationship(Building.class, BUILDING_3_BANK));
+//		cellularCallReport3.set_buildings(buildings3);
+//
+//		cellularCallReport3.setCallee(testDriver.createRelationship(Person.class, PERSON_ANOTHER_NON_CRIMINAL_1));
+//		cellularCallReport3.setCaller(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_CALLER));
+//
+//		testDriver.submitEvent(cellularCallReport3);
+		
+		// won't fire (only one person is there)
+		CellularCallReport cellularCallReport4 = conceptFactory.createCellularCallReport(oneDayAfter);
 
-		List<Relationship<Person>> criminal_persons1 = new ArrayList<Relationship<Person>>();
-//		criminal_persons1.add(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_CALLEE));
-//		criminal_persons1.add(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_CALLER));
-		criminal_persons1.add(testDriver.createRelationship(Person.class, PERSON_ANOTHER_CRIMINAL_1));
-		criminal_persons1.add(testDriver.createRelationship(Person.class, PERSON_ANOTHER_CRIMINAL_2));
-//		criminal_persons1.add(testDriver.createRelationship(Person.class, PERSON_ANOTHER_NON_CRIMINAL_1));
-//		criminal_persons1.add(testDriver.createRelationship(Person.class, PERSON_ANOTHER_NON_CRIMINAL_2));
-		cellularCallReport1.set_persons(criminal_persons1);
+		List<Relationship<Person>> criminal_persons4 = new ArrayList<Relationship<Person>>();
+		criminal_persons4.add(testDriver.createRelationship(Person.class, PERSON_ANOTHER_CRIMINAL_1));
+		criminal_persons4.add(testDriver.createRelationship(Person.class, PERSON_ANOTHER_CRIMINAL_2));
+		cellularCallReport4.set_persons(criminal_persons4);
 
-		List<Relationship<Building>> buildings1 = new ArrayList<Relationship<Building>>();
-		buildings1.add(testDriver.createRelationship(Building.class, BUILDING_1_BANK));
-		buildings1.add(testDriver.createRelationship(Building.class, BUILDING_2_BANK));
-		buildings1.add(testDriver.createRelationship(Building.class, BUILDING_3_BANK));
-		cellularCallReport1.set_buildings(buildings1);
+		List<Relationship<Building>> buildings4 = new ArrayList<Relationship<Building>>();
+		buildings4.add(testDriver.createRelationship(Building.class, BUILDING_1_BANK));
+		buildings4.add(testDriver.createRelationship(Building.class, BUILDING_2_BANK));
+		buildings4.add(testDriver.createRelationship(Building.class, BUILDING_3_BANK));
+		cellularCallReport4.set_buildings(buildings4);
 
-		cellularCallReport1.setCallee(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_CALLEE));
-		cellularCallReport1.setCaller(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_CALLER));
+		cellularCallReport4.setCallee(testDriver.createRelationship(Person.class, PERSON_ANOTHER_NON_CRIMINAL_1));
+		cellularCallReport4.setCaller(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_CALLER));
 
-		testDriver.submitEvent(cellularCallReport1);
+		testDriver.submitEvent(cellularCallReport4);
 
 		testDriver.waitUntilSolutionIdle();
 
