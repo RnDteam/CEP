@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
 Bundle-SymbolicName: Blur.VehicleRuleAgent
-Bundle-Version: 0.25.0.qualifier
+Bundle-Version: 0.27.0.qualifier
 
