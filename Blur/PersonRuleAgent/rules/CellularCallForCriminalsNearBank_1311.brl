@@ -43,42 +43,36 @@ for each building in 'nearby banks' :
 	- emit POTENTIAL_BANK_CRIME ;]]></documentation>
   <locale>en_US</locale>
   <definition><![CDATA[when a criminal cellular call report occurs
-
-definitions 
-	set 'radius to bank' to 500;
-	set 'nearby people radius' to 500;
-	set 'nearby bank radius' to 'radius to bank'  + 'nearby people radius' ;
-	set 'the cellular call report' to the cellular call report of this criminal cellular call report ; 
-	
-	set 'the callee' to the callee of 'the cellular call report';
-	set 'the caller' to the caller of 'the cellular call report';
-	set 'callee organization' to the organization of the role of 'the callee';
-	set 'nearby callee people' to the persons of 'the cellular call report'
-		where the distance between each person and 'the callee' in meters is less than 'nearby people radius' 
-			and the organization of the role of each person is 'callee organization';
-	set 'nearby banks' to the buildings of 'the cellular call report' 
-	where the usage type of each building is BANK BRANCH and 
-	the distance between each building and 'the callee' in meters is less than 'nearby bank radius' ;
-	set 'relationship  depth' to the relationship depth between 'the callee' and 'the caller' ;
-	set 'callee is a manager' to the type of the role of 'the callee' is MANAGER;
-	set 'caller is a manager' to the type of the role of 'the caller' is MANAGER;
-	set 'either caller or caller is a manager' to 'callee is a manager' or 'caller is a manager';
-
-
-if the type of 'callee organization' is CRIMINAL and 
-	'either caller or caller is a manager' and
-	the number of 'nearby callee people' is at least 2
-	
+definitions
+    set 'radius to bank' to 500 ;
+    set 'nearby people radius' to 500 ;
+    set 'nearby bank radius' to 'radius to bank' + 'nearby people radius' ;
+    set 'the cellular call report' to the cellular call report of this criminal cellular call report ;
+    set 'the callee' to the callee of 'the cellular call report' ;
+    set 'the caller' to the caller of 'the cellular call report' ;
+    set 'callee organization' to the organization of the role of 'the callee' ;
+    set 'nearby callee people' to the persons of 'the cellular call report'
+        where the distance between each person and 'the callee' in meters is less than 'nearby people radius'
+        and the organization of the role of each person is 'callee organization' ;
+    set 'nearby banks' to the buildings of 'the cellular call report'
+        where the usage type of each building is BANK BRANCH
+        and the distance between each building and 'the callee' in meters is less than 'nearby bank radius' ;
+    set 'callee is a manager' to the type of the role of 'the callee' is MANAGER ;
+    set 'caller is a manager' to the type of the role of 'the caller' is MANAGER ;
+    set 'either caller or caller is a manager' to 'callee is a manager'
+    or 'caller is a manager' ;
+if
+    the type of 'callee organization' is CRIMINAL
+    and 'either caller or caller is a manager'
+    and the number of 'nearby callee people' is at least 2
 then
-
-for each building in 'nearby banks' : 
-	- define POTENTIAL_BANK_CRIME as a new potential bank crime report where 
-		the callee is 'the callee' , 
-		the caller is 'the caller' , 
-		the building is this building,
-		the radius in meters is 'radius to bank'
-
-	- for each person in 'nearby callee people' : 
-		- add this person to the persons of POTENTIAL_BANK_CRIME 
-	- emit POTENTIAL_BANK_CRIME ;]]></definition>
+    for each building in 'nearby banks' :
+        - define POTENTIAL_BANK_CRIME as a new potential bank crime report where
+            the callee is 'the callee' ,
+            the caller is 'the caller' ,
+            the building is this building ,
+            the radius in meters is 'radius to bank'
+        - for each person in 'nearby callee people' :
+            - add this person to the persons of POTENTIAL_BANK_CRIME ,
+        - emit POTENTIAL_BANK_CRIME ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>
