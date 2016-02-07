@@ -1,4 +1,5 @@
 package InitServer;
+
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
@@ -11,9 +12,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import DBHandler.ConverterUtility;
 import DBHandler.DBReader;
-import EventsHandler.AllBlurEvents;
+import EventsHandler.InitializationBlurEvents;
+import EventsHandler.SimulationBlurEvents;
 
 import com.ibm.ia.common.GatewayException;
 import com.ibm.ia.common.RoutingException;
@@ -26,40 +27,44 @@ import com.ibm.ia.gateway.client.GatewayClient;
 import com.ibm.ia.model.Event;
 import com.ibm.ia.testdriver.TestDriver;
 
-
 public class StartServer {
 
+	private static TestDriver testDriver = new TestDriver();
+	private static final long SPEED_FACTOR = 200;
+
 	public static void main(String[] args) {
+		System.out.println("starting sever");
 		startServer();
+		System.out.println("shutting down...");
 		System.exit(0);
 	}
 
 	private static void startServer() {
-		TestDriver testDriver = new  TestDriver();
 		try {
 			testDriver.connect();
 			testDriver.deleteAllEntities();
 			testDriver.resetSolutionState();
-			testDriver.startRecording();
-		} catch (GatewayException e1) {
+			Thread.sleep(5000);
+			//testDriver.startRecording();
+		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-		
+
 		GridConnection connection = null;
 		try {
 			GatewayClient.init();
-			GridConfiguration gridConfig = new GridConfiguration("localhost:2809");
-			
+			GridConfiguration gridConfig = new GridConfiguration(
+					"localhost:2809");
+
 			connection = GridConnectionFactory.createGridConnection(gridConfig);
 			SolutionGateway gateway = connection.getSolutionGateway("Blur");
-			
+
 			getDataAndSendEvents(gridConfig, gateway);
 
 		} catch (Exception e) {
 			System.out.println("Failed!");
 			e.printStackTrace();
-		}
-		finally {
+		} finally {
 			if (connection != null) {
 				try {
 					connection.close();
@@ -68,102 +73,136 @@ public class StartServer {
 				}
 			}
 		}
-		
-		testDriver.stopRecording();
+
+		System.out
+				.println("Waiting for solution idle so we can stop the recording.");
+		testDriver.waitUntilSolutionIdle();
+		//testDriver.stopRecording();
 		testDriver.disconnect();
-		
+
 		System.out.println("finished!");
 	}
 
-	public static void getDataAndSendEvents(GridConfiguration config, SolutionGateway gateway)
-			throws SolutionChangedException, GatewayException, RoutingException {
-		HashMap<ZonedDateTime, List<Event>> eventsMap = new HashMap<>();
-		
-		addAllEventsToMap(eventsMap, gateway);
-		
-		submitEventsAsync(eventsMap, config);
+	public static void getDataAndSendEvents(GridConfiguration config,
+			SolutionGateway gateway) throws SolutionChangedException,
+			GatewayException, RoutingException {
+
+		HashMap<ZonedDateTime, List<Event>> initEventsMap = new HashMap<>();
+		addInitializationEventsToMap(initEventsMap, gateway);
+		submitEventsAsync(initEventsMap, config, false);
+
+		System.out
+				.println("Waiting for solution to process initialization events.");
+		testDriver.waitUntilSolutionIdle(20);
+
+		System.out.println("Sending simulation events.");
+		HashMap<ZonedDateTime, List<Event>> simulationEventsMap = new HashMap<>();
+		addSimulationEventsToMap(simulationEventsMap, gateway);
+		submitEventsAsync(simulationEventsMap, config, true);
 	}
 
-	private static void addAllEventsToMap(
+	private static void addInitializationEventsToMap(
 			HashMap<ZonedDateTime, List<Event>> eventsMap,
 			SolutionGateway gateway) {
-		for (AllBlurEvents event : AllBlurEvents.values()) {
-			List<Event> allEventInstances = event.getEventCreation().getAllEntities(gateway);
-			
+		for (InitializationBlurEvents event : InitializationBlurEvents.values()) {
+			List<Event> allEventInstances = event.getEventCreation()
+					.getAllEntities(gateway);
+
 			for (Event currEvent : allEventInstances) {
 				ZonedDateTime timestamp = currEvent.get$Timestamp();
-				
-				if(eventsMap.get(timestamp) == null) {
+
+				if (eventsMap.get(timestamp) == null) {
 					eventsMap.put(timestamp, new ArrayList<Event>());
 				}
-				
+
 				eventsMap.get(timestamp).add(currEvent);
 			}
 		}
-		
+	}
+
+	private static void addSimulationEventsToMap(
+			HashMap<ZonedDateTime, List<Event>> eventsMap,
+			SolutionGateway gateway) {
+		for (SimulationBlurEvents event : SimulationBlurEvents.values()) {
+			List<Event> allEventInstances = event.getEventCreation()
+					.getAllEntities(gateway);
+
+			for (Event currEvent : allEventInstances) {
+				ZonedDateTime timestamp = currEvent.get$Timestamp();
+
+				if (eventsMap.get(timestamp) == null) {
+					eventsMap.put(timestamp, new ArrayList<Event>());
+				}
+
+				eventsMap.get(timestamp).add(currEvent);
+			}
+		}
+
 		DBReader.closeConnection();
 	}
 
 	private static void submitEventsAsync(
 			HashMap<ZonedDateTime, List<Event>> eventsMap,
-			final GridConfiguration config) {
-		
-		List<GridConnection> connections = Collections.synchronizedList(new ArrayList<>());
+			final GridConfiguration config, boolean sleep) {
+
+		List<GridConnection> connections = Collections
+				.synchronizedList(new ArrayList<>());
 		ExecutorService executor = Executors.newFixedThreadPool(4);
 		ThreadLocal<SolutionGateway> gateway = new ThreadLocal<SolutionGateway>() {
 
 			@Override
 			protected SolutionGateway initialValue() {
 				try {
-					GridConnection connection = GridConnectionFactory.createGridConnection(config);
+					GridConnection connection = GridConnectionFactory
+							.createGridConnection(config);
 					connections.add(connection);
 					return connection.getSolutionGateway("Blur");
 				} catch (GatewayException e) {
 					throw new RuntimeException(e);
 				}
 			}
-			
+
 		};
-		
+
 		Set<ZonedDateTime> keySet = eventsMap.keySet();
-		ArrayList<ZonedDateTime> sortedEvents = new ArrayList<ZonedDateTime>(keySet);
+		ArrayList<ZonedDateTime> sortedEvents = new ArrayList<ZonedDateTime>(
+				keySet);
 		Collections.sort(sortedEvents);
-		
+
 		ZonedDateTime lastTimeStamp = sortedEvents.get(0);
-		
+
 		for (ZonedDateTime currTime : sortedEvents) {
 			for (Event eventToSubmit : eventsMap.get(currTime)) {
 				executor.execute(new SubmitEvent(gateway.get(), eventToSubmit));
-				//new SubmitEvent(gateway, eventToSubmit).run();
-//				try {
-//					Thread.sleep(500);
-//				} catch (InterruptedException e) {
-//					e.printStackTrace();
-//				}
+				// new SubmitEvent(gateway, eventToSubmit).run();
+				// try {
+				// Thread.sleep(500);
+				// } catch (InterruptedException e) {
+				// e.printStackTrace();
+				// }
 			}
-			
-			try {
-				if(currTime.isAfter(ConverterUtility.absDate.minusDays(1))) {
-					Thread.sleep(calculateDiffernceBetweenDates(currTime, lastTimeStamp) * 1000);
-//					Thread.sleep(200);
+
+			if (sleep) {
+				try {
+					long sleepTime = calculateDiffernceBetweenDates(currTime,
+							lastTimeStamp) * SPEED_FACTOR;
+					System.out.println("Sleeping for ms: " + sleepTime);
+					Thread.sleep(sleepTime);
+
+					lastTimeStamp = currTime;
+				} catch (InterruptedException e) {
+					e.printStackTrace();
 				}
-				else {
-//					Thread.sleep(1000);
-				}
-				
-				lastTimeStamp = currTime;
-			} catch (InterruptedException e) {
-				e.printStackTrace();
 			}
 		}
-		
+
 		executor.shutdown();
-		
+
 		try {
 			if (executor.awaitTermination(2, TimeUnit.MINUTES)) {
 				closeAllConnections(connections);
 			}
-		}catch(InterruptedException e) {
+		} catch (InterruptedException e) {
 			closeAllConnections(connections);
 		}
 	}
@@ -172,14 +211,25 @@ public class StartServer {
 		for (GridConnection connection : connections) {
 			try {
 				connection.close();
-			}catch(IOException e) {
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 	}
 
-	private static long calculateDiffernceBetweenDates(ZonedDateTime currTime,ZonedDateTime lastTimeStamp){
-		return ChronoUnit.MINUTES.between(lastTimeStamp.toLocalDateTime(), currTime.toLocalDateTime());
+	private static long calculateDiffernceBetweenDates(ZonedDateTime currTime,
+			ZonedDateTime lastTimeStamp) {
+
+		long result = ChronoUnit.MINUTES.between(
+				lastTimeStamp.toLocalDateTime(), currTime.toLocalDateTime());
+
+		if (result > 30) {
+			System.out
+					.println("WARNIG: minutes between current event and last event is more than 30: "
+							+ result);
+			result = 30;
 		}
 
+		return result;
+	}
 }

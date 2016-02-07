@@ -1,13 +1,15 @@
 package blur.extensions;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Random;
 
-import blur.model.BuildingType;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 import blur.model.ConceptFactory;
 import blur.model.Person;
 import blur.model.TrafficCameraReport;
@@ -28,38 +30,35 @@ import com.ibm.ia.model.Relationship;
 @EntityInitializerDescriptor(entityType = Vehicle.class)
 public class VehicleInitializer extends EntityInitializer<Vehicle> {
 
-	private static Random random;
 	private ConceptFactory conceptFactory;
-	private static final String MY_SQL_DB_URL = "jdbc:mysql://localhost:3306/cep_try";
-	private static final String USER_NAME = "root";
-	private static final String PASSWORD = "root";
-	private Connection dbConnection = null;
+//	private static final String MY_SQL_DB_URL = "jdbc:mysql://localhost:3306/cep_try";
+//	private static final String USER_NAME = "root";
+//	private static final String PASSWORD = "root";
 	private static final String vehicleTableName = "DB_Vehicles";
-	private static final String vehicleTypeTableName = "dn_vehicle_type";
+	private static final String vehicleTypeTableName = "DB_VehicleType";
+	
+	public synchronized Connection getConnection() throws NamingException, SQLException {
+       
+            Context ctx = new InitialContext();
+        	System.out.println( "VehicleInitializer: Looking up datasource...");
+            DataSource dataSource = (DataSource) ctx.lookup("jdbc/mysql");
+            if (dataSource != null) {
+            	System.out.println( "VehicleInitializer: Got datasource: " + dataSource );
+                Connection con = dataSource.getConnection();
+                if(con!=null) {
+                	System.out.println( "VehicleInitializer: Got connection: " + con );
+                }
+                return con;
+            }
+            else {
+            	System.out.println( "VehicleInitializer: Got null datasource: " + dataSource );
+            }
+			
+            throw new IllegalStateException("null data source");
+    }
 
-	public void closeConnection() {
-		try {
-			if(dbConnection != null) {
-				dbConnection.close();
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
 	
-	public Connection getDBConnection() {
-		if(dbConnection == null) {
-			try {
-				Class.forName("com.mysql.jdbc.Driver").newInstance();
-				dbConnection = DriverManager.getConnection(MY_SQL_DB_URL, USER_NAME, PASSWORD);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return dbConnection;
-	}
-	
-	public void setVehicleTypeSpeedFromDB(VehicleDetails vehicle_details) {
+	public VehicleDetails getVehicleTypeSpeedFromDB(Connection con, VehicleDetails vehicle_details) {
 		String vehicleMakerColumn = "Maker";
 		String vehicleModelColumn = "Model";
 		String vehicleYearColumn = "Year";
@@ -76,18 +75,24 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 
 //		System.out.println(getVehicleTypeQuery);
 		try {
-			Statement statement = dbConnection.createStatement();
+			Statement statement = con.createStatement();
 			ResultSet resultSet = statement.executeQuery(getVehicleTypeQuery);
 			while (resultSet.next()) {
 				if (vehicleTypeString != null){
-					System.out.println("Two rows with the same Vehicle Details");
+					System.out.println("VehicleInitializer: Two rows with the same Vehicle Details");
 				}
 //				System.out.println(resultSet.getString(1)+resultSet.getString(2));
 				vehicleMaxSpeedString = Double.parseDouble(resultSet.getString(1));
+				System.out.println("VehicleInitializer: speed = " + vehicleMaxSpeedString );
 				vehicleTypeString = resultSet.getString(2);
+				System.out.println("VehicleInitializer: type = " + vehicleTypeString);
 			}
+			
+			resultSet.close();
+			statement.close();
+			
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 		
 		if (vehicleTypeString != null){
@@ -95,10 +100,10 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 		}
 		
 		vehicle_details.setMaximumSpeed(vehicleMaxSpeedString);
-
+		return vehicle_details;
 	}
 	
-	public void setVehicleFromDB(Vehicle vehicle) {
+	public void setVehicleFromDB(Connection con, Vehicle vehicle) {
 		String vehicleLicensePlateColumn = "Plate_num";
 		String vehicleMakerColumn = "Maker";
 		String vehicleModelColumn = "Model";
@@ -110,24 +115,27 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 				+ " FROM " + vehicleTableName 
 				+ " WHERE " + vehicleLicensePlateColumn + "='" + vehicle.getLicensePlateNumber() + "';";
 		
+		System.out.println( "Running query: " + getVehicleQuery );
+		
 		String personLinkString = null;
 		try {
-			Statement statement = dbConnection.createStatement();
+			Statement statement = con.createStatement();
 			ResultSet resultSet = statement.executeQuery(getVehicleQuery);
 			while (resultSet.next()) {
 				if (personLinkString != null){
 					System.out.println("Two rows with the same vehicle license plate");
 				}
-				convertDBRowToEntity(resultSet, vehicle);
+				convertDBRowToEntity(con, resultSet, vehicle);
 			}
+			resultSet.close();
+			statement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 	}
 
-	private void convertDBRowToEntity(ResultSet row, Vehicle vehicle){
-		random = new Random();
+	private void convertDBRowToEntity(Connection con, ResultSet row, Vehicle vehicle){
 		conceptFactory = getConceptFactory(ConceptFactory.class);
 
 		vehicle.setLastSeen(null);
@@ -139,7 +147,8 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 			details.setMaker(row.getString(1));
 			details.setModel(row.getString(2));
 			details.setYear(row.getString(3));
-			setVehicleTypeSpeedFromDB(details);
+			details = getVehicleTypeSpeedFromDB(con, details);
+			vehicle.setDetails(details);
 			
 			String ownerId = row.getString(4);
 			vehicle.setOwner(getOwnerFromES(ownerId)); //TODO : check if works
@@ -152,6 +161,7 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 			e.printStackTrace();
 		}
 		
+		System.out.println( "VehicleInitializer: set details: for vehicle " + vehicle.get$Id() + " " + details );
 	}
 
 	@Override
@@ -176,9 +186,21 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 	public void initializeEntity(Vehicle entity) throws ComponentException {
 		super.initializeEntity(entity);
 		System.out.println( "***** VehicleInitializer initializeEntity ****** " );
-		getDBConnection();
-		setVehicleFromDB(entity);
-		closeConnection();
+		Connection con;
+		try {
+			con = getConnection();
+			setVehicleFromDB(con, entity);
+			
+			// set the display attributes -- (a workaround for the map viewer)
+			entity.setpMaker( entity.getDetails().getMaker() );
+			entity.setpModel( entity.getDetails().getModel() );
+			entity.setpYear( entity.getDetails().getYear() );
+			entity.setpMaximumSpeed( entity.getDetails().getMaximumSpeed() );
+			entity.setpType( entity.getDetails().getType() );
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	private Relationship<Person> getOwnerFromES(String ownerId) {

@@ -1,5 +1,6 @@
 package InitServer;
 
+import com.ibm.ia.common.DataFormat;
 import com.ibm.ia.common.EventCapacityExceededException;
 import com.ibm.ia.common.GatewayException;
 import com.ibm.ia.common.RoutingException;
@@ -19,7 +20,12 @@ public class SubmitEvent implements Runnable{
 	@Override
 	public void run() {
 		try {
+			
+			String eventXml = gateway.getModelSerializer().serializeEvent(DataFormat.TYPED_XML, eventToRun);
+			System.out.println( "Submitting event: " + eventXml );
 			gateway.submit(eventToRun);
+			
+			
 		} catch(EventCapacityExceededException e) {
 			System.out.println("********************Too much********************************");
 			e.printStackTrace();
