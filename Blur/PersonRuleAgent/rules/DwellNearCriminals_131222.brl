@@ -36,7 +36,15 @@ emit ALERT;
 emit a new update role event where
             the organization is 'collaborator organization',
             the organizational role is the role of 'the suspect' ,
-            the timestamp is the timestamp of this dwelling with criminal report ;]]></documentation>
+            the timestamp is the timestamp of this dwelling with criminal report ;
+
+
+
+////////////////////
+
+if the number of 'last encounters' is 1
+
+then ]]></documentation>
   <locale>en_US</locale>
   <definition><![CDATA[when a dwelling with criminal report occurs 
 definitions 
@@ -51,16 +59,17 @@ definitions
 		where the duration of each time period in hours is at least 8;
 	set 'last encounters' to 'long encounters' where
 		the end of each time period is after 'the cutoff point';
+		
+	set 'all encounters' to the number of encounters between 'the suspect' and 'the collaborator' within proximity of 'nearby distance' meters;
 
-	
 if the number of 'last encounters' is 1
 
-then 
+then
 
 set the alert message of 'the person' to "Suspect person " + the id of 'the suspect' + " has been with criminal " + the id of 'the collaborator';
 
 define ALERT as a new alert where 
-	the message is "Suspect person " + the id of 'the suspect' + " has been with criminal " + the id of 'the collaborator',
+	the message is "Suspect person " + the id of 'the suspect' + " has been with criminal " + the id of 'the collaborator' + " COMMENT " + the number of 'last encounters',
 	the person is the suspect of this dwelling with criminal report,
 	the organization is 'collaborator organization';
 	
