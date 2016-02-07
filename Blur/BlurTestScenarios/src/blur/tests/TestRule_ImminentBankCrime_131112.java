@@ -46,7 +46,7 @@ public class TestRule_ImminentBankCrime_131112 {
 	private static final String ORGANIZATION3_COMMERCIAL = "ORGANIZATION3_COMMERCIAL";
 	
 	private static final String ROLE1_CRIMINAL = "ROLE1_CRIMINAL";
-	private static final String ROLE2_CRIMINAL = "ROLE2_COMMERCIAL_SHOULD_TURN_TO_CRIMINAL";
+	private static final String ROLE2_CRIMINAL = "ROLE2_CRIMINAL";
 	
 	private static final String PERSON_CRIMINAL_1 = "PERSON_CRIMINAL_1";
 	private static final String PERSON_CRIMINAL_2 = "PERSON_CRIMINAL_2";
@@ -61,9 +61,6 @@ public class TestRule_ImminentBankCrime_131112 {
 	
 	private static final String PERSON_CRIMINAL_1_BUILDING2_1 = "BUILDING1_1_CRIMINAL";
 
-	
-	
-	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		testDriver = new TestDriver();
@@ -134,38 +131,6 @@ public class TestRule_ImminentBankCrime_131112 {
 		buildingInitialization1.setOwner(testDriver.createRelationship(Person.class, "123"));
 		buildingInitialization1.addTo_organizations(testDriver.createRelationship(Organization.class, ORGANIZATION1_CRIMINAL));
 
-		// Building 2 - 1 none criminal
-		BuildingInitialization buildingInitialization2 = conceptFactory.createBuildingInitialization(now);
-		buildingInitialization2.setBuilding(testDriver.createRelationship(Building.class, BUILDING2_1_COMMERCIAL));
-		buildingInitialization2.setUsageType(BuildingUsageType.FURNITURE_STORE);
-		buildingInitialization2.setType(BuildingType.COMMERCIAL);
-		location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 35.581768 + Math.random(), 32.085300 + Math.random());
-		buildingInitialization2.setLocation(location);
-		buildingInitialization2.setOwner(testDriver.createRelationship(Person.class, "123"));
-		buildingInitialization2.addTo_organizations(testDriver.createRelationship(Organization.class, ORGANIZATION3_COMMERCIAL));
-		
-		// Building 3 - 2 criminal
-		BuildingInitialization buildingInitialization3 = conceptFactory.createBuildingInitialization(now);
-		buildingInitialization3.setBuilding(testDriver.createRelationship(Building.class, BUILDING3_2_CRIMINALS));
-		buildingInitialization3.setUsageType(BuildingUsageType.FURNITURE_STORE);
-		buildingInitialization3.setType(BuildingType.COMMERCIAL);
-		location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 34.781768 + Math.random(), 32.085300 + Math.random());
-		buildingInitialization3.setLocation(location);
-		buildingInitialization3.setOwner(testDriver.createRelationship(Person.class, "123"));
-		buildingInitialization3.addTo_organizations(testDriver.createRelationship(Organization.class, ORGANIZATION1_CRIMINAL));
-		buildingInitialization3.addTo_organizations(testDriver.createRelationship(Organization.class, ORGANIZATION2_CRIMINAL));
-		
-		// Building 4 - 1 criminal & 1 none criminal
-		BuildingInitialization buildingInitialization4 = conceptFactory.createBuildingInitialization(now);
-		buildingInitialization4.setBuilding(testDriver.createRelationship(Building.class, BUILDING4_1_CRIMINAL_1_COMMERCIAL));
-		buildingInitialization4.setUsageType(BuildingUsageType.FURNITURE_STORE);
-		buildingInitialization4.setType(BuildingType.COMMERCIAL);
-		location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 34.281768 + Math.random(), 33.085300 + Math.random());
-		buildingInitialization4.setLocation(location);
-		buildingInitialization4.setOwner(testDriver.createRelationship(Person.class, "123"));
-		buildingInitialization4.addTo_organizations(testDriver.createRelationship(Organization.class, ORGANIZATION2_CRIMINAL));
-		buildingInitialization4.addTo_organizations(testDriver.createRelationship(Organization.class, ORGANIZATION3_COMMERCIAL));
-		
 		// Person Initialization
 		PersonInitialization personInitialization1 = conceptFactory.createPersonInitialization(now);
 		personInitialization1.setPerson(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_1));
@@ -180,12 +145,12 @@ public class TestRule_ImminentBankCrime_131112 {
 		personInitialization2.setPerson(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_2));
 		personInitialization2.setName("b2");
 		personInitialization2.setProfession("pro2");
-		personInitialization2.setRole(testDriver.createRelationship(OrganizationalRole.class, ROLE2_CRIMINAL)); // None Criminal
+		personInitialization2.setRole(testDriver.createRelationship(OrganizationalRole.class, ROLE2_CRIMINAL)); // Criminal
 		personInitialization2.setState(PersonState.ACTIVE);
 		location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 34.781768 + Math.random(), 32.085300 + Math.random());
 		personInitialization2.setLocation(location);
 		
-		
+/*		
 		PersonInitialization personInitialization3 = conceptFactory.createPersonInitialization(now);
 		personInitialization3.setPerson(testDriver.createRelationship(Person.class, "PERSON3_FOR_TEST"));
 		personInitialization3.setName("b2");
@@ -193,7 +158,7 @@ public class TestRule_ImminentBankCrime_131112 {
 		personInitialization3.setRole(testDriver.createRelationship(OrganizationalRole.class, ROLE1_CRIMINAL)); // Criminal
 		personInitialization3.setState(PersonState.ACTIVE);
 		location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 34.781768 + Math.random(), 32.085300 + Math.random());
-		personInitialization3.setLocation(location);
+		personInitialization3.setLocation(location);*/
 		
 		PersonInitialization personInitialization4 = conceptFactory.createPersonInitialization(now);
 		personInitialization4.setPerson(testDriver.createRelationship(Person.class, PERSON_CALLEE));
@@ -221,13 +186,11 @@ public class TestRule_ImminentBankCrime_131112 {
 		testDriver.submitEvent(organizationRoleInitialization2);
 		testDriver.submitEvent(personInitialization1);
 		testDriver.submitEvent(personInitialization2);
-		testDriver.submitEvent(personInitialization3);
+		//testDriver.submitEvent(personInitialization3);
 		testDriver.submitEvent(personInitialization4);
 		testDriver.submitEvent(personInitialization5);
 		testDriver.submitEvent(buildingInitialization1);
-		testDriver.submitEvent(buildingInitialization2);
-		testDriver.submitEvent(buildingInitialization3);
-		testDriver.submitEvent(buildingInitialization4);
+
 		
 		
 		
@@ -243,64 +206,22 @@ public class TestRule_ImminentBankCrime_131112 {
 		
 		ZonedDateTime oneDayAgo = now.minusDays(1);
 		
-		 PotentialBankCrimeReport potentialBankCrimeReport = conceptFactory.createPotentialBankCrimeReport(oneDayAgo);
-		 List< Relationship<Person>> criminal_persons = new ArrayList<Relationship<Person>>();
-		 criminal_persons.add(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_1));
-		 criminal_persons.add(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_2));
-		 potentialBankCrimeReport.set_persons(criminal_persons);
-		 potentialBankCrimeReport.setBuilding(testDriver.createRelationship(Building.class,BUILDING1_BANK_CRIMINAL));
-		 potentialBankCrimeReport.setCallee(testDriver.createRelationship(Person.class, PERSON_CALLEE));
-		 potentialBankCrimeReport.setCaller(testDriver.createRelationship(Person.class, PERSON_CALLER));
-		 potentialBankCrimeReport.setRadiusInMeters(500);
-		
-		// Cellular Reports
 		CellularReport cellularReport = conceptFactory.createCellularReport(oneDayAgo);
-		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING1_BANK_CRIMINAL));
-		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_1));
-		testDriver.submitEvent(cellularReport);
-		oneDayAgo = oneDayAgo.plusMinutes(1);
 		
-		cellularReport = conceptFactory.createCellularReport(oneDayAgo);
-		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING2_1_COMMERCIAL));
-		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_1));
-		testDriver.submitEvent(cellularReport);
-		oneDayAgo = oneDayAgo.plusMinutes(1);
+		
+		PotentialBankCrimeReport potentialBankCrimeReport = conceptFactory.createPotentialBankCrimeReport(oneDayAgo);
+		List< Relationship<Person>> criminal_persons = new ArrayList<Relationship<Person>>();
+		criminal_persons.add(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_1));
+		criminal_persons.add(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_2));
+		potentialBankCrimeReport.set_persons(criminal_persons);
+		potentialBankCrimeReport.setBuilding(testDriver.createRelationship(Building.class,BUILDING1_BANK_CRIMINAL));
+		potentialBankCrimeReport.setCallee(testDriver.createRelationship(Person.class, PERSON_CALLEE));
+		potentialBankCrimeReport.setCaller(testDriver.createRelationship(Person.class, PERSON_CALLER));
+		potentialBankCrimeReport.setRadiusInMeters(500);
 
-		cellularReport = conceptFactory.createCellularReport(oneDayAgo);
-		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING3_2_CRIMINALS));
-		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_1));
-		testDriver.submitEvent(cellularReport);
-		oneDayAgo = oneDayAgo.plusMinutes(1);
-
-		cellularReport = conceptFactory.createCellularReport(oneDayAgo);
-		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING4_1_CRIMINAL_1_COMMERCIAL));
-		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_1));
-		testDriver.submitEvent(cellularReport);
-		oneDayAgo = oneDayAgo.plusMinutes(1);
-
-		cellularReport = conceptFactory.createCellularReport(oneDayAgo);
-		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING1_BANK_CRIMINAL));
-		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_2));
-		testDriver.submitEvent(cellularReport);
-		oneDayAgo = oneDayAgo.plusMinutes(1);
-
-		cellularReport = conceptFactory.createCellularReport(oneDayAgo);
-		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING2_1_COMMERCIAL));
-		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_2));
-		testDriver.submitEvent(cellularReport);
-		oneDayAgo = oneDayAgo.plusMinutes(1);
-
-		cellularReport = conceptFactory.createCellularReport(oneDayAgo);
-		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING3_2_CRIMINALS));
-		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_2));
-		testDriver.submitEvent(cellularReport);
-		oneDayAgo = oneDayAgo.plusMinutes(1);
-
-		cellularReport = conceptFactory.createCellularReport(oneDayAgo);
-		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING4_1_CRIMINAL_1_COMMERCIAL));
-		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_2));
-		testDriver.submitEvent(cellularReport);
-	    	   
+		testDriver.submitEvent(potentialBankCrimeReport);
+		 
+		// Cellular Reports
 		Thread.sleep(5000);		
 	}
 }
