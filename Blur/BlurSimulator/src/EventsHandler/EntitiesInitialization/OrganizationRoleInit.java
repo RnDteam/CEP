@@ -53,7 +53,7 @@ public class OrganizationRoleInit extends
 
 	@Override
 	public String getTableName() {
-		return "OB_Organization_role";
+		return "ob_organization_role";
 	}
 
 }

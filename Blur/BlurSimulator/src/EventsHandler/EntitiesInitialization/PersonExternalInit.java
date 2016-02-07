@@ -35,7 +35,7 @@ public class PersonExternalInit extends EventCreation<PersonInitialization> {
 
 	@Override
 	public String getTableName() {
-		return "DB_People";
+		return "db_people";
 	}
 
 }

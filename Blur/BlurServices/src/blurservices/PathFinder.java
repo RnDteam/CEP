@@ -27,7 +27,7 @@ public class PathFinder implements IPathFinder {
 	// "jdbc:mysql://localhost:3306/cep_try";
 	// private static final String USER_NAME = "root";
 	// private static final String PASSWORD = "root";
-	private static final String personLinkTableName = "OB_Links";
+	private static final String personLinkTableName = "ob_links";
 
 	public synchronized Connection getConnection() throws NamingException,
 			SQLException {

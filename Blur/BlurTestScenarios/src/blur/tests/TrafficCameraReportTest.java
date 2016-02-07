@@ -79,9 +79,9 @@ public class TrafficCameraReportTest {
 
 	@Test
 	public void test() throws SolutionException, GatewayException, RoutingException, InterruptedException {
-		String databaseUrl = "jdbc:mysql://localhost:3306/cep_try";
+		String databaseUrl = "jdbc:mysql://52.49.109.120:3306/cep_try";
 		String user = "root";
-		String password = "root";
+		String password = "cep_blur";
 		
 		Connection connection = null;
 		

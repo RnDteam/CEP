@@ -51,7 +51,7 @@ public class BuildingExternalInit extends EventCreation<BuildingInitialization> 
 
 	@Override
 	public String getTableName() {
-		return "DB_Structure";
+		return "db_structure";
 	}
 
 }

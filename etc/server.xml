@@ -13,6 +13,8 @@
 	<featureManager>
 		<feature>restConnector-1.0</feature>
 		<feature>ssl-1.0</feature>
+		<feature>jdbc-4.1</feature>
+        <feature>jndi-1.0</feature>
 		<feature>ia:iaRuntime-8.8.0</feature>
 		<feature>ia:iaDispatcher-8.8.0</feature>
 		<feature>ia:iaAnalytics-8.8.0</feature>
@@ -22,11 +24,11 @@
 		<feature>ia:iaMaps-8.8.0</feature>
 		<feature>adminCenter-1.0</feature>
 		<feature>monitor-1.0</feature>
-		<feature>usr:Blur-0.15</feature>
+		<feature>usr:Blur-0.27</feature>
 	</featureManager>
 
-	<logging maxFiles="10" traceSpecification="com.ibm.ia.*=fine:com.ibm.rules.*=fine:*=info"/>
-
+	<logging maxFiles="5" traceSpecification="com.ibm.ia.*=warning:com.ibm.rules.*=warning:*=warning"/>
+		
 	<httpEndpoint host="*" httpPort="${http.port}" httpsPort="${https.port}" id="defaultHttpEndpoint"/>
 
 	<xsServer catalogServer="true" listenerPort="${ia.listenerPort}" serverName="${ia.serverName}" transport="XIO"/>
@@ -37,7 +39,7 @@
 		<writeDir>${server.output.dir}</writeDir>
 	</remoteFileAccess>
 
-	<ssl id="defaultSSLConfig" clientAuthenticationSupported="true" keyStoreRef="defaultKeyStore" sslProtocol="TLS"/>
+	<ssl clientAuthenticationSupported="true" id="defaultSSLConfig" keyStoreRef="defaultKeyStore" sslProtocol="TLS"/>
 	
 	<basicRegistry id="basic" realm="realm">
    		<user name="tester" password="tester"/>
@@ -102,6 +104,22 @@
 	</featureManager>
 	
 	-->
+	
+	<!-- 
+		Declare the jar files for MySQL access through JDBC. 
+		Copy the MySQL driver JAR to $LIBERTY_HOME/wlp/usr/shared/resources/mysql
+	-->
+	<library id="MySQLLib">
+		<fileset dir="${shared.resource.dir}/mysql" includes="*.jar"/>
+	</library>
+
+	<!-- Declare the MySQL DataSource -->
+	<dataSource id="DefaultDataSource" jndiName="jdbc/mysql" transactional="true" type="javax.sql.ConnectionPoolDataSource">
+		<jdbcDriver libraryRef="MySQLLib"/>
+		<properties databaseName="cep_try" password="cep_blur" portNumber="3306" serverName="52.49.109.120" user="root"/>
+	</dataSource>
+
     <ia_runtime debugPort="6543"/>
-    <ia_runtimeSolutionVersion currentVersion="Blur-0.15" solutionName="Blur"/>
+    <include location="/Users/dselman/dev/git/CEP/Blur/Blur/Deployment Configurations/cisDev/cisDev-config.xml"/>
+    <ia_runtimeSolutionVersion currentVersion="Blur-0.27" solutionName="Blur"/>
 </server>

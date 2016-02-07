@@ -56,7 +56,7 @@ public class PersonInternalInit extends EventCreation<PersonUpdate> {
 
 	@Override
 	public String getTableName() {
-		return "OB_Person";
+		return "ob_person";
 	}
 
 }

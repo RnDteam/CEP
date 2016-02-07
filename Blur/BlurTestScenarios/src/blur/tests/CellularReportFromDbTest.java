@@ -83,9 +83,9 @@ public class CellularReportFromDbTest {
 		String getAllOrganizationQuery = "select * from organizations";
 		String getAllBuildingsQuery = "select * from buildings";
 		
-		String databaseUrl = "jdbc:mysql://localhost:3306/cep_try";
+		String databaseUrl = "jdbc:mysql://52.49.109.120:3306/cep_try";
 		String user = "root";
-		String password = "root";
+		String password = "cep_blur";
 		
 		Connection connection = null;
 		

@@ -77,6 +77,6 @@ public class BuildingInternalInit extends EventCreation<BuildingUpdate>{
 
 	@Override
 	public String getTableName() {
-		return "OB_Structure";
+		return "ob_structure";
 	}
 }

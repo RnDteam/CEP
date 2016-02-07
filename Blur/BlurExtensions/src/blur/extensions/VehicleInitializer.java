@@ -34,8 +34,8 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 //	private static final String MY_SQL_DB_URL = "jdbc:mysql://localhost:3306/cep_try";
 //	private static final String USER_NAME = "root";
 //	private static final String PASSWORD = "root";
-	private static final String vehicleTableName = "DB_Vehicles";
-	private static final String vehicleTypeTableName = "DB_VehicleType";
+	private static final String vehicleTableName = "db_vehicles";
+	private static final String vehicleTypeTableName = "db_vehicletype";
 	
 	public synchronized Connection getConnection() throws NamingException, SQLException {
        

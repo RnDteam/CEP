@@ -37,7 +37,7 @@ public class CellularCallReportEvent extends
 
 	@Override
 	public String getTableName() {
-		return "RP_Call";
+		return "rp_call";
 	}
 
 }

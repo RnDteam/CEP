@@ -46,7 +46,7 @@ public class OrganizationInit extends EventCreation<OrganizationInitialization> 
 
 	@Override
 	public String getTableName() {
-		return "OB_Organization";
+		return "ob_organization";
 	}
 
 }

@@ -49,7 +49,7 @@ public class CellularReportEvent extends EventCreation<CellularReport> {
 	private String getBuildingIdFromLocation(String logntitude,
 			String latitude, SolutionGateway gateway) {
 		Connection dbConnection = DBReader.getDBConnection();
-		String query = "SELECT id FROM DB_Structure WHERE Lang = "
+		String query = "SELECT id FROM db_structure WHERE Lang = "
 				+ logntitude + " AND Lat = " + latitude;
 
 		ArrayList<String> buildingList = new ArrayList<>();
@@ -79,6 +79,6 @@ public class CellularReportEvent extends EventCreation<CellularReport> {
 
 	@Override
 	public String getTableName() {
-		return "RP_Cellular";
+		return "rp_cellular";
 	}
 }

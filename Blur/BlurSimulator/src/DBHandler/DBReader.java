@@ -7,9 +7,9 @@ import java.sql.SQLException;
 
 public class DBReader {
 	
-	private static final String MY_SQL_DB_URL = "jdbc:mysql://localhost:3306/cep_try";
+	private static final String MY_SQL_DB_URL = "jdbc:mysql://52.49.109.120:3306/cep_try";
 	private static final String USER_NAME = "root";
-	private static final String PASSWORD = "root";
+	private static final String PASSWORD = "cep_blur";
 	
 	private static Connection connection = null;
 
