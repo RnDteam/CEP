@@ -346,7 +346,7 @@ public class Rule_131221 {
 		movingGeometry.setGeometryAtTime(buildingLocation, oneDayAgo.plusMinutes(140));
 		movingGeometry.setGeometryAtTime(person2Location, oneDayAgo.plusMinutes(150));
 		movingGeometry.setGeometryAtTime(buildingLocation, oneDayAgo.plusMinutes(151));
-		movingGeometry.setGeometryAtTime(buildingLocation, oneDayAgo.plusMinutes(120));
+		movingGeometry.setGeometryAtTime(buildingLocation, oneDayAgo.plusMinutes(160));
 		movingGeometry.setGeometryAtTime(buildingLocation, oneDayAgo.plusMinutes(180));
 		
 		testDriver.updateEntity(person2);

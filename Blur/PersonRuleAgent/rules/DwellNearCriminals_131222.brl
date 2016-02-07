@@ -44,7 +44,7 @@ emit a new update role event where
 
 if the number of 'last encounters' is 1
 
-then ]]></documentation>
+then]]></documentation>
   <locale>en_US</locale>
   <definition><![CDATA[when a dwelling with criminal report occurs 
 definitions 
@@ -60,8 +60,8 @@ definitions
 	set 'last encounters' to 'long encounters' where
 		the end of each time period is after 'the cutoff point';
 		
-	set 'all encounters' to the number of encounters between 'the suspect' and 'the collaborator' within proximity of 'nearby distance' meters;
-
+	set 'number of all encounters' to the number of encounters between 'the suspect' and 'the collaborator' within proximity of 'nearby distance' meters;
+	
 if the number of 'last encounters' is 1
 
 then
@@ -69,7 +69,7 @@ then
 set the alert message of 'the person' to "Suspect person " + the id of 'the suspect' + " has been with criminal " + the id of 'the collaborator';
 
 define ALERT as a new alert where 
-	the message is "Suspect person " + the id of 'the suspect' + " has been with criminal " + the id of 'the collaborator' + " COMMENT " + the number of 'last encounters',
+	the message is "Suspect person " + the id of 'the suspect' + " has been with criminal " + the id of 'the collaborator' + " COMMENT : last encounters " + the number of 'last encounters' + " all encounters " + 'number of all encounters',
 	the person is the suspect of this dwelling with criminal report,
 	the organization is 'collaborator organization';
 	
