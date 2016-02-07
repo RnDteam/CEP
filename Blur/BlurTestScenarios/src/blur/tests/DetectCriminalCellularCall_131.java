@@ -145,6 +145,9 @@ public class DetectCriminalCellularCall_131 {
 		cellularCallReport2.setCaller(testDriver.createRelationship(Person.class, "person2"));
 		cellularCallReport2.setCallee(testDriver.createRelationship(Person.class, "person1"));
 		testDriver.submitEvent(cellularCallReport2);
+		
+	
+		testDriver.waitUntilSolutionIdle();
 					
 		System.out.println("********************************************************************");
 		DebugInfo[] debugInfos = debugReceiver.getDebugInfo("PersonRuleAgent");

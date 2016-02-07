@@ -8,8 +8,7 @@
 definitions 
 	set 'the building location' to the latest observed geometry of the building of this cellular report;
 if 
-	the location of 'the person' is not null 
-	and it is not true that the latest observed geometry of 'the person' intersects 'the building location'
+	the location of 'the person' is not null
 then
 	move 'the person' to 'the building location' at the timestamp of this cellular report;
 ]]></definition>

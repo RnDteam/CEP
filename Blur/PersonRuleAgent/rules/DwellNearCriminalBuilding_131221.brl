@@ -4,28 +4,47 @@
   <uuid>28d84ba5-bfb0-4558-bb5a-46cb7cb8ef0f</uuid>
   <documentation><![CDATA[1.3.1.2.2.1 to 1.3.1.2.2.1.1
 
-If we don't want to update fields of the person, but only emit an alert, would prefer to put this rule under Building Rule Agent, so it could have the most updated status of the buildings]]></documentation>
+If we don't want to update fields of the person, but only emit an alert, would prefer to put this rule under Building Rule Agent, so it could have the most updated status of the buildings
+
+
+
+    and the number of 'late encounters' is 0
+    and the number of 'on time encounters' is at least 1
+
+    and 'late encounters counter' is 0
+    and 'on time encounters counter' is at least 1
+
+    and 'late encounters counter' is 0
+    and 'on time encounters counter' is 1]]></documentation>
   <locale>en_US</locale>
-  <definition><![CDATA[when a dwelled building report occurs 
-definitions 
-	set 'criminal organizations' to the organizations of the building of this dwelled building report 
-	where the type of each organization is CRIMINAL ; 
-
+  <definition><![CDATA[when a dwelled building report occurs
+definitions
+    set 'the building' to the building of this dwelled building report ;
+    set 'criminal organizations' to the organizations of 'the building'
+        where the type of each organization is CRIMINAL ;
+    set 'nearby distance' to the nearby distance in meters of this dwelled building report ;
+    set 'building encounters' to the encounters between 'the person' and the latest observed geometry of 'the building' within proximity of 'nearby distance' meters ;
+    
+    set 'the number of late encounters' to the number of time periods in 'building encounters',
+        where the start of each time period is after 30 minutes before the timestamp of this dwelled building report ;
+		
+	set 'the number of on time encounters' to the number of time periods in 'building encounters',
+        where the start of each time period is after 2 hours before the timestamp of this dwelled building report ;
 if
-	the number of 'criminal organizations' is 1	 
+    the number of 'criminal organizations' is 1
+    and 'the number of late encounters' is 0
+    and 'the number of on time encounters' is at least 1
 then
-
-for each organization in 'criminal organizations' : 
-	- define ALERT as a new alert where 
-		the message is "Associate the " + the id of the person + " to " + the id of this organization + " for building " + the id of the building,  
-		the building is the building of this dwelled building report,
-		the person is the person,
-		the organization is this organization
-
-	- set the alert message of 'the person' to "Associate the " + the id of the person + " to " + the id of this organization + " for building " + the id of the building		
-	- emit ALERT
-	- emit a new update role event where
+    for each organization in 'criminal organizations' :
+        - define ALERT as a new alert where
+            the message is "Associate the " + the id of the person + " to " + the id of this organization + " for building " + the id of the building + " COMMENT : late encounters " + 'the number of late encounters' + " on time encounters " + 'the number of on time encounters',
+            the building is the building of this dwelled building report ,
+            the person is the person ,
+            the organization is this organization
+        - set the alert message of 'the person' to "Associate the " + the id of the person + " to " + the id of this organization + " for building " + the id of the building
+        - emit ALERT
+        - emit a new update role event where
             the organization is this organization ,
             the organizational role is the role of the person ,
-            the timestamp is the timestamp of this dwelled building report  ;]]></definition>
+            the timestamp is the timestamp of this dwelled building report ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

@@ -34,7 +34,7 @@ an organizational role is related to an organizational role , named the manager 
 a building type can be one of :
     APPARTMENT , WAREHOUSE , COMMERCIAL .
 a building usage type can be one of :
-    BANK BRANCH , FURNITURE STORE .
+    BANK BRANCH , FURNITURE STORE, LIVING .
 
 a building is a business entity identified by an id with
     a type ( a building type ) ,
