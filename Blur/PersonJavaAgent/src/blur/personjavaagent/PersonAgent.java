@@ -1,15 +1,19 @@
 package blur.personjavaagent;
 
+import blur.model.ConceptFactory;
+import blur.model.OrganizationRoleInitialization;
+import blur.model.OrganizationRoleType;
 import blur.model.OrganizationalRole;
 import blur.model.Person;
 import blur.model.PersonState;
 import blur.model.PersonUpdate;
+import blur.model.UpdateRoleEvent;
 
 import com.ibm.geolib.geom.Point;
 import com.ibm.geolib.st.MovingGeometry;
 import com.ibm.geolib.st.SpatioTemporalService;
-import com.ibm.ia.common.AgentException;
 import com.ibm.ia.agent.EntityAgent;
+import com.ibm.ia.common.AgentException;
 import com.ibm.ia.model.Event;
 import com.ibm.ia.model.Relationship;
 
@@ -22,6 +26,26 @@ public class PersonAgent extends EntityAgent<Person> {
         
         if(thisPerson == null) {
         	return;
+        }
+        
+        if(event instanceof UpdateRoleEvent) {
+        	// check that the role exists
+        	UpdateRoleEvent ure = (UpdateRoleEvent) event;
+        	Relationship<OrganizationalRole> roleRel = ure.getOrganizationalRole();
+        	if(roleRel==null|| roleRel.resolve()==null) {
+        		String newRole = thisPerson.get$Id() + "-" + ure.getOrganization().getKey();
+        		OrganizationRoleInitialization ori = getConceptFactory(ConceptFactory.class).createOrganizationRoleInitialization(event.get$Timestamp());
+        		ori.setPerson( createRelationship(thisPerson));
+        		ori.setOrganizationalRole(createRelationship(OrganizationalRole.class, newRole));
+        		ori.setName(newRole);
+        		ori.setOrganization(ure.getOrganization());
+        		ori.setType(OrganizationRoleType.EMPLOYEE);
+        		
+        		// MODIFY THE ENTITY AND SET THE NEW ROLE
+        		thisPerson.setRole(roleRel);
+        		updateBoundEntity(thisPerson);
+        		emit(ori);
+        	}
         }
         
         if (event instanceof PersonUpdate) {

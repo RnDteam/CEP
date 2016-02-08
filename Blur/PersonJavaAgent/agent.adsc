@@ -1,3 +1,4 @@
 'blur.personjavaagent.PersonAgent' is an agent related to a person  , 
 processing events : 
-    - person update  , where this person  comes from the person of this person update 
+    - person update  , where this person  comes from the person of this person update  , with a horizon of 0 minutes
+    - update role event , where this person comes from the person of this update role event , with a horizon of 0 minutes

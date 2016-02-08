@@ -52,7 +52,7 @@ public class StartServer {
 			testDriver.deleteAllEntities();
 			testDriver.resetSolutionState();
 			Thread.sleep(5000);
-			// testDriver.startRecording();
+			testDriver.startRecording();
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
@@ -81,12 +81,10 @@ public class StartServer {
 			}
 		}
 
-		System.out
-				.println("Waiting for solution idle so we can stop the recording.");
+		System.out.println("Waiting for solution idle so we can stop the recording.");
 		testDriver.waitUntilSolutionIdle();
-		// testDriver.stopRecording();
+		testDriver.stopRecording();
 		testDriver.disconnect();
-
 		System.out.println("finished!");
 	}
 

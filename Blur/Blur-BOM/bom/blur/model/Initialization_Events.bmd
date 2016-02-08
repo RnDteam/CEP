@@ -103,7 +103,6 @@ an organizational role is initialized from an organization role initialization ,
     - set the person of the organizational role to the person of this organization role initialization
     - set the manager of the organizational role to the manager of this organization role initialization .
 
-
 --Vehicle
 a vehicle is initialized from a vehicle initialization , where this vehicle comes from the vehicle of this vehicle initialization. 
 	

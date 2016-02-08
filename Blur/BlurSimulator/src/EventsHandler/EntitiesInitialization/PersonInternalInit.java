@@ -26,7 +26,7 @@ public class PersonInternalInit extends EventCreation<PersonUpdate> {
 			String organizationRoleId = resultSet.getString(3);
 			String logntitude = resultSet.getString(4);
 			String latitude = resultSet.getString(5);
-			String state  =resultSet.getString(6);
+			String state = resultSet.getString(6);
 			
 			personInitEvent.setPerson(gateway.createRelationship(Person.class, personId));
 			personInitEvent.setName(name);
