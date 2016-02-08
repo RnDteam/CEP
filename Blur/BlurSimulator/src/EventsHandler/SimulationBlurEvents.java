@@ -10,7 +10,6 @@ public enum SimulationBlurEvents {
 	TrafficCameraReport(new TrafficCameraReportEvent()),
 	CellularCallReport(new CellularCallReportEvent()),
 	CellularReport(new CellularReportEvent());
-	
 
 	private EventCreation<Event> event;
 
