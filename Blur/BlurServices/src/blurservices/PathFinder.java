@@ -20,6 +20,7 @@ import com.ibm.geolib.geom.LinearRing;
 import com.ibm.geolib.geom.Point;
 import com.ibm.geolib.geom.Polygon;
 import com.ibm.geolib.st.MovingGeometry;
+import com.spaceprogram.kittycache.KittyCache;
 
 public class PathFinder implements IPathFinder {
 
@@ -28,6 +29,9 @@ public class PathFinder implements IPathFinder {
 	// private static final String USER_NAME = "root";
 	// private static final String PASSWORD = "root";
 	private static final String personLinkTableName = "ob_links";
+	
+	private static final int TTL_SECONDS = 60;
+	private static final KittyCache<String,Boolean> getPersonLinkToCriminalFromDBCache = new KittyCache<String,Boolean>(1024);
 
 	public synchronized Connection getConnection() throws NamingException,
 			SQLException {
@@ -51,35 +55,46 @@ public class PathFinder implements IPathFinder {
 	}
 
 	public boolean getPersonLinkToCriminalFromDB(String personId) {
-		String personIdColumn = "Person_ID";
-		String personLinkColumn = "Have_link_to_criminal";
-		String getPersonLinkQuery = "SELECT " + personLinkColumn + " FROM "
-				+ personLinkTableName + " WHERE ";
+		
+		Boolean result = getPersonLinkToCriminalFromDBCache.get(personId);
+		
+		// cache miss
+		if( result==null ) {
+			String personIdColumn = "Person_ID";
+			String personLinkColumn = "Have_link_to_criminal";
+			String getPersonLinkQuery = "SELECT " + personLinkColumn + " FROM "
+					+ personLinkTableName + " WHERE ";
 
-		getPersonLinkQuery += personIdColumn + "='" + personId + "'";
+			getPersonLinkQuery += personIdColumn + "='" + personId + "'";
 
-		String personLinkString = null;
-		try {
-			Connection con = getConnection();
-			Statement statement = con.createStatement();
-			ResultSet resultSet = statement.executeQuery(getPersonLinkQuery);
+			String personLinkString = null;
+			try {
+				Connection con = getConnection();
+				Statement statement = con.createStatement();
+				ResultSet resultSet = statement.executeQuery(getPersonLinkQuery);
 
-			while (resultSet.next()) {
-				if (personLinkString != null) {
-					System.out.println("PathFinder: Two rows with the same person Id");
+				while (resultSet.next()) {
+					if (personLinkString != null) {
+						System.out.println("PathFinder: Two rows with the same person Id");
+					}
+					personLinkString = resultSet.getString(1);
 				}
-				personLinkString = resultSet.getString(1);
+
+				resultSet.close();
+				statement.close();
+				con.close();
+			} catch (SQLException | NamingException e) {
+				e.printStackTrace();
 			}
 
-			resultSet.close();
-			statement.close();
-			con.close();
-		} catch (SQLException | NamingException e) {
-			e.printStackTrace();
+			boolean r = "1".equals(personLinkString);
+			System.out.println( "PathFinder: Cache miss person with id " +  personId + " has link to criminal: " + r );
+			getPersonLinkToCriminalFromDBCache.put(personId, r, TTL_SECONDS);
 		}
-
-		boolean result = "1".equals(personLinkString);
-		System.out.println( "PathFinder: Person with id " +  personId + " has link to criminal: " + result );
+		else {
+			System.out.println( "PathFinder: Cache hit person with id " +  personId + " has link to criminal: " + result );
+		}
+		
 		return result;
 	}
 

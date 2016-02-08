@@ -15,12 +15,13 @@ if
 then
     emit a new update role event where
         the organization is 'criminal organization' ,
-        the person is 'the person',
-        the organizational role is the role of 'the person'; 
-        
-    emit a new alert where
+        the person is 'the person' ,
+        the organizational role is the role of 'the person' ;
+    define ALERT as a new alert where
         the building is the building of this cellular report ,
         the person is 'the person' ,
         the organization is 'criminal organization' ,
-        the message is "The person " + the id of 'the person' + " is a criminal in organization " + the id of 'criminal organization' ;]]></definition>
+        the message is "The person " + the id of 'the person' + " is a criminal in organization " + the id of 'criminal organization' ;
+    set the alert message of 'the person' to the message of ALERT ;
+    emit ALERT ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

@@ -14,7 +14,7 @@
             <entry key="agent_name">
                 <value type="java.lang.String">blur.buildingjavaagent.BuildingAgent</value>
             </entry>
-        <entry key="solution_name"><value type="java.lang.String">Blur</value></entry><entry key="solution_version"><value type="java.lang.String">Blur-0.27</value></entry></service-properties>
+        <entry key="solution_name"><value type="java.lang.String">Blur</value></entry><entry key="solution_version"><value type="java.lang.String">Blur-0.28</value></entry></service-properties>
 
     </service>
 </blueprint>

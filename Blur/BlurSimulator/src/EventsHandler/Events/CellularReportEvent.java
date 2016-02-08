@@ -14,8 +14,12 @@ import blur.model.CellularReport;
 import blur.model.Person;
 
 import com.ibm.ia.gateway.SolutionGateway;
+import com.spaceprogram.kittycache.KittyCache;
 
 public class CellularReportEvent extends EventCreation<CellularReport> {
+	
+	private static final int TTL_SECONDS = 60;
+	private static final KittyCache<String,String> buildingIdCache = new KittyCache<String,String>(4096);
 
 	@Override
 	public CellularReport convertDBRowToObject(ResultSet resultSet,
@@ -45,36 +49,50 @@ public class CellularReportEvent extends EventCreation<CellularReport> {
 
 		return cellularReportEvent;
 	}
+	
+	private static String getCacheKey(String logntitude,
+			String latitude) {
+		return  logntitude + "/" + latitude;
+	}
 
 	private String getBuildingIdFromLocation(String logntitude,
 			String latitude, SolutionGateway gateway) {
-		Connection dbConnection = DBReader.getDBConnection();
-		String query = "SELECT id FROM db_structure WHERE Lang = "
-				+ logntitude + " AND Lat = " + latitude;
+		
+		String cacheKey = getCacheKey(logntitude,latitude);
+		String result = buildingIdCache.get(cacheKey);
+		
+		if(result==null) {
+			Connection dbConnection = DBReader.getDBConnection();
+			String query = "SELECT id FROM db_structure WHERE Lang = "
+					+ logntitude + " AND Lat = " + latitude;
 
-		ArrayList<String> buildingList = new ArrayList<>();
-		try {
-			Statement statement = dbConnection.createStatement();
+			ArrayList<String> buildingList = new ArrayList<>();
+			try {
+				Statement statement = dbConnection.createStatement();
 
-			ResultSet resultSet = statement.executeQuery(query);
+				ResultSet resultSet = statement.executeQuery(query);
 
-			while (resultSet.next()) {
-				buildingList.add(resultSet.getString(1));
+				while (resultSet.next()) {
+					buildingList.add(resultSet.getString(1));
+				}
+				
+				resultSet.close();
+				statement.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 			
-			resultSet.close();
-			statement.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
+			if(buildingList.size() !=  1) {
+				System.err.println( "Problem getting building from lat/lon using query " + query );
+				return null;
+			}
+			else {
+				result = buildingList.get(0);
+				buildingIdCache.put(cacheKey, result, TTL_SECONDS);
+			}
 		}
 		
-		if(buildingList.size() !=  1) {
-			System.err.println( "Problem getting building from lat/lon using query " + query );
-			return null;
-		}
-		else {
-			return buildingList.get(0);	
-		}
+		return result;
 	}
 
 	@Override

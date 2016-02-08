@@ -41,7 +41,7 @@ then
             the building is the building of this dwelled building report ,
             the person is the person ,
             the organization is this organization
-        - set the alert message of 'the person' to "Associate the " + the id of the person + " to " + the id of this organization + " for building " + the id of the building
+        - set the alert message of 'the person' to the message of ALERT
         - emit ALERT
         - emit a new update role event where
             the organization is this organization ,

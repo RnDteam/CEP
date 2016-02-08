@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>active</name>
+  <uuid>a161ee41-4542-4e5b-ada1-a467e9faf070</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[when an event occurs
+then
+    set the state of 'the person' to ACTIVE ;]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>

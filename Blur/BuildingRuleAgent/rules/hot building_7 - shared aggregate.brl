@@ -16,11 +16,11 @@ if
     and there is at least one organization in the organizations of 'the building'
         where the type of this organization is CRIMINAL ,
 then
-	define ALERT as a new alert where
+    define ALERT as a new alert where
         the building is 'the building' ,
         the message is "Significant increase in the number of calls from the building " + the id of 'the building' ,
         the rule is the name of this rule ;
-     add ALERT to the alerts of 'the building';
-     set the alert message of 'the building' to "Significant increase in the number of calls from the building " + the id of 'the building';
-     emit ALERT;]]></definition>
+    add ALERT to the alerts of 'the building' ;
+    set the alert message of 'the building' to the message of ALERT;
+    emit ALERT;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

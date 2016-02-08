@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: BuildingJavaAgent
 Bundle-SymbolicName: Blur.BuildingJavaAgent
-Bundle-Version: 0.27.0.qualifier
-Import-Package: blur.model;version="[0.27.0.qualifier,0.28.0)",
- blur.model.impl;version="[0.27.0.qualifier,0.28.0)",
+Bundle-Version: 0.28.0.qualifier
+Import-Package: blur.model;version="[0.28.0.qualifier,0.29.0)",
+ blur.model.impl;version="[0.28.0.qualifier,0.29.0)",
  com.ibm.geolib,
  com.ibm.geolib.crs,
  com.ibm.geolib.geom,
@@ -15,8 +15,8 @@ Import-Package: blur.model;version="[0.27.0.qualifier,0.28.0)",
  com.ibm.ia.global.jobs,
  com.ibm.ia.model,
  com.ibm.ia.model.annotations,
- com.ibm.rules.generated;version="[0.27.0.qualifier,0.28.0)",
- com.ibm.rules.generated.dataie;version="[0.27.0.qualifier,0.28.0)",
- com.ibm.rules.generated.xml;version="[0.27.0.qualifier,0.28.0)",
+ com.ibm.rules.generated;version="[0.28.0.qualifier,0.29.0)",
+ com.ibm.rules.generated.dataie;version="[0.28.0.qualifier,0.29.0)",
+ com.ibm.rules.generated.xml;version="[0.28.0.qualifier,0.29.0)",
  org.osgi.framework
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

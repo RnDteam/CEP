@@ -4,29 +4,21 @@
   <uuid>6e682e28-d08d-4dd4-a3d0-1fa1e141b3a2</uuid>
   <documentation><![CDATA[1.3.1.1.1.2 to 1.3.1.1.1.2.1]]></documentation>
   <locale>en_US</locale>
-  <definition><![CDATA[when a potential bank crime report occurs 
-definitions 
-	set 'nearby criminals' to the persons of this potential bank crime report 
-	where the distance between the latest observed geometry of 'the building' and
-		  the location of each person in meters is less than the radius in meters of this potential bank crime report ;
-
-if 
-	 the number of 'nearby criminals' is at least 1
-	 
+  <definition><![CDATA[when a potential bank crime report occurs
+definitions
+    set 'nearby criminals' to the persons of this potential bank crime report
+        where the distance between the latest observed geometry of 'the building' and the location of each person in meters is less than the radius in meters of this potential bank crime report ;
+if
+    the number of 'nearby criminals' is at least 1
 then
-
-define ALERT as a new alert where
-		the message is "Send police car to bank " + the id of 'the building',
-		the building is 'the building',
-		the person is the callee of this potential bank crime report , 
-		the timestamp is the timestamp of this potential bank crime report , 
-		the rule is the name of this rule;
-set the alert message of 'the building' to "Send police car to bank " + the id of 'the building';
-		
-for each person in 'nearby criminals' : 
-	- add this person to the persons of ALERT 
-	- set the alert message of this person to "Send police car to bank " + the id of 'the building';
-			
-emit ALERT;
-	 ]]></definition>
+    define ALERT as a new alert where
+        the message is "Send police car to bank " + the id of 'the building' ,
+        the building is 'the building' ,
+        the person is the callee of this potential bank crime report ,
+        the timestamp is the timestamp of this potential bank crime report ,
+        the rule is the name of this rule ;
+    set the alert message of 'the building' to the message of ALERT ;
+    for each person in 'nearby criminals' :
+        - add this person to the persons of ALERT;
+    emit ALERT ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

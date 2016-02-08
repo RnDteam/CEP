@@ -1,14 +1,16 @@
 package EventsHandler.Events;
 
 import java.sql.ResultSet;
+
 import com.ibm.ia.gateway.SolutionGateway;
+import com.spaceprogram.kittycache.KittyCache;
+
 import DBHandler.ConverterUtility;
 import blur.model.TrafficCameraReport;
 import blur.model.Vehicle;
 
 public class TrafficCameraReportEvent extends AbsLocationBasedEvent<TrafficCameraReport>{
 	
-
 	@Override
 	public TrafficCameraReport convertDBRowToObject(ResultSet resultSet, SolutionGateway gateway) {
 		TrafficCameraReport trafficCameraReportEvent = null;

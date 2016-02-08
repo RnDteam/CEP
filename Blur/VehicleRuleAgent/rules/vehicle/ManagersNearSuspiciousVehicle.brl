@@ -4,26 +4,26 @@
   <uuid>e71e0bf3-313f-4cbd-8145-e768ad3518fd</uuid>
   <locale>en_US</locale>
   <definition><![CDATA[when a managers near suspicious vehicle occurs
-
 definitions
-	set 'range' to the range of this managers near suspicious vehicle;
-	set 'richable buildings' to the buildings of this managers near suspicious vehicle 
-	where 'range' contains the latest observed geometry of each building;
-	
-if the number of elements in 'richable buildings' is more than 0 
-
+    set 'range' to the range of this managers near suspicious vehicle ;
+    set 'richable buildings' to the buildings of this managers near suspicious vehicle
+        where 'range' contains the latest observed geometry of each building ;
+if
+    the number of elements in 'richable buildings' is more than 0
 then
-	for each building in 'richable buildings' :
-		- set the alert message of this building to "Their are managers of " + the id of the organization of 'the vehicle' + " which can arrive the building " +  the id of this building + " in 20 minutes"
-		- emit a new alert where
-			the vehicle is 'the vehicle',
-			the rule is the name of this rule,
-			the building is this building,
-			the message is "Their are managers of " + the id of the organization of 'the vehicle' + " which can arrive the building " +  the id of this building + " in 20 minutes";
+    for each building in 'richable buildings' :
+        - define ALERT as a new alert where
+            the vehicle is 'the vehicle' ,
+            the rule is the name of this rule ,
+            the building is this building ,
+            the message is "Their are managers of " + the id of the organization of 'the vehicle' + " which can arrive the building " + the id of this building + " in 20 minutes"
+        - set the alert message of this building to the message of ALERT
+        - emit ALERT ;
 else
-	emit a new alert where
-		the vehicle is 'the vehicle',
-		the rule is the name of this rule,
-		the message is "Their are managers of " + the id of the organization of 'the vehicle' + " which can arrive to SOME range";
-	set the alert message of 'the vehicle' to "Their are managers of " + the id of the organization of 'the vehicle' + " which can arrive to SOME range";]]></definition>
+    define ALERT as a new alert where
+        the vehicle is 'the vehicle' ,
+        the rule is the name of this rule ,
+        the message is "Their are managers of " + the id of the organization of 'the vehicle' + " which can arrive to SOME range" ;
+    set the alert message of 'the vehicle' to the message of ALERT ;
+    emit ALERT ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

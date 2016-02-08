@@ -1,8 +1,10 @@
 package InitServer;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
@@ -51,8 +53,6 @@ public class StartServer {
 			testDriver.connect();
 			testDriver.deleteAllEntities();
 			testDriver.resetSolutionState();
-			Thread.sleep(5000);
-			testDriver.startRecording();
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
@@ -65,7 +65,6 @@ public class StartServer {
 
 			connection = GridConnectionFactory.createGridConnection(gridConfig);
 			SolutionGateway gateway = connection.getSolutionGateway("Blur");
-
 			getDataAndSendEvents(gridConfig, gateway);
 
 		} catch (Exception e) {
@@ -81,9 +80,6 @@ public class StartServer {
 			}
 		}
 
-		System.out.println("Waiting for solution idle so we can stop the recording.");
-		testDriver.waitUntilSolutionIdle();
-		testDriver.stopRecording();
 		testDriver.disconnect();
 		System.out.println("finished!");
 	}
@@ -95,16 +91,59 @@ public class StartServer {
 
 		HashMap<ZonedDateTime, List<Event>> initEventsMap = new HashMap<>();
 		addInitializationEventsToMap(initEventsMap, gateway);
-		submitEventsAsync(initEventsMap, config, false);
 
-		System.out
-				.println("Waiting for solution to process initialization events.");
-		testDriver.waitUntilSolutionIdle(20);
-
-		System.out.println("Sending simulation events.");
 		HashMap<ZonedDateTime, List<Event>> simulationEventsMap = new HashMap<>();
 		addSimulationEventsToMap(simulationEventsMap, gateway);
-		submitEventsAsync(simulationEventsMap, config, true);
+
+		boolean done = false;
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String help = "Enter a command: start recording, stop recording, reset, initialize, simulate, quit";
+
+		while (!done) {
+			System.out.println(help);
+			String command = br.readLine();
+
+			try {
+				switch (command) {
+				case "start recording":
+					testDriver.startRecording();
+					break;
+
+				case "stop recording":
+					System.out
+							.println("Waiting for solution idle so we can stop the recording.");
+					testDriver.waitUntilSolutionIdle();
+					testDriver.stopRecording();
+					break;
+
+				case "reset":
+					testDriver.deleteAllEntities();
+					testDriver.resetSolutionState();
+					break;
+
+				case "initialize":
+					submitEventsAsync(initEventsMap, config, false);
+					System.out
+							.println("Waiting for solution to process initialization events.");
+					testDriver.waitUntilSolutionIdle(20);
+					break;
+
+				case "simulate":
+					System.out.println("Sending simulation events.");
+					submitEventsAsync(simulationEventsMap, config, true);
+					break;
+
+				case "quit":
+					done = true;
+
+				default:
+					System.out.println(help);
+					break;
+				}
+			} catch (Exception e) {
+				System.out.println("Caught exception processing command: " + command );
+			}
+		}
 	}
 
 	private static void addInitializationEventsToMap(

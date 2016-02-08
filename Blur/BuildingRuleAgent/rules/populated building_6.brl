@@ -13,9 +13,9 @@ if
     the type of 'the oranization' is CRIMINAL
     and count is more than 5
 then
-    emit a new alert where
+    define ALERT as a new alert where
         the building is 'the building' ,
         the message is "Too many cellular reports of the same organization in the same building" ,
         the rule is the name of this rule ;
-    set the alert message of 'the building' to "Too many cellular reports of the same organization in the same building";]]></definition>
+    set the alert message of 'the building' to the message of ALERT ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>
