@@ -14,7 +14,6 @@ import blur.model.Building;
 import blur.model.BuildingInitialization;
 import blur.model.BuildingType;
 import blur.model.BuildingUsageType;
-import blur.model.CellularReport;
 import blur.model.ConceptFactory;
 import blur.model.Organization;
 import blur.model.OrganizationInitialization;
@@ -28,7 +27,6 @@ import blur.model.PotentialBankCrimeReport;
 
 import com.ibm.geolib.geom.Point;
 import com.ibm.geolib.st.SpatioTemporalService;
-import com.ibm.geolib.unit.LengthUnit;
 import com.ibm.ia.common.GatewayException;
 import com.ibm.ia.common.RoutingException;
 import com.ibm.ia.common.SolutionException;
@@ -36,7 +34,7 @@ import com.ibm.ia.model.Relationship;
 import com.ibm.ia.testdriver.IADebugReceiver;
 import com.ibm.ia.testdriver.TestDriver;
 
-public class TestRule_ImminentBankCrime_131112 {
+public class TestRule_ImminentBankCrime_1_Close_Criminal_131112 {
 	
 	protected static TestDriver testDriver;
 	protected static IADebugReceiver debugReceiver = new IADebugReceiver();
@@ -44,23 +42,17 @@ public class TestRule_ImminentBankCrime_131112 {
 	
 	private static final String ORGANIZATION1_CRIMINAL = "ORGANIZATION1_CRIMINAL";
 	private static final String ORGANIZATION2_CRIMINAL = "ORGANIZATION2_CRIMINAL";
-	private static final String ORGANIZATION3_COMMERCIAL = "ORGANIZATION3_COMMERCIAL";
 	
 	private static final String ROLE1_CRIMINAL = "ROLE1_CRIMINAL";
 	private static final String ROLE2_CRIMINAL = "ROLE2_CRIMINAL";
 	
 	private static final String PERSON_CRIMINAL_1 = "PERSON_CRIMINAL_1";
-	private static final String PERSON_CRIMINAL_2 = "PERSON_CRIMINAL_2";
+	private static final String PERSON_CRIMINAL_2 = "PERSON_CRIMINAL_2";	
+	private static final String PERSON_CRIMINAL_3 = "PERSON_CRIMINAL_3";
 	private static final String PERSON_CALLEE = "PERSON_CALLEE";
 	private static final String PERSON_CALLER = "PERSON_CALLER";
 
-	
 	private static final String BUILDING1_BANK_CRIMINAL = "BUILDING1_BANK_CRIMINAL";
-	private static final String BUILDING2_BANK_CRIMINAL = "BUILDING2_BANK_CRIMINAL";
-	private static final String BUILDING1_BANK_COMMERCIAL = "BUILDING3_2_CRIMINALS";
-	private static final String BUILDING4_1_CRIMINAL_1_COMMERCIAL = "BUILDING4_1_CRIMINAL_1_COMMERCIAL";
-	
-	private static final String PERSON_CRIMINAL_1_BUILDING2_1 = "BUILDING1_1_CRIMINAL";
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -157,7 +149,7 @@ public class TestRule_ImminentBankCrime_131112 {
 		personInitialization2.setLocation(location_close_to_building1);
 		
 		PersonInitialization personInitialization3 = conceptFactory.createPersonInitialization(now);
-		personInitialization3.setPerson(testDriver.createRelationship(Person.class, "PERSON3_FOR_TEST"));
+		personInitialization3.setPerson(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_3));
 		personInitialization3.setName("b2");
 		personInitialization3.setProfession("pro2");
 		personInitialization3.setRole(testDriver.createRelationship(OrganizationalRole.class, ROLE1_CRIMINAL)); // Criminal
@@ -206,6 +198,7 @@ public class TestRule_ImminentBankCrime_131112 {
 		List< Relationship<Person>> criminal_persons = new ArrayList<Relationship<Person>>();
 		criminal_persons.add(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_1));
 		criminal_persons.add(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_2));
+		criminal_persons.add(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_3));
 		potentialBankCrimeReport.set_persons(criminal_persons);
 		potentialBankCrimeReport.setBuilding(testDriver.createRelationship(Building.class,BUILDING1_BANK_CRIMINAL));
 		potentialBankCrimeReport.setCallee(testDriver.createRelationship(Person.class, PERSON_CALLEE));

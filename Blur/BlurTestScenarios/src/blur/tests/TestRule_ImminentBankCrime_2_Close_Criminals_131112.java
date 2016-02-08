@@ -34,7 +34,7 @@ import com.ibm.ia.model.Relationship;
 import com.ibm.ia.testdriver.IADebugReceiver;
 import com.ibm.ia.testdriver.TestDriver;
 
-public class TestRule_ImminentBankCrime_3_Far_criminals_131112 {
+public class TestRule_ImminentBankCrime_2_Close_Criminals_131112 {
 	
 	protected static TestDriver testDriver;
 	protected static IADebugReceiver debugReceiver = new IADebugReceiver();
@@ -52,6 +52,7 @@ public class TestRule_ImminentBankCrime_3_Far_criminals_131112 {
 	private static final String PERSON_CALLEE = "PERSON_CALLEE";
 	private static final String PERSON_CALLER = "PERSON_CALLER";
 
+	
 	private static final String BUILDING1_BANK_CRIMINAL = "BUILDING1_BANK_CRIMINAL";
 
 	@BeforeClass
@@ -138,7 +139,7 @@ public class TestRule_ImminentBankCrime_3_Far_criminals_131112 {
 		personInitialization1.setProfession("pro1");
 		personInitialization1.setRole(testDriver.createRelationship(OrganizationalRole.class, ROLE1_CRIMINAL)); //Criminal
 		personInitialization1.setState(PersonState.ACTIVE);
-		personInitialization1.setLocation(location_far_from_building1);
+		personInitialization1.setLocation(location_close_to_building1);
 		
 		PersonInitialization personInitialization2 = conceptFactory.createPersonInitialization(now);
 		personInitialization2.setPerson(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_2));
@@ -146,7 +147,7 @@ public class TestRule_ImminentBankCrime_3_Far_criminals_131112 {
 		personInitialization2.setProfession("pro2");
 		personInitialization2.setRole(testDriver.createRelationship(OrganizationalRole.class, ROLE2_CRIMINAL)); // Criminal
 		personInitialization2.setState(PersonState.ACTIVE);
-		personInitialization2.setLocation(location_far_from_building1);
+		personInitialization2.setLocation(location_close_to_building1);
 		
 		PersonInitialization personInitialization3 = conceptFactory.createPersonInitialization(now);
 		personInitialization3.setPerson(testDriver.createRelationship(Person.class, PERSON_CRIMINAL_3));
