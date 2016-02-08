@@ -5,7 +5,7 @@
   <locale>en_US</locale>
   <definition><![CDATA[when an update role event occurs
 if
-    the organization of this update role event is not null
+    false and the organization of this update role event is not null
 then
     set the organization of 'the organizational role' to the organization of this update role event ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

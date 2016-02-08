@@ -27,8 +27,8 @@ an organizational role is a business entity identified by an id .
 an organizational role has a name .
 an organizational role has a type ( an organization role type ) .
 an organizational role is related to an organization .
-an organizational role is related to a person .
-an organizational role is related to an organizational role , named the manager .
+--an organizational role is related to a person .
+--an organizational role is related to an organizational role , named the manager .
 
 -- building
 a building type can be one of :
