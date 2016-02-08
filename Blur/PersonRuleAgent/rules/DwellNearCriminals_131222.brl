@@ -61,16 +61,16 @@ definitions
 		the end of each time period is after 'the cutoff point';
 		
 	set 'number of all encounters' to the number of encounters between 'the suspect' and 'the collaborator' within proximity of 'nearby distance' meters;
-	set 'a 8 hours encounter happend' to the number of 'current 8 hours encounters' is more than 0
+	set 'a 8 hours encounter happend' to the number of 'current 8 hours encounters' is more than 0;
 	
-if 
+if
 	'a 8 hours encounter happend'
 then
 
 set the alert message of 'the person' to "Suspect person " + the id of 'the suspect' + " has been with criminal " + the id of 'the collaborator';
 
 define ALERT as a new alert where 
-	the message is "Suspect person " + the id of 'the suspect' + " has been with criminal " + the id of 'the collaborator' + " COMMENT : last encounters " + the number of 'last encounters' + " all encounters " + 'number of all encounters',
+	the message is "Suspect person " + the id of 'the suspect' + " has been with criminal " + the id of 'the collaborator' + " COMMENT : last encounters " + the number of 'current 8 hours encounters' + " all encounters " + 'number of all encounters',
 	the person is the suspect of this dwelling with criminal report,
 	the organization is 'collaborator organization';
 	
