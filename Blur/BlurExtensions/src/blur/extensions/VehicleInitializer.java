@@ -152,9 +152,6 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 			
 			String ownerId = row.getString(4);
 			vehicle.setOwner(getOwnerFromES(ownerId)); //TODO : check if works
-//			vehicle.setOrganization();
-
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {

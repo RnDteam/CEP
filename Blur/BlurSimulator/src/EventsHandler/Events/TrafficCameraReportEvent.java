@@ -23,7 +23,7 @@ public class TrafficCameraReportEvent extends AbsLocationBasedEvent<TrafficCamer
 			
 			trafficCameraReportEvent.setCameraId(cameraId);
 			trafficCameraReportEvent.setCameraLocation(ConverterUtility.getPointFromString(logntitude, latitude));
-//			System.out.println("************ cameraid = " + cameraId + " point = " + logntitude + ", " + latitude);
+			//System.out.println("************ cameraid = " + cameraId + " point = " + logntitude + ", " + latitude);
 			trafficCameraReportEvent.setVehicle(gateway.createRelationship(Vehicle.class, licensePlate));
 			trafficCameraReportEvent.setPersons(getAllPersons(gateway));
 			trafficCameraReportEvent.setBuildings(getAllBuildings(gateway));
