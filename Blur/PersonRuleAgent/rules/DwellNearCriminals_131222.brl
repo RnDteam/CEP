@@ -55,15 +55,16 @@ definitions
 	set 'collaborator organization' to the organization of the role of 'the collaborator';
 	set 'the suspect' to the suspect of this dwelling with criminal report ; 
 	set 'the cutoff point' to 'dwelling time'  before the timestamp of this dwelling with criminal report ;	
-	set 'long encounters' to the encounters between 'the suspect' and 'the collaborator'  within proximity of 'nearby distance' meters 
+	set 'eight hours encounters' to the encounters between 'the suspect' and 'the collaborator'  within proximity of 'nearby distance' meters 
 		where the duration of each time period in hours is at least 8;
-	set 'last encounters' to 'long encounters' where
+	set 'current 8 hours encounters' to 'eight hours encounters' where
 		the end of each time period is after 'the cutoff point';
 		
 	set 'number of all encounters' to the number of encounters between 'the suspect' and 'the collaborator' within proximity of 'nearby distance' meters;
+	set 'a 8 hours encounter happend' to the number of 'current 8 hours encounters' is more than 0
 	
-if the number of 'last encounters' is 1
-
+if 
+	'a 8 hours encounter happend'
 then
 
 set the alert message of 'the person' to "Suspect person " + the id of 'the suspect' + " has been with criminal " + the id of 'the collaborator';
