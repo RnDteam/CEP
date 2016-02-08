@@ -51,6 +51,8 @@ public class BuildingAgent extends EntityAgent<Building> {
 				thisBuilding.setOwner(owner);
 			}
 			
+			thisBuilding.setOrganizations(buildingUpdate.getOrganizations());
+			
 			BuildingUsageType usageType = buildingUpdate.getUsageType();
 			
 			if(usageType != null) {
@@ -59,7 +61,5 @@ public class BuildingAgent extends EntityAgent<Building> {
 			
 			updateBoundEntity(thisBuilding);
 		}
-    	 
     }
-    
 }
