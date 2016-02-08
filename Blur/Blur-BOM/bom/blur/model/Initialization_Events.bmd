@@ -80,6 +80,7 @@ a person is initialized from a person initialization , where this person comes f
     - set the state of this person to the state of this person initialization
     - set the role of this person to the role of this person initialization
     - set the location of this person to a new moving geometry
+    - set the alert message of this person to "N/A"
     - move the location of this person to the location of this person initialization at the timestamp of this person initialization. 
  
 --Building
@@ -88,6 +89,7 @@ a building is initialized from a building initialization , where this building c
     - set the location of this building to a new moving geometry
     - set the type of this building to the type of this building initialization
     - set the usage type of this building to the usage type of this building initialization
+    - set the alert message of this building to "N/A"
     - move this building to the location of this building initialization at the timestamp of this building initialization 
     - for each organization in the organizations of this building initialization : -- workaround for Defect 87855
         - add this organization to the organizations of this building .

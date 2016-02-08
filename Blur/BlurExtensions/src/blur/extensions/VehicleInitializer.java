@@ -141,6 +141,7 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 		vehicle.setLastSeen(null);
 		vehicle.setStatus(VehicleStatus.INACTIVE);
 		vehicle.setSuspicious(false);
+		vehicle.setAlertMessage("N/A");
 
 		VehicleDetails details = conceptFactory.createVehicleDetails();
 		try {
