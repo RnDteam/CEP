@@ -7,9 +7,10 @@ import EventsHandler.Events.TrafficCameraReportEvent;
 import com.ibm.ia.model.Event;
 
 public enum SimulationBlurEvents {
-	TrafficCameraReport(new TrafficCameraReportEvent()), CellularCallReport(
-			new CellularCallReportEvent()), CellularReport(
-			new CellularReportEvent());
+	TrafficCameraReport(new TrafficCameraReportEvent()),
+	CellularCallReport(new CellularCallReportEvent()),
+	CellularReport(new CellularReportEvent());
+	
 
 	private EventCreation<Event> event;
 
