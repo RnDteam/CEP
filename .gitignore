@@ -1,7 +1,3 @@
-# do not want to share API keys
-acme_deliveries/solution_properties.xml
-
-# compiled rules
 *.sem
 
 # generated model
@@ -21,3 +17,4 @@ hs_err_pid*
 
 *testdriver.properties
 
+Blur/BlurSimulator/events/*.xml

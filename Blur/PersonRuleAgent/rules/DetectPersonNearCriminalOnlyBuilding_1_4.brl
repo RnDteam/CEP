@@ -5,23 +5,22 @@
   <locale>en_US</locale>
   <definition><![CDATA[when a cellular report occurs
 definitions
-    set 'organizations' to the organizations of the building of this cellular report ;
-    set 'criminal organizations' to 'organizations'
+    set 'criminal organizations' to all organizations in the organizations of the building of this cellular report
         where the type of each organization is CRIMINAL ;
+    set 'criminal organization' to an organization in 'criminal organizations' ;
 if
-    the number of 'criminal organizations' is 1
-    and the number of 'organizations' is 1
-    and the type of the organization of the role of 'the person' is not CRIMINAL
+    there is one organization in 'criminal organizations'
+    and ( the role of 'the person' is null
+    or the type of the organization of the role of 'the person' is not CRIMINAL )
 then
-    for each organization in 'criminal organizations' :
-        - emit a new update role event where
-            the organization is this organization ,
-            the organizational role is the role of 'the person' ,
-            the timestamp is the timestamp of this cellular report
-    	- define ALERT as a new alert where
-       		 the building is the building of this cellular report ,
-   		     the person is 'the person' ,
-    		    the organization is this organization ,
-    		    the message is "The person " + the id of 'the person' + " is a criminal in organization " + the id of this organization 
-   		- emit ALERT ;]]></definition>
+    emit a new update role event where
+        the organization is 'criminal organization' ,
+        the person is 'the person',
+        the organizational role is the role of 'the person'; 
+        
+    emit a new alert where
+        the building is the building of this cellular report ,
+        the person is 'the person' ,
+        the organization is 'criminal organization' ,
+        the message is "The person " + the id of 'the person' + " is a criminal in organization " + the id of 'criminal organization' ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

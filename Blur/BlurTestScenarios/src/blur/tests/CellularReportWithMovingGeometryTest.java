@@ -47,6 +47,8 @@ public class CellularReportWithMovingGeometryTest {
 	private static final String PERSON1_ROLE1 = "PERSON1_ROLE1";
 	private static final String PERSON2_ROLE2 = "PERSON2_ROLE2";
 	
+	private static final String PERSON3_WITHOUT_ROLE = "PERSON3_WITHOUT_ROLE";
+	
 	private static final String BUILDING1_1_CRIMINAL = "BUILDING1_1_CRIMINAL";
 	private static final String BUILDING2_1_COMMERCIAL = "BUILDING2_1_COMMERCIAL";
 	private static final String BUILDING3_2_CRIMINALS = "BUILDING3_2_CRIMINALS";
@@ -211,53 +213,68 @@ public class CellularReportWithMovingGeometryTest {
 		ZonedDateTime oneDayAgo = now.minusDays(1);
 		
 		// Cellular Reports
-		CellularReport cellularReport = conceptFactory.createCellularReport(oneDayAgo);
-		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING1_1_CRIMINAL));
-		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON1_ROLE1));
-		testDriver.submitEvent(cellularReport);
-		oneDayAgo = oneDayAgo.plusMinutes(1);
+//		CellularReport cellularReport = conceptFactory.createCellularReport(oneDayAgo);
+//		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING1_1_CRIMINAL));
+//		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON1_ROLE1));
+//		testDriver.submitEvent(cellularReport);
+//		oneDayAgo = oneDayAgo.plusMinutes(1);
+//		
+//		cellularReport = conceptFactory.createCellularReport(oneDayAgo);
+//		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING2_1_COMMERCIAL));
+//		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON1_ROLE1));
+//		testDriver.submitEvent(cellularReport);
+//		oneDayAgo = oneDayAgo.plusMinutes(1);
+//
+//		cellularReport = conceptFactory.createCellularReport(oneDayAgo);
+//		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING3_2_CRIMINALS));
+//		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON1_ROLE1));
+//		testDriver.submitEvent(cellularReport);
+//		oneDayAgo = oneDayAgo.plusMinutes(1);
+//
+//		cellularReport = conceptFactory.createCellularReport(oneDayAgo);
+//		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING4_1_CRIMINAL_1_COMMERCIAL));
+//		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON1_ROLE1));
+//		//testDriver.submitEvent(cellularReport);
+//		oneDayAgo = oneDayAgo.plusMinutes(1);
+//
+//		cellularReport = conceptFactory.createCellularReport(oneDayAgo);
+//		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING1_1_CRIMINAL));
+//		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON2_ROLE2));
+//		testDriver.submitEvent(cellularReport);
+//		oneDayAgo = oneDayAgo.plusMinutes(1);
+//
+//		cellularReport = conceptFactory.createCellularReport(oneDayAgo);
+//		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING2_1_COMMERCIAL));
+//		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON2_ROLE2));
+//		testDriver.submitEvent(cellularReport);
+//		oneDayAgo = oneDayAgo.plusMinutes(1);
+//
+//		cellularReport = conceptFactory.createCellularReport(oneDayAgo);
+//		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING3_2_CRIMINALS));
+//		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON2_ROLE2));
+//		testDriver.submitEvent(cellularReport);
+//		oneDayAgo = oneDayAgo.plusMinutes(1);
+//
+//		cellularReport = conceptFactory.createCellularReport(oneDayAgo);
+//		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING4_1_CRIMINAL_1_COMMERCIAL));
+//		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON2_ROLE2));
+//		testDriver.submitEvent(cellularReport);
 		
-		cellularReport = conceptFactory.createCellularReport(oneDayAgo);
-		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING2_1_COMMERCIAL));
-		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON1_ROLE1));
-		testDriver.submitEvent(cellularReport);
-		oneDayAgo = oneDayAgo.plusMinutes(1);
-
-		cellularReport = conceptFactory.createCellularReport(oneDayAgo);
-		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING3_2_CRIMINALS));
-		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON1_ROLE1));
-		testDriver.submitEvent(cellularReport);
-		oneDayAgo = oneDayAgo.plusMinutes(1);
-
-		cellularReport = conceptFactory.createCellularReport(oneDayAgo);
-		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING4_1_CRIMINAL_1_COMMERCIAL));
-		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON1_ROLE1));
-		//testDriver.submitEvent(cellularReport);
-		oneDayAgo = oneDayAgo.plusMinutes(1);
-
-		cellularReport = conceptFactory.createCellularReport(oneDayAgo);
-		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING1_1_CRIMINAL));
-		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON2_ROLE2));
-		testDriver.submitEvent(cellularReport);
-		oneDayAgo = oneDayAgo.plusMinutes(1);
-
-		cellularReport = conceptFactory.createCellularReport(oneDayAgo);
-		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING2_1_COMMERCIAL));
-		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON2_ROLE2));
-		testDriver.submitEvent(cellularReport);
-		oneDayAgo = oneDayAgo.plusMinutes(1);
-
-		cellularReport = conceptFactory.createCellularReport(oneDayAgo);
-		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING3_2_CRIMINALS));
-		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON2_ROLE2));
-		testDriver.submitEvent(cellularReport);
-		oneDayAgo = oneDayAgo.plusMinutes(1);
-
-		cellularReport = conceptFactory.createCellularReport(oneDayAgo);
-		cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING4_1_CRIMINAL_1_COMMERCIAL));
-		cellularReport.setPerson(testDriver.createRelationship(Person.class, PERSON2_ROLE2));
-		testDriver.submitEvent(cellularReport);
-	    	   
-		Thread.sleep(5000);		
+		// person without role
+		PersonInitialization personWithoutRoleInitialization = conceptFactory.createPersonInitialization(now);
+		personWithoutRoleInitialization.setPerson(testDriver.createRelationship(Person.class, PERSON3_WITHOUT_ROLE));
+		personWithoutRoleInitialization.setName("Person without role");
+		personWithoutRoleInitialization.setProfession("Profession of the person without role");
+		personWithoutRoleInitialization.setState(PersonState.ACTIVE);
+		location = SpatioTemporalService.getService().getGeometryFactory().getPoint( 34.781768 + Math.random(), 32.085300 + Math.random());
+		personWithoutRoleInitialization.setLocation(location);
+		testDriver.submitEvent(personWithoutRoleInitialization);
+		
+		CellularReport cellularReportPersonMissingRole = conceptFactory.createCellularReport(oneDayAgo);
+		cellularReportPersonMissingRole.setBuilding(testDriver.createRelationship(Building.class, BUILDING1_1_CRIMINAL));
+		cellularReportPersonMissingRole.setPerson(testDriver.createRelationship(Person.class, PERSON3_WITHOUT_ROLE));
+		testDriver.submitEvent(cellularReportPersonMissingRole);
+		
+		Thread.sleep(5000);	
 	}
 }

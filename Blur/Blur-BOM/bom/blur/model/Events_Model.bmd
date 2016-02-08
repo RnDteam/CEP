@@ -39,6 +39,7 @@ a cellular report is related to a person.
 -- update role event
 an update role event is a business event related to an organizational role.
 an update role event is related to an organization.
+an update role event is related to a person.
 
 -- cellular call report
 a cellular call report is a location based event.
