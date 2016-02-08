@@ -3,14 +3,18 @@
   <name>inactive_building_8</name>
   <uuid>afee9200-2fac-4e64-bc4d-cdba1ad9b824</uuid>
   <locale>en_US</locale>
-  <definition><![CDATA[when a cellular report has occurred 60 minutes ago, called LAST
+  <definition><![CDATA[when a cellular report has occurred 60 minutes ago , called LAST
+definitions
+    set 'the organizations' to the organizations of 'the building';
 if
     there is no cellular report after LAST
+    and there is at least one organization in 'the organizations'
+        where the type of this organization is CRIMINAL,
 then
     define ALERT as a new alert where
         the message is "No cellular report in building " + the id of 'the building' + " in the past 60 minutes" ,
         the building is 'the building' ,
         the rule is the name of this rule ;
-    set the alert message of 'the building' to "No cellular report in building " + the id of 'the building' + " in the past 60 minutes";
+    set the alert message of 'the building' to "No cellular report in building " + the id of 'the building' + " in the past 60 minutes" ;
     emit ALERT ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>
