@@ -1,11 +1,11 @@
 package blur.buildingjavaagent;
 
-import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
-
 import blur.model.Building;
 import blur.model.BuildingType;
 import blur.model.BuildingUpdate;
 import blur.model.BuildingUsageType;
+import blur.model.ConceptFactory;
+import blur.model.HotBuilding;
 import blur.model.HotBuildingDetected;
 import blur.model.HotBuildingInitialization;
 import blur.model.Person;
@@ -13,8 +13,8 @@ import blur.model.Person;
 import com.ibm.geolib.geom.Point;
 import com.ibm.geolib.st.MovingGeometry;
 import com.ibm.geolib.st.SpatioTemporalService;
-import com.ibm.ia.common.AgentException;
 import com.ibm.ia.agent.EntityAgent;
+import com.ibm.ia.common.AgentException;
 import com.ibm.ia.model.Event;
 import com.ibm.ia.model.Relationship;
 
@@ -68,13 +68,18 @@ public class BuildingAgent extends EntityAgent<Building> {
     	
     	// Hot building detected
     	if (event instanceof HotBuildingDetected) {
-    		HotBuildingDetected hotBuildingDetected = (HotBuildingDetected)event;
-    		Relationship<Building> relationshipBuilding = hotBuildingDetected.getBuilding();
-    		Building building = relationshipBuilding.resolve();
     		
-    		HotBuildingInitialization
+    		HotBuildingInitialization hotBuildingInitialization = getConceptFactory(ConceptFactory.class).createHotBuildingInitialization(event.get$Timestamp());
+    		String id = thisBuilding.get$Id() + "hot";
+    		hotBuildingInitialization.setHotBuilding(createRelationship(HotBuilding.class, id));
+    		hotBuildingInitialization.setLocation(thisBuilding.getLocation());
+    		Relationship<Person> relationship = thisBuilding.getOwner();
+    		hotBuildingInitialization.setOwner(relationship);
+    		hotBuildingInitialization.setType(thisBuilding.getType());
+    		hotBuildingInitialization.set_organizations(thisBuilding.getOrganizations());
+    		hotBuildingInitialization.setUsageType(thisBuilding.getUsageType());
     		
-    		
+    		emit(hotBuildingInitialization);
     	}
     	
     	
