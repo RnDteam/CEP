@@ -1,3 +1,4 @@
 'blur.buildingjavaagent.BuildingAgent' is an agent related to a building  , 
 processing events : 
-    - building update  , where this building  comes from the building of this building update 
+    - building update  , where this building  comes from the building of this building update
+    - hot building detected , where this building comes from the building of this hot building detected

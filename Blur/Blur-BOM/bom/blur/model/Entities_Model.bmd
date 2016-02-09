@@ -49,6 +49,18 @@ a building is related to several different organizations .
 a building has several different alerts .
 
 
+a hot building is a business entity identified by an id with
+    a type ( a building type ) ,
+    a usage type ( a building usage type ) ,
+    a recent cellular report frequency ( numeric ) ,
+    an expected cellular report frequency ( numeric ) ,
+    an alert message ,
+    a location ( a moving geometry ) used as the default moving geometry .
+a hot building is related to a person , named the owner .
+a hot building is related to several different organizations .
+a hot building has several different alerts .
+
+
 -- vehicle
 a vehicle type can be one of :
     MOTORCYCLE , JEEP , TRUCK .

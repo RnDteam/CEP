@@ -24,6 +24,9 @@ a managers near suspicious vehicle is a location based event.
 a managers near suspicious vehicle is related to a vehicle.
 a managers near suspicious vehicle has a range (a polygon).
 
+a hot building detected is a business event.
+a hot building detected is related to a building(a building).
+
 -- vehicle updated
 a vehicle updated is a business event.
 a vehicle updated is related to a vehicle.

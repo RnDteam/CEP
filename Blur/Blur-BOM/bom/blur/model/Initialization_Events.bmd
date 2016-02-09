@@ -11,6 +11,17 @@ a building initialization has a location ( a point  ) used as the default geomet
 a building initialization has a type ( a building type ) .
 a building initialization has a usage type ( a building usage type ) .
 
+
+-- Hot Building 
+a hot building initialization is a business event .
+a hot building initialization is related to a hot building.
+a hot building initialization is related to a person , named the owner .
+a hot building initialization is related to several different organizations .
+a hot building initialization has a location ( a point  ) used as the default geometry  .
+a hot building initialization has a type ( a building type ) .
+a hot building initialization has a usage type ( a building usage type ) .
+
+
 -- Update Building
 a building update is a business event .
 a building update is related to a building .
@@ -81,8 +92,8 @@ a person is initialized from a person initialization , where this person comes f
     - set the role of this person to the role of this person initialization
     - set the location of this person to a new moving geometry
     - set the alert message of this person to "N/A"
-    - move the location of this person to the location of this person initialization at the timestamp of this person initialization. 
- 
+    - move the location of this person to the location of this person initialization at the timestamp of this person initialization .
+
 --Building
 a building is initialized from a building initialization , where this building comes from the building of this building initialization :
     - set the owner of this building to the owner of this building initialization
@@ -90,10 +101,22 @@ a building is initialized from a building initialization , where this building c
     - set the type of this building to the type of this building initialization
     - set the usage type of this building to the usage type of this building initialization
     - set the alert message of this building to "N/A"
-    - move this building to the location of this building initialization at the timestamp of this building initialization 
-    - for each organization in the organizations of this building initialization : -- workaround for Defect 87855
+    - move this building to the location of this building initialization at the timestamp of this building initialization
+    - for each organization in the organizations of this building initialization :     -- workaround for Defect 87855
         - add this organization to the organizations of this building .
-    
+
+
+--Hot Building
+a hot building is initialized from a hot building initialization , where this hot building comes from the hot building of this hot building initialization :
+    - set the owner of this hot building to the owner of this hot building initialization
+    - set the location of this hot building to a new moving geometry
+    - set the type of this hot building to the type of this hot building initialization
+    - set the usage type of this hot building to the usage type of this hot building initialization
+    - set the alert message of this hot building to "N/A"
+    - move this hot building to the location of this hot building initialization at the timestamp of this hot building initialization
+    - for each organization in the organizations of this hot building initialization :     -- workaround for Defect 87855
+        - add this organization to the organizations of this hot building .
+
 --Organization
 an organization is initialized from an organization initialization , where this organization comes from the organization of this organization initialization :
     - set the type of this organization to the type of this organization initialization .
@@ -101,17 +124,16 @@ an organization is initialized from an organization initialization , where this 
 an organizational role is initialized from an organization role initialization , where this organizational role comes from the organizational role of this organization role initialization :
     - set the name of the organizational role to the name of this organization role initialization
     - set the type of the organizational role to the type of this organization role initialization
-    - set the organization of the organizational role to the organization of this organization role initialization
-.
+    - set the organization of the organizational role to the organization of this organization role initialization .
 
 --Vehicle
-a vehicle is initialized from a vehicle initialization , where this vehicle comes from the vehicle of this vehicle initialization. 
-	
+a vehicle is initialized from a vehicle initialization , where this vehicle comes from the vehicle of this vehicle initialization .
+
 --Vehicle Details
---a vehicle details  is initialized from a vehicle details initialization , where this vehicle details comes from the vehicle details of this vehicle details initialization : 
---	- set the maker of this vehicle details to the maker of this vehicle details initialization 
---	- set the model of this vehicle details to the model of this vehicle details initialization 
---    - set the type of this vehicle details to the type of this vehicle details initialization 
---	- set the year of this vehicle details to the year of this vehicle details initialization 
+--a vehicle details  is initialized from a vehicle details initialization , where this vehicle details comes from the vehicle details of this vehicle details initialization :
+--	- set the maker of this vehicle details to the maker of this vehicle details initialization
+--	- set the model of this vehicle details to the model of this vehicle details initialization
+--    - set the type of this vehicle details to the type of this vehicle details initialization
+--	- set the year of this vehicle details to the year of this vehicle details initialization
 --	- set the maximum speed of this vehicle details to the maximum speed of this vehicle details initialization .]]></Bmi>
 </BusinessModelDefinition>

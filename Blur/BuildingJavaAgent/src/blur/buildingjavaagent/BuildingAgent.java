@@ -1,9 +1,13 @@
 package blur.buildingjavaagent;
 
+import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
+
 import blur.model.Building;
 import blur.model.BuildingType;
 import blur.model.BuildingUpdate;
 import blur.model.BuildingUsageType;
+import blur.model.HotBuildingDetected;
+import blur.model.HotBuildingInitialization;
 import blur.model.Person;
 
 import com.ibm.geolib.geom.Point;
@@ -61,5 +65,18 @@ public class BuildingAgent extends EntityAgent<Building> {
 			
 			updateBoundEntity(thisBuilding);
 		}
+    	
+    	// Hot building detected
+    	if (event instanceof HotBuildingDetected) {
+    		HotBuildingDetected hotBuildingDetected = (HotBuildingDetected)event;
+    		Relationship<Building> relationshipBuilding = hotBuildingDetected.getBuilding();
+    		Building building = relationshipBuilding.resolve();
+    		
+    		HotBuildingInitialization
+    		
+    		
+    	}
+    	
+    	
     }
 }
