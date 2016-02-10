@@ -33,6 +33,7 @@ if
     and 'the number of late encounters' is 0
     and 'the number of on time encounters' is at least 1
 then
+
     for each organization in 'criminal organizations' :
         - define ALERT as a new alert where
             the message is "Associate the " + the id of the person + " to " + the id of this organization + " for building " + the id of the building + " COMMENT : late encounters " + 'the number of late encounters' + " on time encounters " + 'the number of on time encounters' ,
