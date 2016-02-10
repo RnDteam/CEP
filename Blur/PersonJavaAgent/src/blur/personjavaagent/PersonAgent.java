@@ -1,6 +1,9 @@
 package blur.personjavaagent;
 
 import blur.model.ConceptFactory;
+import blur.model.CriminalPerson;
+import blur.model.CriminalPersonDetected;
+import blur.model.CriminalPersonInitialization;
 import blur.model.OrganizationRoleInitialization;
 import blur.model.OrganizationRoleType;
 import blur.model.OrganizationalRole;
@@ -92,6 +95,21 @@ public class PersonAgent extends EntityAgent<Person> {
 			
 			updateBoundEntity(thisPerson);
 		}
+        
+        
+        if (event instanceof CriminalPersonDetected) {
+        	String id =  thisPerson.get$Id();
+        	CriminalPersonInitialization criminalPersonInitialization = getConceptFactory(ConceptFactory.class).createCriminalPersonInitialization(event.get$Timestamp());
+        	criminalPersonInitialization.setCriminalPerson(createRelationship(CriminalPerson.class, id + "criminal"));
+        	criminalPersonInitialization.setName(thisPerson.getName());
+        	criminalPersonInitialization.setProfession(thisPerson.getProfession());
+        	criminalPersonInitialization.setState(thisPerson.getState());
+        	criminalPersonInitialization.setLocation(thisPerson.getLocation().getLastObservedGeometry().getReferencePoint());
+        	Relationship<OrganizationalRole> relationship = thisPerson.getRole();
+        	criminalPersonInitialization.setRole(relationship);
+        	
+        	emit(criminalPersonInitialization);
+        }
         
     }
     

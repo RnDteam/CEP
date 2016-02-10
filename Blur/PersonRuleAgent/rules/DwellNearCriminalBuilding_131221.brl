@@ -24,11 +24,9 @@ definitions
         where the type of each organization is CRIMINAL ;
     set 'nearby distance' to the nearby distance in meters of this dwelled building report ;
     set 'building encounters' to the encounters between 'the person' and the latest observed geometry of 'the building' within proximity of 'nearby distance' meters ;
-    
-    set 'the number of late encounters' to the number of time periods in 'building encounters',
+    set 'the number of late encounters' to the number of time periods in 'building encounters' ,
         where the start of each time period is after 30 minutes before the timestamp of this dwelled building report ;
-		
-	set 'the number of on time encounters' to the number of time periods in 'building encounters',
+    set 'the number of on time encounters' to the number of time periods in 'building encounters' ,
         where the start of each time period is after 2 hours before the timestamp of this dwelled building report ;
 if
     the number of 'criminal organizations' is 1
@@ -37,7 +35,7 @@ if
 then
     for each organization in 'criminal organizations' :
         - define ALERT as a new alert where
-            the message is "Associate the " + the id of the person + " to " + the id of this organization + " for building " + the id of the building + " COMMENT : late encounters " + 'the number of late encounters' + " on time encounters " + 'the number of on time encounters',
+            the message is "Associate the " + the id of the person + " to " + the id of this organization + " for building " + the id of the building + " COMMENT : late encounters " + 'the number of late encounters' + " on time encounters " + 'the number of on time encounters' ,
             the building is the building of this dwelled building report ,
             the person is the person ,
             the organization is this organization
