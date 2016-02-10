@@ -69,6 +69,6 @@ then
     set the alert message of 'the person' to the message of ALERT ;
     emit ALERT ;
     define CRIMINAL_PERSON_DETECTED as a new criminal person detected where
-        the person is 'the person' ;
+        the person is 'the suspect' ;
     emit CRIMINAL_PERSON_DETECTED ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

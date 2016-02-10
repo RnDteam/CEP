@@ -44,5 +44,8 @@ then
         - emit a new update role event where
             the organization is this organization ,
             the organizational role is the role of the person ,
-            the timestamp is the timestamp of this dwelled building report ;]]></definition>
+            the timestamp is the timestamp of this dwelled building report 
+        - define CRIMINAL_PERSON_DETECTED as a new criminal person detected where
+            the person is 'the person' 
+    	- emit CRIMINAL_PERSON_DETECTED ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>
