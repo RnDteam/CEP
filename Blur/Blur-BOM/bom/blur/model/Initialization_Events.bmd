@@ -17,7 +17,7 @@ a hot building initialization is a business event .
 a hot building initialization is related to a hot building.
 a hot building initialization is related to a person , named the owner .
 a hot building initialization is related to several different organizations .
-a hot building initialization has a location ( a moving geometry ) used as the default geometry  .
+a hot building initialization has a location ( a point ) used as the default geometry  .
 a hot building initialization has a type ( a building type ) .
 a hot building initialization has a usage type ( a building usage type ) .
 

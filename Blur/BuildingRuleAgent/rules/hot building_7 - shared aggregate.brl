@@ -24,5 +24,6 @@ then
     set the alert message of 'the building' to the message of ALERT ;
     emit ALERT ;
     define HOT_BUILDING_DETECTED as a new hot building detected where
-        the building is 'the building;]]></definition>
+        the building is 'the building' ;
+    emit HOT_BUILDING_DETECTED;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

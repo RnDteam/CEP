@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+<?xml version="1.0" encoding="UTF-8"?><blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
     <bean class="blur.personjavaagent.PersonAgent" id="PersonAgentBean">
 
         <!-- The file referenced by the agentDescResource property will be automatically

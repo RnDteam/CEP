@@ -69,10 +69,11 @@ public class BuildingAgent extends EntityAgent<Building> {
     	// Hot building detected
     	if (event instanceof HotBuildingDetected) {
     		
+    		String id = thisBuilding.get$Id() + "hot";    		
+    		System.out.println("******************* Hot Building *********************");
     		HotBuildingInitialization hotBuildingInitialization = getConceptFactory(ConceptFactory.class).createHotBuildingInitialization(event.get$Timestamp());
-    		String id = thisBuilding.get$Id() + "hot";
     		hotBuildingInitialization.setHotBuilding(createRelationship(HotBuilding.class, id));
-    		hotBuildingInitialization.setLocation(thisBuilding.getLocation());
+    		hotBuildingInitialization.setLocation(thisBuilding.getLocation().getLastObservedGeometry().getReferencePoint());
     		Relationship<Person> relationship = thisBuilding.getOwner();
     		hotBuildingInitialization.setOwner(relationship);
     		hotBuildingInitialization.setType(thisBuilding.getType());
