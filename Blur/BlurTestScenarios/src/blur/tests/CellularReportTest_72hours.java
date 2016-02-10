@@ -185,7 +185,7 @@ public class CellularReportTest_72hours {
 //		beginTime = beginTime.plusHours(3);
 		//Submit 6 Cellular Reports in 6 minutes
 		//Hot building alert should pop
-		for (int i = 0; i < 6; i += 1) {
+		for (int i = 0; i  <6; i += 1) {
 			CellularReport cellularReport = conceptFactory.createCellularReport(beginTime);
 			cellularReport.setBuilding(testDriver.createRelationship(Building.class, BUILDING_1));
 			testDriver.submitEvent(cellularReport);
@@ -194,6 +194,5 @@ public class CellularReportTest_72hours {
 		}
 		
 		testDriver.processPendingSchedules(beginTime.plusHours(2));
-
 	}	
 }

@@ -14,6 +14,17 @@ a person is a business entity identified by an id with
 a person is related to an organizational role , named the role .
 a person can be in call.
 
+-- criminal person
+a criminal person is a business entity identified by an id with
+    a name ,
+    a profession ,
+    a risk score ( numeric ) ,
+    a state ( a person state ) ,
+    an alert message ,
+    a location ( a moving geometry ) used as the default moving geometry .
+a criminal person is related to an organizational role , named the role .
+a criminal person can be in call.
+
 -- organization
 a organization type can be one of :
     CRIMINAL , COMMERCIAL .

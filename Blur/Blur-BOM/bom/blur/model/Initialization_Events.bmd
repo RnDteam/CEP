@@ -53,6 +53,15 @@ a person initialization has a state (a person state).
 a person initialization is related to a person.
 a person initialization is related to an organizational role, named the role.
 
+-- Criminal Person
+a criminal person initialization is a business event.
+a criminal person initialization has a name.
+a criminal person initialization has a profession.
+a criminal person initialization has a location (a point) used as the default geometry .
+a criminal person initialization has a state (a person state).
+a criminal person initialization is related to a criminal person.
+a criminal person initialization is related to an organizational role, named the role.
+
 -- Update Person
 a person update is a business event.
 a person update has a name.
@@ -93,6 +102,18 @@ a person is initialized from a person initialization , where this person comes f
     - set the location of this person to a new moving geometry
     - set the alert message of this person to "N/A"
     - move the location of this person to the location of this person initialization at the timestamp of this person initialization .
+
+
+-- Criminal Person
+a criminal person is initialized from a criminal person initialization  , where this criminal person comes from the criminal person of this criminal person initialization :
+    - set the name of this criminal person to the name of this criminal person initialization
+    - set the profession of this criminal person to the profession of this criminal person initialization
+    - set the state of this criminal person to the state of this criminal person initialization
+    - set the role of this criminal person to the role of this criminal person initialization
+    - set the location of  this criminal person to a new moving geometry
+    - set the alert message of this criminal person to "N/A"
+    - move the location of this criminal person to the location of this criminal person initialization at the timestamp of this criminal person initialization.
+
 
 --Building
 a building is initialized from a building initialization , where this building comes from the building of this building initialization :
