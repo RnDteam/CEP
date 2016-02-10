@@ -4,7 +4,6 @@
 */model.jar
 
 # anything in the output folder
-*/.output/*
 
 *.class
 # Mobile Tools for Java (J2ME)
