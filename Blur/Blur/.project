@@ -9,10 +9,10 @@
 		<project>BlurServices</project>
 		<project>BuildingJavaAgent</project>
 		<project>BuildingRuleAgent</project>
+		<project>OrganizationRoleJavaAgent</project>
 		<project>PersonJavaAgent</project>
-		<project>VehicleRuleAgent</project>
 		<project>PersonRuleAgent</project>
-		<project>OrganizationRoleRuleAgent</project>
+		<project>VehicleRuleAgent</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

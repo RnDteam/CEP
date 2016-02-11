@@ -1,7 +1,4 @@
 'PersonRuleAgent' is an agent related to a person, 
 processing events :
 - cellular report , where this person comes from the person of this cellular report , with a horizon of 0 days
-- criminal cellular call report  , where this person  comes from the callee of the cellular call report of this criminal cellular call report , with a horizon of 0 days
 - cellular call report  , where this person  comes from the caller of this cellular call report, with a horizon of 0 days
-- dwelled building report , where this person comes from the person of this dwelled building report , with a horizon of 0 days
-- dwelling with criminal report, where this person comes from the suspect of this dwelling with criminal report , with a horizon of 0 days

@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-Bundle-SymbolicName: Blur.OrganizationRoleRuleAgent
-Bundle-Version: 0.28.0.qualifier
-

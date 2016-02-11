@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>test2</name>
+  <uuid>73867c86-349e-46fd-807a-4117461c2466</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[when a cellular report occurs
+definitions
+set 'a criminal org' to an organization in the organizations of the building 
+	where the type of this organization is CRIMINAL;	
+	
+if false and the type of the organization of the role of 'the person' is not CRIMINAL
+then
+    define ALERT as a new alert where
+        the building is the building of this cellular report ,
+        the person is 'the person' ,
+        the organization is 'a criminal org',
+        the message is "TEST ** the person not criminal role " + the id of 'the person' + " visited building with id " + the id of the building of this cellular report;
+    set the alert message of 'the person' to the message of ALERT ;
+    emit ALERT ;]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>

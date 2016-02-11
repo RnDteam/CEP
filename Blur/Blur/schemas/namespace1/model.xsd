@@ -736,6 +736,14 @@
                     </appinfo>
                 </annotation>
             </element>
+            <element name="person" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="person"/>
+                        <businessType type="blur.model.Person"/>
+                    </appinfo>
+                </annotation>
+            </element>
             <element name="timestamp" type="dateTime">
                 <annotation>
                     <appinfo source="http://www.ibm.com/ia/Annotation">

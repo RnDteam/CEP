@@ -2,18 +2,20 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: BlurServices
 Bundle-SymbolicName: BlurServices
-Bundle-Version: 0.28.0.qualifier
+Bundle-Version: 0.29.0.qualifier
 Bundle-ClassPath: lib/mysql-connector-java-5.1.37-bin.jar,
  .
 Export-Package: blurservices
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: blur.model,
+ blur.model.impl;version="[0.29.0,0.30.0)",
  com.ibm.geolib;version="1.4.1.CIS2015-11-03T181901Z",
  com.ibm.geolib.crs;version="1.4.1.CIS2015-11-03T181901Z",
  com.ibm.geolib.geom;version="1.4.1.CIS2015-11-03T181901Z",
  com.ibm.geolib.impl.d2.geom;version="1.4.1.CIS2015-11-03T181901Z",
  com.ibm.geolib.st;version="1.4.1.CIS2015-11-03T181901Z",
  com.ibm.geolib.unit;version="1.4.1.CIS2015-11-03T181901Z",
+ com.ibm.ia.common,
  com.ibm.ia.extension,
  com.ibm.ia.extension.annotations,
  com.ibm.ia.model;version="1.4.1.CIS2015-11-03T181901Z",

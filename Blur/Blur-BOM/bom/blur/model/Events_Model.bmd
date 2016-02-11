@@ -43,6 +43,7 @@ a cellular report is related to a person.
 an update role event is a business event related to an organizational role.
 an update role event is related to an organization.
 an update role event is related to a person.
+an update role event has a rule.
 
 -- criminal person detected
 a criminal person detected is a business event.
@@ -66,16 +67,16 @@ a potential bank crime report is related to a person, named the caller.
 a potential bank crime report has a radius in meters (numeric).
 
 -- dwelled building report
-a dwelled building report is a business event.
-a dwelled building report has a nearby distance in meters (numeric).
-a dwelled building report is related to a person.
-a dwelled building report is related to a building.
+--a dwelled building report is a business event.
+--a dwelled building report has a nearby distance in meters (numeric).
+--a dwelled building report is related to a person.
+--a dwelled building report is related to a building.
 
 -- dwelling with criminal report
-a dwelling with criminal report is a business event.
-a dwelling with criminal report has a nearby distance in meters (numeric).
-a dwelling with criminal report is related to a person, named the suspect.
-a dwelling with criminal report is related to a person, named the potential collaborator.
+--a dwelling with criminal report is a business event.
+--a dwelling with criminal report has a nearby distance in meters (numeric).
+--a dwelling with criminal report is related to a person, named the suspect.
+--a dwelling with criminal report is related to a person, named the potential collaborator.
 
 -- an alert
 an alert is a business event with

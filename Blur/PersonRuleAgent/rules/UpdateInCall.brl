@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
-  <name>UpdateInCall</name>
-  <uuid>54b832a1-7964-4f41-a060-d6ae9b176f3e</uuid>
-  <locale>en_US</locale>
-  <definition><![CDATA[when a cellular call report occurs
-then
-    make it true that 'the person' is in call ;]]></definition>
-</com.ibm.ia.designer.berl:BerlRule>

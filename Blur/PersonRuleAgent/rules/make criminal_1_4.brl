@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
-  <name>DetectPersonNearCriminalOnlyBuilding_1_4</name>
+  <name>make criminal_1_4</name>
   <uuid>d2df94f8-4913-491c-9678-1dd529bed791</uuid>
   <locale>en_US</locale>
   <definition><![CDATA[when a cellular report occurs
@@ -16,6 +16,7 @@ then
     emit a new update role event where
         the organization is 'criminal organization' ,
         the person is 'the person' ,
+        the rule is the name of this rule,
         the organizational role is the role of 'the person' ;
     define ALERT as a new alert where
         the building is the building of this cellular report ,
