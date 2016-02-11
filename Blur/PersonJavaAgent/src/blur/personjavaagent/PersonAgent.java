@@ -35,16 +35,20 @@ public class PersonAgent extends EntityAgent<Person> {
         if(event instanceof UpdateRoleEvent) {
         	// check that the role exists
         	UpdateRoleEvent ure = (UpdateRoleEvent) event;
-        	Relationship<OrganizationalRole> roleRel = ure.getOrganizationalRole();
+        	
+        	// We ignore the org role passed in - we always create a new role
+        	// Relationship<OrganizationalRole> roleRel = ure.getOrganizationalRole();
         	
         	String newRole = thisPerson.get$Id() + "-" + ure.getOrganization().getKey();
+        	Relationship<OrganizationalRole> newRoleRel = createRelationship(OrganizationalRole.class, newRole);
+        	
     		OrganizationRoleInitialization ori = getConceptFactory(ConceptFactory.class).createOrganizationRoleInitialization(event.get$Timestamp());
     		ori.setPerson( createRelationship(thisPerson));
-    		ori.setOrganizationalRole(createRelationship(OrganizationalRole.class, newRole));
+    		ori.setOrganizationalRole(newRoleRel);
     		ori.setName(newRole);
     		ori.setOrganization(ure.getOrganization());
     		ori.setType(OrganizationRoleType.EMPLOYEE);
-    		thisPerson.setRole(roleRel);
+    		thisPerson.setRole(newRoleRel);
     		emit(ori);
         	
     		// ROLE HAS CHANGED        	

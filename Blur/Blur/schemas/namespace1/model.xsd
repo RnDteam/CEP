@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema elementFormDefault="qualified" targetNamespace="http://www.ibm.com/ia/xmlns/default/Blur-BOM/model" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:m="http://www.ibm.com/ia/xmlns/default/Blur-BOM/model"
  xmlns:m1="http://www.ibm.com/geolib/st" xmlns:m2="http://www.ibm.com/geolib/geom">
-    <import namespace="http://www.ibm.com/geolib/st" schemaLocation="file:/Users/dselman/dev/eclipse_draco/CIS-runtime-target-platform/schema/geolibst.xsd"/>
-    <import namespace="http://www.ibm.com/geolib/geom" schemaLocation="file:/Users/dselman/dev/eclipse_draco/CIS-runtime-target-platform/schema/geometry.xsd"/>
+    <import namespace="http://www.ibm.com/geolib/st" schemaLocation="file:/C:/Program%20Files/IBM/ODMInsights88/CIS-runtime-target-platform/schema/geolibst.xsd"/>
+    <import namespace="http://www.ibm.com/geolib/geom" schemaLocation="file:/C:/Program%20Files/IBM/ODMInsights88/CIS-runtime-target-platform/schema/geometry.xsd"/>
 
     <element name="Alert" type="m:Alert"/>
     <complexType name="Alert">
@@ -275,11 +275,27 @@
             </appinfo>
         </annotation>
         <sequence>
+            <element name="organization" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="organization"/>
+                        <businessType type="blur.model.Organization"/>
+                    </appinfo>
+                </annotation>
+            </element>
             <element name="person" type="string">
                 <annotation>
                     <appinfo source="http://www.ibm.com/ia/Annotation">
                         <businessName name="person"/>
                         <businessType type="blur.model.Person"/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="role" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="role"/>
+                        <businessType type="blur.model.OrganizationalRole"/>
                     </appinfo>
                 </annotation>
             </element>
