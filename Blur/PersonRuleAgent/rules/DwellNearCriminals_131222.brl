@@ -42,14 +42,8 @@ then
     define ALERT as a new alert where
         the message is "Associate the " + the id of 'the person' + " to " + the id of the organization of the role of 'a nearby criminal' ,
         the person is 'the person' ,
-        the organization is the organization of the role of 'a nearby criminal' ;
-    set the alert message of 'the person' to the message of ALERT ;
-    emit ALERT ;
-    emit a new update role event where
         the organization is the organization of the role of 'a nearby criminal' ,
-        the organizational role is the role of 'a nearby criminal' ,
-        the timestamp is the timestamp of 'criminal call' ;
-    define CRIMINAL_PERSON_DETECTED as a new criminal person detected where
-        the person is 'the person' ;
-    emit CRIMINAL_PERSON_DETECTED ;]]></definition>
+        the rule is "confirmation";
+    set the alert message of 'the person' to the message of ALERT ;
+    emit ALERT ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

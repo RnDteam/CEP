@@ -48,6 +48,8 @@ an update role event has a rule.
 -- criminal person detected
 a criminal person detected is a business event.
 a criminal person detected is related to a person (a person).
+a criminal person detected is related to a role (an organizational role).
+a criminal person detected is related to an organization (an organization). 
 
 -- cellular call report
 a cellular call report is a location based event.
