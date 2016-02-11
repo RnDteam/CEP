@@ -22,8 +22,13 @@ public abstract class AbsLocationBasedEvent<T> extends EventCreation<LocationBas
 	private final String getAllPersonsDBQuery = "SELECT * FROM db_people";
 	private final String getAllBuildingOBQuery = "SELECT * FROM ob_structure";
 	private final String getAllBuildingDBQuery = "SELECT * FROM db_structure";
+	public Set<Relationship<Building>> allBuildings = null;
+	public Set<Relationship<Person>> allPersons = null;
 
 	protected Set<Relationship<Person>> getAllPersons(SolutionGateway gateway) {
+		if (allPersons != null){
+			return allPersons;
+		}
 		Connection dbConnection = DBReader.getDBConnection();
 		
 		HashSet<Relationship<Person>> personSet = new HashSet<>();
@@ -46,6 +51,7 @@ public abstract class AbsLocationBasedEvent<T> extends EventCreation<LocationBas
 			e.printStackTrace();
 		}
 		
+		allPersons = personSet;
 		return personSet;
 	}
 	
@@ -64,6 +70,10 @@ public abstract class AbsLocationBasedEvent<T> extends EventCreation<LocationBas
 	}
 
 	protected Set<Relationship<Building>> getAllBuildings(SolutionGateway gateway) {
+		
+		if(allBuildings != null){
+			return allBuildings;
+		}
 		Connection dbConnection = DBReader.getDBConnection();
 		
 		HashSet<Relationship<Building>> buildingSet = new HashSet<>();
@@ -86,6 +96,7 @@ public abstract class AbsLocationBasedEvent<T> extends EventCreation<LocationBas
 			e.printStackTrace();
 		}
 		
+		allBuildings = buildingSet;
 		return buildingSet;
 	}
 

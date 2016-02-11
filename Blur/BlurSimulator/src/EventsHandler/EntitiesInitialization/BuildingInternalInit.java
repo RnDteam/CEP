@@ -55,7 +55,10 @@ public class BuildingInternalInit extends EventCreation<BuildingUpdate>{
 		String lowerCase = usageType.toLowerCase();
 		
 		for (BuildingUsageType usageTypeType : BuildingUsageType.values()) {
-			if(lowerCase.equals(usageTypeType.toString().toLowerCase())) {
+//			if(lowerCase.equals(usageTypeType.toString().toLowerCase())) {
+//				return usageTypeType;
+//			}
+			if(usageTypeType.toString().toLowerCase().startsWith(lowerCase.substring(0,4))) {
 				return usageTypeType;
 			}
 		}

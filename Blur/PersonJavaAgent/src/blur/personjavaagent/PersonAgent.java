@@ -35,20 +35,16 @@ public class PersonAgent extends EntityAgent<Person> {
         	// check that the role exists
         	UpdateRoleEvent ure = (UpdateRoleEvent) event;
         	Relationship<OrganizationalRole> roleRel = ure.getOrganizationalRole();
-        	if(roleRel != null && roleRel.resolve() != null) {
-        		thisPerson.setRole(roleRel);
-        	}
-        	else {
-        		String newRole = thisPerson.get$Id() + "-" + ure.getOrganization().getKey();
-        		OrganizationRoleInitialization ori = getConceptFactory(ConceptFactory.class).createOrganizationRoleInitialization(event.get$Timestamp());
-        		ori.setPerson( createRelationship(thisPerson));
-        		ori.setOrganizationalRole(createRelationship(OrganizationalRole.class, newRole));
-        		ori.setName(newRole);
-        		ori.setOrganization(ure.getOrganization());
-        		ori.setType(OrganizationRoleType.EMPLOYEE);
-        		thisPerson.setRole(roleRel);
-        		emit(ori);
-        	}
+        	
+        	String newRole = thisPerson.get$Id() + "-" + ure.getOrganization().getKey();
+    		OrganizationRoleInitialization ori = getConceptFactory(ConceptFactory.class).createOrganizationRoleInitialization(event.get$Timestamp());
+    		ori.setPerson( createRelationship(thisPerson));
+    		ori.setOrganizationalRole(createRelationship(OrganizationalRole.class, newRole));
+    		ori.setName(newRole);
+    		ori.setOrganization(ure.getOrganization());
+    		ori.setType(OrganizationRoleType.EMPLOYEE);
+    		thisPerson.setRole(roleRel);
+    		emit(ori);
         	
     		// ROLE HAS CHANGED        	
     		updateBoundEntity(thisPerson);
