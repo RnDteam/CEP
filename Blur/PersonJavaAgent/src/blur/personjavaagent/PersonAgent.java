@@ -4,6 +4,7 @@ import blur.model.ConceptFactory;
 import blur.model.CriminalPerson;
 import blur.model.CriminalPersonDetected;
 import blur.model.CriminalPersonInitialization;
+import blur.model.Organization;
 import blur.model.OrganizationRoleInitialization;
 import blur.model.OrganizationRoleType;
 import blur.model.OrganizationalRole;
@@ -98,6 +99,17 @@ public class PersonAgent extends EntityAgent<Person> {
         
         
         if (event instanceof CriminalPersonDetected) {
+        	
+        	UpdateRoleEvent updateRoleEvent = getConceptFactory(ConceptFactory.class).createUpdateRoleEvent(event.get$Timestamp());
+        	Relationship<OrganizationalRole> roleRelationship = ((CriminalPersonDetected)event).getRole();
+        	updateRoleEvent.setOrganizationalRole(roleRelationship);
+        	Relationship<Organization> orgRelationship = ((CriminalPersonDetected)event).getOrganization();
+        	updateRoleEvent.setOrganization(orgRelationship);
+        	Relationship<Person> personRelationship = ((CriminalPersonDetected)event).getPerson();
+        	updateRoleEvent.setPerson(personRelationship);
+        	
+        	emit(updateRoleEvent);
+        	
         	String id =  thisPerson.get$Id();
         	CriminalPersonInitialization criminalPersonInitialization = getConceptFactory(ConceptFactory.class).createCriminalPersonInitialization(event.get$Timestamp());
         	criminalPersonInitialization.setCriminalPerson(createRelationship(CriminalPerson.class, id + "criminal"));

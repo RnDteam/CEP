@@ -41,11 +41,9 @@ then
         the organization is 'a criminal organization' ;
     set the alert message of 'the person' to the message of ALERT ;
     emit ALERT ;
-    emit a new update role event where
-        the organization is 'a criminal organization' ,
-        the organizational role is the role of 'the person' ,
-        the timestamp is the timestamp of 'criminal call' ;
     define CRIMINAL_PERSON_DETECTED as a new criminal person detected where
-        the person is 'the person';
+        the person is 'the person',
+        the role is the role of 'the person',
+        the organization is 'a criminal organization';
     emit CRIMINAL_PERSON_DETECTED ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

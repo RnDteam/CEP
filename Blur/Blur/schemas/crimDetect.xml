@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:CriminalPersonDetected xmlns:m="http://www.ibm.com/ia/xmlns/default/Blur-BOM/model" xmlns:p="http://www.ibm.com/geolib/geom" xmlns:p1="http://www.ibm.com/geolib/crs" xmlns:tns="http://www.ibm.com/geolib/unit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ibm.com/ia/xmlns/default/Blur-BOM/model namespace1/model.xsd ">
+  <m:organization>m:organization</m:organization>
+  <m:person>m:person</m:person>
+  <m:role>m:role</m:role>
+  <m:timestamp>2001-12-31T12:00:00</m:timestamp>
+</m:CriminalPersonDetected>
