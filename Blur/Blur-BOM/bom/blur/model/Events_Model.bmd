@@ -92,8 +92,6 @@ an alert is related to a building [optional].
 an alert is related to a vehicle [optional].
 an alert is related to an organization [optional].
 an alert is related to several different persons [optional].
-
-
 ]]></Bmd>
     <Bmi><![CDATA[the recent cellular report frequency of a building is aggregated from cellular reports ,
         where this building comes from the building of each cellular report

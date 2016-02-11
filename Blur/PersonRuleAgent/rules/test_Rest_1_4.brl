@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
+  <name>test_Rest_1_4</name>
+  <uuid>3aadc3de-cb68-432c-aa99-8d10b273131a</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[when a cellular report occurs
+then
+    define ALERT as a new alert where
+        the person is 'the person' ,
+        the organization is the organization of the role of 'the person' ,
+        the message is "Blah blah blah" ,
+        the rule is "confirmation" ;
+    set the alert message of 'the person' to the message of ALERT ;
+    emit ALERT ;]]></definition>
+</com.ibm.ia.designer.berl:BerlRule>
