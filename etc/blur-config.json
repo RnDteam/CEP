@@ -5,7 +5,7 @@
 		"idAttribute": "id",
 		"locationAttribute": "location",
 		"name": "blur.model.Building",
-		"pollintervalms": 5000,
+		"pollintervalms": 60000,
 		"useIcons": true,
 		"style": {
 			"externalGraphic": {
@@ -61,7 +61,7 @@
 		"idAttribute": "id",
 		"locationAttribute": "location",
 		"name": "blur.model.HotBuilding",
-		"pollintervalms": 5000,
+		"pollintervalms": 10000,
 		"style": {
 			"externalGraphic": {
 				"Icon0": {
@@ -118,7 +118,7 @@
 		"idAttribute": "licensePlateNumber",
 		"locationAttribute": "location",
 		"name": "blur.model.Vehicle",
-		"pollintervalms": 5000,
+		"pollintervalms": 10000,
 		"style": {
 			"externalGraphic": {
 				"Icon0": {
