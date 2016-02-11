@@ -2,51 +2,7 @@
 <com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
   <name>DwellNearCriminals_131222</name>
   <uuid>3d21b4ae-78de-44f4-a171-ab1cd3fa0600</uuid>
-  <documentation><![CDATA[1.3.1.2.2.2 to 1.3.1.2.2.2.1
-
-
-If we don't want to update fields of the person, but only emit an alert, would prefer that this person in the agent.adsc the collaborator, othewise the suspect.
-
-when a dwelling with criminal report occurs 
-definitions 
-	set 'nearby distance' to the nearby distance in meters of this dwelling with criminal report ;
-	set 'dwelling time' to 8 hours ;
-	
-	set 'the collaborator' to the potential collaborator of this dwelling with criminal report  ;
-	set 'collaborator organization' to the organization of the role of 'the collaborator';
-	set 'the suspect' to the suspect of this dwelling with criminal report ; 
-	set 'encounters' to the encounters between 'the suspect' and 'the collaborator'  within proximity of 'nearby distance' meters;
-	set 'the cutoff point' to 'dwelling time'  before the timestamp of this dwelling with criminal report ;
-	set 'too late encounters' to 'encounters' where
-		the start of each time period is after 'the cutoff point';
-	
-if the number of 'too late encounters' is 0
-
-then 
-
-set the alert message of 'the person' to "Suspect person " + the id of 'the suspect' + " has been with criminal " + the id of 'the collaborator';
-
-define ALERT as a new alert where 
-	the message is "Suspect person " + the id of 'the suspect' + " has been with criminal " + the id of 'the collaborator',
-	the person is the suspect of this dwelling with criminal report,
-	the organization is 'collaborator organization';
-	
-emit ALERT;
-
-emit a new update role event where
-            the organization is 'collaborator organization',
-            the organizational role is the role of 'the suspect' ,
-            the timestamp is the timestamp of this dwelling with criminal report ;
-
-
-
-////////////////////
-
-if the number of 'last encounters' is 1
-
-then]]></documentation>
-  <locale>en_US</locale>
-  <definition><![CDATA[when a dwelling with criminal report occurs
+  <documentation><![CDATA[when a dwelling with criminal report occurs
 definitions
     set 'nearby distance' to the nearby distance in meters of this dwelling with criminal report ;
     set 'dwelling time' to 8 hours ;
@@ -67,8 +23,33 @@ then
         the person is the suspect of this dwelling with criminal report ,
         the organization is 'collaborator organization' ;
     set the alert message of 'the person' to the message of ALERT ;
+    emit ALERT ;]]></documentation>
+  <locale>en_US</locale>
+  <definition><![CDATA[when a cellular call report occurs , called 'criminal call'
+    where the type of the organization of the role of the caller of 'criminal call' is CRIMINAL
+    and the type of the organization of the role of the callee of 'criminal call' is not CRIMINAL
+    and the relationship depth between the callee of 'criminal call' and the caller of 'criminal call' is more than 1
+definitions
+    set 'nearby criminals' to the persons of 'criminal call'
+        where the distance between the callee of 'criminal call' and each person in meters is less than 10
+        and the type of the organization of the role of each person is CRIMINAL ;
+    set 'a nearby criminal' to a person in 'nearby criminals' ;
+    set 'people encounters' to the encounters between 'the person' and 'a nearby criminal' within proximity of 10 meters
+        where the duration of each time period in hours is at least 8 ;
+if
+    there is at least one time period in 'people encounters'
+then
+    define ALERT as a new alert where
+        the message is "Associate the " + the id of 'the person' + " to " + the id of the organization of the role of 'a nearby criminal' ,
+        the person is 'the person' ,
+        the organization is the organization of the role of 'a nearby criminal' ;
+    set the alert message of 'the person' to the message of ALERT ;
     emit ALERT ;
+    emit a new update role event where
+        the organization is the organization of the role of 'a nearby criminal' ,
+        the organizational role is the role of 'a nearby criminal' ,
+        the timestamp is the timestamp of 'criminal call' ;
     define CRIMINAL_PERSON_DETECTED as a new criminal person detected where
-        the person is 'the suspect' ;
+        the person is 'the person' ;
     emit CRIMINAL_PERSON_DETECTED ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

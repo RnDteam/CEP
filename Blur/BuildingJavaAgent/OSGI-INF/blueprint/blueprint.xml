@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
     <bean class="blur.buildingjavaagent.BuildingAgent" id="BuildingAgentBean">
 
         <!-- The file referenced by the agentDescResource property will be automatically
@@ -14,7 +14,7 @@
             <entry key="agent_name">
                 <value type="java.lang.String">blur.buildingjavaagent.BuildingAgent</value>
             </entry>
-        <entry key="solution_name"><value type="java.lang.String">Blur</value></entry><entry key="solution_version"><value type="java.lang.String">Blur-0.28</value></entry></service-properties>
+        <entry key="solution_name"><value type="java.lang.String">Blur</value></entry><entry key="solution_version"><value type="java.lang.String">Blur-0.29</value></entry></service-properties>
 
     </service>
 </blueprint>

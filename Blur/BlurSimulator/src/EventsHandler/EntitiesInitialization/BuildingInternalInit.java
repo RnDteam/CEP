@@ -39,10 +39,11 @@ public class BuildingInternalInit extends EventCreation<BuildingUpdate>{
 			buildingInitEvent.setUsageType(convertUsageType(usageType));
 			buildingInitEvent.setOwner(gateway.createRelationship(Person.class, ownerId));
 			
-			Set<Relationship<Organization>> organizations = new HashSet<>();
-			organizations.add(gateway.createRelationship(Organization.class, organizationId));
-			
-			buildingInitEvent.setOrganizations(organizations);
+			if( organizationId.trim().length() > 0 ) {
+				Set<Relationship<Organization>> organizations = new HashSet<>();
+				organizations.add(gateway.createRelationship(Organization.class, organizationId));
+				buildingInitEvent.setOrganizations(organizations);				
+			}
 			buildingInitEvent.setTimestamp(ConverterUtility.initDate.plusDays(days));
 		} catch (Exception e) {
 			e.printStackTrace();

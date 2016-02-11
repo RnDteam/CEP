@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: Blur.CalleeRuleAgent
+Bundle-Version: 0.29.0
+

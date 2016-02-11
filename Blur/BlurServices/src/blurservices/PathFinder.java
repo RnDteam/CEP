@@ -5,12 +5,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import blur.model.ConceptFactory;
 import blur.model.Person;
 import blur.model.Vehicle;
 
@@ -20,9 +23,14 @@ import com.ibm.geolib.geom.LinearRing;
 import com.ibm.geolib.geom.Point;
 import com.ibm.geolib.geom.Polygon;
 import com.ibm.geolib.st.MovingGeometry;
+import com.ibm.ia.common.Extension;
+import com.ibm.ia.model.Relationship;
 import com.spaceprogram.kittycache.KittyCache;
 
 public class PathFinder implements IPathFinder {
+	
+	private ThreadLocal<Extension> threadLocal =
+            new ThreadLocal<Extension>();
 
 	// private static final String MY_SQL_DB_URL =
 	// "jdbc:mysql://localhost:3306/cep_try";
@@ -37,14 +45,14 @@ public class PathFinder implements IPathFinder {
 			SQLException {
 
 		Context ctx = new InitialContext();
-		System.out.println("PathFinder: Looking up datasource...");
+//		System.out.println("PathFinder: Looking up datasource...");
 		DataSource dataSource = (DataSource) ctx.lookup("jdbc/mysql");
 		if (dataSource != null) {
-			System.out.println("PathFinder: Got datasource: " + dataSource);
+			//System.out.println("PathFinder: Got datasource: " + dataSource);
 			Connection con = dataSource.getConnection();
-			if (con != null) {
-				System.out.println("PathFinder: Got connection: " + con);
-			}
+//			if (con != null) {
+//				System.out.println("PathFinder: Got connection: " + con);
+//			}
 			return con;
 		} else {
 			System.out
@@ -88,11 +96,11 @@ public class PathFinder implements IPathFinder {
 			}
 
 			boolean r = "1".equals(personLinkString);
-			System.out.println( "PathFinder: Cache miss person with id " +  personId + " has link to criminal: " + r );
+//			System.out.println( "PathFinder: Cache miss person with id " +  personId + " has link to criminal: " + r );
 			getPersonLinkToCriminalFromDBCache.put(personId, r, TTL_SECONDS);
 		}
 		else {
-			System.out.println( "PathFinder: Cache hit person with id " +  personId + " has link to criminal: " + result );
+//			System.out.println( "PathFinder: Cache hit person with id " +  personId + " has link to criminal: " + result );
 		}
 		
 		return result;
@@ -100,8 +108,8 @@ public class PathFinder implements IPathFinder {
 
 	@Override
 	public boolean isTherePath(String ownerId, int depth) {
-		System.out
-				.println("********************************* PathFinder *****************************");
+//		System.out
+//				.println("********************************* PathFinder *****************************");
 		return getPersonLinkToCriminalFromDB(ownerId);
 	}
 
@@ -117,8 +125,8 @@ public class PathFinder implements IPathFinder {
 	@Override
 	public Polygon getRange(Vehicle vehicle, int minutes) {
 
-		System.out
-				.println("********************************* Get Range *****************************");
+//		System.out
+//				.println("********************************* Get Range *****************************");
 
 		GeometryFactory geometryFactory = GeoSpatialService.getService()
 				.getGeometryFactory();
@@ -159,5 +167,30 @@ public class PathFinder implements IPathFinder {
 			return 0;
 		}
 		return 2;
+	}
+
+	@Override
+	public Set<Relationship<Person>> getNearbyPeople(Person person) {
+		
+//		Set<Relationship<Person>> people = new HashSet<Relationship<Person>>();		
+//		Extension extension = threadLocal.get();
+//		
+//		if(extension==null) {
+//			System.out.println("THREADING: getNearbyPeople ERROR! Cannot get extension for thread: " + Thread.currentThread().getName()  );
+//		}
+//		else {
+//			ConceptFactory cf = extension.getConceptFactory(ConceptFactory.class);
+//			people.add( extension.createRelationship( Person.class, "person1" ));
+//			people.add( extension.createRelationship( Person.class, "person2" ));
+//			people.add( extension.createRelationship( Person.class, "person3" ));
+//			people.add( extension.createRelationship( Person.class, "person4" ));
+//			System.out.println( "THREADING: getNearbyPeople: " + people + " thread " + Thread.currentThread().getName() );
+//			
+//			// release the ref
+//			threadLocal.set(null);
+//		}
+//		
+//		return people;
+		return null;
 	}
 }

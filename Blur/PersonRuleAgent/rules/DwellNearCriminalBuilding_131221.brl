@@ -2,51 +2,50 @@
 <com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
   <name>DwellNearCriminalBuilding_131221</name>
   <uuid>28d84ba5-bfb0-4558-bb5a-46cb7cb8ef0f</uuid>
-  <documentation><![CDATA[1.3.1.2.2.1 to 1.3.1.2.2.1.1
-
-If we don't want to update fields of the person, but only emit an alert, would prefer to put this rule under Building Rule Agent, so it could have the most updated status of the buildings
-
-
-
-    and the number of 'late encounters' is 0
-    and the number of 'on time encounters' is at least 1
-
-    and 'late encounters counter' is 0
-    and 'on time encounters counter' is at least 1
-
-    and 'late encounters counter' is 0
-    and 'on time encounters counter' is 1]]></documentation>
-  <locale>en_US</locale>
-  <definition><![CDATA[when a dwelled building report occurs
+  <documentation><![CDATA[when a dwelled building report occurs
 definitions
     set 'the building' to the building of this dwelled building report ;
     set 'criminal organizations' to the organizations of 'the building'
         where the type of each organization is CRIMINAL ;
     set 'nearby distance' to the nearby distance in meters of this dwelled building report ;
     set 'building encounters' to the encounters between 'the person' and the latest observed geometry of 'the building' within proximity of 'nearby distance' meters ;
-    set 'the number of late encounters' to the number of time periods in 'building encounters' ,
-        where the start of each time period is after 30 minutes before the timestamp of this dwelled building report ;
-    set 'the number of on time encounters' to the number of time periods in 'building encounters' ,
-        where the start of each time period is after 2 hours before the timestamp of this dwelled building report ;
+    
 if
     the number of 'criminal organizations' is 1
     and 'the number of late encounters' is 0
     and 'the number of on time encounters' is at least 1
 then
-
     for each organization in 'criminal organizations' :
-        - define ALERT as a new alert where
-            the message is "Associate the " + the id of the person + " to " + the id of this organization + " for building " + the id of the building + " COMMENT : late encounters " + 'the number of late encounters' + " on time encounters " + 'the number of on time encounters' ,
-            the building is the building of this dwelled building report ,
-            the person is the person ,
-            the organization is this organization
-        - set the alert message of 'the person' to the message of ALERT
-        - emit ALERT
-        - emit a new update role event where
-            the organization is this organization ,
-            the organizational role is the role of the person ,
-            the timestamp is the timestamp of this dwelled building report 
-        - define CRIMINAL_PERSON_DETECTED as a new criminal person detected where
-            the person is 'the person' 
-    	- emit CRIMINAL_PERSON_DETECTED ;]]></definition>
+]]></documentation>
+  <locale>en_US</locale>
+  <definition><![CDATA[when a cellular call report occurs , called 'criminal call'
+    where the type of the organization of the role of the caller of 'criminal call' is CRIMINAL
+    and the type of the organization of the role of the callee of 'criminal call' is not CRIMINAL
+    and the relationship depth between the callee of 'criminal call' and the caller of 'criminal call' is more than 1
+definitions
+    set 'nearby buildings' to the buildings of 'criminal call'
+        where the distance between the latest observed geometry of the callee of 'criminal call' and each building in meters is less than 10 ;
+    set 'a criminal organization' to an organization in the organizations of 'nearby buildings'
+        where the type of this organization is CRIMINAL ;
+    set 'a nearby building' to a building in 'nearby buildings' ;
+    set 'building encounters' to the encounters between 'the person' and the latest observed geometry of 'a nearby building' within proximity of 10 meters
+        where the duration of each time period in minutes is more than 30
+        and the duration of each time period in hours is less than 2 ;
+if
+    there is at least one time period in 'building encounters'
+then
+    define ALERT as a new alert where
+        the message is "Associate the " + the id of 'the person' + " to " + the id of 'a criminal organization' + " with " + the id of 'a nearby building' ,
+        the building is 'a nearby building' ,
+        the person is 'the person' ,
+        the organization is 'a criminal organization' ;
+    set the alert message of 'the person' to the message of ALERT ;
+    emit ALERT ;
+    emit a new update role event where
+        the organization is 'a criminal organization' ,
+        the organizational role is the role of 'the person' ,
+        the timestamp is the timestamp of 'criminal call' ;
+    define CRIMINAL_PERSON_DETECTED as a new criminal person detected where
+        the person is 'the person';
+    emit CRIMINAL_PERSON_DETECTED ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>
