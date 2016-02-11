@@ -1,5 +1,5 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
-<connectivity build-date="Thu Feb 11 12:55:31 IST 2016" built-by="com.ibm.ia.designer.core 8.8.0.20151208_0152-cis" solution="Blur" xmlns="http://www.ibm.com/ia/ConnectivityDefinitions">
+<connectivity build-date="Thu Feb 11 12:55:51 IST 2016" built-by="com.ibm.ia.designer.core 8.8.0.20151208_0152-cis" solution="Blur" xmlns="http://www.ibm.com/ia/ConnectivityDefinitions">
     <outbound-binding source="'outb' &#10;&#9;using &#10;&#9;&#9;message format application/xml  , &#10;&#9;&#9;protocol HTTP , &#10;&#9;delivering events : &#10;&#9;&#9;- alert" source-file="/Blur/Connectivity Definitions/connectivity.cdef" source-line="2">
         <id>outb</id>
         <message-format>application/xml</message-format>
