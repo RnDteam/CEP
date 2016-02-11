@@ -267,6 +267,74 @@
         </sequence>
     </complexType>
 
+    <element name="CriminalPersonDetected" type="m:CriminalPersonDetected"/>
+    <complexType name="CriminalPersonDetected">
+        <annotation>
+            <appinfo source="http://www.ibm.com/ia/Annotation">
+                <event elementName="CriminalPersonDetected"/>
+            </appinfo>
+        </annotation>
+        <sequence>
+            <element name="person" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="person"/>
+                        <businessType type="blur.model.Person"/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="timestamp" type="dateTime">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <timestamp/>
+                    </appinfo>
+                </annotation>
+            </element>
+        </sequence>
+    </complexType>
+
+    <element name="CriminalPersonInitialization" type="m:CriminalPersonInitialization"/>
+    <complexType name="CriminalPersonInitialization">
+        <annotation>
+            <appinfo source="http://www.ibm.com/ia/Annotation">
+                <event elementName="CriminalPersonInitialization"/>
+            </appinfo>
+        </annotation>
+        <sequence>
+            <element name="criminalPerson" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="criminalPerson"/>
+                        <businessType type="blur.model.CriminalPerson"/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="location" type="m2:Point">
+            </element>
+            <element name="name" type="string">
+            </element>
+            <element name="profession" type="string">
+            </element>
+            <element name="role" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="role"/>
+                        <businessType type="blur.model.OrganizationalRole"/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="state" type="m:PersonState">
+            </element>
+            <element name="timestamp" type="dateTime">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <timestamp/>
+                    </appinfo>
+                </annotation>
+            </element>
+        </sequence>
+    </complexType>
+
     <element name="CriminalsNearSuspiciousVehicle" type="m:CriminalsNearSuspiciousVehicle"/>
     <complexType name="CriminalsNearSuspiciousVehicle">
         <annotation>
@@ -290,11 +358,11 @@
         </complexContent>
     </complexType>
 
-    <element name="DwelledBuildingReport" type="m:DwelledBuildingReport"/>
-    <complexType name="DwelledBuildingReport">
+    <element name="HotBuildingDetected" type="m:HotBuildingDetected"/>
+    <complexType name="HotBuildingDetected">
         <annotation>
             <appinfo source="http://www.ibm.com/ia/Annotation">
-                <event elementName="DwelledBuildingReport"/>
+                <event elementName="HotBuildingDetected"/>
             </appinfo>
         </annotation>
         <sequence>
@@ -303,16 +371,6 @@
                     <appinfo source="http://www.ibm.com/ia/Annotation">
                         <businessName name="building"/>
                         <businessType type="blur.model.Building"/>
-                    </appinfo>
-                </annotation>
-            </element>
-            <element name="nearbyDistanceInMeters" type="double">
-            </element>
-            <element name="person" type="string">
-                <annotation>
-                    <appinfo source="http://www.ibm.com/ia/Annotation">
-                        <businessName name="person"/>
-                        <businessType type="blur.model.Person"/>
                     </appinfo>
                 </annotation>
             </element>
@@ -326,28 +384,36 @@
         </sequence>
     </complexType>
 
-    <element name="DwellingWithCriminalReport" type="m:DwellingWithCriminalReport"/>
-    <complexType name="DwellingWithCriminalReport">
+    <element name="HotBuildingInitialization" type="m:HotBuildingInitialization"/>
+    <complexType name="HotBuildingInitialization">
         <annotation>
             <appinfo source="http://www.ibm.com/ia/Annotation">
-                <event elementName="DwellingWithCriminalReport"/>
+                <event elementName="HotBuildingInitialization"/>
             </appinfo>
         </annotation>
         <sequence>
-            <element name="nearbyDistanceInMeters" type="double">
-            </element>
-            <element name="potentialCollaborator" type="string">
+            <element name="hotBuilding" type="string">
                 <annotation>
                     <appinfo source="http://www.ibm.com/ia/Annotation">
-                        <businessName name="potentialCollaborator"/>
-                        <businessType type="blur.model.Person"/>
+                        <businessName name="hotBuilding"/>
+                        <businessType type="blur.model.HotBuilding"/>
                     </appinfo>
                 </annotation>
             </element>
-            <element name="suspect" type="string">
+            <element name="location" type="m2:Point">
+            </element>
+            <element name="organization" type="string" maxOccurs="unbounded" minOccurs="0">
                 <annotation>
                     <appinfo source="http://www.ibm.com/ia/Annotation">
-                        <businessName name="suspect"/>
+                        <businessName name="organizations"/>
+                        <businessType type="blur.model.Organization"/>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element name="owner" type="string">
+                <annotation>
+                    <appinfo source="http://www.ibm.com/ia/Annotation">
+                        <businessName name="owner"/>
                         <businessType type="blur.model.Person"/>
                     </appinfo>
                 </annotation>
@@ -358,6 +424,10 @@
                         <timestamp/>
                     </appinfo>
                 </annotation>
+            </element>
+            <element name="type" type="m:BuildingType">
+            </element>
+            <element name="usageType" type="m:BuildingUsageType">
             </element>
         </sequence>
     </complexType>
@@ -743,6 +813,8 @@
                         <businessType type="blur.model.Person"/>
                     </appinfo>
                 </annotation>
+            </element>
+            <element name="rule" type="string">
             </element>
             <element name="timestamp" type="dateTime">
                 <annotation>

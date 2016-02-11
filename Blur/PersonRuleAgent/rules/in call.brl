@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
-  <name>update in call</name>
-  <uuid>54b832a1-7964-4f41-a060-d6ae9b176f3e</uuid>
+  <name>in call</name>
+  <uuid>2ca593bc-23bf-493c-a00a-a61fcf00d322</uuid>
   <locale>en_US</locale>
   <definition><![CDATA[when a cellular call report occurs
 then

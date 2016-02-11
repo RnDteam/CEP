@@ -9,7 +9,7 @@
 		<project>BlurServices</project>
 		<project>BuildingJavaAgent</project>
 		<project>BuildingRuleAgent</project>
-		<project>OrganizationRoleJavaAgent</project>
+		<project>CalleeRuleAgent</project>
 		<project>PersonJavaAgent</project>
 		<project>PersonRuleAgent</project>
 		<project>VehicleRuleAgent</project>
