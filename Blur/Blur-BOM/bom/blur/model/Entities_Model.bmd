@@ -13,6 +13,7 @@ a person is a business entity identified by an id with
     a location ( a moving geometry ) used as the default moving geometry .
 a person is related to an organizational role , named the role .
 a person can be in call.
+a person has a confirmation trace.
 
 -- criminal person
 a criminal person is a business entity identified by an id with
@@ -24,6 +25,7 @@ a criminal person is a business entity identified by an id with
     a location ( a moving geometry ) used as the default moving geometry .
 a criminal person is related to an organizational role , named the role .
 a criminal person can be in call.
+a criminal person has a confirmation trace.
 
 -- organization
 a organization type can be one of :

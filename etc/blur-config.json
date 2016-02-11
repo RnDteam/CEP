@@ -8,34 +8,20 @@
 		"pollintervalms": 5000,
 		"useIcons": true,
 		"style": {
-          "externalGraphic": {
-            "Icon0": {
-              "attribute": "usageType",
-              "comparator": "==",
-              "ranges": [
-                "LIVING",
-                "BANK_BRANCH",
-                "FURNITURE_STORE"
-              ],
-              "values": [
-                "app\/images\/maki\/home-24@2x.png",
-                "app\/images\/maki\/bank-24@2x.png",
-                "app\/images\/maki\/cart-24@2x.png"
-              ]
-            }
-          },
+			"externalGraphic": {
+				"Icon0": {
+					"attribute": "usageType",
+					"comparator": "==",
+					"ranges": ["LIVING", "BANK_BRANCH", "FURNITURE_STORE"],
+					"values": ["app/images/maki/home-24@2x.png", "app/images/maki/bank-24@2x.png", "app/images/maki/cart-24@2x.png"]
+				}
+			},
 			"fillColor": {
 				"default": {
-				  "attribute": "alertMessage",
-				  "comparator": "==",
-				  "ranges": [
-					"ANYTHING",
-					"N\/A"
-				  ],
-				  "values": [
-					"#ff0000",
-					"#32cd32"
-				  ]
+					"comparator": "==",
+					"ranges": ["ANYTHING", "bld-Tx-18", "bld-Tx-32", "bld-To-52", "bld-To-80"],
+					"values": ["#228b22", "#696969", "#ffa500", "#20b2aa", "#483d8b"],
+					"attribute": "id"
 				}
 			},
 			"graphicHeight": {
@@ -50,7 +36,7 @@
 			},
 			"pointRadius": {
 				"default": {
-					"value": 5
+					"value": 7
 				}
 			},
 			"strokeColor": {
@@ -60,100 +46,94 @@
 			},
 			"strokeWidth": {
 				"default": {
-					"value": 1
+					"attribute": "alertMessage",
+					"comparator": "==",
+					"ranges": ["Anything", "N/A"],
+					"values": ["4", "0"]
 				}
 			}
 		},
 		"url": "rest/solutions/Blur/layers/blur.model.Building",
 		"feedIndex": 0
-	},
-	{
-        "feedIndex": 1,
-        "geometryType": "MovingGeometry",
-        "hoverAttribute": "alertMessage",
-        "idAttribute": "licensePlateNumber",
-        "locationAttribute": "location",
-        "name": "blur.model.Vehicle",
-        "pollintervalms": 5000,
-        "style": {
-          "externalGraphic": {
-            "Icon0": {
-              "attribute": "pType",
-              "comparator": "==",
-              "ranges": [
-                "JEEP",
-                "MOTORCYCLE",
-                "TRUCK"
-              ],
-              "values": [
-                "app\/images\/maki\/car-24@2x.png",
-                "app\/images\/maki\/motorcycle-24@2x.png",
-                "app\/images\/maki\/truck-24@2x.png"
-              ]
-            }
-          },
-          "fillColor": {
-            "default": {
-              "attribute": "suspicious",
-              "comparator": "==",
-              "ranges": [
-                "true",
-                "false"
-              ],
-              "values": [
-                "#ff8c00",
-                "#6495ed"              ]
-            }
-          },
-          "graphicHeight": {
-            "default": {
-              "value": 28
-            }
-          },
-          "graphicWidth": {
-            "default": {
-              "value": 28
-            }
-          },
-          "pointRadius": {
-            "default": {
-              "value": 14
-            }
-          },
-          "strokeColor": {
-            "default": {
-              "value": "#e70"
-            }
-          },
-          "strokeWidth": {
-            "default": {
-              "value": 1
-            }
-          },
-		"fillOpacity": {
-			"default": {
-				"comparator": "==",
-				"ranges": ["INACTIVE", "ACTIVE"],
-				"values": ["0.0", "0.8"],
-				"attribute": "status"
-			}
-		}
-
-        },
-        "url": "rest\/solutions\/Blur\/layers\/blur.model.Vehicle",
-        "useIcons": true
-	},
-	{
+	}, {
 		"geometryType": "MovingGeometry",
 		"hoverAttribute": "alertMessage",
 		"idAttribute": "id",
 		"locationAttribute": "location",
-		"name": "blur.model.Person",
+		"name": "blur.model.HotBuilding",
 		"pollintervalms": 5000,
 		"style": {
+			"externalGraphic": {
+				"Icon0": {
+					"attribute": "usageType",
+					"comparator": "==",
+					"ranges": ["LIVING", "BANK_BRANCH", "FURNITURE_STORE"],
+					"values": ["app/images/maki/home-24@2x.png", "app/images/maki/bank-24@2x.png", "app/images/maki/cart-24@2x.png"]
+				}
+			},
 			"fillColor": {
 				"default": {
-					"value": "#ffd700"
+					"comparator": "==",
+					"ranges": ["ANYTHING", "bld-Tx-18", "bld-Tx-32", "bld-To-52", "bld-To-80"],
+					"values": ["#ff4500", "#d2691e", "#8b4513", "#800000", "#f4a460"],
+					"attribute": "id"
+				}
+			},
+			"graphicHeight": {
+				"default": {
+					"value": 22
+				}
+			},
+			"graphicWidth": {
+				"default": {
+					"value": 22
+				}
+			},
+			"strokeColor": {
+				"default": {
+					"value": "#e70"
+				}
+			},
+			"strokeWidth": {
+				"default": {
+					"attribute": "alertMessage",
+					"comparator": "==",
+					"ranges": ["Anything", "N/A"],
+					"values": ["4", "0"]
+				}
+			},
+			"pointRadius": {
+				"default": {
+					"value": "11"
+				}
+			}
+		},
+		"url": "rest/solutions/Blur/layers/blur.model.HotBuilding",
+		"feedIndex": 1,
+		"useIcons": true
+	}, {
+		"feedIndex": 2,
+		"geometryType": "MovingGeometry",
+		"hoverAttribute": "alertMessage",
+		"idAttribute": "licensePlateNumber",
+		"locationAttribute": "location",
+		"name": "blur.model.Vehicle",
+		"pollintervalms": 5000,
+		"style": {
+			"externalGraphic": {
+				"Icon0": {
+					"attribute": "pType",
+					"comparator": "==",
+					"ranges": ["JEEP", "MOTORCYCLE", "TRUCK"],
+					"values": ["app/images/maki/car-24@2x.png", "app/images/maki/motorcycle-24@2x.png", "app/images/maki/truck-24@2x.png"]
+				}
+			},
+			"fillColor": {
+				"default": {
+					"attribute": "suspicious",
+					"comparator": "==",
+					"ranges": ["true", "false"],
+					"values": ["#ff8c00", "#6495ed"]
 				}
 			},
 			"graphicHeight": {
@@ -178,30 +158,70 @@
 			},
 			"strokeWidth": {
 				"default": {
-				  "attribute": "alertMessage",
-				  "comparator": "==",
-				  "ranges": [
-					"Anything",
-					"N/A"
-				  ],
-				  "values": [
-					"4",
-					"0"
-				  ]
+					"value": 1
+				}
+			},
+			"fillOpacity": {
+				"default": {
+					"comparator": "==",
+					"ranges": ["INACTIVE", "ACTIVE"],
+					"values": ["0.0", "0.8"],
+					"attribute": "status"
+				}
+			}
+		},
+		"url": "rest/solutions/Blur/layers/blur.model.Vehicle",
+		"useIcons": true
+	}, {
+		"geometryType": "MovingGeometry",
+		"hoverAttribute": "alertMessage",
+		"idAttribute": "id",
+		"locationAttribute": "location",
+		"name": "blur.model.Person",
+		"pollintervalms": 5000,
+		"style": {
+			"fillColor": {
+				"default": {
+					"comparator": "==",
+					"ranges": ["ANYTHING", "ppl-Txe-152", "ppl-Txe-182", "ppl-Txm-271", "ppl-Txe-82"],
+					"values": ["#ffff00", "#008000", "#6495ed", "#da70d6", "#7fff00"],
+					"attribute": "id"
+				}
+			},
+			"graphicHeight": {
+				"default": {
+					"value": 28
+				}
+			},
+			"graphicWidth": {
+				"default": {
+					"value": 28
+				}
+			},
+			"pointRadius": {
+				"default": {
+					"value": 14
+				}
+			},
+			"strokeColor": {
+				"default": {
+					"value": "#e70"
+				}
+			},
+			"strokeWidth": {
+				"default": {
+					"attribute": "alertMessage",
+					"comparator": "==",
+					"ranges": ["ANYTHING", "N/A"],
+					"values": ["4", "0"]
 				}
 			},
 			"externalGraphic": {
 				"Icon0": {
-				  "attribute": "inCall",
-				  "comparator": "==",
-				  "ranges": [
-					false,
-					true
-				  ],
-				  "values": [
-					"app\/images\/maki\/person-24@2x.png",
-					"app\/images\/maki\/phone-24@2x.png"
-				  ]
+					"attribute": "inCall",
+					"comparator": "==",
+					"ranges": [false, true],
+					"values": ["app/images/maki/person-24@2x.png", "app/images/maki/phone-24@2x.png"]
 				}
 			},
 			"fillOpacity": {
@@ -214,11 +234,75 @@
 			}
 		},
 		"url": "rest/solutions/Blur/layers/blur.model.Person",
-		"feedIndex": 2,
+		"feedIndex": 3,
+		"useIcons": true
+	}, {
+		"geometryType": "MovingGeometry",
+		"hoverAttribute": "profession",
+		"idAttribute": "id",
+		"locationAttribute": "location",
+		"name": "blur.model.CriminalPerson",
+		"pollintervalms": 5000,
+		"style": {
+			"fillColor": {
+				"default": {
+					"comparator": "==",
+					"ranges": ["ANYTHING", "ppl-Txe-152", "ppl-Txe-182", "ppl-Txm-271", "ppl-Txe-82"],
+					"values": ["#ff0000", "#dc143c", "#b22222", "#8b0000", "#f08080"],
+					"attribute": "id"
+				}
+			},
+			"graphicHeight": {
+				"default": {
+					"value": 28
+				}
+			},
+			"graphicWidth": {
+				"default": {
+					"value": 28
+				}
+			},
+			"pointRadius": {
+				"default": {
+					"value": 14
+				}
+			},
+			"strokeColor": {
+				"default": {
+					"value": "#e70"
+				}
+			},
+			"strokeWidth": {
+				"default": {
+					"attribute": "alertMessage",
+					"comparator": "==",
+					"ranges": ["ANYTHING", "N/A"],
+					"values": ["4", "0"]
+				}
+			},
+			"externalGraphic": {
+				"Icon0": {
+					"attribute": "inCall",
+					"comparator": "==",
+					"ranges": [false, true],
+					"values": ["app/images/maki/person-24@2x.png", "app/images/maki/phone-24@2x.png"]
+				}
+			},
+			"fillOpacity": {
+				"default": {
+					"comparator": "==",
+					"ranges": ["INACTIVE", "ACTIVE"],
+					"values": ["0.0", "0.8"],
+					"attribute": "state"
+				}
+			}
+		},
+		"url": "rest/solutions/Blur/layers/blur.model.CriminalPerson",
+		"feedIndex": 4,
 		"useIcons": true
 	}],
 	"mapSpecification": {
-		"name": "OSM"
+		"name": "MQ"
 	},
 	"solutionName": "Blur",
 	"title": ""

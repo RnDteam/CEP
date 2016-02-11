@@ -101,6 +101,7 @@ a person is initialized from a person initialization , where this person comes f
     - set the role of this person to the role of this person initialization
     - set the location of this person to a new moving geometry
     - set the alert message of this person to "N/A"
+    - set the confirmation trace of this person to "N/A"
     - move the location of this person to the location of this person initialization at the timestamp of this person initialization .
 
 
@@ -112,6 +113,7 @@ a criminal person is initialized from a criminal person initialization  , where 
     - set the role of this criminal person to the role of this criminal person initialization
     - set the location of  this criminal person to a new moving geometry
     - set the alert message of this criminal person to "N/A"
+    - set the confirmation trace of this criminal person to "N/A"
     - move the location of this criminal person to the location of this criminal person initialization at the timestamp of this criminal person initialization.
 
 
