@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
-  <name>out of call</name>
-  <uuid>21f43a59-09d4-4332-b668-7ca9c21bd1b1</uuid>
-  <locale>en_US</locale>
-  <definition><![CDATA[when a cellular call report has occurred 15 minutes ago
-then
-    make it false that 'the person' is in call ;]]></definition>
-</com.ibm.ia.designer.berl:BerlRule>

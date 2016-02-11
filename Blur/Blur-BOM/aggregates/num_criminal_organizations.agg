@@ -1,3 +1,0 @@
-define 'number of criminal organizations' as the number of organizations , 
-	where the type of each organization is CRIMINAL , 
-	evaluated at intervals of 120 seconds

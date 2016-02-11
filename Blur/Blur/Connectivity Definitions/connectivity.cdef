@@ -10,3 +10,15 @@ define outbound binding 'outb'
 	using 
 		binding 'outb' , 
 		url "http://odm-dsi-alerts_dashboard.mybluemix.net".
+		
+define inbound binding 'inbound-http' 
+	using 
+		message format application/xml , 
+		protocol HTTP , 
+	accepting events : 
+		- criminal person detected . 
+		
+ define inbound HTTP endpoint 'inbound-http-endpoint' 
+	using 
+		binding 'inbound-http' , 
+	url path "/blur/post".   

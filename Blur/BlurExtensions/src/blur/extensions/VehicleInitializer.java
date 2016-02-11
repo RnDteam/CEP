@@ -40,18 +40,18 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 	public synchronized Connection getConnection() throws NamingException, SQLException {
        
             Context ctx = new InitialContext();
-//        	System.out.println( "VehicleInitializer: Looking up datasource...");
+        	System.out.println( "VehicleInitializer: Looking up datasource...");
             DataSource dataSource = (DataSource) ctx.lookup("jdbc/mysql");
             if (dataSource != null) {
  //           	System.out.println( "VehicleInitializer: Got datasource: " + dataSource );
                 Connection con = dataSource.getConnection();
                 if(con!=null) {
- //               	System.out.println( "VehicleInitializer: Got connection: " + con );
+                	System.out.println( "VehicleInitializer: Got connection: " + con );
                 }
                 return con;
             }
             else {
-//            	System.out.println( "VehicleInitializer: Got null datasource: " + dataSource );
+            	System.out.println( "VehicleInitializer: Got null datasource: " + dataSource );
             }
 			
             throw new IllegalStateException("null data source");
@@ -115,7 +115,7 @@ public class VehicleInitializer extends EntityInitializer<Vehicle> {
 				+ " FROM " + vehicleTableName 
 				+ " WHERE " + vehicleLicensePlateColumn + "='" + vehicle.getLicensePlateNumber() + "';";
 		
-//		System.out.println( "Running query: " + getVehicleQuery );
+		System.out.println( "Running query: " + getVehicleQuery );
 		
 		String personLinkString = null;
 		try {

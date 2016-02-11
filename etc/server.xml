@@ -24,10 +24,10 @@
 		<feature>ia:iaMaps-8.8.0</feature>
 		<feature>adminCenter-1.0</feature>
 		<feature>monitor-1.0</feature>
-		<feature>usr:Blur-0.27</feature>
+		<feature>usr:Blur-0.29</feature>
 	</featureManager>
 
-	<logging maxFiles="5" traceSpecification="com.ibm.ia.*=warning:com.ibm.rules.*=warning:*=warning"/>
+	<logging maxFiles="50" traceSpecification="com.ibm.ia.*=fine:com.ibm.rules.*=fine:*=info"/>
 		
 	<httpEndpoint host="*" httpPort="${http.port}" httpsPort="${https.port}" id="defaultHttpEndpoint"/>
 
@@ -121,5 +121,5 @@
 
     <ia_runtime debugPort="6543"/>
     <include location="/Users/dselman/dev/git/CEP/Blur/Blur/Deployment Configurations/cisDev/cisDev-config.xml"/>
-    <ia_runtimeSolutionVersion currentVersion="Blur-0.27" solutionName="Blur"/>
+    <ia_runtimeSolutionVersion currentVersion="Blur-0.29" solutionName="Blur"/>
 </server>

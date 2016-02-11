@@ -20,6 +20,7 @@ public class SubmitEvent implements Runnable{
 	public void run() {
 		try {
 			gateway.submit(eventToRun);
+			Thread.sleep(100);
 		} catch(EventCapacityExceededException e) {
 			System.out.println("********************Too much********************************");
 			e.printStackTrace();
@@ -27,6 +28,9 @@ public class SubmitEvent implements Runnable{
 		catch (GatewayException e) {
 			e.printStackTrace();
 		} catch (RoutingException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

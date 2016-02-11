@@ -38,7 +38,7 @@ import com.ibm.ia.testdriver.TestDriver;
 public class StartServer {
 
 	private static TestDriver testDriver = new TestDriver();
-	private static final long SPEED_FACTOR = 2000;
+	private static final long SPEED_FACTOR = 4000;
 	private static AtomicInteger count = new AtomicInteger(0);
 
 	public static void main(String[] args) {
