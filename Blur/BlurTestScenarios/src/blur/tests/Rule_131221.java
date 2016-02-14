@@ -16,7 +16,6 @@ import blur.model.BuildingUsageType;
 import blur.model.CellularCallReport;
 import blur.model.CellularReport;
 import blur.model.ConceptFactory;
-import blur.model.DwelledBuildingReport;
 import blur.model.Organization;
 import blur.model.OrganizationInitialization;
 import blur.model.OrganizationRoleInitialization;
@@ -347,14 +346,14 @@ public class Rule_131221 {
 		movingGeometry.setGeometryAtTime(person2Location, oneDayAgo.plusMinutes(150));
 		movingGeometry.setGeometryAtTime(buildingLocation, oneDayAgo.plusMinutes(151));
 		movingGeometry.setGeometryAtTime(buildingLocation, oneDayAgo.plusMinutes(160));
-		movingGeometry.setGeometryAtTime(buildingLocation, oneDayAgo.plusMinutes(180));
+		movingGeometry.setGeometryAtTime(buildingLocation, oneDayAgo.plusMinutes(179));
 		
 		testDriver.updateEntity(person2);
 		
-		DwelledBuildingReport dwelledBuildingReport = conceptFactory.createDwelledBuildingReport(oneDayAgo.plusMinutes(220));
-		dwelledBuildingReport.setBuilding(testDriver.createRelationship(Building.class, CRIMINAL_BUILDING));
-		dwelledBuildingReport.setNearbyDistanceInMeters(10);
-		dwelledBuildingReport.setPerson(testDriver.createRelationship(Person.class, NON_CRIMINAL_PERSON));
+		CellularCallReport dwelledBuildingReport = conceptFactory.createCellularCallReport(oneDayAgo.plusMinutes(180));
+		dwelledBuildingReport.addTo_buildings(testDriver.createRelationship(Building.class, CRIMINAL_BUILDING));
+		dwelledBuildingReport.setCallee(testDriver.createRelationship(Person.class, NON_CRIMINAL_PERSON));
+		dwelledBuildingReport.setCaller(testDriver.createRelationship(Person.class, CRIMINAL_PERSON));
 		
 		testDriver.submitEvent(dwelledBuildingReport);
 		testDriver.waitUntilSolutionIdle();

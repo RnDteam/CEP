@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
-  <name>DwellNearCriminalBuilding_131221</name>
-  <uuid>28d84ba5-bfb0-4558-bb5a-46cb7cb8ef0f</uuid>
+  <name>test_DwellNearCriminalBuilding_131221</name>
+  <uuid>2d5d492a-abd6-4cec-84fa-19de3d28cd7e</uuid>
   <documentation><![CDATA[when a cellular call report occurs , called 'criminal call'
     where the type of the organization of the role of the caller of 'criminal call' is CRIMINAL
     and the type of the organization of the role of the callee of 'criminal call' is not CRIMINAL
@@ -40,14 +40,12 @@ definitions
         where the distance between the latest observed geometry of 'the callee' and each building in meters is less than 10 ;
     set 'a nearby bank' to a building in 'nearby buildings' 
 		where the usage type of this building is BANK BRANCH ;
-    set 'building encounters' to the encounters between 'the callee' and the latest observed geometry of 'a nearby bank' within proximity of 10 meters
-        where the duration of each time period in minutes is more than 30
-        and the duration of each time period in hours is less than 2 ;
+    set 'building encounters' to the encounters between 'the callee' and the latest observed geometry of 'a nearby bank' within proximity of 10 meters;
 if
     there is at least one time period in 'building encounters'
 then
     define ALERT as a new alert where
-        the message is "Associate the " + the id of 'the callee' + " to " + the id of the organization of the role of the caller of 'criminal call'  + " because of bank " + the id of 'a nearby bank' ,
+        the message is "Test Associate the " + the id of 'the callee' + " to " + the id of the organization of the role of the caller of 'criminal call'  + " because of bank " + the id of 'a nearby bank' ,
         the building is 'a nearby bank' ,
         the person is 'the callee' ,
         the organization is the organization of the role of the caller of 'criminal call' ;

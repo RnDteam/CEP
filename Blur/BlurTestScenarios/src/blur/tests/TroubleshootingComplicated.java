@@ -126,262 +126,262 @@ public class TroubleshootingComplicated {
 		CellularReport cell_at_15_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(15));
 		cell_at_15_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_15_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
-		testDriver.submitEvent(cell_at_15_for_person_152_and_building_32);
+//		testDriver.submitEvent(cell_at_15_for_person_152_and_building_32);
 
 		//cam-T8-ww at 20
 		CellularReport cell_at_20_for_person_152_and_building_cam_T8_ww = conceptFactory.createCellularReport(absoluteTime.plusMinutes(20));
 		cell_at_20_for_person_152_and_building_cam_T8_ww.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_20_for_person_152_and_building_cam_T8_ww.setBuilding((testDriver.createRelationship(Building.class, "cam-T8-ww")));
-		testDriver.submitEvent(cell_at_20_for_person_152_and_building_cam_T8_ww);
+//		testDriver.submitEvent(cell_at_20_for_person_152_and_building_cam_T8_ww);
 
 		//cam-T4-ne at 30
 		CellularReport cell_at_30_for_person_152_and_building_cam_T4_ne = conceptFactory.createCellularReport(absoluteTime.plusMinutes(30));
 		cell_at_30_for_person_152_and_building_cam_T4_ne.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_30_for_person_152_and_building_cam_T4_ne.setBuilding((testDriver.createRelationship(Building.class, "cam-T4-ne")));
-		testDriver.submitEvent(cell_at_30_for_person_152_and_building_cam_T4_ne);
+//		testDriver.submitEvent(cell_at_30_for_person_152_and_building_cam_T4_ne);
 
 		//cam-T4-ne at 40
 		CellularReport cell_at_40_for_person_152_and_building_cam_T4_ne = conceptFactory.createCellularReport(absoluteTime.plusMinutes(40));
 		cell_at_40_for_person_152_and_building_cam_T4_ne.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_40_for_person_152_and_building_cam_T4_ne.setBuilding((testDriver.createRelationship(Building.class, "cam-T4-ne")));
-		testDriver.submitEvent(cell_at_40_for_person_152_and_building_cam_T4_ne);
+//		testDriver.submitEvent(cell_at_40_for_person_152_and_building_cam_T4_ne);
 
 		//cam-T4-ne at 50
 		CellularReport cell_at_50_for_person_152_and_building_cam_T4_ne = conceptFactory.createCellularReport(absoluteTime.plusMinutes(50));
 		cell_at_50_for_person_152_and_building_cam_T4_ne.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_50_for_person_152_and_building_cam_T4_ne.setBuilding((testDriver.createRelationship(Building.class, "cam-T4-ne")));
-		testDriver.submitEvent(cell_at_50_for_person_152_and_building_cam_T4_ne);
+//		testDriver.submitEvent(cell_at_50_for_person_152_and_building_cam_T4_ne);
 
 		CellularReport cell_at_55_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(55));
 		cell_at_55_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_55_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
-		testDriver.submitEvent(cell_at_55_for_person_152_and_building_32);
+//		testDriver.submitEvent(cell_at_55_for_person_152_and_building_32);
 
 		CellularReport cell_at_70_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(70));
 		cell_at_70_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_70_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
-		testDriver.submitEvent(cell_at_70_for_person_152_and_building_32);
+//		testDriver.submitEvent(cell_at_70_for_person_152_and_building_32);
 
 		CellularReport cell_at_85_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(85));
 		cell_at_85_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_85_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
-		testDriver.submitEvent(cell_at_85_for_person_152_and_building_32);
+//		testDriver.submitEvent(cell_at_85_for_person_152_and_building_32);
 
 		CellularReport cell_at_100_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(100));
 		cell_at_100_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_100_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
-		testDriver.submitEvent(cell_at_100_for_person_152_and_building_32);
+//		testDriver.submitEvent(cell_at_100_for_person_152_and_building_32);
 
 		CellularReport cell_at_115_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(115));
 		cell_at_115_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_115_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
-		testDriver.submitEvent(cell_at_115_for_person_152_and_building_32);
+//		testDriver.submitEvent(cell_at_115_for_person_152_and_building_32);
 
 		CellularReport cell_at_130_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(130));
 		cell_at_130_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_130_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
-		testDriver.submitEvent(cell_at_130_for_person_152_and_building_32);
+//		testDriver.submitEvent(cell_at_130_for_person_152_and_building_32);
 
 		CellularReport cell_at_145_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(145));
 		cell_at_145_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_145_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
-		testDriver.submitEvent(cell_at_145_for_person_152_and_building_32);
+//		testDriver.submitEvent(cell_at_145_for_person_152_and_building_32);
 
 		CellularReport cell_at_160_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(160));
 		cell_at_160_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_160_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
-		testDriver.submitEvent(cell_at_160_for_person_152_and_building_32);
+//		testDriver.submitEvent(cell_at_160_for_person_152_and_building_32);
 
 		CellularReport cell_at_175_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(175));
 		cell_at_175_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_175_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
-		testDriver.submitEvent(cell_at_175_for_person_152_and_building_32);
+//		testDriver.submitEvent(cell_at_175_for_person_152_and_building_32);
 
 		CellularReport cell_at_190_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(190));
 		cell_at_190_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_190_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
-		testDriver.submitEvent(cell_at_190_for_person_152_and_building_32);
+//		testDriver.submitEvent(cell_at_190_for_person_152_and_building_32);
 
 		CellularReport cell_at_205_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(205));
 		cell_at_205_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_205_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
-		testDriver.submitEvent(cell_at_205_for_person_152_and_building_32);
+//		testDriver.submitEvent(cell_at_205_for_person_152_and_building_32);
 
 		CellularReport cell_at_220_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(220));
 		cell_at_220_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_220_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
-		testDriver.submitEvent(cell_at_220_for_person_152_and_building_32);
+//		testDriver.submitEvent(cell_at_220_for_person_152_and_building_32);
 
 		CellularReport cell_at_235_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(235));
 		cell_at_235_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_235_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
-		testDriver.submitEvent(cell_at_235_for_person_152_and_building_32);
+//		testDriver.submitEvent(cell_at_235_for_person_152_and_building_32);
 
 		CellularReport cell_at_250_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(250));
 		cell_at_250_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_250_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
-		testDriver.submitEvent(cell_at_250_for_person_152_and_building_32);
+//		testDriver.submitEvent(cell_at_250_for_person_152_and_building_32);
 
 		CellularReport cell_at_265_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(265));
 		cell_at_265_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_265_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
-		testDriver.submitEvent(cell_at_265_for_person_152_and_building_32);
+//		testDriver.submitEvent(cell_at_265_for_person_152_and_building_32);
 
 		CellularReport cell_at_280_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(280));
 		cell_at_280_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_280_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
-		testDriver.submitEvent(cell_at_280_for_person_152_and_building_32);
+//		testDriver.submitEvent(cell_at_280_for_person_152_and_building_32);
 
 		CellularReport cell_at_295_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(295));
 		cell_at_295_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_295_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
-		testDriver.submitEvent(cell_at_295_for_person_152_and_building_32);
+//		testDriver.submitEvent(cell_at_295_for_person_152_and_building_32);
 
 		CellularReport cell_at_310_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(310));
 		cell_at_310_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_310_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
-		testDriver.submitEvent(cell_at_310_for_person_152_and_building_32);
+//		testDriver.submitEvent(cell_at_310_for_person_152_and_building_32);
 
 		CellularReport cell_at_325_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(325));
 		cell_at_325_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_325_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
-		testDriver.submitEvent(cell_at_325_for_person_152_and_building_32);
+//		testDriver.submitEvent(cell_at_325_for_person_152_and_building_32);
 
 		CellularReport cell_at_340_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(340));
 		cell_at_340_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_340_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
-		testDriver.submitEvent(cell_at_340_for_person_152_and_building_32);
+//		testDriver.submitEvent(cell_at_340_for_person_152_and_building_32);
 
 		// cellular reports for person 82
 
 		//cam-T5-ss at 15
-		CellularReport cell_at_10_for_person_82_at_building_cam_T5_ss = conceptFactory.createCellularReport(absoluteTime.plusMinutes(15));
+		CellularReport cell_at_10_for_person_82_at_building_cam_T5_ss = conceptFactory.createCellularReport(absoluteTime.plusMinutes(10));
 		cell_at_10_for_person_82_at_building_cam_T5_ss.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_10_for_person_82_at_building_cam_T5_ss.setBuilding((testDriver.createRelationship(Building.class, "cam-T5-ss")));
-		testDriver.submitEvent(cell_at_10_for_person_82_at_building_cam_T5_ss);		
+//		testDriver.submitEvent(cell_at_10_for_person_82_at_building_cam_T5_ss);		
 
 		CellularReport cell_at_15_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(15));
 		cell_at_15_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_15_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
-		testDriver.submitEvent(cell_at_15_for_person_82_and_building_18);
+//		testDriver.submitEvent(cell_at_15_for_person_82_and_building_18);
 
 		//cam-T3-ee at 20
 		CellularReport cell_at_20_for_person_82_at_building_cam_T3_ee = conceptFactory.createCellularReport(absoluteTime.plusMinutes(20));
 		cell_at_20_for_person_82_at_building_cam_T3_ee.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_20_for_person_82_at_building_cam_T3_ee.setBuilding((testDriver.createRelationship(Building.class, "cam-T3-ee")));
-		testDriver.submitEvent(cell_at_20_for_person_82_at_building_cam_T3_ee);	
+//		testDriver.submitEvent(cell_at_20_for_person_82_at_building_cam_T3_ee);	
 
 		//cam-T3-ee at 30
 		CellularReport cell_at_30_for_person_82_at_building_cam_T3_ee = conceptFactory.createCellularReport(absoluteTime.plusMinutes(30));
 		cell_at_30_for_person_82_at_building_cam_T3_ee.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_30_for_person_82_at_building_cam_T3_ee.setBuilding((testDriver.createRelationship(Building.class, "cam-T3-ee")));
-		testDriver.submitEvent(cell_at_30_for_person_82_at_building_cam_T3_ee);
+//		testDriver.submitEvent(cell_at_30_for_person_82_at_building_cam_T3_ee);
 
 		//cam-T4-ne at 40
 		CellularReport cell_at_40_for_person_82_at_building_cam_T4_ne = conceptFactory.createCellularReport(absoluteTime.plusMinutes(40));
 		cell_at_40_for_person_82_at_building_cam_T4_ne.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_40_for_person_82_at_building_cam_T4_ne.setBuilding((testDriver.createRelationship(Building.class, "cam-T4-ne")));
-		testDriver.submitEvent(cell_at_40_for_person_82_at_building_cam_T4_ne);
+//		testDriver.submitEvent(cell_at_40_for_person_82_at_building_cam_T4_ne);
 
 		CellularReport cell_at_55_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(55));
 		cell_at_55_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_55_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
-		testDriver.submitEvent(cell_at_55_for_person_82_and_building_18);
+//		testDriver.submitEvent(cell_at_55_for_person_82_and_building_18);
 
 		CellularReport cell_at_70_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(70));
 		cell_at_70_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_70_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
-		testDriver.submitEvent(cell_at_70_for_person_82_and_building_18);
+//		testDriver.submitEvent(cell_at_70_for_person_82_and_building_18);
 
 		CellularReport cell_at_85_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(85));
 		cell_at_85_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_85_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
-		testDriver.submitEvent(cell_at_85_for_person_82_and_building_18);
+//		testDriver.submitEvent(cell_at_85_for_person_82_and_building_18);
 
 		CellularReport cell_at_100_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(100));
 		cell_at_100_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_100_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
-		testDriver.submitEvent(cell_at_100_for_person_82_and_building_18);
+//		testDriver.submitEvent(cell_at_100_for_person_82_and_building_18);
 
 		CellularReport cell_at_115_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(115));
 		cell_at_115_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_115_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
-		testDriver.submitEvent(cell_at_115_for_person_82_and_building_18);
+//		testDriver.submitEvent(cell_at_115_for_person_82_and_building_18);
 
 		CellularReport cell_at_130_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(130));
 		cell_at_130_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_130_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
-		testDriver.submitEvent(cell_at_130_for_person_82_and_building_18);
+//		testDriver.submitEvent(cell_at_130_for_person_82_and_building_18);
 
 		CellularReport cell_at_145_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(145));
 		cell_at_145_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_145_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
-		testDriver.submitEvent(cell_at_145_for_person_82_and_building_18);
+//		testDriver.submitEvent(cell_at_145_for_person_82_and_building_18);
 
 		CellularReport cell_at_160_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(160));
 		cell_at_160_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_160_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
-		testDriver.submitEvent(cell_at_160_for_person_82_and_building_18);
+//		testDriver.submitEvent(cell_at_160_for_person_82_and_building_18);
 
 		CellularReport cell_at_175_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(175));
 		cell_at_175_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_175_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
-		testDriver.submitEvent(cell_at_175_for_person_82_and_building_18);
+//		testDriver.submitEvent(cell_at_175_for_person_82_and_building_18);
 
 		CellularReport cell_at_190_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(190));
 		cell_at_190_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_190_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
-		testDriver.submitEvent(cell_at_190_for_person_82_and_building_18);
+//		testDriver.submitEvent(cell_at_190_for_person_82_and_building_18);
 
 		CellularReport cell_at_205_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(205));
 		cell_at_205_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_205_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
-		testDriver.submitEvent(cell_at_205_for_person_82_and_building_18);
+//		testDriver.submitEvent(cell_at_205_for_person_82_and_building_18);
 
 		CellularReport cell_at_220_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(220));
 		cell_at_220_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_220_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
-		testDriver.submitEvent(cell_at_220_for_person_82_and_building_18);
+//		testDriver.submitEvent(cell_at_220_for_person_82_and_building_18);
 
 		CellularReport cell_at_235_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(235));
 		cell_at_235_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_235_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
-		testDriver.submitEvent(cell_at_235_for_person_82_and_building_18);
+//		testDriver.submitEvent(cell_at_235_for_person_82_and_building_18);
 
 		CellularReport cell_at_250_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(250));
 		cell_at_250_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_250_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
-		testDriver.submitEvent(cell_at_250_for_person_82_and_building_18);
+//		testDriver.submitEvent(cell_at_250_for_person_82_and_building_18);
 
 		CellularReport cell_at_265_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(265));
 		cell_at_265_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_265_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
-		testDriver.submitEvent(cell_at_265_for_person_82_and_building_18);
+//		testDriver.submitEvent(cell_at_265_for_person_82_and_building_18);
 
 		CellularReport cell_at_280_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(280));
 		cell_at_280_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_280_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
-		testDriver.submitEvent(cell_at_280_for_person_82_and_building_18);
+//		testDriver.submitEvent(cell_at_280_for_person_82_and_building_18);
 
 		CellularReport cell_at_295_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(295));
 		cell_at_295_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_295_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
-		testDriver.submitEvent(cell_at_295_for_person_82_and_building_18);
+//		testDriver.submitEvent(cell_at_295_for_person_82_and_building_18);
 
 		CellularReport cell_at_310_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(310));
 		cell_at_310_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_310_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
-		testDriver.submitEvent(cell_at_310_for_person_82_and_building_18);
+//		testDriver.submitEvent(cell_at_310_for_person_82_and_building_18);
 
 		CellularReport cell_at_325_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(325));
 		cell_at_325_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_325_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
-		testDriver.submitEvent(cell_at_325_for_person_82_and_building_18);
+//		testDriver.submitEvent(cell_at_325_for_person_82_and_building_18);
 
 		CellularReport cell_at_340_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(340));
 		cell_at_340_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
 		cell_at_340_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
-		testDriver.submitEvent(cell_at_340_for_person_82_and_building_18);
+//		testDriver.submitEvent(cell_at_340_for_person_82_and_building_18);
 
 		// cellular reports for person 271
 
@@ -389,25 +389,25 @@ public class TroubleshootingComplicated {
 		CellularReport cell_at_10_for_person_271_and_building_cam_T8_ww = conceptFactory.createCellularReport(absoluteTime.plusMinutes(10));
 		cell_at_10_for_person_271_and_building_cam_T8_ww.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
 		cell_at_10_for_person_271_and_building_cam_T8_ww.setBuilding((testDriver.createRelationship(Building.class, "cam-T8-ww")));
-		testDriver.submitEvent(cell_at_10_for_person_271_and_building_cam_T8_ww);
+//		testDriver.submitEvent(cell_at_10_for_person_271_and_building_cam_T8_ww);
 
 		//cam-T4-ne at 20
 		CellularReport cell_at_20_for_person_271_and_building_cam_T4_ne = conceptFactory.createCellularReport(absoluteTime.plusMinutes(20));
 		cell_at_20_for_person_271_and_building_cam_T4_ne.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
 		cell_at_20_for_person_271_and_building_cam_T4_ne.setBuilding((testDriver.createRelationship(Building.class, "cam-T4-ne")));
-		testDriver.submitEvent(cell_at_20_for_person_271_and_building_cam_T4_ne);
+//		testDriver.submitEvent(cell_at_20_for_person_271_and_building_cam_T4_ne);
 
 		//cam-T4-ne at 30
 		CellularReport cell_at_30_for_person_271_and_building_cam_T4_ne = conceptFactory.createCellularReport(absoluteTime.plusMinutes(30));
 		cell_at_30_for_person_271_and_building_cam_T4_ne.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
 		cell_at_30_for_person_271_and_building_cam_T4_ne.setBuilding((testDriver.createRelationship(Building.class, "cam-T4-ne")));
-		testDriver.submitEvent(cell_at_30_for_person_271_and_building_cam_T4_ne);
+//		testDriver.submitEvent(cell_at_30_for_person_271_and_building_cam_T4_ne);
 
 		//cam-T4-ne at 40
 		CellularReport cell_at_40_for_person_271_and_building_cam_T4_ne = conceptFactory.createCellularReport(absoluteTime.plusMinutes(40));
 		cell_at_40_for_person_271_and_building_cam_T4_ne.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
 		cell_at_40_for_person_271_and_building_cam_T4_ne.setBuilding((testDriver.createRelationship(Building.class, "cam-T4-ne")));
-		testDriver.submitEvent(cell_at_40_for_person_271_and_building_cam_T4_ne);
+//		testDriver.submitEvent(cell_at_40_for_person_271_and_building_cam_T4_ne);
 
 		//bld-To-74 at 45
 		String building_74 = "bld-To-74";
@@ -415,79 +415,79 @@ public class TroubleshootingComplicated {
 		CellularReport cell_at_45_for_person_271_and_building_74 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(45));
 		cell_at_45_for_person_271_and_building_74.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
 		cell_at_45_for_person_271_and_building_74.setBuilding((testDriver.createRelationship(Building.class, building_74)));
-		testDriver.submitEvent(cell_at_45_for_person_271_and_building_74);
+//		testDriver.submitEvent(cell_at_45_for_person_271_and_building_74);
 
 		// entering BUILDING_80
 		CellularReport cell_at_50_for_person_271_and_building_80 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(50));
 		cell_at_50_for_person_271_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
 		cell_at_50_for_person_271_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
-		testDriver.submitEvent(cell_at_50_for_person_271_and_building_80);
+//		testDriver.submitEvent(cell_at_50_for_person_271_and_building_80);
 
 		CellularReport cell_at_70_for_person_271_and_building_80 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(70));
 		cell_at_70_for_person_271_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
 		cell_at_70_for_person_271_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
-		testDriver.submitEvent(cell_at_70_for_person_271_and_building_80);
+//		testDriver.submitEvent(cell_at_70_for_person_271_and_building_80);
 
 		CellularReport cell_at_75_for_person_271_and_building_80 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(75));
 		cell_at_75_for_person_271_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
 		cell_at_75_for_person_271_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
-		testDriver.submitEvent(cell_at_75_for_person_271_and_building_80);
+//		testDriver.submitEvent(cell_at_75_for_person_271_and_building_80);
 
 		CellularReport cell_at_80_for_person_271_and_building_80 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(80));
 		cell_at_80_for_person_271_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
 		cell_at_80_for_person_271_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
-		testDriver.submitEvent(cell_at_80_for_person_271_and_building_80);
+//		testDriver.submitEvent(cell_at_80_for_person_271_and_building_80);
 
 		CellularReport cell_at_100_for_person_271_and_building_80 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(100));
 		cell_at_100_for_person_271_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
 		cell_at_100_for_person_271_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
-		testDriver.submitEvent(cell_at_100_for_person_271_and_building_80);
+//		testDriver.submitEvent(cell_at_100_for_person_271_and_building_80);
 
 		CellularReport cell_at_120_for_person_271_and_building_80 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(120));
 		cell_at_120_for_person_271_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
 		cell_at_120_for_person_271_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
-		testDriver.submitEvent(cell_at_120_for_person_271_and_building_80);
+//		testDriver.submitEvent(cell_at_120_for_person_271_and_building_80);
 
 		CellularReport cell_at_140_for_person_271_and_building_80 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(140));
 		cell_at_140_for_person_271_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
 		cell_at_140_for_person_271_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
-		testDriver.submitEvent(cell_at_140_for_person_271_and_building_80);
+//		testDriver.submitEvent(cell_at_140_for_person_271_and_building_80);
 
 		// entering BUILDING_52
 		CellularReport cell_at_200_for_person_271_and_building_52 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(200));
 		cell_at_200_for_person_271_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
 		cell_at_200_for_person_271_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
-		testDriver.submitEvent(cell_at_200_for_person_271_and_building_52);
+//		testDriver.submitEvent(cell_at_200_for_person_271_and_building_52);
 
 		CellularReport cell_at_220_for_person_271_and_building_52 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(220));
 		cell_at_220_for_person_271_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
 		cell_at_220_for_person_271_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
-		testDriver.submitEvent(cell_at_220_for_person_271_and_building_52);
+//		testDriver.submitEvent(cell_at_220_for_person_271_and_building_52);
 
 		CellularReport cell_at_240_for_person_271_and_building_52 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(240));
 		cell_at_240_for_person_271_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
 		cell_at_240_for_person_271_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
-		testDriver.submitEvent(cell_at_240_for_person_271_and_building_52);
+//		testDriver.submitEvent(cell_at_240_for_person_271_and_building_52);
 
 		CellularReport cell_at_300_for_person_271_and_building_52 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(300));
 		cell_at_300_for_person_271_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
 		cell_at_300_for_person_271_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
-		testDriver.submitEvent(cell_at_300_for_person_271_and_building_52);
+//		testDriver.submitEvent(cell_at_300_for_person_271_and_building_52);
 
 		CellularReport cell_at_400_for_person_271_and_building_52 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(400));
 		cell_at_400_for_person_271_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
 		cell_at_400_for_person_271_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
-		testDriver.submitEvent(cell_at_400_for_person_271_and_building_52);
+//		testDriver.submitEvent(cell_at_400_for_person_271_and_building_52);
 
 		CellularReport cell_at_600_for_person_271_and_building_52 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(600));
 		cell_at_600_for_person_271_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
 		cell_at_600_for_person_271_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
-		testDriver.submitEvent(cell_at_600_for_person_271_and_building_52);
+//		testDriver.submitEvent(cell_at_600_for_person_271_and_building_52);
 
 		CellularReport cell_at_800_for_person_271_and_building_52 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(800));
 		cell_at_800_for_person_271_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
 		cell_at_800_for_person_271_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
-		testDriver.submitEvent(cell_at_800_for_person_271_and_building_52);
+//		testDriver.submitEvent(cell_at_800_for_person_271_and_building_52);
 
 
 		// cellular reports for person 182
@@ -497,82 +497,82 @@ public class TroubleshootingComplicated {
 		CellularReport cell_at_30_for_person_182_and_building_cam_T4_ne = conceptFactory.createCellularReport(absoluteTime.plusMinutes(30));
 		cell_at_30_for_person_182_and_building_cam_T4_ne.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
 		cell_at_30_for_person_182_and_building_cam_T4_ne.setBuilding((testDriver.createRelationship(Building.class, "cam-T4-ne")));
-		testDriver.submitEvent(cell_at_30_for_person_182_and_building_cam_T4_ne);
+//		testDriver.submitEvent(cell_at_30_for_person_182_and_building_cam_T4_ne);
 
 		//cam-T6-nn at 40
 		CellularReport cell_at_40_for_person_182_and_building_cam_T6_nn= conceptFactory.createCellularReport(absoluteTime.plusMinutes(40));
 		cell_at_40_for_person_182_and_building_cam_T6_nn.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
 		cell_at_40_for_person_182_and_building_cam_T6_nn.setBuilding((testDriver.createRelationship(Building.class, "cam-T6-nn")));
-		testDriver.submitEvent(cell_at_40_for_person_182_and_building_cam_T6_nn);
+//		testDriver.submitEvent(cell_at_40_for_person_182_and_building_cam_T6_nn);
 
 		//cam-T1-cc at 50
 		CellularReport cell_at_50_for_person_182_and_building_cam_T1_cc= conceptFactory.createCellularReport(absoluteTime.plusMinutes(50));
 		cell_at_50_for_person_182_and_building_cam_T1_cc.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
 		cell_at_50_for_person_182_and_building_cam_T1_cc.setBuilding((testDriver.createRelationship(Building.class, "cam-T1-cc")));
-		testDriver.submitEvent(cell_at_50_for_person_182_and_building_cam_T1_cc);
+//		testDriver.submitEvent(cell_at_50_for_person_182_and_building_cam_T1_cc);
 
 		//cam-T8-ww at 60
 		CellularReport cell_at_60_for_person_182_and_building_cam_T8_ww= conceptFactory.createCellularReport(absoluteTime.plusMinutes(60));
 		cell_at_60_for_person_182_and_building_cam_T8_ww.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
 		cell_at_60_for_person_182_and_building_cam_T8_ww.setBuilding((testDriver.createRelationship(Building.class, "cam-T8-ww")));
-		testDriver.submitEvent(cell_at_60_for_person_182_and_building_cam_T8_ww);
+//		testDriver.submitEvent(cell_at_60_for_person_182_and_building_cam_T8_ww);
 
 		// entered BUILDING_80
 		CellularReport cell_at_80_for_person_182_and_building_80= conceptFactory.createCellularReport(absoluteTime.plusMinutes(80));
 		cell_at_80_for_person_182_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
 		cell_at_80_for_person_182_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
-		testDriver.submitEvent(cell_at_80_for_person_182_and_building_80);
+//		testDriver.submitEvent(cell_at_80_for_person_182_and_building_80);
 
 		CellularReport cell_at_100_for_person_182_and_building_80= conceptFactory.createCellularReport(absoluteTime.plusMinutes(100));
 		cell_at_100_for_person_182_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
 		cell_at_100_for_person_182_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
-		testDriver.submitEvent(cell_at_100_for_person_182_and_building_80);
+//		testDriver.submitEvent(cell_at_100_for_person_182_and_building_80);
 
 		CellularReport cell_at_120_for_person_182_and_building_80= conceptFactory.createCellularReport(absoluteTime.plusMinutes(120));
 		cell_at_120_for_person_182_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
 		cell_at_120_for_person_182_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
-		testDriver.submitEvent(cell_at_120_for_person_182_and_building_80);
+//		testDriver.submitEvent(cell_at_120_for_person_182_and_building_80);
 
 		CellularReport cell_at_140_for_person_182_and_building_80= conceptFactory.createCellularReport(absoluteTime.plusMinutes(140));
 		cell_at_140_for_person_182_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
 		cell_at_140_for_person_182_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
-		testDriver.submitEvent(cell_at_140_for_person_182_and_building_80);
+//		testDriver.submitEvent(cell_at_140_for_person_182_and_building_80);
 
 		//entered BUILDING_52
 		CellularReport cell_at_200_for_person_182_and_building_52= conceptFactory.createCellularReport(absoluteTime.plusMinutes(200));
 		cell_at_200_for_person_182_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
 		cell_at_200_for_person_182_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
-		testDriver.submitEvent(cell_at_200_for_person_182_and_building_52);
+//		testDriver.submitEvent(cell_at_200_for_person_182_and_building_52);
 
 		CellularReport cell_at_220_for_person_182_and_building_52= conceptFactory.createCellularReport(absoluteTime.plusMinutes(220));
 		cell_at_220_for_person_182_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
 		cell_at_220_for_person_182_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
-		testDriver.submitEvent(cell_at_220_for_person_182_and_building_52);
+//		testDriver.submitEvent(cell_at_220_for_person_182_and_building_52);
 
 		CellularReport cell_at_240_for_person_182_and_building_52= conceptFactory.createCellularReport(absoluteTime.plusMinutes(240));
 		cell_at_240_for_person_182_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
 		cell_at_240_for_person_182_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
-		testDriver.submitEvent(cell_at_240_for_person_182_and_building_52);
+//		testDriver.submitEvent(cell_at_240_for_person_182_and_building_52);
 
 		CellularReport cell_at_300_for_person_182_and_building_52= conceptFactory.createCellularReport(absoluteTime.plusMinutes(300));
 		cell_at_300_for_person_182_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
 		cell_at_300_for_person_182_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
-		testDriver.submitEvent(cell_at_300_for_person_182_and_building_52);
+//		testDriver.submitEvent(cell_at_300_for_person_182_and_building_52);
 
 		CellularReport cell_at_400_for_person_182_and_building_52= conceptFactory.createCellularReport(absoluteTime.plusMinutes(400));
 		cell_at_400_for_person_182_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
 		cell_at_400_for_person_182_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
-		testDriver.submitEvent(cell_at_400_for_person_182_and_building_52);
+//		testDriver.submitEvent(cell_at_400_for_person_182_and_building_52);
 
 		CellularReport cell_at_600_for_person_182_and_building_52= conceptFactory.createCellularReport(absoluteTime.plusMinutes(600));
 		cell_at_600_for_person_182_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
 		cell_at_600_for_person_182_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
-		testDriver.submitEvent(cell_at_600_for_person_182_and_building_52);
+//		testDriver.submitEvent(cell_at_600_for_person_182_and_building_52);
 
 		CellularReport cell_at_800_for_person_182_and_building_52= conceptFactory.createCellularReport(absoluteTime.plusMinutes(800));
 		cell_at_800_for_person_182_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
 		cell_at_800_for_person_182_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
-		testDriver.submitEvent(cell_at_800_for_person_182_and_building_52);
+//		testDriver.submitEvent(cell_at_800_for_person_182_and_building_52);
 
 		// cellular calls
 		CellularCallReport call_at_10_PERSON_82_PERSON_271 = conceptFactory.createCellularCallReport(absoluteTime.plusMinutes(10));
@@ -580,43 +580,139 @@ public class TroubleshootingComplicated {
 		call_at_10_PERSON_82_PERSON_271.setCallee(testDriver.createRelationship(Person.class, PERSON_271));
 		call_at_10_PERSON_82_PERSON_271.set_persons(persons);
 		call_at_10_PERSON_82_PERSON_271.set_buildings(buildings);
-		testDriver.submitEvent(call_at_10_PERSON_82_PERSON_271);
+//		testDriver.submitEvent(call_at_10_PERSON_82_PERSON_271);
 
 		CellularCallReport call_at_45_PERSON_82_PERSON_271 = conceptFactory.createCellularCallReport(absoluteTime.plusMinutes(45));
 		call_at_45_PERSON_82_PERSON_271.setCaller(testDriver.createRelationship(Person.class, PERSON_82));
 		call_at_45_PERSON_82_PERSON_271.setCallee(testDriver.createRelationship(Person.class, PERSON_271));
 		call_at_45_PERSON_82_PERSON_271.set_persons(persons);
 		call_at_45_PERSON_82_PERSON_271.set_buildings(buildings);
-		testDriver.submitEvent(call_at_45_PERSON_82_PERSON_271);
+//		testDriver.submitEvent(call_at_45_PERSON_82_PERSON_271);
 
 		CellularCallReport call_at_100_PERSON_82_PERSON_271 = conceptFactory.createCellularCallReport(absoluteTime.plusMinutes(100));
 		call_at_100_PERSON_82_PERSON_271.setCaller(testDriver.createRelationship(Person.class, PERSON_82));
 		call_at_100_PERSON_82_PERSON_271.setCallee(testDriver.createRelationship(Person.class, PERSON_271));
 		call_at_100_PERSON_82_PERSON_271.set_persons(persons);
 		call_at_100_PERSON_82_PERSON_271.set_buildings(buildings);
-		testDriver.submitEvent(call_at_100_PERSON_82_PERSON_271);
+//		testDriver.submitEvent(call_at_100_PERSON_82_PERSON_271);
 
 		CellularCallReport call_at_200_PERSON_82_PERSON_271 = conceptFactory.createCellularCallReport(absoluteTime.plusMinutes(200));
 		call_at_200_PERSON_82_PERSON_271.setCaller(testDriver.createRelationship(Person.class, PERSON_82));
 		call_at_200_PERSON_82_PERSON_271.setCallee(testDriver.createRelationship(Person.class, PERSON_271));
 		call_at_200_PERSON_82_PERSON_271.set_persons(persons);
 		call_at_200_PERSON_82_PERSON_271.set_buildings(buildings);
-		testDriver.submitEvent(call_at_200_PERSON_82_PERSON_271);
+//		testDriver.submitEvent(call_at_200_PERSON_82_PERSON_271);
 
 		CellularCallReport call_at_250_PERSON_152_PERSON_182 = conceptFactory.createCellularCallReport(absoluteTime.plusMinutes(250));
 		call_at_250_PERSON_152_PERSON_182.setCaller(testDriver.createRelationship(Person.class, PERSON_152));
 		call_at_250_PERSON_152_PERSON_182.setCallee(testDriver.createRelationship(Person.class, PERSON_182));
 		call_at_250_PERSON_152_PERSON_182.set_persons(persons);
 		call_at_250_PERSON_152_PERSON_182.set_buildings(buildings);
-		testDriver.submitEvent(call_at_250_PERSON_152_PERSON_182);
+//		testDriver.submitEvent(call_at_250_PERSON_152_PERSON_182);
 
 		CellularCallReport call_at_700_PERSON_152_PERSON_182 = conceptFactory.createCellularCallReport(absoluteTime.plusMinutes(700));
 		call_at_700_PERSON_152_PERSON_182.setCaller(testDriver.createRelationship(Person.class, PERSON_152));
 		call_at_700_PERSON_152_PERSON_182.setCallee(testDriver.createRelationship(Person.class, PERSON_182));
 		call_at_700_PERSON_152_PERSON_182.set_persons(persons);
 		call_at_700_PERSON_152_PERSON_182.set_buildings(buildings);
-		testDriver.submitEvent(call_at_700_PERSON_152_PERSON_182);
+//		testDriver.submitEvent(call_at_700_PERSON_152_PERSON_182);
 
+		
+		//submit events
+		testDriver.submitEvent(cell_at_10_for_person_82_at_building_cam_T5_ss);		
+		testDriver.submitEvent(cell_at_10_for_person_271_and_building_cam_T8_ww);
+		testDriver.submitEvent(call_at_10_PERSON_82_PERSON_271); //82 not criminal
+		testDriver.submitEvent(cell_at_15_for_person_82_and_building_18);		
+		testDriver.submitEvent(cell_at_15_for_person_152_and_building_32);
+		testDriver.submitEvent(cell_at_20_for_person_271_and_building_cam_T4_ne);
+		testDriver.submitEvent(cell_at_20_for_person_82_at_building_cam_T3_ee);	
+		testDriver.submitEvent(cell_at_20_for_person_152_and_building_cam_T8_ww);
+		testDriver.submitEvent(cell_at_30_for_person_182_and_building_cam_T4_ne);
+		testDriver.submitEvent(cell_at_30_for_person_271_and_building_cam_T4_ne);
+		testDriver.submitEvent(cell_at_30_for_person_82_at_building_cam_T3_ee);
+		testDriver.submitEvent(cell_at_30_for_person_152_and_building_cam_T4_ne);
+		testDriver.submitEvent(cell_at_40_for_person_182_and_building_cam_T6_nn);
+		testDriver.submitEvent(cell_at_40_for_person_271_and_building_cam_T4_ne);
+		testDriver.submitEvent(cell_at_40_for_person_82_at_building_cam_T4_ne);
+		testDriver.submitEvent(cell_at_40_for_person_152_and_building_cam_T4_ne);
+		testDriver.submitEvent(cell_at_45_for_person_271_and_building_74);
+		testDriver.submitEvent(call_at_45_PERSON_82_PERSON_271); //271 not in bank
+		testDriver.submitEvent(cell_at_50_for_person_182_and_building_cam_T1_cc);
+		testDriver.submitEvent(cell_at_50_for_person_271_and_building_80);
+		testDriver.submitEvent(cell_at_50_for_person_152_and_building_cam_T4_ne);
+		testDriver.submitEvent(cell_at_55_for_person_82_and_building_18);
+		testDriver.submitEvent(cell_at_55_for_person_152_and_building_32);
+		testDriver.submitEvent(cell_at_60_for_person_182_and_building_cam_T8_ww);
+		testDriver.submitEvent(cell_at_70_for_person_271_and_building_80);
+		testDriver.submitEvent(cell_at_70_for_person_82_and_building_18);
+		testDriver.submitEvent(cell_at_70_for_person_152_and_building_32);
+		testDriver.submitEvent(cell_at_75_for_person_271_and_building_80);
+		testDriver.submitEvent(cell_at_80_for_person_182_and_building_80);
+		testDriver.submitEvent(cell_at_80_for_person_271_and_building_80);
+		testDriver.submitEvent(cell_at_85_for_person_82_and_building_18);
+		testDriver.submitEvent(cell_at_85_for_person_152_and_building_32);
+		testDriver.submitEvent(cell_at_100_for_person_182_and_building_80);
+		testDriver.submitEvent(cell_at_100_for_person_271_and_building_80);
+		testDriver.submitEvent(cell_at_100_for_person_82_and_building_18);
+		testDriver.submitEvent(cell_at_100_for_person_152_and_building_32);
+		testDriver.submitEvent(call_at_100_PERSON_82_PERSON_271); //82 criminal, 271 in bank
+		testDriver.submitEvent(cell_at_115_for_person_82_and_building_18);
+		testDriver.submitEvent(cell_at_115_for_person_152_and_building_32);
+		testDriver.submitEvent(cell_at_120_for_person_182_and_building_80);
+		testDriver.submitEvent(cell_at_120_for_person_271_and_building_80);
+		testDriver.submitEvent(cell_at_130_for_person_82_and_building_18);
+		testDriver.submitEvent(cell_at_130_for_person_152_and_building_32);
+		testDriver.submitEvent(cell_at_140_for_person_182_and_building_80);
+		testDriver.submitEvent(cell_at_140_for_person_271_and_building_80);
+		testDriver.submitEvent(cell_at_145_for_person_82_and_building_18);
+		testDriver.submitEvent(cell_at_145_for_person_152_and_building_32);
+		testDriver.submitEvent(cell_at_160_for_person_82_and_building_18);
+		testDriver.submitEvent(cell_at_160_for_person_152_and_building_32);
+		testDriver.submitEvent(cell_at_175_for_person_82_and_building_18);
+		testDriver.submitEvent(cell_at_175_for_person_152_and_building_32);
+		testDriver.submitEvent(cell_at_190_for_person_82_and_building_18);
+		testDriver.submitEvent(cell_at_190_for_person_152_and_building_32);
+		testDriver.submitEvent(cell_at_200_for_person_182_and_building_52);
+		testDriver.submitEvent(cell_at_200_for_person_271_and_building_52);
+		testDriver.submitEvent(call_at_200_PERSON_82_PERSON_271); // doesn't change any thing - 271 not in bank
+		testDriver.submitEvent(cell_at_205_for_person_82_and_building_18);
+		testDriver.submitEvent(cell_at_205_for_person_152_and_building_32);
+		testDriver.submitEvent(cell_at_220_for_person_182_and_building_52);
+		testDriver.submitEvent(cell_at_220_for_person_271_and_building_52);
+		testDriver.submitEvent(cell_at_220_for_person_82_and_building_18);
+		testDriver.submitEvent(cell_at_220_for_person_152_and_building_32);
+		testDriver.submitEvent(cell_at_235_for_person_82_and_building_18);
+		testDriver.submitEvent(cell_at_235_for_person_152_and_building_32);
+		testDriver.submitEvent(cell_at_240_for_person_182_and_building_52);
+		testDriver.submitEvent(cell_at_240_for_person_271_and_building_52);
+		testDriver.submitEvent(cell_at_250_for_person_82_and_building_18);
+		testDriver.submitEvent(cell_at_250_for_person_152_and_building_32);
+		testDriver.submitEvent(call_at_250_PERSON_152_PERSON_182);
+		testDriver.submitEvent(cell_at_265_for_person_82_and_building_18);
+		testDriver.submitEvent(cell_at_265_for_person_152_and_building_32);
+		testDriver.submitEvent(cell_at_280_for_person_82_and_building_18);
+		testDriver.submitEvent(cell_at_280_for_person_152_and_building_32);
+		testDriver.submitEvent(cell_at_295_for_person_82_and_building_18);
+		testDriver.submitEvent(cell_at_295_for_person_152_and_building_32);
+		testDriver.submitEvent(cell_at_300_for_person_182_and_building_52);
+		testDriver.submitEvent(cell_at_300_for_person_271_and_building_52);
+		testDriver.submitEvent(cell_at_310_for_person_82_and_building_18);
+		testDriver.submitEvent(cell_at_310_for_person_152_and_building_32);
+		testDriver.submitEvent(cell_at_325_for_person_82_and_building_18);
+		testDriver.submitEvent(cell_at_325_for_person_152_and_building_32);
+		testDriver.submitEvent(cell_at_340_for_person_82_and_building_18);
+		testDriver.submitEvent(cell_at_340_for_person_152_and_building_32);
+		testDriver.submitEvent(cell_at_400_for_person_182_and_building_52);
+		testDriver.submitEvent(cell_at_400_for_person_271_and_building_52);
+		testDriver.submitEvent(cell_at_600_for_person_182_and_building_52);
+		testDriver.submitEvent(cell_at_600_for_person_271_and_building_52);
+		testDriver.submitEvent(cell_at_800_for_person_182_and_building_52);
+		testDriver.submitEvent(call_at_700_PERSON_152_PERSON_182);
+		testDriver.submitEvent(cell_at_800_for_person_271_and_building_52);
+
+		
+		
+		
 		testDriver.waitUntilSolutionIdle();
 
 		// check

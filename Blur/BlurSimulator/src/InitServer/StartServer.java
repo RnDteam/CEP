@@ -97,7 +97,7 @@ public class StartServer {
 
 		boolean done = false;
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String help = "Enter a command: start recording, stop recording, reset, initialize, simulate, quit";
+		String help = "Enter a command: start recording, stop recording, reset, init, simulate, quit";
 
 		while (!done) {
 			System.out.println(help);
@@ -121,7 +121,7 @@ public class StartServer {
 					testDriver.resetSolutionState();
 					break;
 
-				case "initialize":
+				case "init":
 					submitEventsAsync(initEventsMap, config, false);
 					System.out
 							.println("Waiting for solution to process initialization events.");

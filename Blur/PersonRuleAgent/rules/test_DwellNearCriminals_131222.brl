@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
-  <name>DwellNearCriminals_131222</name>
-  <uuid>3d21b4ae-78de-44f4-a171-ab1cd3fa0600</uuid>
+  <name>test_DwellNearCriminals_131222</name>
+  <uuid>9383337e-78ee-4587-bd20-654c25668830</uuid>
   <documentation><![CDATA[    and the relationship depth between the callee of 'criminal call' and the caller of 'criminal call' is more than 1
 
 
@@ -36,16 +36,14 @@ definitions
         where the distance between the callee of 'criminal call' and each person in meters is less than 10
         and the type of the organization of the role of each person is CRIMINAL ;
     set 'a nearby criminal' to a person in 'nearby criminals' ;
-    set 'people encounters' to the encounters between 'the person' and 'a nearby criminal' within proximity of 10 meters
-        where the duration of each time period in hours is at least 8 ;
+    set 'people encounters' to the encounters between 'the person' and 'a nearby criminal' within proximity of 10 meters;
 if
     there is at least one time period in 'people encounters'
 then
     define ALERT as a new alert where
-        the message is "Associate the " + the id of 'the person' + " to " + the id of the organization of the role of 'a nearby criminal' ,
+        the message is "Test2 Associate the " + the id of 'the person' + " to " + the id of the organization of the role of 'a nearby criminal' ,
         the person is 'the person' ,
         the organization is the organization of the role of 'a nearby criminal' ,
         the rule is "confirmation";
-    set the alert message of 'the person' to the message of ALERT ;
     emit ALERT ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

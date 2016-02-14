@@ -100,6 +100,8 @@ public class PersonAgent extends EntityAgent<Person> {
         
         if (event instanceof CriminalPersonDetected) {
         	
+        	System.out.println("Recived Criminal Person Detected Event~~~~~~~~");
+        	
         	UpdateRoleEvent updateRoleEvent = getConceptFactory(ConceptFactory.class).createUpdateRoleEvent(event.get$Timestamp());
         	Relationship<OrganizationalRole> roleRelationship = ((CriminalPersonDetected)event).getRole();
         	updateRoleEvent.setOrganizationalRole(roleRelationship);
@@ -121,6 +123,9 @@ public class PersonAgent extends EntityAgent<Person> {
         	criminalPersonInitialization.setRole(relationship);
         	
         	emit(criminalPersonInitialization);
+        	
+        	System.out.println("~~~~Emited Criminal Person Detected Event " + id + "criminal");
+
         }
         
     }

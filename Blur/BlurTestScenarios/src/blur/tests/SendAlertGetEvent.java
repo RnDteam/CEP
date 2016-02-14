@@ -110,7 +110,7 @@ public class SendAlertGetEvent {
 		testDriver.submitEvent(cellularReport);
 		
 		testDriver.processPendingSchedules(now);
-		Thread.sleep(10000);
+		Thread.sleep(100000);
 		testDriver.waitUntilSolutionIdle();
 	}
 }

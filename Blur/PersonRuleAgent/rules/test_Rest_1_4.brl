@@ -4,6 +4,7 @@
   <uuid>3aadc3de-cb68-432c-aa99-8d10b273131a</uuid>
   <locale>en_US</locale>
   <definition><![CDATA[when a cellular report occurs
+if false
 then
     define ALERT as a new alert where
         the person is 'the person' ,
