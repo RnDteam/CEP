@@ -35,24 +35,25 @@ then
     where the type of the organization of the role of the caller of 'criminal call' is CRIMINAL
     and the type of the organization of the role of the callee of 'criminal call' is not CRIMINAL
 definitions
-	set 'the callee' to the callee of 'criminal call' ;
+    set 'the callee' to the callee of 'criminal call' ;
     set 'nearby buildings' to the buildings of 'criminal call'
-        where the distance between the latest observed geometry of 'the callee' and each building in meters is less than 10 ;
-    set 'a nearby bank' to a building in 'nearby buildings' 
-		where the usage type of this building is BANK BRANCH ;
-    set 'building encounters' to the encounters between 'the callee' and the latest observed geometry of 'a nearby bank' within proximity of 10 meters;
+        where the distance between the latest observed geometry of 'the callee' and each building in meters is less than 50 ;
+    set 'a nearby bank' to a building in 'nearby buildings'
+        where the usage type of this building is BANK BRANCH ;
+    set 'building encounters' to the encounters between 'the callee' and the latest observed geometry of 'a nearby bank' within proximity of 50 meters ;
 if
-    there is at least one time period in 'building encounters'
+    false and there is at least one time period in 'building encounters'
 then
-    define ALERT as a new alert where
-        the message is "Test Associate the " + the id of 'the callee' + " to " + the id of the organization of the role of the caller of 'criminal call'  + " because of bank " + the id of 'a nearby bank' ,
-        the building is 'a nearby bank' ,
-        the person is 'the callee' ,
-        the organization is the organization of the role of the caller of 'criminal call' ;
-    emit ALERT ;
-    define CRIMINAL_PERSON_DETECTED as a new criminal person detected where
-        the person is 'the callee',
-        the role is the role of 'the person',
-        the organization is the organization of the role of the caller of 'criminal call' ;
-    emit CRIMINAL_PERSON_DETECTED ;]]></definition>
+    for each time period in 'building encounters' :
+        - define ALERT as a new alert where
+            the message is "Test Associate the " + the id of 'the callee' + " and caller " + the id of the caller of 'criminal call' + " to " + the id of the organization of the role of the caller of 'criminal call' + " because of bank " + the id of 'a nearby bank' + " encounters " + the duration of this time period ,
+            the building is 'a nearby bank' ,
+            the person is 'the callee' ,
+            the organization is the organization of the role of the caller of 'criminal call'
+        - emit ALERT
+        - define CRIMINAL_PERSON_DETECTED as a new criminal person detected where
+            the person is 'the callee' ,
+            the role is the role of 'the person' ,
+            the organization is the organization of the role of the caller of 'criminal call'
+        - emit CRIMINAL_PERSON_DETECTED ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

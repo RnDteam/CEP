@@ -3,7 +3,7 @@
   <name>out of call</name>
   <uuid>35e313c4-6c39-4e4c-a851-381c41737a8b</uuid>
   <locale>en_US</locale>
-  <definition><![CDATA[when a cellular call report has occurred 15 minutes ago
+  <definition><![CDATA[when a cellular call report has occurred 30 minutes ago
 then
     make it false that 'the person' is in call ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

@@ -32,18 +32,20 @@ then
     where the type of the organization of the role of the caller of 'criminal call' is CRIMINAL
     and the type of the organization of the role of the callee of 'criminal call' is not CRIMINAL
 definitions
+	set 'the callee' to the callee of 'criminal call' ;
     set 'nearby criminals' to the persons of 'criminal call'
-        where the distance between the callee of 'criminal call' and each person in meters is less than 10
+        where the distance between 'the callee' and each person in meters is less than 100
         and the type of the organization of the role of each person is CRIMINAL ;
     set 'a nearby criminal' to a person in 'nearby criminals' ;
-    set 'people encounters' to the encounters between 'the person' and 'a nearby criminal' within proximity of 10 meters;
+    set 'people encounters' to the encounters between 'the callee' and 'a nearby criminal' within proximity of 100 meters ;
 if
-    there is at least one time period in 'people encounters'
+	false
 then
-    define ALERT as a new alert where
-        the message is "Test2 Associate the " + the id of 'the person' + " to " + the id of the organization of the role of 'a nearby criminal' ,
-        the person is 'the person' ,
-        the organization is the organization of the role of 'a nearby criminal' ,
-        the rule is "confirmation";
-    emit ALERT ;]]></definition>
+    for each time period in 'people encounters' :
+        - define ALERT as a new alert where
+            the message is "Test2 Associate the " + the id of 'the callee' + " and criminal " + the id of 'a nearby criminal' + " to " + the id of the organization of the role of 'a nearby criminal' + " encounters " + the distance between 'the callee' and 'a nearby criminal' in meters + " time " + the duration of this time period ,
+            the person is 'the person' ,
+            the organization is the organization of the role of 'a nearby criminal' ,
+            the rule is "confirmation"
+        - emit ALERT ;]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

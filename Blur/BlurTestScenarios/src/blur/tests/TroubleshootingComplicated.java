@@ -706,8 +706,8 @@ public class TroubleshootingComplicated {
 		testDriver.submitEvent(cell_at_400_for_person_271_and_building_52);
 		testDriver.submitEvent(cell_at_600_for_person_182_and_building_52);
 		testDriver.submitEvent(cell_at_600_for_person_271_and_building_52);
-		testDriver.submitEvent(cell_at_800_for_person_182_and_building_52);
 		testDriver.submitEvent(call_at_700_PERSON_152_PERSON_182);
+		testDriver.submitEvent(cell_at_800_for_person_182_and_building_52);
 		testDriver.submitEvent(cell_at_800_for_person_271_and_building_52);
 
 		

@@ -3,3 +3,4 @@ processing events :
     - person update  , where this person  comes from the person of this person update  , with a horizon of 0 minutes
     - update role event , where this person comes from the person of this update role event , with a horizon of 0 minutes
     - criminal person detected , where this person comes from the person of this criminal person detected, with a horizon of 0 minutes
+    - cellular report , where this person comes from the person of this cellular report , with a horizon of 0 minutes 

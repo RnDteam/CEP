@@ -37,10 +37,10 @@ then
 definitions
 	set 'the callee' to the callee of 'criminal call' ;
     set 'nearby buildings' to the buildings of 'criminal call'
-        where the distance between the latest observed geometry of 'the callee' and each building in meters is less than 10 ;
+        where the distance between the latest observed geometry of 'the callee' and each building in meters is less than 50 ;
     set 'a nearby bank' to a building in 'nearby buildings' 
 		where the usage type of this building is BANK BRANCH ;
-    set 'building encounters' to the encounters between 'the callee' and the latest observed geometry of 'a nearby bank' within proximity of 10 meters
+    set 'building encounters' to the encounters between 'the callee' and the latest observed geometry of 'a nearby bank' within proximity of 50 meters
         where the duration of each time period in minutes is more than 30
         and the duration of each time period in hours is less than 2 ;
 if

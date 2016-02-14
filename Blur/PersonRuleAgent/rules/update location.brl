@@ -8,8 +8,8 @@
 definitions 
 	set 'the building location' to the latest observed geometry of the building of this cellular report;
 if 
-	the location of 'the person' is not null
+	false and the location of 'the person' is not null
 then
-	move 'the person' to 'the building location' at the timestamp of this cellular report;
+	move 'the person' to 'the building location'  at the timestamp of this cellular report;
 ]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>
