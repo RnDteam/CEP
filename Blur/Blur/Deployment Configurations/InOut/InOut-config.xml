@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><server>
+    <!--Application definition for inbound connectivity application for solution: Blur-->
+    <application location="Blur-inbound.ear">
+        <application-bnd>
+            <security-role name="iaEventSubmitter"/>
+        </application-bnd>
+    </application>
+
+    <ia_inboundHttpEndpoint endpoint="Blur/inbound-http-endpoint"/>
+
+    <ia_outboundHttpEndpoint endpoint="Blur/endp"/>
+</server>

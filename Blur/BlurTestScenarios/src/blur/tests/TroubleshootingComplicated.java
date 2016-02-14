@@ -1,5 +1,7 @@
 package blur.tests;
 
+import static org.junit.Assert.*;
+
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
@@ -13,14 +15,26 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import blur.model.Building;
+import blur.model.BuildingInitialization;
+import blur.model.BuildingType;
+import blur.model.BuildingUsageType;
 import blur.model.CellularCallReport;
 import blur.model.CellularReport;
 import blur.model.ConceptFactory;
 import blur.model.Organization;
+import blur.model.OrganizationInitialization;
+import blur.model.OrganizationRoleInitialization;
+import blur.model.OrganizationRoleType;
 import blur.model.OrganizationType;
 import blur.model.OrganizationalRole;
 import blur.model.Person;
+import blur.model.PersonInitialization;
+import blur.model.PersonState;
 
+import com.ibm.geolib.geom.Geometry;
+import com.ibm.geolib.geom.Point;
+import com.ibm.geolib.st.MovingGeometry;
+import com.ibm.geolib.st.SpatioTemporalService;
 import com.ibm.ia.common.DataFormat;
 import com.ibm.ia.common.GatewayException;
 import com.ibm.ia.common.RoutingException;
@@ -35,23 +49,23 @@ public class TroubleshootingComplicated {
 
 	protected static TestDriver testDriver;
 	protected static IADebugReceiver debugReceiver = new IADebugReceiver();
-	
+
 	private static String CRIMINAL_ORGANIZATION = "CRIMINAL_ORGANIZATION";
 	private static String COMMERCIAL_ORGANIZATION = "COMMERCIAL_ORGANIZATION";
 	private static String CRIMINAL_ORGANIZATION_ROLE = "CRIMINAL_ORGANIZATION_ROLE";
 	private static String NON_CRIMINAL_ORGANIZATION_ROLE = "NON_CRIMINAL_ORGANIZATION_ROLE";
 	private static String POTENTIAL_COLLABORATOR = "CRIMINAL_PERSON";
 	private static String SUSPECT_PERSON = "NON_CRIMINAL_PERSON";
-	
+
 	private static final String BUILDING_1_BANK = "BUILDING_1_BANK";
 	private static final String BUILDING_2_BANK = "BUILDING_2_BANK";
 	private static final String BUILDING_3_BANK = "BUILDING_3_BANK";
-	
+
 	private static final String PERSON_82 = "ppl-Txe-82"; // good guy
 	private static final String PERSON_271 = "ppl-Txm-271"; // good guy
 	private static final String PERSON_152 = "ppl-Txe-152"; // good guy
 	private static final String PERSON_182 = "ppl-Txe-182"; // good guy
-	
+
 	private static final String BUILDING_18 = "bld-Tx-18"; // criminal from the beginning
 	private static final String BUILDING_32 = "bld-Tx-32"; // criminal from the beginning
 	private static final String BUILDING_52 = "bld-To-52"; // not criminal from the beginning
@@ -72,174 +86,541 @@ public class TroubleshootingComplicated {
 
 	@Before
 	public void setUp() throws Exception {
-//		debugReceiver.clearDebugInfo();
-//		testDriver.deleteAllEntities();
-//		testDriver.resetSolutionState();
-//		testDriver.startRecording();
+		//		debugReceiver.clearDebugInfo();
+		//		testDriver.deleteAllEntities();
+		//		testDriver.resetSolutionState();
+		//		testDriver.startRecording();
 	}
 
 	@After
 	public void tearDown() throws Exception {
-//		testDriver.endTest();
-//		Thread.sleep(5000);
-//		testDriver.stopRecording();
+		//		testDriver.endTest();
+		//		Thread.sleep(5000);
+		//		testDriver.stopRecording();
 	}
-	
+
 	@Test
 	public void Test_Only8_5Hours()  throws SolutionException, GatewayException, RoutingException, InterruptedException {
 		ConceptFactory conceptFactory = testDriver.getConceptFactory(ConceptFactory.class);
-		
+
 		ZonedDateTime absoluteTime = ZonedDateTime.of(2016, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault());
-		
-//		double initialPoint0 = 30.0;
-//		double initialPoint1 = 30.0;
-//
-//		// Organization Initialization
-//		OrganizationInitialization criminalOrganization1 = conceptFactory.createOrganizationInitialization(oneDayAgo);
-//		criminalOrganization1.setType(OrganizationType.CRIMINAL);
-//		criminalOrganization1.setOrganization(testDriver.createRelationship(Organization.class, CRIMINAL_ORGANIZATION));
-//		testDriver.submitEvent(criminalOrganization1);
-//		
-//		OrganizationInitialization commercialOrganization1 = conceptFactory.createOrganizationInitialization(oneDayAgo);
-//		commercialOrganization1.setType(OrganizationType.COMMERCIAL);
-//		commercialOrganization1.setOrganization(testDriver.createRelationship(Organization.class, COMMERCIAL_ORGANIZATION));
-//		testDriver.submitEvent(commercialOrganization1);
-//		
-//		// Organization role Initialization
-//		OrganizationRoleInitialization criminalOrganizationRole1 = conceptFactory.createOrganizationRoleInitialization(oneDayAgo);
-//		criminalOrganizationRole1.setOrganizationalRole(testDriver.createRelationship(OrganizationalRole.class, CRIMINAL_ORGANIZATION_ROLE));
-//		criminalOrganizationRole1.setOrganization(testDriver.createRelationship(Organization.class, CRIMINAL_ORGANIZATION));
-//		testDriver.submitEvent(criminalOrganizationRole1);
-//			
-//		OrganizationRoleInitialization noncriminalOrganizationRole1 = conceptFactory.createOrganizationRoleInitialization(oneDayAgo);
-//		noncriminalOrganizationRole1.setOrganizationalRole(testDriver.createRelationship(OrganizationalRole.class, NON_CRIMINAL_ORGANIZATION_ROLE));
-//		noncriminalOrganizationRole1.setOrganization(testDriver.createRelationship(Organization.class, COMMERCIAL_ORGANIZATION));
-//		testDriver.submitEvent(noncriminalOrganizationRole1);
-//		
-//		Point defaultLocation = SpatioTemporalService.getService().getGeometryFactory().getPoint(initialPoint0, initialPoint1);
-//		
-//		// Person Initialization
-//		PersonInitialization PERSON_82_initialization = conceptFactory.createPersonInitialization(oneDayAgo);
-//		PERSON_82_initialization.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
-//		PERSON_82_initialization.setName("PERSON_82");
-//		PERSON_82_initialization.setProfession("PERSON_82 Profession");
-//		PERSON_82_initialization.setRole(testDriver.createRelationship(OrganizationalRole.class, NON_CRIMINAL_ORGANIZATION_ROLE));
-//		PERSON_82_initialization.setState(PersonState.ACTIVE);
-//		Point PERSON_82_location = defaultLocation;
-//		PERSON_82_initialization.setLocation(PERSON_82_location);
-//		testDriver.submitEvent(PERSON_82_initialization);
-//		
-//		PersonInitialization PERSON_271_initialization = conceptFactory.createPersonInitialization(oneDayAgo);
-//		PERSON_271_initialization.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
-//		PERSON_271_initialization.setName(PERSON_271);
-//		PERSON_271_initialization.setProfession(PERSON_271 + " Profession");
-//		PERSON_271_initialization.setRole(testDriver.createRelationship(OrganizationalRole.class, NON_CRIMINAL_ORGANIZATION_ROLE));
-//		PERSON_271_initialization.setState(PersonState.ACTIVE);
-//		Point PERSON_271_location = defaultLocation;
-//		PERSON_271_initialization.setLocation(PERSON_271_location);
-//		testDriver.submitEvent(PERSON_271_initialization);
-//		
-//		PersonInitialization PERSON_152_initialization = conceptFactory.createPersonInitialization(oneDayAgo);
-//		PERSON_152_initialization.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
-//		PERSON_152_initialization.setName(PERSON_152);
-//		PERSON_152_initialization.setProfession(PERSON_152 + " Profession");
-//		PERSON_152_initialization.setRole(testDriver.createRelationship(OrganizationalRole.class, NON_CRIMINAL_ORGANIZATION_ROLE));
-//		PERSON_152_initialization.setState(PersonState.ACTIVE);
-//		Point PERSON_152_location = defaultLocation;
-//		PERSON_152_initialization.setLocation(PERSON_152_location);
-//		testDriver.submitEvent(PERSON_152_initialization);
-//		
-//		PersonInitialization PERSON_182_initialization = conceptFactory.createPersonInitialization(oneDayAgo);
-//		PERSON_182_initialization.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
-//		PERSON_182_initialization.setName(PERSON_182);
-//		PERSON_182_initialization.setProfession(PERSON_182 + " Profession");
-//		PERSON_182_initialization.setRole(testDriver.createRelationship(OrganizationalRole.class, NON_CRIMINAL_ORGANIZATION_ROLE));
-//		PERSON_182_initialization.setState(PersonState.ACTIVE);
-//		Point PERSON_182_location = defaultLocation;
-//		PERSON_182_initialization.setLocation(PERSON_182_location);
-//		testDriver.submitEvent(PERSON_182_initialization);
-//		
-//		// Building Initialization
-//		BuildingInitialization BANK_18_initialization = conceptFactory.createBuildingInitialization(oneDayAgo);
-//		BANK_18_initialization.setBuilding(testDriver.createRelationship(Building.class, BANK_18));
-//		BANK_18_initialization.setUsageType(BuildingUsageType.BANK_BRANCH);
-//		BANK_18_initialization.setType(BuildingType.WAREHOUSE);
-//		Point BANK_18_location = SpatioTemporalService.getService().getGeometryFactory().getPoint(34.7967, 32.0695);
-//		BANK_18_initialization.setLocation(BANK_18_location);
-//		BANK_18_initialization.setOwner(testDriver.createRelationship(Person.class, "ppl-Txe-82"));
-//		BANK_18_initialization.addTo_organizations(testDriver.createRelationship(Organization.class, CRIMINAL_ORGANIZATION));
-//		testDriver.submitEvent(BANK_18_initialization);
-//
-//		BuildingInitialization BANK_32_initialization = conceptFactory.createBuildingInitialization(oneDayAgo);
-//		BANK_32_initialization.setBuilding(testDriver.createRelationship(Building.class, BANK_32));
-//		BANK_32_initialization.setUsageType(BuildingUsageType.BANK_BRANCH);
-//		BANK_32_initialization.setType(BuildingType.COMMERCIAL);
-//		Point BANK_32_location = SpatioTemporalService.getService().getGeometryFactory().getPoint(34.7947, 32.0915);
-//		BANK_32_initialization.setLocation(BANK_32_location);
-//		BANK_32_initialization.setOwner(testDriver.createRelationship(Person.class, "ppl-Txe-152"));
-//		BANK_32_initialization.addTo_organizations(testDriver.createRelationship(Organization.class, CRIMINAL_ORGANIZATION));
-//		testDriver.submitEvent(BANK_32_initialization);
-//
-//		BuildingInitialization BBANK_52_initialization = conceptFactory.createBuildingInitialization(oneDayAgo);
-//		BBANK_52_initialization.setBuilding(testDriver.createRelationship(Building.class, BANK_52));
-//		BBANK_52_initialization.setUsageType(BuildingUsageType.BANK_BRANCH);
-//		BBANK_52_initialization.setType(BuildingType.APPARTMENT);
-//		Point BANK_52_location = SpatioTemporalService.getService().getGeometryFactory().getPoint(34.7857, 32.0895);
-//		BBANK_52_initialization.setLocation(BANK_52_location);
-//		BBANK_52_initialization.setOwner(testDriver.createRelationship(Person.class, "ppl-To-72"));
-//		BBANK_52_initialization.addTo_organizations(testDriver.createRelationship(Organization.class, COMMERCIAL_ORGANIZATION));
-//		testDriver.submitEvent(BBANK_52_initialization);
-//		
-//		BuildingInitialization BANK_80_initialization = conceptFactory.createBuildingInitialization(oneDayAgo);
-//		BANK_80_initialization.setBuilding(testDriver.createRelationship(Building.class, BANK_80));
-//		BANK_80_initialization.setUsageType(BuildingUsageType.BANK_BRANCH);
-//		BANK_80_initialization.setType(BuildingType.APPARTMENT);
-//		Point BANK_80_location = SpatioTemporalService.getService().getGeometryFactory().getPoint(34.7747, 32.0695);
-//		BANK_80_initialization.setLocation(BANK_80_location);
-//		BANK_80_initialization.setOwner(testDriver.createRelationship(Person.class, "ppl-To-32"));
-//		BANK_80_initialization.addTo_organizations(testDriver.createRelationship(Organization.class, COMMERCIAL_ORGANIZATION));
-//		testDriver.submitEvent(BANK_80_initialization);
-//		
-//		testDriver.waitUntilSolutionIdle();
-		
+
 		List<Relationship<Person>> persons = new ArrayList<Relationship<Person>>();
 		persons.add(testDriver.createRelationship(Person.class, PERSON_82));
 		persons.add(testDriver.createRelationship(Person.class, PERSON_152));
 		persons.add(testDriver.createRelationship(Person.class, PERSON_182));
 		persons.add(testDriver.createRelationship(Person.class, PERSON_271));
-		
+
 		List<Relationship<Building>> buildings = new ArrayList<Relationship<Building>>();
 		buildings.add(testDriver.createRelationship(Building.class, BUILDING_18));
 		buildings.add(testDriver.createRelationship(Building.class, BUILDING_32));
 		buildings.add(testDriver.createRelationship(Building.class, BUILDING_52));
 		buildings.add(testDriver.createRelationship(Building.class, BUILDING_80));
-			
-		CellularCallReport call_at_10 = conceptFactory.createCellularCallReport(absoluteTime.plusMinutes(10));
-		call_at_10.setCaller(testDriver.createRelationship(Person.class, PERSON_82));
-		call_at_10.setCallee(testDriver.createRelationship(Person.class, PERSON_271));
-		call_at_10.set_persons(persons);
-		call_at_10.set_buildings(buildings);
-		testDriver.submitEvent(call_at_10);
-		
-		CellularReport cell_at_15_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(15));
-		cell_at_15_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
-		cell_at_15_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
-		testDriver.submitEvent(cell_at_15_for_person_82_and_building_18);
-		
+
+		//		CellularReport cell_at_20_for_person_271_and_building_80 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(20));
+		//		cell_at_20_for_person_271_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
+		//		cell_at_20_for_person_271_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
+		//		testDriver.submitEvent(cell_at_20_for_person_271_and_building_80);
+
+		// cellular reports for person 152
 		CellularReport cell_at_15_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(15));
 		cell_at_15_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
 		cell_at_15_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
 		testDriver.submitEvent(cell_at_15_for_person_152_and_building_32);
-		
-//		CellularReport cell_at_20_for_person_271_and_building_80 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(20));
-//		cell_at_20_for_person_271_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
-//		cell_at_20_for_person_271_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
-//		testDriver.submitEvent(cell_at_20_for_person_271_and_building_80);
-		
+
+		//cam-T8-ww at 20
+		CellularReport cell_at_20_for_person_152_and_building_cam_T8_ww = conceptFactory.createCellularReport(absoluteTime.plusMinutes(20));
+		cell_at_20_for_person_152_and_building_cam_T8_ww.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_20_for_person_152_and_building_cam_T8_ww.setBuilding((testDriver.createRelationship(Building.class, "cam-T8-ww")));
+		testDriver.submitEvent(cell_at_20_for_person_152_and_building_cam_T8_ww);
+
+		//cam-T4-ne at 30
+		CellularReport cell_at_30_for_person_152_and_building_cam_T4_ne = conceptFactory.createCellularReport(absoluteTime.plusMinutes(30));
+		cell_at_30_for_person_152_and_building_cam_T4_ne.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_30_for_person_152_and_building_cam_T4_ne.setBuilding((testDriver.createRelationship(Building.class, "cam-T4-ne")));
+		testDriver.submitEvent(cell_at_30_for_person_152_and_building_cam_T4_ne);
+
+		//cam-T4-ne at 40
+		CellularReport cell_at_40_for_person_152_and_building_cam_T4_ne = conceptFactory.createCellularReport(absoluteTime.plusMinutes(40));
+		cell_at_40_for_person_152_and_building_cam_T4_ne.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_40_for_person_152_and_building_cam_T4_ne.setBuilding((testDriver.createRelationship(Building.class, "cam-T4-ne")));
+		testDriver.submitEvent(cell_at_40_for_person_152_and_building_cam_T4_ne);
+
+		//cam-T4-ne at 50
+		CellularReport cell_at_50_for_person_152_and_building_cam_T4_ne = conceptFactory.createCellularReport(absoluteTime.plusMinutes(50));
+		cell_at_50_for_person_152_and_building_cam_T4_ne.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_50_for_person_152_and_building_cam_T4_ne.setBuilding((testDriver.createRelationship(Building.class, "cam-T4-ne")));
+		testDriver.submitEvent(cell_at_50_for_person_152_and_building_cam_T4_ne);
+
+		CellularReport cell_at_55_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(55));
+		cell_at_55_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_55_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
+		testDriver.submitEvent(cell_at_55_for_person_152_and_building_32);
+
+		CellularReport cell_at_70_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(70));
+		cell_at_70_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_70_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
+		testDriver.submitEvent(cell_at_70_for_person_152_and_building_32);
+
+		CellularReport cell_at_85_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(85));
+		cell_at_85_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_85_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
+		testDriver.submitEvent(cell_at_85_for_person_152_and_building_32);
+
+		CellularReport cell_at_100_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(100));
+		cell_at_100_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_100_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
+		testDriver.submitEvent(cell_at_100_for_person_152_and_building_32);
+
+		CellularReport cell_at_115_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(115));
+		cell_at_115_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_115_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
+		testDriver.submitEvent(cell_at_115_for_person_152_and_building_32);
+
+		CellularReport cell_at_130_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(130));
+		cell_at_130_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_130_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
+		testDriver.submitEvent(cell_at_130_for_person_152_and_building_32);
+
+		CellularReport cell_at_145_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(145));
+		cell_at_145_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_145_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
+		testDriver.submitEvent(cell_at_145_for_person_152_and_building_32);
+
+		CellularReport cell_at_160_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(160));
+		cell_at_160_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_160_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
+		testDriver.submitEvent(cell_at_160_for_person_152_and_building_32);
+
+		CellularReport cell_at_175_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(175));
+		cell_at_175_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_175_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
+		testDriver.submitEvent(cell_at_175_for_person_152_and_building_32);
+
+		CellularReport cell_at_190_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(190));
+		cell_at_190_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_190_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
+		testDriver.submitEvent(cell_at_190_for_person_152_and_building_32);
+
+		CellularReport cell_at_205_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(205));
+		cell_at_205_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_205_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
+		testDriver.submitEvent(cell_at_205_for_person_152_and_building_32);
+
+		CellularReport cell_at_220_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(220));
+		cell_at_220_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_220_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
+		testDriver.submitEvent(cell_at_220_for_person_152_and_building_32);
+
+		CellularReport cell_at_235_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(235));
+		cell_at_235_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_235_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
+		testDriver.submitEvent(cell_at_235_for_person_152_and_building_32);
+
+		CellularReport cell_at_250_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(250));
+		cell_at_250_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_250_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
+		testDriver.submitEvent(cell_at_250_for_person_152_and_building_32);
+
+		CellularReport cell_at_265_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(265));
+		cell_at_265_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_265_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
+		testDriver.submitEvent(cell_at_265_for_person_152_and_building_32);
+
+		CellularReport cell_at_280_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(280));
+		cell_at_280_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_280_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
+		testDriver.submitEvent(cell_at_280_for_person_152_and_building_32);
+
+		CellularReport cell_at_295_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(295));
+		cell_at_295_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_295_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
+		testDriver.submitEvent(cell_at_295_for_person_152_and_building_32);
+
+		CellularReport cell_at_310_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(310));
+		cell_at_310_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_310_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
+		testDriver.submitEvent(cell_at_310_for_person_152_and_building_32);
+
+		CellularReport cell_at_325_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(325));
+		cell_at_325_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_325_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
+		testDriver.submitEvent(cell_at_325_for_person_152_and_building_32);
+
+		CellularReport cell_at_340_for_person_152_and_building_32 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(340));
+		cell_at_340_for_person_152_and_building_32.setPerson(testDriver.createRelationship(Person.class, PERSON_152));
+		cell_at_340_for_person_152_and_building_32.setBuilding((testDriver.createRelationship(Building.class, BUILDING_32)));
+		testDriver.submitEvent(cell_at_340_for_person_152_and_building_32);
+
+		// cellular reports for person 82
+
+		//cam-T5-ss at 15
+		CellularReport cell_at_10_for_person_82_at_building_cam_T5_ss = conceptFactory.createCellularReport(absoluteTime.plusMinutes(15));
+		cell_at_10_for_person_82_at_building_cam_T5_ss.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_10_for_person_82_at_building_cam_T5_ss.setBuilding((testDriver.createRelationship(Building.class, "cam-T5-ss")));
+		testDriver.submitEvent(cell_at_10_for_person_82_at_building_cam_T5_ss);		
+
+		CellularReport cell_at_15_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(15));
+		cell_at_15_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_15_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
+		testDriver.submitEvent(cell_at_15_for_person_82_and_building_18);
+
+		//cam-T3-ee at 20
+		CellularReport cell_at_20_for_person_82_at_building_cam_T3_ee = conceptFactory.createCellularReport(absoluteTime.plusMinutes(20));
+		cell_at_20_for_person_82_at_building_cam_T3_ee.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_20_for_person_82_at_building_cam_T3_ee.setBuilding((testDriver.createRelationship(Building.class, "cam-T3-ee")));
+		testDriver.submitEvent(cell_at_20_for_person_82_at_building_cam_T3_ee);	
+
+		//cam-T3-ee at 30
+		CellularReport cell_at_30_for_person_82_at_building_cam_T3_ee = conceptFactory.createCellularReport(absoluteTime.plusMinutes(30));
+		cell_at_30_for_person_82_at_building_cam_T3_ee.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_30_for_person_82_at_building_cam_T3_ee.setBuilding((testDriver.createRelationship(Building.class, "cam-T3-ee")));
+		testDriver.submitEvent(cell_at_30_for_person_82_at_building_cam_T3_ee);
+
+		//cam-T4-ne at 40
+		CellularReport cell_at_40_for_person_82_at_building_cam_T4_ne = conceptFactory.createCellularReport(absoluteTime.plusMinutes(40));
+		cell_at_40_for_person_82_at_building_cam_T4_ne.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_40_for_person_82_at_building_cam_T4_ne.setBuilding((testDriver.createRelationship(Building.class, "cam-T4-ne")));
+		testDriver.submitEvent(cell_at_40_for_person_82_at_building_cam_T4_ne);
+
+		CellularReport cell_at_55_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(55));
+		cell_at_55_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_55_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
+		testDriver.submitEvent(cell_at_55_for_person_82_and_building_18);
+
+		CellularReport cell_at_70_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(70));
+		cell_at_70_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_70_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
+		testDriver.submitEvent(cell_at_70_for_person_82_and_building_18);
+
+		CellularReport cell_at_85_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(85));
+		cell_at_85_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_85_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
+		testDriver.submitEvent(cell_at_85_for_person_82_and_building_18);
+
+		CellularReport cell_at_100_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(100));
+		cell_at_100_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_100_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
+		testDriver.submitEvent(cell_at_100_for_person_82_and_building_18);
+
+		CellularReport cell_at_115_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(115));
+		cell_at_115_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_115_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
+		testDriver.submitEvent(cell_at_115_for_person_82_and_building_18);
+
+		CellularReport cell_at_130_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(130));
+		cell_at_130_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_130_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
+		testDriver.submitEvent(cell_at_130_for_person_82_and_building_18);
+
+		CellularReport cell_at_145_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(145));
+		cell_at_145_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_145_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
+		testDriver.submitEvent(cell_at_145_for_person_82_and_building_18);
+
+		CellularReport cell_at_160_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(160));
+		cell_at_160_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_160_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
+		testDriver.submitEvent(cell_at_160_for_person_82_and_building_18);
+
+		CellularReport cell_at_175_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(175));
+		cell_at_175_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_175_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
+		testDriver.submitEvent(cell_at_175_for_person_82_and_building_18);
+
+		CellularReport cell_at_190_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(190));
+		cell_at_190_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_190_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
+		testDriver.submitEvent(cell_at_190_for_person_82_and_building_18);
+
+		CellularReport cell_at_205_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(205));
+		cell_at_205_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_205_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
+		testDriver.submitEvent(cell_at_205_for_person_82_and_building_18);
+
+		CellularReport cell_at_220_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(220));
+		cell_at_220_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_220_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
+		testDriver.submitEvent(cell_at_220_for_person_82_and_building_18);
+
+		CellularReport cell_at_235_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(235));
+		cell_at_235_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_235_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
+		testDriver.submitEvent(cell_at_235_for_person_82_and_building_18);
+
+		CellularReport cell_at_250_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(250));
+		cell_at_250_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_250_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
+		testDriver.submitEvent(cell_at_250_for_person_82_and_building_18);
+
+		CellularReport cell_at_265_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(265));
+		cell_at_265_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_265_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
+		testDriver.submitEvent(cell_at_265_for_person_82_and_building_18);
+
+		CellularReport cell_at_280_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(280));
+		cell_at_280_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_280_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
+		testDriver.submitEvent(cell_at_280_for_person_82_and_building_18);
+
+		CellularReport cell_at_295_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(295));
+		cell_at_295_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_295_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
+		testDriver.submitEvent(cell_at_295_for_person_82_and_building_18);
+
+		CellularReport cell_at_310_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(310));
+		cell_at_310_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_310_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
+		testDriver.submitEvent(cell_at_310_for_person_82_and_building_18);
+
+		CellularReport cell_at_325_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(325));
+		cell_at_325_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_325_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
+		testDriver.submitEvent(cell_at_325_for_person_82_and_building_18);
+
+		CellularReport cell_at_340_for_person_82_and_building_18 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(340));
+		cell_at_340_for_person_82_and_building_18.setPerson(testDriver.createRelationship(Person.class, PERSON_82));
+		cell_at_340_for_person_82_and_building_18.setBuilding((testDriver.createRelationship(Building.class, BUILDING_18)));
+		testDriver.submitEvent(cell_at_340_for_person_82_and_building_18);
+
+		// cellular reports for person 271
+
+		//cam-T8-ww at 10
+		CellularReport cell_at_10_for_person_271_and_building_cam_T8_ww = conceptFactory.createCellularReport(absoluteTime.plusMinutes(10));
+		cell_at_10_for_person_271_and_building_cam_T8_ww.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
+		cell_at_10_for_person_271_and_building_cam_T8_ww.setBuilding((testDriver.createRelationship(Building.class, "cam-T8-ww")));
+		testDriver.submitEvent(cell_at_10_for_person_271_and_building_cam_T8_ww);
+
+		//cam-T4-ne at 20
+		CellularReport cell_at_20_for_person_271_and_building_cam_T4_ne = conceptFactory.createCellularReport(absoluteTime.plusMinutes(20));
+		cell_at_20_for_person_271_and_building_cam_T4_ne.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
+		cell_at_20_for_person_271_and_building_cam_T4_ne.setBuilding((testDriver.createRelationship(Building.class, "cam-T4-ne")));
+		testDriver.submitEvent(cell_at_20_for_person_271_and_building_cam_T4_ne);
+
+		//cam-T4-ne at 30
+		CellularReport cell_at_30_for_person_271_and_building_cam_T4_ne = conceptFactory.createCellularReport(absoluteTime.plusMinutes(30));
+		cell_at_30_for_person_271_and_building_cam_T4_ne.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
+		cell_at_30_for_person_271_and_building_cam_T4_ne.setBuilding((testDriver.createRelationship(Building.class, "cam-T4-ne")));
+		testDriver.submitEvent(cell_at_30_for_person_271_and_building_cam_T4_ne);
+
+		//cam-T4-ne at 40
+		CellularReport cell_at_40_for_person_271_and_building_cam_T4_ne = conceptFactory.createCellularReport(absoluteTime.plusMinutes(40));
+		cell_at_40_for_person_271_and_building_cam_T4_ne.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
+		cell_at_40_for_person_271_and_building_cam_T4_ne.setBuilding((testDriver.createRelationship(Building.class, "cam-T4-ne")));
+		testDriver.submitEvent(cell_at_40_for_person_271_and_building_cam_T4_ne);
+
+		//bld-To-74 at 45
+		String building_74 = "bld-To-74";
+
+		CellularReport cell_at_45_for_person_271_and_building_74 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(45));
+		cell_at_45_for_person_271_and_building_74.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
+		cell_at_45_for_person_271_and_building_74.setBuilding((testDriver.createRelationship(Building.class, building_74)));
+		testDriver.submitEvent(cell_at_45_for_person_271_and_building_74);
+
+		// entering BUILDING_80
+		CellularReport cell_at_50_for_person_271_and_building_80 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(50));
+		cell_at_50_for_person_271_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
+		cell_at_50_for_person_271_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
+		testDriver.submitEvent(cell_at_50_for_person_271_and_building_80);
+
+		CellularReport cell_at_70_for_person_271_and_building_80 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(70));
+		cell_at_70_for_person_271_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
+		cell_at_70_for_person_271_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
+		testDriver.submitEvent(cell_at_70_for_person_271_and_building_80);
+
+		CellularReport cell_at_75_for_person_271_and_building_80 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(75));
+		cell_at_75_for_person_271_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
+		cell_at_75_for_person_271_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
+		testDriver.submitEvent(cell_at_75_for_person_271_and_building_80);
+
+		CellularReport cell_at_80_for_person_271_and_building_80 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(80));
+		cell_at_80_for_person_271_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
+		cell_at_80_for_person_271_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
+		testDriver.submitEvent(cell_at_80_for_person_271_and_building_80);
+
+		CellularReport cell_at_100_for_person_271_and_building_80 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(100));
+		cell_at_100_for_person_271_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
+		cell_at_100_for_person_271_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
+		testDriver.submitEvent(cell_at_100_for_person_271_and_building_80);
+
+		CellularReport cell_at_120_for_person_271_and_building_80 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(120));
+		cell_at_120_for_person_271_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
+		cell_at_120_for_person_271_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
+		testDriver.submitEvent(cell_at_120_for_person_271_and_building_80);
+
+		CellularReport cell_at_140_for_person_271_and_building_80 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(140));
+		cell_at_140_for_person_271_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
+		cell_at_140_for_person_271_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
+		testDriver.submitEvent(cell_at_140_for_person_271_and_building_80);
+
+		// entering BUILDING_52
+		CellularReport cell_at_200_for_person_271_and_building_52 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(200));
+		cell_at_200_for_person_271_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
+		cell_at_200_for_person_271_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
+		testDriver.submitEvent(cell_at_200_for_person_271_and_building_52);
+
+		CellularReport cell_at_220_for_person_271_and_building_52 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(220));
+		cell_at_220_for_person_271_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
+		cell_at_220_for_person_271_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
+		testDriver.submitEvent(cell_at_220_for_person_271_and_building_52);
+
+		CellularReport cell_at_240_for_person_271_and_building_52 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(240));
+		cell_at_240_for_person_271_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
+		cell_at_240_for_person_271_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
+		testDriver.submitEvent(cell_at_240_for_person_271_and_building_52);
+
+		CellularReport cell_at_300_for_person_271_and_building_52 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(300));
+		cell_at_300_for_person_271_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
+		cell_at_300_for_person_271_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
+		testDriver.submitEvent(cell_at_300_for_person_271_and_building_52);
+
+		CellularReport cell_at_400_for_person_271_and_building_52 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(400));
+		cell_at_400_for_person_271_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
+		cell_at_400_for_person_271_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
+		testDriver.submitEvent(cell_at_400_for_person_271_and_building_52);
+
+		CellularReport cell_at_600_for_person_271_and_building_52 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(600));
+		cell_at_600_for_person_271_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
+		cell_at_600_for_person_271_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
+		testDriver.submitEvent(cell_at_600_for_person_271_and_building_52);
+
+		CellularReport cell_at_800_for_person_271_and_building_52 = conceptFactory.createCellularReport(absoluteTime.plusMinutes(800));
+		cell_at_800_for_person_271_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_271));
+		cell_at_800_for_person_271_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
+		testDriver.submitEvent(cell_at_800_for_person_271_and_building_52);
+
+
+		// cellular reports for person 182
+
+		//cam-T4-ne at 30
+
+		CellularReport cell_at_30_for_person_182_and_building_cam_T4_ne = conceptFactory.createCellularReport(absoluteTime.plusMinutes(30));
+		cell_at_30_for_person_182_and_building_cam_T4_ne.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
+		cell_at_30_for_person_182_and_building_cam_T4_ne.setBuilding((testDriver.createRelationship(Building.class, "cam-T4-ne")));
+		testDriver.submitEvent(cell_at_30_for_person_182_and_building_cam_T4_ne);
+
+		//cam-T6-nn at 40
+		CellularReport cell_at_40_for_person_182_and_building_cam_T6_nn= conceptFactory.createCellularReport(absoluteTime.plusMinutes(40));
+		cell_at_40_for_person_182_and_building_cam_T6_nn.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
+		cell_at_40_for_person_182_and_building_cam_T6_nn.setBuilding((testDriver.createRelationship(Building.class, "cam-T6-nn")));
+		testDriver.submitEvent(cell_at_40_for_person_182_and_building_cam_T6_nn);
+
+		//cam-T1-cc at 50
+		CellularReport cell_at_50_for_person_182_and_building_cam_T1_cc= conceptFactory.createCellularReport(absoluteTime.plusMinutes(50));
+		cell_at_50_for_person_182_and_building_cam_T1_cc.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
+		cell_at_50_for_person_182_and_building_cam_T1_cc.setBuilding((testDriver.createRelationship(Building.class, "cam-T1-cc")));
+		testDriver.submitEvent(cell_at_50_for_person_182_and_building_cam_T1_cc);
+
+		//cam-T8-ww at 60
+		CellularReport cell_at_60_for_person_182_and_building_cam_T8_ww= conceptFactory.createCellularReport(absoluteTime.plusMinutes(60));
+		cell_at_60_for_person_182_and_building_cam_T8_ww.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
+		cell_at_60_for_person_182_and_building_cam_T8_ww.setBuilding((testDriver.createRelationship(Building.class, "cam-T8-ww")));
+		testDriver.submitEvent(cell_at_60_for_person_182_and_building_cam_T8_ww);
+
+		// entered BUILDING_80
+		CellularReport cell_at_80_for_person_182_and_building_80= conceptFactory.createCellularReport(absoluteTime.plusMinutes(80));
+		cell_at_80_for_person_182_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
+		cell_at_80_for_person_182_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
+		testDriver.submitEvent(cell_at_80_for_person_182_and_building_80);
+
+		CellularReport cell_at_100_for_person_182_and_building_80= conceptFactory.createCellularReport(absoluteTime.plusMinutes(100));
+		cell_at_100_for_person_182_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
+		cell_at_100_for_person_182_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
+		testDriver.submitEvent(cell_at_100_for_person_182_and_building_80);
+
+		CellularReport cell_at_120_for_person_182_and_building_80= conceptFactory.createCellularReport(absoluteTime.plusMinutes(120));
+		cell_at_120_for_person_182_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
+		cell_at_120_for_person_182_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
+		testDriver.submitEvent(cell_at_120_for_person_182_and_building_80);
+
+		CellularReport cell_at_140_for_person_182_and_building_80= conceptFactory.createCellularReport(absoluteTime.plusMinutes(140));
+		cell_at_140_for_person_182_and_building_80.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
+		cell_at_140_for_person_182_and_building_80.setBuilding((testDriver.createRelationship(Building.class, BUILDING_80)));
+		testDriver.submitEvent(cell_at_140_for_person_182_and_building_80);
+
+		//entered BUILDING_52
+		CellularReport cell_at_200_for_person_182_and_building_52= conceptFactory.createCellularReport(absoluteTime.plusMinutes(200));
+		cell_at_200_for_person_182_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
+		cell_at_200_for_person_182_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
+		testDriver.submitEvent(cell_at_200_for_person_182_and_building_52);
+
+		CellularReport cell_at_220_for_person_182_and_building_52= conceptFactory.createCellularReport(absoluteTime.plusMinutes(220));
+		cell_at_220_for_person_182_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
+		cell_at_220_for_person_182_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
+		testDriver.submitEvent(cell_at_220_for_person_182_and_building_52);
+
+		CellularReport cell_at_240_for_person_182_and_building_52= conceptFactory.createCellularReport(absoluteTime.plusMinutes(240));
+		cell_at_240_for_person_182_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
+		cell_at_240_for_person_182_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
+		testDriver.submitEvent(cell_at_240_for_person_182_and_building_52);
+
+		CellularReport cell_at_300_for_person_182_and_building_52= conceptFactory.createCellularReport(absoluteTime.plusMinutes(300));
+		cell_at_300_for_person_182_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
+		cell_at_300_for_person_182_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
+		testDriver.submitEvent(cell_at_300_for_person_182_and_building_52);
+
+		CellularReport cell_at_400_for_person_182_and_building_52= conceptFactory.createCellularReport(absoluteTime.plusMinutes(400));
+		cell_at_400_for_person_182_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
+		cell_at_400_for_person_182_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
+		testDriver.submitEvent(cell_at_400_for_person_182_and_building_52);
+
+		CellularReport cell_at_600_for_person_182_and_building_52= conceptFactory.createCellularReport(absoluteTime.plusMinutes(600));
+		cell_at_600_for_person_182_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
+		cell_at_600_for_person_182_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
+		testDriver.submitEvent(cell_at_600_for_person_182_and_building_52);
+
+		CellularReport cell_at_800_for_person_182_and_building_52= conceptFactory.createCellularReport(absoluteTime.plusMinutes(800));
+		cell_at_800_for_person_182_and_building_52.setPerson(testDriver.createRelationship(Person.class, PERSON_182));
+		cell_at_800_for_person_182_and_building_52.setBuilding((testDriver.createRelationship(Building.class, BUILDING_52)));
+		testDriver.submitEvent(cell_at_800_for_person_182_and_building_52);
+
+		// cellular calls
+		CellularCallReport call_at_10_PERSON_82_PERSON_271 = conceptFactory.createCellularCallReport(absoluteTime.plusMinutes(10));
+		call_at_10_PERSON_82_PERSON_271.setCaller(testDriver.createRelationship(Person.class, PERSON_82));
+		call_at_10_PERSON_82_PERSON_271.setCallee(testDriver.createRelationship(Person.class, PERSON_271));
+		call_at_10_PERSON_82_PERSON_271.set_persons(persons);
+		call_at_10_PERSON_82_PERSON_271.set_buildings(buildings);
+		testDriver.submitEvent(call_at_10_PERSON_82_PERSON_271);
+
+		CellularCallReport call_at_45_PERSON_82_PERSON_271 = conceptFactory.createCellularCallReport(absoluteTime.plusMinutes(45));
+		call_at_45_PERSON_82_PERSON_271.setCaller(testDriver.createRelationship(Person.class, PERSON_82));
+		call_at_45_PERSON_82_PERSON_271.setCallee(testDriver.createRelationship(Person.class, PERSON_271));
+		call_at_45_PERSON_82_PERSON_271.set_persons(persons);
+		call_at_45_PERSON_82_PERSON_271.set_buildings(buildings);
+		testDriver.submitEvent(call_at_45_PERSON_82_PERSON_271);
+
+		CellularCallReport call_at_100_PERSON_82_PERSON_271 = conceptFactory.createCellularCallReport(absoluteTime.plusMinutes(100));
+		call_at_100_PERSON_82_PERSON_271.setCaller(testDriver.createRelationship(Person.class, PERSON_82));
+		call_at_100_PERSON_82_PERSON_271.setCallee(testDriver.createRelationship(Person.class, PERSON_271));
+		call_at_100_PERSON_82_PERSON_271.set_persons(persons);
+		call_at_100_PERSON_82_PERSON_271.set_buildings(buildings);
+		testDriver.submitEvent(call_at_100_PERSON_82_PERSON_271);
+
+		CellularCallReport call_at_200_PERSON_82_PERSON_271 = conceptFactory.createCellularCallReport(absoluteTime.plusMinutes(200));
+		call_at_200_PERSON_82_PERSON_271.setCaller(testDriver.createRelationship(Person.class, PERSON_82));
+		call_at_200_PERSON_82_PERSON_271.setCallee(testDriver.createRelationship(Person.class, PERSON_271));
+		call_at_200_PERSON_82_PERSON_271.set_persons(persons);
+		call_at_200_PERSON_82_PERSON_271.set_buildings(buildings);
+		testDriver.submitEvent(call_at_200_PERSON_82_PERSON_271);
+
+		CellularCallReport call_at_250_PERSON_152_PERSON_182 = conceptFactory.createCellularCallReport(absoluteTime.plusMinutes(250));
+		call_at_250_PERSON_152_PERSON_182.setCaller(testDriver.createRelationship(Person.class, PERSON_152));
+		call_at_250_PERSON_152_PERSON_182.setCallee(testDriver.createRelationship(Person.class, PERSON_182));
+		call_at_250_PERSON_152_PERSON_182.set_persons(persons);
+		call_at_250_PERSON_152_PERSON_182.set_buildings(buildings);
+		testDriver.submitEvent(call_at_250_PERSON_152_PERSON_182);
+
+		CellularCallReport call_at_700_PERSON_152_PERSON_182 = conceptFactory.createCellularCallReport(absoluteTime.plusMinutes(700));
+		call_at_700_PERSON_152_PERSON_182.setCaller(testDriver.createRelationship(Person.class, PERSON_152));
+		call_at_700_PERSON_152_PERSON_182.setCallee(testDriver.createRelationship(Person.class, PERSON_182));
+		call_at_700_PERSON_152_PERSON_182.set_persons(persons);
+		call_at_700_PERSON_152_PERSON_182.set_buildings(buildings);
+		testDriver.submitEvent(call_at_700_PERSON_152_PERSON_182);
+
 		testDriver.waitUntilSolutionIdle();
-		
+
 		// check
-		
+
 		Person person_82 = testDriver.fetchEntity(Person.class, PERSON_82);
 		Assert.assertNotNull(person_82);
 		Relationship<OrganizationalRole> person_82_role_relation = person_82.getRole();
@@ -249,7 +630,7 @@ public class TroubleshootingComplicated {
 		Organization person_82_organization = testDriver.fetchEntity(Organization.class, person_82_organization_role.getOrganization().getKey());
 		Assert.assertNotNull(person_82_organization);
 		Assert.assertTrue(OrganizationType.CRIMINAL == person_82_organization.getType());
-		
+
 		Person person_152 = testDriver.fetchEntity(Person.class, PERSON_152);
 		Assert.assertNotNull(person_152);
 		Relationship<OrganizationalRole> person_152_relation = person_152.getRole();
@@ -259,228 +640,37 @@ public class TroubleshootingComplicated {
 		Organization person_152_organization = testDriver.fetchEntity(Organization.class, person_152_organization_role.getOrganization().getKey());
 		Assert.assertNotNull(person_152_organization);
 		Assert.assertTrue(OrganizationType.CRIMINAL == person_152_organization.getType());
-		
-		// check
-		
-		
-		
-		
+
+		Person person_271 = testDriver.fetchEntity(Person.class, PERSON_271);
+		Assert.assertNotNull(person_271);
+		Relationship<OrganizationalRole> person_271_relation = person_271.getRole();
+		Assert.assertNotNull(person_271_relation);
+		OrganizationalRole person_271_organization_role = testDriver.fetchEntity(OrganizationalRole.class, person_271_relation.getKey());
+		Assert.assertNotNull(person_271_organization_role);
+		Organization person_271_organization = testDriver.fetchEntity(Organization.class, person_271_organization_role.getOrganization().getKey());
+		Assert.assertNotNull(person_271_organization);
+		Assert.assertTrue(OrganizationType.CRIMINAL == person_271_organization.getType());
+
+		Person person_182 = testDriver.fetchEntity(Person.class, PERSON_182);
+		Assert.assertNotNull(person_182);
+		Relationship<OrganizationalRole> person_182_relation = person_182.getRole();
+		Assert.assertNotNull(person_182_relation);
+		OrganizationalRole person_182_organization_role = testDriver.fetchEntity(OrganizationalRole.class, person_182_relation.getKey());
+		Assert.assertNotNull(person_182_organization_role);
+		Organization person_182_organization = testDriver.fetchEntity(Organization.class, person_182_organization_role.getOrganization().getKey());
+		Assert.assertNotNull(person_182_organization);
+		Assert.assertTrue(OrganizationType.CRIMINAL == person_182_organization.getType());
+
+		// check		
+
 		DebugInfo[] debugInfos = debugReceiver.getDebugInfo("PersonRuleAgent");
-		
+
 		for (DebugInfo debugInfo : debugInfos) {
 			System.out.println( "DebugInfo: " + debugInfo );
-			
+
 			Event event = debugInfo.getEvent();
 			String eventXml = testDriver.getModelSerializer().serializeEvent(DataFormat.TYPED_XML, event );
 			System.out.println( "Event as XML: " + eventXml );
 		}
-	}
-	
-	
-//	
-//	@Test
-//	public void Test_Only7_5Hours()  throws SolutionException, GatewayException, RoutingException, InterruptedException {
-//		ConceptFactory conceptFactory = testDriver.getConceptFactory(ConceptFactory.class);
-//		ZonedDateTime now = ZonedDateTime.now();
-//		ZonedDateTime oneDayAgo = now.minusDays(1);
-//		
-//		double initialPoint0 = 34.781768;
-//		double initialPoint1 = 32.085300;
-//
-//		// Organization Initialization
-//		OrganizationInitialization criminalOrganization1 = conceptFactory.createOrganizationInitialization(oneDayAgo);
-//		criminalOrganization1.setType(OrganizationType.CRIMINAL);
-//		criminalOrganization1.setOrganization(testDriver.createRelationship(Organization.class, CRIMINAL_ORGANIZATION));
-//		
-//		OrganizationInitialization commercialOrganization1 = conceptFactory.createOrganizationInitialization(oneDayAgo);
-//		commercialOrganization1.setType(OrganizationType.COMMERCIAL);
-//		commercialOrganization1.setOrganization(testDriver.createRelationship(Organization.class, COMMERCIAL_ORGANIZATION));
-//		
-//		// Organization role Initialization		
-//		OrganizationRoleInitialization criminalOrganizationRole1 = conceptFactory.createOrganizationRoleInitialization(oneDayAgo);
-//		criminalOrganizationRole1.setOrganizationalRole(testDriver.createRelationship(OrganizationalRole.class, CRIMINAL_ORGANIZATION_ROLE));
-//		criminalOrganizationRole1.setOrganization(testDriver.createRelationship(Organization.class, CRIMINAL_ORGANIZATION));
-//			
-//		OrganizationRoleInitialization commercialOrganizationRole1 = conceptFactory.createOrganizationRoleInitialization(oneDayAgo);
-//		commercialOrganizationRole1.setOrganizationalRole(testDriver.createRelationship(OrganizationalRole.class, NON_CRIMINAL_ORGANIZATION_ROLE));
-//		commercialOrganizationRole1.setOrganization(testDriver.createRelationship(Organization.class, COMMERCIAL_ORGANIZATION));
-//		
-//		// Person Initialization
-//		PersonInitialization criminalPersonInitialization1 = conceptFactory.createPersonInitialization(oneDayAgo);
-//		criminalPersonInitialization1.setPerson(testDriver.createRelationship(Person.class, POTENTIAL_COLLABORATOR));
-//		criminalPersonInitialization1.setName("a1");
-//		criminalPersonInitialization1.setProfession("Potential");
-//		criminalPersonInitialization1.setRole(testDriver.createRelationship(OrganizationalRole.class, CRIMINAL_ORGANIZATION_ROLE));
-//		criminalPersonInitialization1.setState(PersonState.ACTIVE);
-//		Point suspectLocation = SpatioTemporalService.getService().getGeometryFactory().getPoint(initialPoint0 + Math.random(), initialPoint1 + Math.random());
-//		criminalPersonInitialization1.setLocation(suspectLocation);
-//		
-//		PersonInitialization nonCriminalPersonInitialization1 = conceptFactory.createPersonInitialization(oneDayAgo);
-//		nonCriminalPersonInitialization1.setPerson(testDriver.createRelationship(Person.class, SUSPECT_PERSON));
-//		nonCriminalPersonInitialization1.setName("b2");
-//		nonCriminalPersonInitialization1.setProfession("Suspect");
-//		nonCriminalPersonInitialization1.setRole(testDriver.createRelationship(OrganizationalRole.class, NON_CRIMINAL_ORGANIZATION_ROLE));
-//		nonCriminalPersonInitialization1.setState(PersonState.ACTIVE);
-//		Point potentialCollaboratorLocation = SpatioTemporalService.getService().getGeometryFactory().getPoint(initialPoint0 + Math.random(), initialPoint1 + Math.random());
-//		nonCriminalPersonInitialization1.setLocation(potentialCollaboratorLocation);
-//	
-//		// Create Entities - Submit Events
-//		testDriver.submitEvent(criminalOrganization1);
-//		testDriver.submitEvent(commercialOrganization1);
-//		testDriver.submitEvent(criminalOrganizationRole1);
-//		testDriver.submitEvent(commercialOrganizationRole1);
-//		testDriver.submitEvent(criminalPersonInitialization1);
-//		testDriver.submitEvent(nonCriminalPersonInitialization1);
-//		testDriver.waitUntilSolutionIdle();
-//		
-//		Person suspectPerson1 = testDriver.fetchEntity(Person.class, SUSPECT_PERSON);
-//		Person potentialCollaborator = testDriver.fetchEntity(Person.class, POTENTIAL_COLLABORATOR);
-//		MovingGeometry potentialCollaboratorMovingGeometry = potentialCollaborator.getLocation();
-//		MovingGeometry suspectPersonMovingGeometry = suspectPerson1.getLocation();
-//		
-//		Point nextLocation = SpatioTemporalService.getService().getGeometryFactory().getPoint(initialPoint0 + Math.random(), initialPoint1 + Math.random());
-//		potentialCollaboratorMovingGeometry.setGeometryAtTime(nextLocation, oneDayAgo.plusMinutes(100));
-//		suspectPersonMovingGeometry.setGeometryAtTime(nextLocation, oneDayAgo.plusMinutes(100));
-//		
-//		nextLocation = SpatioTemporalService.getService().getGeometryFactory().getPoint(initialPoint0 + Math.random(), initialPoint1 + Math.random());
-//		potentialCollaboratorMovingGeometry.setGeometryAtTime(nextLocation, oneDayAgo.plusMinutes(110));
-//		suspectPersonMovingGeometry.setGeometryAtTime(nextLocation, oneDayAgo.plusMinutes(110));
-//		
-//		nextLocation = SpatioTemporalService.getService().getGeometryFactory().getPoint(initialPoint0 + Math.random(), initialPoint1 + Math.random());
-//		potentialCollaboratorMovingGeometry.setGeometryAtTime(nextLocation, oneDayAgo.plusMinutes(200));
-//		suspectPersonMovingGeometry.setGeometryAtTime(nextLocation, oneDayAgo.plusMinutes(200));
-//		
-//		nextLocation = SpatioTemporalService.getService().getGeometryFactory().getPoint(initialPoint0 + Math.random(), initialPoint1 + Math.random());
-//		potentialCollaboratorMovingGeometry.setGeometryAtTime(nextLocation, oneDayAgo.plusMinutes(300));
-//		suspectPersonMovingGeometry.setGeometryAtTime(nextLocation, oneDayAgo.plusMinutes(300));
-//		
-//		nextLocation = SpatioTemporalService.getService().getGeometryFactory().getPoint(initialPoint0 + Math.random(), initialPoint1 + Math.random());
-//		potentialCollaboratorMovingGeometry.setGeometryAtTime(nextLocation, oneDayAgo.plusMinutes(550));
-//		suspectPersonMovingGeometry.setGeometryAtTime(nextLocation, oneDayAgo.plusMinutes(550));
-//		
-//		testDriver.updateEntity(suspectPerson1);
-//		testDriver.updateEntity(potentialCollaborator);
-//		
-//		DwellingWithCriminalReport dwellingWithCriminalReport = conceptFactory.createDwellingWithCriminalReport(oneDayAgo.plusMinutes(600));
-//		dwellingWithCriminalReport.setNearbyDistanceInMeters(10);
-//		dwellingWithCriminalReport.setSuspect(testDriver.createRelationship(Person.class, SUSPECT_PERSON));
-//		dwellingWithCriminalReport.setPotentialCollaborator(testDriver.createRelationship(Person.class, POTENTIAL_COLLABORATOR));
-//		
-//		testDriver.submitEvent(dwellingWithCriminalReport);
-//		testDriver.waitUntilSolutionIdle();
-//		
-//		DebugInfo[] debugInfos = debugReceiver.getDebugInfo("PersonRuleAgent");
-//		
-//		for (DebugInfo debugInfo : debugInfos) {
-//			System.out.println( "DebugInfo: " + debugInfo );
-//			
-//			Event event = debugInfo.getEvent();
-//			String eventXml = testDriver.getModelSerializer().serializeEvent(DataFormat.TYPED_XML, event );
-//			System.out.println( "Event as XML: " + eventXml );
-//		}
-//	}
-//	
-//
-//	@Test
-//	public void TestShouldSeeAlert()  throws SolutionException, GatewayException, RoutingException, InterruptedException {
-//		ConceptFactory conceptFactory = testDriver.getConceptFactory(ConceptFactory.class);
-//		ZonedDateTime now = ZonedDateTime.now();
-//		ZonedDateTime oneDayAgo = now.minusDays(1);
-//		
-//		double initialPoint0 = 34.781768;
-//		double initialPoint1 = 32.085300;
-//
-//		// Organization Initialization
-//		OrganizationInitialization criminalOrganization1 = conceptFactory.createOrganizationInitialization(oneDayAgo);
-//		criminalOrganization1.setType(OrganizationType.CRIMINAL);
-//		criminalOrganization1.setOrganization(testDriver.createRelationship(Organization.class, CRIMINAL_ORGANIZATION));
-//		
-//		OrganizationInitialization commercialOrganization1 = conceptFactory.createOrganizationInitialization(oneDayAgo);
-//		commercialOrganization1.setType(OrganizationType.COMMERCIAL);
-//		commercialOrganization1.setOrganization(testDriver.createRelationship(Organization.class, COMMERCIAL_ORGANIZATION));
-//		
-//		// Organization role Initialization		
-//		OrganizationRoleInitialization criminalOrganizationRole1 = conceptFactory.createOrganizationRoleInitialization(oneDayAgo);
-//		criminalOrganizationRole1.setOrganizationalRole(testDriver.createRelationship(OrganizationalRole.class, CRIMINAL_ORGANIZATION_ROLE));
-//		criminalOrganizationRole1.setOrganization(testDriver.createRelationship(Organization.class, CRIMINAL_ORGANIZATION));
-//			
-//		OrganizationRoleInitialization commercialOrganizationRole1 = conceptFactory.createOrganizationRoleInitialization(oneDayAgo);
-//		commercialOrganizationRole1.setOrganizationalRole(testDriver.createRelationship(OrganizationalRole.class, NON_CRIMINAL_ORGANIZATION_ROLE));
-//		commercialOrganizationRole1.setOrganization(testDriver.createRelationship(Organization.class, COMMERCIAL_ORGANIZATION));
-//		
-//		// Person Initialization
-//		PersonInitialization criminalPersonInitialization1 = conceptFactory.createPersonInitialization(oneDayAgo);
-//		criminalPersonInitialization1.setPerson(testDriver.createRelationship(Person.class, POTENTIAL_COLLABORATOR));
-//		criminalPersonInitialization1.setName("a1");
-//		criminalPersonInitialization1.setProfession("Potential");
-//		criminalPersonInitialization1.setRole(testDriver.createRelationship(OrganizationalRole.class, CRIMINAL_ORGANIZATION_ROLE));
-//		criminalPersonInitialization1.setState(PersonState.ACTIVE);
-//		Point suspectLocation = SpatioTemporalService.getService().getGeometryFactory().getPoint(initialPoint0 + Math.random(), initialPoint1 + Math.random());
-//		criminalPersonInitialization1.setLocation(suspectLocation);
-//		
-//		PersonInitialization nonCriminalPersonInitialization1 = conceptFactory.createPersonInitialization(oneDayAgo);
-//		nonCriminalPersonInitialization1.setPerson(testDriver.createRelationship(Person.class, SUSPECT_PERSON));
-//		nonCriminalPersonInitialization1.setName("b2");
-//		nonCriminalPersonInitialization1.setProfession("Suspect");
-//		nonCriminalPersonInitialization1.setRole(testDriver.createRelationship(OrganizationalRole.class, NON_CRIMINAL_ORGANIZATION_ROLE));
-//		nonCriminalPersonInitialization1.setState(PersonState.ACTIVE);
-//		Point potentialCollaboratorLocation = SpatioTemporalService.getService().getGeometryFactory().getPoint(initialPoint0 + Math.random(), initialPoint1 + Math.random());
-//		nonCriminalPersonInitialization1.setLocation(potentialCollaboratorLocation);
-//	
-//		// Create Entities - Submit Events
-//		testDriver.submitEvent(criminalOrganization1);
-//		testDriver.submitEvent(commercialOrganization1);
-//		testDriver.submitEvent(criminalOrganizationRole1);
-//		testDriver.submitEvent(commercialOrganizationRole1);
-//		testDriver.submitEvent(criminalPersonInitialization1);
-//		testDriver.submitEvent(nonCriminalPersonInitialization1);
-//		testDriver.waitUntilSolutionIdle();
-//		
-//		Person suspectPerson1 = testDriver.fetchEntity(Person.class, SUSPECT_PERSON);
-//		Person potentialCollaborator = testDriver.fetchEntity(Person.class, POTENTIAL_COLLABORATOR);
-//		MovingGeometry potentialCollaboratorMovingGeometry = potentialCollaborator.getLocation();
-//		MovingGeometry suspectPersonMovingGeometry = suspectPerson1.getLocation();
-//		
-//		Point nextLocation = SpatioTemporalService.getService().getGeometryFactory().getPoint(initialPoint0 + Math.random(), initialPoint1 + Math.random());
-//		potentialCollaboratorMovingGeometry.setGeometryAtTime(nextLocation, oneDayAgo.plusMinutes(100));
-//		suspectPersonMovingGeometry.setGeometryAtTime(nextLocation, oneDayAgo.plusMinutes(100));
-//		
-//		nextLocation = SpatioTemporalService.getService().getGeometryFactory().getPoint(initialPoint0 + Math.random(), initialPoint1 + Math.random());
-//		potentialCollaboratorMovingGeometry.setGeometryAtTime(nextLocation, oneDayAgo.plusMinutes(110));
-//		suspectPersonMovingGeometry.setGeometryAtTime(nextLocation, oneDayAgo.plusMinutes(110));
-//		
-//		nextLocation = SpatioTemporalService.getService().getGeometryFactory().getPoint(initialPoint0 + Math.random(), initialPoint1 + Math.random());
-//		potentialCollaboratorMovingGeometry.setGeometryAtTime(nextLocation, oneDayAgo.plusMinutes(200));
-//		suspectPersonMovingGeometry.setGeometryAtTime(nextLocation, oneDayAgo.plusMinutes(200));
-//		
-//		nextLocation = SpatioTemporalService.getService().getGeometryFactory().getPoint(initialPoint0 + Math.random(), initialPoint1 + Math.random());
-//		potentialCollaboratorMovingGeometry.setGeometryAtTime(nextLocation, oneDayAgo.plusMinutes(300));
-//		suspectPersonMovingGeometry.setGeometryAtTime(nextLocation, oneDayAgo.plusMinutes(300));
-//		
-//		nextLocation = SpatioTemporalService.getService().getGeometryFactory().getPoint(initialPoint0 + Math.random(), initialPoint1 + Math.random());
-//		potentialCollaboratorMovingGeometry.setGeometryAtTime(nextLocation, oneDayAgo.plusMinutes(580));
-//		suspectPersonMovingGeometry.setGeometryAtTime(nextLocation, oneDayAgo.plusMinutes(580));
-//		
-//		testDriver.updateEntity(suspectPerson1);
-//		testDriver.updateEntity(potentialCollaborator);
-//		
-//		DwellingWithCriminalReport dwellingWithCriminalReport = conceptFactory.createDwellingWithCriminalReport(oneDayAgo.plusMinutes(600));
-//		dwellingWithCriminalReport.setNearbyDistanceInMeters(10);
-//		dwellingWithCriminalReport.setSuspect(testDriver.createRelationship(Person.class, SUSPECT_PERSON));
-//		dwellingWithCriminalReport.setPotentialCollaborator(testDriver.createRelationship(Person.class, POTENTIAL_COLLABORATOR));
-//		
-//		testDriver.submitEvent(dwellingWithCriminalReport);
-//		testDriver.waitUntilSolutionIdle();
-//		
-//		DebugInfo[] debugInfos = debugReceiver.getDebugInfo("PersonRuleAgent");
-//		
-//		for (DebugInfo debugInfo : debugInfos) {
-//			System.out.println( "DebugInfo: " + debugInfo );
-//			
-//			Event event = debugInfo.getEvent();
-//			String eventXml = testDriver.getModelSerializer().serializeEvent(DataFormat.TYPED_XML, event );
-//			System.out.println( "Event as XML: " + eventXml );
-//		}
-//	}
-	
+	}	
 }
