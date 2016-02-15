@@ -131,7 +131,17 @@ public class PersonAgent extends EntityAgent<Person> {
 			updateRoleEvent.setPerson(personRelationship);
 
 			emit(updateRoleEvent);
-
+			
+			// Time to create the role
+			try {
+				Thread.sleep(10000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			updateBoundEntity(thisPerson);
+			
 			String id =  thisPerson.get$Id();
 			CriminalPersonInitialization criminalPersonInitialization = getConceptFactory(ConceptFactory.class).createCriminalPersonInitialization(event.get$Timestamp());
 			criminalPersonInitialization.setCriminalPerson(createRelationship(CriminalPerson.class, id + "criminal"));
@@ -140,6 +150,7 @@ public class PersonAgent extends EntityAgent<Person> {
 			criminalPersonInitialization.setState(thisPerson.getState());
 			criminalPersonInitialization.setLocation(thisPerson.getLocation().getLastObservedGeometry().getReferencePoint());
 			Relationship<OrganizationalRole> relationship = thisPerson.getRole();
+			relationship = createRelationship(OrganizationalRole.class, thisPerson.get$Id() + "-" + thisPerson.getRole().resolve().getOrganization().resolve().get$Id());
 			criminalPersonInitialization.setRole(relationship);
 
 			emit(criminalPersonInitialization);

@@ -8,7 +8,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import blur.model.Alert;
 import blur.model.CellularReport;
 import blur.model.ConceptFactory;
 import blur.model.Organization;
@@ -34,11 +33,11 @@ public class SendAlertGetEvent {
 	protected static IADebugReceiver debugReceiver = new IADebugReceiver();
 
 
-	private static final String ORGANIZATION_1 = "ORGANIZATION_1";
+	private static final String ORGANIZATION_1 = "org_bx";
 
 	private static final String ROLE_1 = "ROLE_1";
 
-	private static final String PERSON_1 = "PERSON_1";
+	private static final String PERSON_1 = "ppl-Txe-182";
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -76,7 +75,7 @@ public class SendAlertGetEvent {
 
 		// Organization Initialization
 		OrganizationInitialization organizationInitialization1 = conceptFactory.createOrganizationInitialization(now);
-		organizationInitialization1.setType(OrganizationType.CRIMINAL);
+		organizationInitialization1.setType(OrganizationType.COMMERCIAL);
 		organizationInitialization1.setOrganization(testDriver.createRelationship(Organization.class, ORGANIZATION_1));
 
 		// Organization role Initialization		
@@ -110,7 +109,7 @@ public class SendAlertGetEvent {
 		testDriver.submitEvent(cellularReport);
 		
 		testDriver.processPendingSchedules(now);
-		Thread.sleep(100000);
+		Thread.sleep(10000);
 		testDriver.waitUntilSolutionIdle();
 	}
 }
