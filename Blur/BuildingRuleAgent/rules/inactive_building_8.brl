@@ -2,6 +2,8 @@
 <com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
   <name>inactive_building_8</name>
   <uuid>afee9200-2fac-4e64-bc4d-cdba1ad9b824</uuid>
+  <documentation><![CDATA[TODO:
+emit ALERT ;]]></documentation>
   <locale>en_US</locale>
   <definition><![CDATA[when a cellular report has occurred 60 minutes ago , called LAST
 definitions
@@ -16,5 +18,5 @@ then
         the building is 'the building' ,
         the rule is the name of this rule ;
     set the alert message of 'the building' to the message of ALERT;
-    emit ALERT ;]]></definition>
+    ]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

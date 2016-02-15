@@ -74,7 +74,7 @@
 			"fillColor": {
 				"default": {
 					"comparator": "==",
-					"ranges": ["ANYTHING", "bld-Tx-18", "bld-Tx-32", "bld-To-52", "bld-To-80"],
+					"ranges": ["ANYTHING", "bld-Tx-18-hot", "bld-Tx-32-hot", "bld-To-52-hot", "bld-To-80-hot"],
 					"values": ["#ff4500", "#d2691e", "#8b4513", "#800000", "#f4a460"],
 					"attribute": "id"
 				}
@@ -158,7 +158,7 @@
 			},
 			"strokeWidth": {
 				"default": {
-					"value": 1
+					"value": 0
 				}
 			},
 			"fillOpacity": {
@@ -247,7 +247,7 @@
 			"fillColor": {
 				"default": {
 					"comparator": "==",
-					"ranges": ["ANYTHING", "ppl-Txe-152", "ppl-Txe-182", "ppl-Txm-271", "ppl-Txe-82"],
+					"ranges": ["ANYTHING", "ppl-Txe-152-criminal", "ppl-Txe-182-criminal", "ppl-Txm-271-criminal", "ppl-Txe-82-criminal"],
 					"values": ["#ff0000", "#dc143c", "#b22222", "#8b0000", "#f08080"],
 					"attribute": "id"
 				}

@@ -3,9 +3,7 @@
   <name>hot building_7 - shared aggregate</name>
   <uuid>307f97aa-6369-4ca0-a71a-d811dbb60d61</uuid>
   <documentation><![CDATA[TODO:
-add a check for-
-
-one of the Types of the Organizations of 'the Building' is  CRIMINAL ]]></documentation>
+emit ALERT ;]]></documentation>
   <locale>en_US</locale>
   <definition><![CDATA[when a cellular report occurs
 definitions
@@ -22,7 +20,6 @@ then
         the rule is the name of this rule ;
     add ALERT to the alerts of 'the building' ;
     set the alert message of 'the building' to the message of ALERT ;
-    emit ALERT ;
     define HOT_BUILDING_DETECTED as a new hot building detected where
         the building is 'the building' ;
     emit HOT_BUILDING_DETECTED;]]></definition>
