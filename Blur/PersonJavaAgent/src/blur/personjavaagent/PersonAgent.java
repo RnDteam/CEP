@@ -144,7 +144,7 @@ public class PersonAgent extends EntityAgent<Person> {
 			criminalPersonInitialization.setProfession(thisPerson.getProfession());
 			criminalPersonInitialization.setState(thisPerson.getState());
 			criminalPersonInitialization.setLocation(thisPerson.getLocation().getLastObservedGeometry().getReferencePoint());
-			Relationship<OrganizationalRole> relationship = thisPerson.getRole();
+			Relationship<OrganizationalRole> relationship = createRelationship(OrganizationalRole.class, thisPerson.get$Id() + "-" + thisPerson.getRole().resolve().getOrganization().resolve().get$Id());
 			criminalPersonInitialization.setRole(relationship);
 
 			emit(criminalPersonInitialization);

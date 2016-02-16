@@ -38,7 +38,7 @@
 				"default": {
 					"comparator": "==",
 					"ranges": ["ANYTHING", "bld-Tx-18", "bld-Tx-32", "bld-To-52", "bld-To-80"],
-					"values": ["7", "14", "14", "14", "14"],
+					"values": ["7", "14", "14", "14", "18"],
 					"attribute": "id"
 				}
 			},
@@ -192,7 +192,7 @@
 				"default": {
 					"comparator": "==",
 					"ranges": ["ANYTHING", "ppl-Txe-152", "ppl-Txe-182", "ppl-Txm-271", "ppl-Txe-82"],
-					"values": ["#ffff00", "#008000", "#6495ed", "#da70d6", "#7fff00"],
+					"values": ["#ffff00", "#008000", "#191970", "#da70d6", "#7fff00"],
 					"attribute": "id"
 				}
 			},
@@ -208,7 +208,10 @@
 			},
 			"pointRadius": {
 				"default": {
-					"value": 14
+					"comparator": "==",
+					"ranges": ["ANYTHING", "ppl-Txe-152", "ppl-Txe-182", "ppl-Txm-271", "ppl-Txe-82"],
+					"values": ["14", "14", "18", "10", "14"],
+					"attribute": "id"
 				}
 			},
 			"strokeColor": {
