@@ -2,6 +2,7 @@
 <com.ibm.ia.designer.berl:BerlRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.ia.designer.berl="http://com.ibm.ia.designer/model/berl.ecore">
   <name>SuspiciousVehicleDetected</name>
   <uuid>7aa3487c-1136-44fb-bf33-deceb519a0c3</uuid>
+  <documentation><![CDATA[emit ALERT;]]></documentation>
   <locale>en_US</locale>
   <definition><![CDATA[when a suspicious vehicle detected occurs
 definitions
@@ -30,5 +31,5 @@ else
 		the vehicle is 'the vehicle',
 		the rule is the name of this rule;
 	set the alert message of 'the vehicle' to the message of ALERT;
-	emit ALERT;]]></definition>
+	]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

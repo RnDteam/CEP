@@ -5,5 +5,7 @@
   <locale>en_US</locale>
   <definition><![CDATA[when a cellular call report occurs
 then
-    make it true that 'the person' is in call ;]]></definition>
+    make it true that 'the person' is in call ;
+	set the trace of 'the person' to the trace of 'the person' + "At time " + the timestamp of this cellular call report  + " got a call from " + the id of the caller of this cellular call report + ".\n\t";
+ ]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

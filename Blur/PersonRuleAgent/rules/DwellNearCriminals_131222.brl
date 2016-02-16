@@ -37,13 +37,13 @@ definitions
         where the distance between 'the callee' and each person in meters is less than 100
         and the type of the organization of the role of each person is CRIMINAL ;
     set 'a nearby criminal' to a person in 'nearby criminals' ;
-    set 'people encounters' to the encounters between 'the callee' and 'a nearby criminal' within proximity of 100 meters
-        where the duration of each time period in hours is at least 8 ;
+    set 'encounters with criminal' to the encounters between 'the callee' and 'a nearby criminal' within proximity of 100 meters
+        where the duration of each time period in hours is at least 3 ;
 if
-    there is at least one time period in 'people encounters'
+    there is at least one time period in 'encounters with criminal'
 then
     define ALERT as a new alert where
-        the message is "Person " + the id of 'the callee' + " is criminal in organization " + the id of the organization of the role of 'a nearby criminal' + ": He walked with criminal " + the id of 'a nearby criminal' +" for 8 hours."  ,
+        the message is the id of 'the callee' + " is criminal: Because He walked with criminal " + the id of 'a nearby criminal' +" for 3 hours.\n\t" +  the trace of 'the callee'   ,
         the person is 'the callee' ,
         the organization is the organization of the role of 'a nearby criminal' ,
         the rule is "confirmation";

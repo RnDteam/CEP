@@ -36,7 +36,10 @@
 			},
 			"pointRadius": {
 				"default": {
-					"value": 7
+					"comparator": "==",
+					"ranges": ["ANYTHING", "bld-Tx-18", "bld-Tx-32", "bld-To-52", "bld-To-80"],
+					"values": ["7", "14", "14", "14", "14"],
+					"attribute": "id"
 				}
 			},
 			"strokeColor": {
@@ -50,6 +53,11 @@
 					"comparator": "==",
 					"ranges": ["Anything", "N/A"],
 					"values": ["4", "0"]
+				}
+			},
+			"fillOpacity": {
+				"default": {
+					"value": 0.4
 				}
 			}
 		},
@@ -148,7 +156,7 @@
 			},
 			"pointRadius": {
 				"default": {
-					"value": 14
+					"value": 10
 				}
 			},
 			"strokeColor": {
@@ -264,7 +272,7 @@
 			},
 			"pointRadius": {
 				"default": {
-					"value": 14
+					"value": 8
 				}
 			},
 			"strokeColor": {

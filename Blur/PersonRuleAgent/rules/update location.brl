@@ -11,5 +11,6 @@ if
 	false and the location of 'the person' is not null
 then
 	move 'the person' to 'the building location'  at the timestamp of this cellular report;
+	set the trace of 'the person' to "Person " + the id of 'the person' + " is in Building " + the id of the building of this cellular report + ".\n\t";
 ]]></definition>
 </com.ibm.ia.designer.berl:BerlRule>

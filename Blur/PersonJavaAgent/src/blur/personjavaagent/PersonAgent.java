@@ -113,8 +113,13 @@ public class PersonAgent extends EntityAgent<Person> {
 					double[] cord = buildingLocation.getLastObservedGeometry().getCoordinates();
 					Point newPersonLocation = SpatioTemporalService.getService().getGeometryFactory().getPoint( cord[0]  + (Math.random()+1)/10000.0, cord[1] + (Math.random()+1)/10000.0); 
 					personLocation.setGeometryAtTime(newPersonLocation, cellularReportEvent.getTimestamp());
+					
+					String trace = (thisPerson.getTrace()==null ? "" : thisPerson.getTrace()) + "At time  " + cellularReportEvent.get$Timestamp().getHour()+":"+ cellularReportEvent.get$Timestamp().getMinute() + " is at " + theBuilding.get$Id() + ".\n\t";
+					thisPerson.setTrace(trace);
+
 				}
 			}
+			
 			updateBoundEntity(thisPerson);
 		}
 
@@ -134,7 +139,7 @@ public class PersonAgent extends EntityAgent<Person> {
 
 			String id =  thisPerson.get$Id();
 			CriminalPersonInitialization criminalPersonInitialization = getConceptFactory(ConceptFactory.class).createCriminalPersonInitialization(event.get$Timestamp());
-			criminalPersonInitialization.setCriminalPerson(createRelationship(CriminalPerson.class, id + "criminal"));
+			criminalPersonInitialization.setCriminalPerson(createRelationship(CriminalPerson.class, id + "-criminal"));
 			criminalPersonInitialization.setName(thisPerson.getName());
 			criminalPersonInitialization.setProfession(thisPerson.getProfession());
 			criminalPersonInitialization.setState(thisPerson.getState());

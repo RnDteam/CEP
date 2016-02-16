@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><connectivity xmlns="http://www.ibm.com/ia/ConnectivityDefinitions" build-date="Sun Feb 14 17:45:47 IST 2016" built-by="com.ibm.ia.designer.core 8.8.0.0" solution="Blur">
+<?xml version="1.0" encoding="UTF-8"?><connectivity xmlns="http://www.ibm.com/ia/ConnectivityDefinitions" build-date="Tue Feb 16 12:07:40 IST 2016" built-by="com.ibm.ia.designer.core 8.8.0.0" solution="Blur">
     <outbound-binding source="'outb' &#10;&#9;using &#10;&#9;&#9;message format application/xml  , &#10;&#9;&#9;protocol HTTP , &#10;&#9;delivering events : &#10;&#9;&#9;- alert" source-file="/Blur/Connectivity Definitions/connectivity.cdef" source-line="2">
         <id>outb</id>
         <message-format>application/xml</message-format>

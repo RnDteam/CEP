@@ -40,14 +40,14 @@ definitions
         where the distance between the latest observed geometry of 'the callee' and each building in meters is less than 50 ;
     set 'a nearby bank' to a building in 'nearby buildings' 
 		where the usage type of this building is BANK BRANCH ;
-    set 'building encounters' to the encounters between 'the callee' and the latest observed geometry of 'a nearby bank' within proximity of 50 meters
+    set 'encounters with bank' to the encounters between 'the callee' and the latest observed geometry of 'a nearby bank' within proximity of 50 meters
         where the duration of each time period in minutes is more than 30
         and the duration of each time period in hours is less than 2 ;
 if
-    there is at least one time period in 'building encounters'
+    there is at least one time period in 'encounters with bank'
 then
     define ALERT as a new alert where
-        the message is "Person " + the id of 'the callee' + " is criminal in organization " + the id of the organization of the role of the caller of 'criminal call'  + ": He stayed in bank " + the id of 'a nearby bank' +" between 30 minutes to 2 hours.",
+        the message is the id of 'the callee' + " is criminal: Because he stayed in bank " + the id of 'a nearby bank' +" between 30 minutes to 2 hours.\n\t" +  the trace of 'the callee',
         the building is 'a nearby bank' ,
         the person is 'the callee' ,
         the organization is the organization of the role of the caller of 'criminal call' ;
