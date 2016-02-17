@@ -228,7 +228,7 @@ public class StartServer {
 				try {
 					long sleepTime = calculateDiffernceBetweenDates(currTime,
 							lastTimeStamp) * SPEED_FACTOR;
-					System.out.println("Sleeping for ms: " + sleepTime);
+					System.out.println("Sleeping for ms: " + sleepTime + " Current time " + currTime + " lastTimeStamp " + lastTimeStamp);
 					Thread.sleep(sleepTime);
 
 					lastTimeStamp = currTime;
