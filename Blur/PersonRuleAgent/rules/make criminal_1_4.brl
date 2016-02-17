@@ -17,7 +17,7 @@ then
         the building is the building of this cellular report ,
         the person is 'the person' ,
         the organization is 'criminal organization' ,
-        the message is the id of 'the person' + " is a criminal: Because he entered a criminal building.\n\t" +  the trace of 'the person'  ;
+        the message is the id of 'the person' + " is a criminal: Because he entered a criminal building.<br>" +  the trace of 'the person'  ;
     set the alert message of 'the person' to the message of ALERT ;
     emit ALERT ;
     define CRIMINAL_PERSON_DETECTED as a new criminal person detected where

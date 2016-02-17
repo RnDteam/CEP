@@ -43,7 +43,7 @@ if
     there is at least one time period in 'encounters with criminal'
 then
     define ALERT as a new alert where
-        the message is the id of 'the callee' + " is criminal: Because He walked with criminal " + the id of 'a nearby criminal' +" for 3 hours.\n\t" +  the trace of 'the callee'   ,
+        the message is the id of 'the callee' + " is criminal: Because He walked with criminal " + the id of 'a nearby criminal' +" for 3 hours.<br>" +  the trace of 'the callee'   ,
         the person is 'the callee' ,
         the organization is the organization of the role of 'a nearby criminal' ,
         the rule is "confirmation";

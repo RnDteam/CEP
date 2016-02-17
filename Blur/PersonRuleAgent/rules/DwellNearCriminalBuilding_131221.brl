@@ -47,7 +47,7 @@ if
     there is at least one time period in 'encounters with bank'
 then
     define ALERT as a new alert where
-        the message is the id of 'the callee' + " is criminal: Because he stayed in bank " + the id of 'a nearby bank' +" between 30 minutes to 2 hours.\n\t" +  the trace of 'the callee',
+        the message is the id of 'the callee' + " is criminal: Because he stayed in bank " + the id of 'a nearby bank' +" between 30 minutes to 2 hours.<br>" +  the trace of 'the callee',
         the building is 'a nearby bank' ,
         the person is 'the callee' ,
         the organization is the organization of the role of the caller of 'criminal call' ;

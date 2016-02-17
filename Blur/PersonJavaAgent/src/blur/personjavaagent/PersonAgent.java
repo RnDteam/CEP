@@ -114,7 +114,7 @@ public class PersonAgent extends EntityAgent<Person> {
 					Point newPersonLocation = SpatioTemporalService.getService().getGeometryFactory().getPoint( cord[0]  + (Math.random()+1)/10000.0, cord[1] + (Math.random()+1)/10000.0); 
 					personLocation.setGeometryAtTime(newPersonLocation, cellularReportEvent.getTimestamp());
 					
-					String trace = (thisPerson.getTrace()==null ? "" : thisPerson.getTrace()) + "At time  " + cellularReportEvent.get$Timestamp().getHour()+":"+ cellularReportEvent.get$Timestamp().getMinute() + " is at " + theBuilding.get$Id() + ".\n\t";
+					String trace = (thisPerson.getTrace()==null ? "" : thisPerson.getTrace()) + "At time  " + cellularReportEvent.get$Timestamp().getHour()+":"+ cellularReportEvent.get$Timestamp().getMinute() + " is at " + theBuilding.get$Id() + ".<br>";
 					thisPerson.setTrace(trace);
 
 				}
